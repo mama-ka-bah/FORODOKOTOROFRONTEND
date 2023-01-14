@@ -6,11 +6,18 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { Geolocation } from '@capacitor/geolocation';
+import { Platform } from '@ionic/angular';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+
+
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, MatSlideToggleModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy
+  }, Platform],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,17 +1,93 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
+<script>
+  $('.datepicker').datepicker({
+   inline: true
+ });
+
+ $('.datepicker').datepicker({
+ weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+ showMonthsShort: true
+})
+</script>
+
+<ion-header>
+  <div class="barre-menu">
+      <!-- <div class="cercle">
+        <div><ion-title slot="start">FORODOKOTORO</ion-title></div>
+        <div><ion-icon class="icon-search" name="search-outline"></ion-icon></div>
+        <div class="btn-group">
+          <button class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="img-profil" style=" height: 35px!important; width: 35px!important;max-width: none; position: absolute;border-radius: 15px;    top: 3px;
+            "aria-hidden="true" alt="Silhouette of a person's head" src="../assets/images/keita.jpeg" />
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">Action</button>
+            <button class="dropdown-item" type="button">Another action</button>
+            <button class="dropdown-item" type="button">Something else here</button>
+          </div>
+        </div>
+      </div> -->
+    
+  </div>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content overflow-scroll="false" [fullscreen]="true">
+  <div class="meteo">
+    <div class="conteur_cercle">
+      <div>
+        <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday">
+      </div>
+      <div class="dot">
+        <div>
+          <div class="temperature">35°C</div>
+          <div class="nomVillage">Badinko</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- decouvrir -->
+  <div class="decouvrir">
+    <span class="libelle-decouvrir">Decouvrir</span>
+    <div class="images-decouvrir">
+      <div class="elt-decouvrir">
+        <img src="../assets/images/agriculture.png">
+        <label class="label-decouvrir">Agriculture</label>
+      </div>
+      <div class="elt-decouvrir">
+        <img src="../assets/images/marche.png">
+        <label class="label-decouvrir">Marche</label>
+      </div>
+      <div class="elt-decouvrir">
+        <img src="../assets/images/conseil.png">
+        <label class="label-decouvrir">Conseil</label>
+      </div>
+      <div class="elt-decouvrir">
+        <img src="../assets/images/champs.png">
+        <label class="label-decouvrir">Champs</label>
+      </div>
+    </div>
+  </div>  
+  <div class="transports">
+    <span class="libelle-transport">Retrouver un transporteur</span> 
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="lien-transporteur">
+    <div>Ne vous soucier pas du moyen de transport de vos produits</div>
+  </div>
+  </div>
+
+  <span class="libelle-produitsagricoles">Produits agricoles</span> 
+  <div class="produitsagricoles">
+    <ion-slides [options]="options" class="imagesproduits">
+      <ion-slide class="images-produit">
+        <img src="../assets/images/arachide-accueil.png">
+      </ion-slide>
+      <ion-slide class="images-produit">
+        <img src="../assets/images/mais-accueil.png">
+      </ion-slide>
+      <ion-slide class="images-produit">
+        <img src="../assets/images/coton-accueil.png">
+      </ion-slide>
+    </ion-slides>
+  </div>
+
 </ion-content>
+ 

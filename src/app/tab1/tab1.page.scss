@@ -1,0 +1,222 @@
+//le menu
+.barre-menu{
+    background-color: #14AE5C;
+    color: #fff;
+    padding: 0;
+    z-index: 0;
+    display: flex;
+    justify-content: space-around;
+    height: 75px;
+
+}
+
+// ion-title{
+//     font-size: 15px;
+// }
+// ion-icon[name="search-outline"]{
+//     font-size: 40px;
+//     font-weight: bold;
+//     position: absolute;
+//     right: 0;
+// }
+
+// ion-chip{
+//     --background:#fff;
+//     height:40px;
+//     opacity: 1;
+// }
+   
+
+// ion-icon[name="chevron-down-outline"]{
+//     color: #14AE5C;
+//     // font-size: 27px;
+//     // --ionicon-stroke-width: 64px;
+// }
+// ion-badge{
+//     position: absolute;
+//     top:0;
+//     left: 30px;
+//     height: 13px;
+//     padding: 0;
+//      background: red;
+// }
+
+// ion-chip[class="img-profil"]{
+//   padding-right: 15px;
+//   border-radius: 20px!important;
+// }
+
+
+// //le style du cercle de la meteo
+
+// .cercle{
+//     --background: #fff;
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+// }
+
+//partie concernant la meteo
+.meteo{
+    background-image: url("/assets/images/meteo.png");
+    // filter: brightness(0.7);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45vh;
+}
+
+
+//Le cercle contenant la meteo
+.dot {
+    border-radius: 50%;
+    background: #14AE5C;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  //Le conteneur du cercle
+  .conteur_cercle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  //la temperature recuperer
+  .temperature{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 70px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  //le nom du village
+  .nomVillage{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 38px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  //le input du calendrier
+  .calendar-input{
+    border: none;
+    height: 35px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 80vw;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 10px;
+  }
+
+
+  //les images de la partie decouvrir
+  .images-decouvrir{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  //conteneur decouvrir
+  .decouvrir{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  //Libelle de la partie decouvrir
+  .libelle-decouvrir{
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 10px;
+  }
+
+  //les element de decouvrir
+  .elt-decouvrir{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  //les images de decouvrir
+  .elt-decouvrir img{
+    margin-bottom: 5px;
+  }
+
+  //le libelle de decouvrir
+  .label-decouvrir{
+    font-size: 12px;
+  }
+
+
+  .lien-transporteur{
+    background-image: url("/assets/images/retrouvez-transporteurs.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 18vh;
+    margin-bottom: 9px;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+    //La partie transporteur
+  .transports{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 5px;
+    filter: brightness(0.7);
+  }
+
+  //libelle transporteur et libelleproduitagricole
+  .libelle-transport, .libelle-produitsagricoles{
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 10px;
+  }
+
+  //les produits agricoles
+  .produitsagricoles{
+    --width: 100%;
+    --height: 140px;
+    background: #efecee;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+
+  //les images des produits conteneur
+  .imagesproduits{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    --width: 100%;
+  }
+
+
+  //images d'un produit
+  .images-produit{
+    border-radius: 15px;
+    width: 100px;
+    height: 153px;
+  }

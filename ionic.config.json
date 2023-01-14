@@ -1,5 +1,7 @@
 {
   "name": "forodokotoroFrontend",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
