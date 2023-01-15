@@ -1,0 +1,67 @@
+ion-content{
+    // --offset-bottom: initial !important;
+    background-color: #F4F5F8;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.conteneur{
+    display: grid;
+    grid-template-areas:
+    "conteneur-logo conteneur-logo"
+    "conteneur-logo conteneur-logo"
+    "conteneur-logo conteneur-logo"
+    "commencer commencer"
+    "commencer commencer"
+    "bas bas";
+    background-color: #F4F5F8
+};
+
+
+.conteneur-logo{
+    // background-color: #F4F5F8;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+
+    grid-area: conteneur-logo;
+    // background-color: red;
+}
+.logo{
+    height: 140px;
+    width: 120px;
+}
+
+.commencer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    grid-area: commencer;
+    // background-color: #000000;
+}
+
+.commencer ion-button{
+    width: 80%;
+    --background: #14AE5C;
+}
+
+.bas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 20vh;
+
+    grid-area: bas;
+    // background-color: #14AE5C;
+}
+
+.nomapp{
+    color: #14AE5C;
+    font-weight: bold;
+}

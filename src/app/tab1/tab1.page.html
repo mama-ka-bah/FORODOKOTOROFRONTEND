@@ -30,16 +30,19 @@
   </div>
 </ion-header>
 
-<ion-content overflow-scroll="false" [fullscreen]="true">
+<ion-content [fullscreen]="true">
   <div class="meteo">
     <div class="conteur_cercle">
-      <div>
-        <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday">
+      <div class="intervalle-temp">
+        <!-- <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday"> -->
+        <div class="min">Min {{tmp_min}} °C</div>
+        <div class="max">Max {{tmp_max}} °C</div>
       </div>
       <div class="dot">
-        <div>
-          <div class="temperature">35°C</div>
-          <div class="nomVillage">Badinko</div>
+        <div> 
+          <!-- <div id="iconmeteo"><img id="wicon" src="https://openweathermap.org/img/wn/{{icon}}@2x.png" alt='Weather icon'></div><div class='temperature'></div> -->
+          <div class='temperature'>{{degre}} °C</div>
+          <div class="nomVillage">{{ville}}</div>
         </div>
       </div>
     </div>

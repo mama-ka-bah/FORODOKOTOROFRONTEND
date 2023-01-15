@@ -8,6 +8,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
 import { MatMenuModule} from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 
@@ -26,7 +29,8 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     MatSlideToggleModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   declarations: [Tab1Page]
 })
