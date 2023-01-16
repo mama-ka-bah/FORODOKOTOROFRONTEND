@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>INSCRIPTION</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #F4F5F8">
+
+  <div class="containeur">
+    <div class="conteneur-logo">
+      <img class="logo" src="../assets/images/logo.png">
+    </div>
+
+    <div class="formulaire">
+      <div class="input">
+        <label>Numéro de télephone <span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="text" class="form-control" placeholder="82644606">
+      </div>
+
+      <div class="input">
+        <label>Nom complet <span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="password" class="form-control"  id="password" data-toggle="password" placeholder="Aboubacar keïta">
+      </div>
+
+      <div class="input"> 
+        <label>Email</label>
+        <input class="telephone-input" type="password" class="form-control"  id="password" data-toggle="kmahamadou858@gmail.com" placeholder="Mot de passe">
+      </div>
+
+      <div class="input">
+        <label>Mot de passe <span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="password" class="form-control"  id="password" data-toggle="password" placeholder="Mot de passe">
+      </div>
+
+      <div class="input-submit">
+        <label>Confirmer <span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="password" class="form-control"  id="password" data-toggle="password" placeholder="Retaper le mot de passe">
+      </div>
+
+
+
+      <div class="conteneur-submit">
+        <ion-button class="envoyer-input" type="submit" expand="block" routerLink="/tabs/tab1">S'INSCRIRE</ion-button>
+      </div>
+
+      <div class="autres-options">
+        <div style="font-size: 14px;">
+          Vous avez déjà un compte ? <span class="connexion" routerLink="/connexion">Connexion</span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</ion-content>

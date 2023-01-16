@@ -13,11 +13,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class Tab1Page implements OnInit{
   tmp:any;
+  tmp5jours:any;
   degre:any;
   ville:any;
   icon:any;
   tmp_max :any;
   tmp_min:any;
+
+  tmp_temporaire1:any;
+  tmp_temporaire2:any;
+  tmp_temporaire3:any;
+
   constructor(private meteoservice : MeteoService) {}
  
   ngOnInit(): void {
@@ -33,6 +39,7 @@ export class Tab1Page implements OnInit{
     this.tmp =  data;
 
     this.degre = Math.round(this.tmp.main.temp - 273.15);
+    
     this.tmp_max = Math.round(this.tmp.main.temp_max - 273.15);
     this.tmp_min = Math.round(this.tmp.main.temp_min - 273.15);
 
@@ -43,15 +50,28 @@ export class Tab1Page implements OnInit{
     console.log(data);
   })
 
-  this.meteoservice.pregetWeather(coordinates.coords.latitude, coordinates.coords.longitude).subscribe((data) =>{
+  this.meteoservice.pregetWeather(coordinates.coords.latitude, coordinates.coords.longitude).subscribe(data =>{
     
-    this.tmp =  data;
-    console.log(data);
+    this.tmp5jours =  data;
+    console.log("temmmmmmp5jours: " + this.tmp5jours);
+    this.tmp_temporaire1 =  Math.round(this.tmp5jours["list"][0]["main"]["temp_max"] - 273.15);
+    this.tmp_temporaire2 = Math.round(this.tmp5jours["list"][1]["main"]["temp_max"] - 273.15);
+    this.tmp_temporaire3 = Math.round(this.tmp5jours["list"][2]["main"]["temp_max"] - 273.15);
+
+    this.tmp_max = Math.max(this.tmp_temporaire1, this.tmp_temporaire2, this.tmp_temporaire3);
+    this.tmp_min  = Math.min(this.tmp_temporaire1, this.tmp_temporaire2, this.tmp_temporaire3);
+
+
+    console.log("temp1: " + this.tmp_temporaire1 + "temp1: " + this.tmp_temporaire2 + "temp1: " + this.tmp_temporaire3);
   })
   
   };
-
   
+
+  //  async recupererpartieEntiersTemperature (temperature: number) {
+    
+  //   return null;
+  // }
 
   options = {
     slidesPerView:3,   // NOMBRE DE SLIDE PAR PAGE = 1

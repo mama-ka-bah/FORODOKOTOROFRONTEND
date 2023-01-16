@@ -54,6 +54,12 @@ ion-content{
 .commencer ion-button{
     width: 80%;
     --background: #14AE5C;
+    // --color-hover: #14AE5C;
+}
+
+.commencer-button :hover{
+    --background: #14AE5C!important;
+    scale: 2!important;
 }
 
 
