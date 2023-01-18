@@ -30,6 +30,23 @@ const routes: Routes = [
     path: 'inscription',
     loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
   },
+  {
+    path: 'detail-produit-agricoles',
+    loadChildren: () => import('./detail-produit-agricoles/detail-produit-agricoles.module').then( m => m.DetailProduitAgricolesPageModule)
+  }
+  ,
+  {
+    path: 'profil',
+    loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule)
+  },
+  {
+    path: 'champs',
+    loadChildren: () => import('./champs/champs.module').then( m => m.ChampsPageModule)
+  }
+  // {
+  //   path: 'semence',
+  //   loadChildren: () => import('./semence/semence.module').then( m => m.SemencePageModule)
+  // },
 
 ];
 @NgModule({

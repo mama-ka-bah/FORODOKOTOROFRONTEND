@@ -1,0 +1,204 @@
+
+//Le conteneur des elements de la page enfant direct de ion-content
+.produitagricole{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+///le des produits agricoles
+/// 
+
+
+ion-col {
+    background-color: #135d54;
+    border: solid 1px #fff;
+    color: #000;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+    // height: 200px;
+    // width: 172px;
+    background: #FFFFFF;
+    border: 1px solid #14AE5C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 5vw;
+  }
+
+  .conteneurImg img{
+    border-radius: 10px 10px 0px 0px;
+    width: 100%!important;
+    height: 100px!important;
+
+  }
+  .voirplus{
+    background-color: #efecee;
+    border-radius: 15px;
+    color: #14AE5C;
+    font-weight: bold;
+    width: 50%;
+    height: 38px;
+    font-weight: bold;
+  }
+
+  .contenu h5{
+    font-weight: bold;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .barre-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  
+    background-color: #14AE5C;
+      color: #fff;
+      padding: 0;
+      z-index: 0;
+      display: flex;
+      justify-content: space-around;
+      height: 75px;
+  }
+  
+  .element-menus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .nomApp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+
+  }
+
+  .deconnexion{
+    color: red;
+  }//fin des style du menu
+
+
+
+//   ion-content{
+//     --height: 1000px;
+//   }
+
+
+  //debut des styles du contenu du profil
+
+  .details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    grid-column: 25px;
+    background-color: #efecee;
+    border-radius: 50px;
+  }
+  
+
+  .photoProfil1{
+    max-height: 30vh;
+    width: 100%;
+  }
+  .image-detail{
+    width: 100%;
+    max-height: 30vh;
+    object-fit: fill;
+  }
+
+  .conteneurProfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 80px; 
+    width: 100%;
+    height: 100%;
+  }
+
+  .mail, .adresse, .telephone{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer{
+    // height: 60px;
+    background-color: #14AE5C;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 100px;
+
+  }
+  .libelle{
+    font-weight: bold;
+  }
+  .libelle, .valeur{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .libelle p, .valeur p{
+    font-size: 14px;
+  }
+
+  .bouttons{
+    display: flex;
+    justify-content: space-around;
+  }
+  .bouttons ion-button{
+    --background:#fff;
+    --border:1px solid #14AE5C;
+    --border-radius: 20px;
+    color: #14AE5C;
+    font-weight: bold;
+  }
+
+  .infoPersonnelles{
+    // display: flex;
+    // justify-content: center;
+    // flex-direction: column;
+    margin: 20px;
+  }
+
+  .tabs{
+    // width: 60%;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    
+  }
+  .menutabs{
+  }

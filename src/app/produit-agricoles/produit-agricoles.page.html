@@ -1,26 +1,20 @@
-<script>
-  $('.datepicker').datepicker({
-    inline: true
-  });
-
-  $('.datepicker').datepicker({
-    weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-    showMonthsShort: true
-  })
-</script>
-
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>AGRICULTURE</ion-title>
+  </ion-toolbar>
+</ion-header> -->
 <ion-header>
   <div class="barre-menu">
     <div class="element-menus">
       <div class="nomApp">
         <!-- style="width: 60%;" -->
         <!-- <img src="../../assets/images/forodokotoro.png" alt=""> -->
-        FORODOKOTORO
+        Agricultures
       </div>
-      <div class="rechercche">
-        <!-- style="width: 60%;" -->
+      <!-- <div class="rechercche">
+       
         <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
-      </div>
+      </div> -->
       <div class="nav-item dropdown">
         <!-- margin-top: -20% !important; margin-left: 50% !important; -->
         <div cclass="nav-link dropdown-toggle"
@@ -39,7 +33,7 @@
           <a href="#" class="dropdown-item">
             <div class="d-flex align-items-center nomUser">
               <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
-              <div class="ms-2" routerLink="/profil">
+              <div class="ms-2">
                 <h6 class="fw-normal mb-0 nomUser">Sama Keita</h6>
                 <!-- <small>15 minutes ago</small> -->
               </div>
@@ -83,69 +77,94 @@
   </div>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="meteo">
-    <div class="conteur_cercle">
-      <div class="intervalle-temp">
-        <!-- <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday"> -->
-        <div class="min">Min {{tmp_min}} °C</div>
-        <div class="max">Max {{tmp_max}} °C</div>
-      </div>
-      <div class="dot">
-        <div>
-          <!-- <div id="iconmeteo"><img id="wicon" src="https://openweathermap.org/img/wn/{{icon}}@2x.png" alt='Weather icon'></div><div class='temperature'></div> -->
-          <div class='temperature'>{{degre}} °C</div>
-          <div class="nomVillage">{{ville}}</div>
-        </div>
+<ion-content>
+  <div class="produitagricole">
+    <!-- partie recherche -->
+    <div class="conteneurInput">
+      <div class="rechercche">
+        <input type="search" placeholder="Recherche">
+        <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
       </div>
     </div>
-  </div>
-  <!-- decouvrir -->
-  <div class="decouvrir">
-    <span class="libelle-decouvrir">Decouvrir</span>
-    <div class="images-decouvrir">
-      <div class="elt-decouvrir">
-        <img src="../assets/images/agriculture.png">
-        <label class="label-decouvrir">Agriculture</label>
-      </div>
-      <div class="elt-decouvrir">
-        <img src="../assets/images/marche.png">
-        <label class="label-decouvrir">Marche</label>
-      </div>
-      <div class="elt-decouvrir">
-        <img src="../assets/images/conseil.png">
-        <label class="label-decouvrir">Conseil</label>
-      </div>
-      <div class="elt-decouvrir">
-        <img src="../assets/images/champs.png">
-        <label class="label-decouvrir">Champs</label>
-      </div>
+
+    <div class="conteneurProduitAgricole">
+
+      <ion-grid>
+
+        <ion-row>
+          <ion-col>
+              <div class="conteneurImg">
+                <img src="../assets/images/mais.jpg" alt="image produit">
+              </div>
+              <div class="contenuPrincipal">
+                <div class="contenu">
+                  <h5>Maïs</h5>
+                  relying on meaningful content. Lorem ipsum 
+                  may be
+                </div>
+                <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
+              </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          
+          <ion-col>
+              <div class="conteneurImg">
+                <img src="../assets/images/arachide.jpg" alt="image produit">
+              </div>
+              <div class="contenuPrincipal">
+                <div class="contenu">
+                  <h5>Coton</h5>
+                  relying on meaningful content. Lorem ipsum 
+                  may be 
+                </div>
+                <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
+              </div>
+          </ion-col>
+
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col>
+              <div class="conteneurImg">
+                <img src="../assets/images/coton.jpg" alt="image produit">
+              </div>
+              <div class="contenuPrincipal">
+                <div class="contenu">
+                  <h5>Coton</h5>
+                 relying on meaningful content. Lorem ipsum 
+                  may be
+                </div>
+                <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
+              </div>
+          </ion-col>
+
+        </ion-row>
+
+
+        <ion-row>
+
+          <ion-col>
+              <div class="conteneurImg">
+                <img src="../assets/images/mil.jpg" alt="image produit">
+              </div>
+              <div class="contenuPrincipal">
+                <div class="contenu">
+                  <h5>Mil</h5>
+                  relying on meaningful content. Lorem ipsum 
+                  may be
+                </div>
+                <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
+              </div>
+          </ion-col>
+
+        </ion-row>
+
+      </ion-grid>
+
     </div>
-  </div>
-  <div class="transports">
-    <span class="libelle-transport">Retrouver un transporteur</span>
 
-    <div class="lien-transporteur">
-      <div>Ne vous soucier pas du moyen de transport de vos produits</div>
-    </div>
   </div>
-
-  <span class="libelle-produitsagricoles">Produits agricoles</span>
-  <div class="produitsagricoles">
-    <ion-slides [options]="options" class="imagesproduits">
-      <ion-slide class="images-produit">
-        <img src="../assets/images/arachide-accueil.png">
-      </ion-slide>
-      <ion-slide class="images-produit">
-        <img src="../assets/images/mais-accueil.png">
-      </ion-slide>
-      <ion-slide class="images-produit">
-        <img src="../assets/images/coton-accueil.png">
-      </ion-slide>
-      <ion-slide class="images-produit">
-        <img src="../assets/images/mais-accueil.png">
-      </ion-slide>
-    </ion-slides>
-  </div>
-
 </ion-content>

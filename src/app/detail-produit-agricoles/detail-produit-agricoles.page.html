@@ -1,21 +1,22 @@
-<script>
-  $('.datepicker').datepicker({
-    inline: true
-  });
-
-  $('.datepicker').datepicker({
-    weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-    showMonthsShort: true
-  })
-</script>
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Maïs</ion-title>
+  </ion-toolbar>
+</ion-header> -->
 
 <ion-header>
   <div class="barre-menu">
     <div class="element-menus">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
       <div class="nomApp">
         <!-- style="width: 60%;" -->
         <!-- <img src="../../assets/images/forodokotoro.png" alt=""> -->
-        FORODOKOTORO
+        Maïs
       </div>
       <div class="rechercche">
         <!-- style="width: 60%;" -->
@@ -39,7 +40,7 @@
           <a href="#" class="dropdown-item">
             <div class="d-flex align-items-center nomUser">
               <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
-              <div class="ms-2" routerLink="/profil">
+              <div class="ms-2">
                 <h6 class="fw-normal mb-0 nomUser">Sama Keita</h6>
                 <!-- <small>15 minutes ago</small> -->
               </div>
@@ -83,69 +84,45 @@
   </div>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="meteo">
-    <div class="conteur_cercle">
-      <div class="intervalle-temp">
-        <!-- <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday"> -->
-        <div class="min">Min {{tmp_min}} °C</div>
-        <div class="max">Max {{tmp_max}} °C</div>
-      </div>
-      <div class="dot">
-        <div>
-          <!-- <div id="iconmeteo"><img id="wicon" src="https://openweathermap.org/img/wn/{{icon}}@2x.png" alt='Weather icon'></div><div class='temperature'></div> -->
-          <div class='temperature'>{{degre}} °C</div>
-          <div class="nomVillage">{{ville}}</div>
+<ion-content>
+  <div class="conteneurDetailProduitAgricole">
+
+    <div class="conteneurImage">
+      <img class="image-detail" src="../assets/images/mais.jpg">
+      <ion-button>Subventionné</ion-button>
+    </div>
+
+    <div class="description">
+      <h5>Description</h5>
+      <div class="texte">
+        <div style="justify-content: justify;">
+          L'arachide, également connue sous le nom d'arachide, de goober, de
+          pindar ou de noix de singe, est une légumineuse cultivée principalement
+           pour ses graines comestibles.
         </div>
+        <button>Voir plus</button>
       </div>
     </div>
-  </div>
-  <!-- decouvrir -->
-  <div class="decouvrir">
-    <span class="libelle-decouvrir">Decouvrir</span>
-    <div class="images-decouvrir">
-      <div class="elt-decouvrir">
-        <img src="../assets/images/agriculture.png">
-        <label class="label-decouvrir">Agriculture</label>
-      </div>
-      <div class="elt-decouvrir">
-        <img src="../assets/images/marche.png">
-        <label class="label-decouvrir">Marche</label>
-      </div>
-      <div class="elt-decouvrir">
-        <img src="../assets/images/conseil.png">
-        <label class="label-decouvrir">Conseil</label>
-      </div>
-      <div class="elt-decouvrir">
-        <img src="../assets/images/champs.png">
-        <label class="label-decouvrir">Champs</label>
-      </div>
-    </div>
-  </div>
-  <div class="transports">
-    <span class="libelle-transport">Retrouver un transporteur</span>
 
-    <div class="lien-transporteur">
-      <div>Ne vous soucier pas du moyen de transport de vos produits</div>
-    </div>
-  </div>
-
-  <span class="libelle-produitsagricoles">Produits agricoles</span>
+    <div class="varietes">
+      <h5 class="libelle-produitsagricoles">Differentes varietes</h5> 
   <div class="produitsagricoles">
     <ion-slides [options]="options" class="imagesproduits">
-      <ion-slide class="images-produit">
+      <ion-slide class="images-produit" routerLink="/tabs/produit-agricoles/semence">
         <img src="../assets/images/arachide-accueil.png">
       </ion-slide>
-      <ion-slide class="images-produit">
+      <ion-slide class="images-produit" routerLink="/tabs/produit-agricoles/semence">
         <img src="../assets/images/mais-accueil.png">
       </ion-slide>
-      <ion-slide class="images-produit">
+      <ion-slide class="images-produit" routerLink="/tabs/produit-agricoles/semence">
         <img src="../assets/images/coton-accueil.png">
       </ion-slide>
-      <ion-slide class="images-produit">
+      <ion-slide class="images-produit" routerLink="/tabs/produit-agricoles/semence">
         <img src="../assets/images/mais-accueil.png">
       </ion-slide>
     </ion-slides>
   </div>
+    </div>
 
+  </div>
 </ion-content>

@@ -1,26 +1,23 @@
-<script>
-  $('.datepicker').datepicker({
-    inline: true
-  });
-
-  $('.datepicker').datepicker({
-    weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-    showMonthsShort: true
-  })
-</script>
-
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Kabateliman</ion-title>
+  </ion-toolbar>
+</ion-header> -->
 <ion-header>
   <div class="barre-menu">
     <div class="element-menus">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
       <div class="nomApp">
         <!-- style="width: 60%;" -->
         <!-- <img src="../../assets/images/forodokotoro.png" alt=""> -->
-        FORODOKOTORO
+        Kabateliman
       </div>
-      <div class="rechercche">
-        <!-- style="width: 60%;" -->
-        <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
-      </div>
+     
       <div class="nav-item dropdown">
         <!-- margin-top: -20% !important; margin-left: 50% !important; -->
         <div cclass="nav-link dropdown-toggle"
@@ -39,7 +36,7 @@
           <a href="#" class="dropdown-item">
             <div class="d-flex align-items-center nomUser">
               <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
-              <div class="ms-2" routerLink="/profil">
+              <div class="ms-2">
                 <h6 class="fw-normal mb-0 nomUser">Sama Keita</h6>
                 <!-- <small>15 minutes ago</small> -->
               </div>
@@ -83,69 +80,63 @@
   </div>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="meteo">
-    <div class="conteur_cercle">
-      <div class="intervalle-temp">
-        <!-- <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday"> -->
-        <div class="min">Min {{tmp_min}} °C</div>
-        <div class="max">Max {{tmp_max}} °C</div>
-      </div>
-      <div class="dot">
-        <div>
-          <!-- <div id="iconmeteo"><img id="wicon" src="https://openweathermap.org/img/wn/{{icon}}@2x.png" alt='Weather icon'></div><div class='temperature'></div> -->
-          <div class='temperature'>{{degre}} °C</div>
-          <div class="nomVillage">{{ville}}</div>
+<ion-content>
+
+  <div class="semence">
+    <div class="conteneurImage">
+      <img class="image-detail" src="../assets/images/mais.jpg">
+    </div>
+
+    <div class="description">
+      <h5>Description</h5>
+      <div class="texte">
+        <div style="text-align: justify;">
+          L'arachide, également connue sous le nom d'arachide, de goober, de
+          pindar ou de noix de singe, est une légumineuse cultivée principalement
+           pour ses graines comestibles.
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- decouvrir -->
-  <div class="decouvrir">
-    <span class="libelle-decouvrir">Decouvrir</span>
-    <div class="images-decouvrir">
-      <div class="elt-decouvrir">
-        <img src="../assets/images/agriculture.png">
-        <label class="label-decouvrir">Agriculture</label>
-      </div>
-      <div class="elt-decouvrir">
-        <img src="../assets/images/marche.png">
-        <label class="label-decouvrir">Marche</label>
-      </div>
-      <div class="elt-decouvrir">
-        <img src="../assets/images/conseil.png">
-        <label class="label-decouvrir">Conseil</label>
-      </div>
-      <div class="elt-decouvrir">
-        <img src="../assets/images/champs.png">
-        <label class="label-decouvrir">Champs</label>
-      </div>
-    </div>
-  </div>
-  <div class="transports">
-    <span class="libelle-transport">Retrouver un transporteur</span>
 
-    <div class="lien-transporteur">
-      <div>Ne vous soucier pas du moyen de transport de vos produits</div>
+          <button>Voir plus</button>
+      </div>
     </div>
-  </div>
 
-  <span class="libelle-produitsagricoles">Produits agricoles</span>
-  <div class="produitsagricoles">
-    <ion-slides [options]="options" class="imagesproduits">
-      <ion-slide class="images-produit">
-        <img src="../assets/images/arachide-accueil.png">
-      </ion-slide>
-      <ion-slide class="images-produit">
-        <img src="../assets/images/mais-accueil.png">
-      </ion-slide>
-      <ion-slide class="images-produit">
-        <img src="../assets/images/coton-accueil.png">
-      </ion-slide>
-      <ion-slide class="images-produit">
-        <img src="../assets/images/mais-accueil.png">
-      </ion-slide>
-    </ion-slides>
+    <table>
+      <h6 style="color: #14AE5C; font-weight: bold;">DONNEES PREVISIONNELLES</h6>
+      <thead>
+        <tr>
+          <th>Previsions</th>
+          <th>Delais</th>
+          <th>Criteres</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Prevision 1</td>
+          <td>10 jours</td>
+          <td>3 pluies</td>
+          <td><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
+        </tr>
+        <tr>
+          <td>Prevision 1</td>
+          <td>10 jours</td>
+          <td>3 pluies</td>
+          <td><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
+        </tr>
+        <tr>
+          <td>prevision 1</td>
+          <td>10 jours</td>
+          <td>3 pluies</td>
+          <td><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
+        </tr>
+        <tr>
+          <td>Prevision 1</td>
+          <td>10 jours</td>
+          <td>3 pluies</td>
+          <td><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
 
 </ion-content>
