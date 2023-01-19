@@ -12,6 +12,10 @@ const routes: Routes = [
         path: 'champs',
         loadChildren: () => import('../champs/champs.module').then( m => m.ChampsPageModule)
       },
+      {
+        path: 'stockprofil',
+        loadChildren: () => import('../stockprofil/stockprofil.module').then( m => m.StockprofilPageModule)
+      },
 
       {
         path: '',

@@ -94,7 +94,9 @@ ion-col {
 
   }
 
-  
+  .deconnexion{
+    color: red;
+  }//fin des style du menu
 
 
   //debut des styles du contenu du profil
@@ -138,7 +140,20 @@ ion-col {
     align-items: center;
     width: 100%;
   }
-  
+
+  .footer{
+    // height: 60px;
+    background-color: #14AE5C;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 100px;
+
+  }
   .libelle{
     font-weight: bold;
   }

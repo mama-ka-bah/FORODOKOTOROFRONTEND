@@ -1,0 +1,333 @@
+.barre-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  
+    background-color: #14AE5C;
+      color: #fff;
+      padding: 0;
+      z-index: 0;
+      display: flex;
+      justify-content: space-around;
+      height: 75px;
+  }
+  
+  .element-menus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .nomApp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+
+  }
+
+
+  //le conteneur principal du contenu
+
+  .conteneurDetailChamp{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+
+//   Style de l'image et son conteneur
+.photoChamp{
+    height: 30vh;
+    width: 100%;
+}
+.monChamp{
+    height: 100%;
+    width: 100%;
+}
+
+//style de la temperature
+.temperature{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-color: #fff;
+    color: #14AE5C;
+    z-index: 1000;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+//style du filtre debut
+.filtre{
+    background: #FFFFFF;
+    border: 2px solid #14AE5C;
+    border-radius: 5px;
+    display: flex;
+    // float: right;
+    // margin-top: 15px;
+    // margin-right: 15vw;
+    height: 35px;
+    width: 95%;
+    float: right;
+    margin: auto;
+    box-shadow: 0px 0px 4px 4px rgba(20, 174, 92, 0.25);
+
+    // display: flex;
+    // align-items: center;
+    // justify-content: flex-end;
+}
+
+//input du filtre
+.input-filtre{
+   width: 100%;
+    height: 30px;
+    border: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filtre ion-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+}
+
+.filtre[_ngcontent-hgk-c163] {
+    width: 95%!important;
+    margin: auto!important;
+}
+
+//le style de l'icone filtre
+.fa-filter {
+    position: relative;
+    font-size: 20px;
+    color: #14AE5C;
+    top: 8px;
+    right: 10px;
+}
+ion-select::part(icon) {
+    display: none !important;
+   }
+
+ 
+//style du filtre fin
+
+
+
+.calendrier{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+  //le input du calendrier
+  .calendar-input{
+    border: none;
+    height: 35px;
+    box-shadow: 0px 0px 4px 4px rgba(20, 174, 92, 0.25);
+    width: 100%;
+    padding-right: 8px;
+    padding-left: 8px;
+    border-radius: 10px;
+  }
+
+  .semer ion-button{
+    --background: #14AE5C;
+    --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    --border-radius: 15px;
+     color: #fff;
+
+    //  --background:#fff;
+    //  --border:1px solid #14AE5C;
+    //  --border-radius: 20px;
+    //  color: #14AE5C;
+    //  font-weight: bold;
+     height: 35px;
+  }
+  .semer{
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    height: 80%;
+  }
+  .actions-buuton{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .calendrier-semer{
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+    height: 18vh;
+  }
+
+  .accesprevision{
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .accesprevision ion-button{
+    --background: #fff;
+    --border:1px solid #14AE5C;
+    --border-radius: 15px;
+    color: #14AE5C;
+    font-weight: bold;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+
+
+
+
+
+
+
+  ////les styles des activites
+
+table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    // gap: 10px;
+}
+thead{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+    height: 50px;
+    font-weight: bold;
+    background-color: #14AE5C;
+    border-radius: 10px;
+    color: #fff;
+}
+
+thead tr{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+
+tbody{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    background-color: #efecee;
+}
+
+tbody tr{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    height: 50px;
+    gap: 10px;
+    margin: 10px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 5px 4px rgba(20, 174, 92, 0.06);
+    border-radius: 10px;
+}
+
+
+//Styles des details du champs
+
+//conteneur principal des details
+.detailChamp{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    gap: 10px;
+    margin-left: 5%;
+    margin-right: 2%;
+  }
+
+  .elementDetailChamp{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;  
+  }
+
+  .detail, .libelle{
+    display: flex;
+    justify-content: flex-start;
+  }
+ .libelle{
+   font-weight: bold;
+  }
+
+  .modifier{
+    --background:#14AE5C;
+    // --border:1px solid #14AE5C;
+    --border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+  td{
+    font-size: 12px;
+  }
+
+  .texteAjouter{
+    // --background: #fff;
+    // --border:1px solid #14AE5C;
+    // --border-radius: 15px;
+    color: #14AE5C;
+    // font-weight: bold;
+    width: 80%;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+  }
+
+  .ajouterPhase{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    margin: auto;
+  }
+ 
+

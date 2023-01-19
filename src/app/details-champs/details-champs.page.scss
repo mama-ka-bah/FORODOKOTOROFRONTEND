@@ -1,0 +1,164 @@
+.barre-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  
+    background-color: #14AE5C;
+      color: #fff;
+      padding: 0;
+      z-index: 0;
+      display: flex;
+      justify-content: space-around;
+      height: 75px;
+  }
+  
+  .element-menus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .nomApp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+
+  }
+
+
+  //le conteneur principal du contenu
+
+  .conteneurDetailChamp{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+
+//   Style de l'image et son conteneur
+.photoChamp{
+    height: 30vh;
+    width: 100%;
+}
+.monChamp{
+    height: 100%;
+    width: 100%;
+}
+
+//style de la temperature
+.temperature{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-color: #fff;
+    color: #14AE5C;
+    z-index: 1000;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+////les styles des activites
+
+table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    // gap: 10px;
+}
+thead{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+    height: 50px;
+    font-weight: bold;
+}
+
+thead tr{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+
+tbody{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    background-color: #efecee;
+}
+
+tbody tr{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    height: 50px;
+    gap: 10px;
+    margin: 10px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 5px 4px rgba(20, 174, 92, 0.06);
+    border-radius: 10px;
+}
+
+
+//Styles des details du champs
+
+//conteneur principal des details
+.detailChamp{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    gap: 10px;
+    margin-left: 5%;
+    margin-right: 2%;
+  }
+
+  .elementDetailChamp{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;  
+  }
+
+  .detail, .libelle{
+    display: flex;
+    justify-content: flex-start;
+  }
+ .libelle{
+   font-weight: bold;
+  }
+
+  .modifier{
+    --background:#14AE5C;
+    // --border:1px solid #14AE5C;
+    --border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }

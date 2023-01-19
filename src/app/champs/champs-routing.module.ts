@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ChampsPage
+  },
+  {
+    path: 'details-champs',
+    loadChildren: () => import('../details-champs/details-champs.module').then( m => m.DetailsChampsPageModule)
   }
 ];
 

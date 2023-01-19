@@ -1,0 +1,30 @@
+.barre-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  
+    background-color: #14AE5C;
+      color: #fff;
+      padding: 0;
+      z-index: 0;
+      display: flex;
+      justify-content: space-around;
+      height: 75px;
+  }
+  
+  .element-menus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .nomApp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+
+  }

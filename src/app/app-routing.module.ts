@@ -43,6 +43,30 @@ const routes: Routes = [
     path: 'champs',
     loadChildren: () => import('./champs/champs.module').then( m => m.ChampsPageModule)
   }
+  // ,
+  // {
+  //   path: 'detail-parserelle',
+  //   loadChildren: () => import('./detail-parserelle/detail-parserelle.module').then( m => m.DetailParserellePageModule)
+  // }
+
+  // ,
+  // {
+  //   path: 'detail-stocks',
+  //   loadChildren: () => import('./detail-stocks/detail-stocks.module').then( m => m.DetailStocksPageModule)
+  // }
+
+  //,
+  // {
+  //   path: 'details-champs',
+  //   loadChildren: () => import('./details-champs/details-champs.module').then( m => m.DetailsChampsPageModule)
+  // }
+
+  //,
+  // {
+  //   path: 'stockprofil',
+  //   loadChildren: () => import('./stockprofil/stockprofil.module').then( m => m.StockprofilPageModule)
+  // }
+
   // {
   //   path: 'semence',
   //   loadChildren: () => import('./semence/semence.module').then( m => m.SemencePageModule)

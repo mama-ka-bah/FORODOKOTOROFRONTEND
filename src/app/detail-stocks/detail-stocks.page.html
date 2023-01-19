@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-header>
+    <div class="barre-menu">
+      <div class="element-menus">
+        <ion-buttons slot="start" >
+          <ion-back-button defaultHref="profil"></ion-back-button>
+        </ion-buttons>
+        <div class="nomApp" style="flex-basis: 80%;">
+          Champ 1
+        </div>
+      </div>
+  
+    </div>
+  </ion-header>
+</ion-header>
+
+  <ion-content>
+
+
+    <!-- Le conteneur principal du detail champs -->
+    <div class="conteneurDetailChamp">
+      <div class="photoChamp">
+        <img class="monChamp" src="../../assets/images/monChamp.jpg" alt="Image du champ">
+        <div class="temperature" >25 °C</div>
+      </div>
+        <div class="filtre">
+          <ion-item>
+            <!-- <ion-label>Alert Interface</ion-label> -->
+            <ion-select class="input-filtre" placeholder="Choisir une parselle" okText="Choose Fruit" cancelText="Cancel Choice">
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="oranges">Oranges</ion-select-option>
+              <ion-select-option value="bananas">Bananas</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <i class="fa fa-filter" aria-hidden="true" ></i>
+          <!-- <input class="input-filtre" placeholder="Choisir une parselle">
+          <i class="fa fa-filter" aria-hidden="true" ></i> -->       
+      </div>
+      
+      <div class="calendrier-semer">
+        <div class="calendrier">
+          <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday">
+          <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday">
+        </div>
+        <div class="semer">
+          <ion-button class="fermer" type="submit" expand="block">Semer</ion-button>
+         <div class="actions-buuton">
+          <div><i  class='far fa-edit' style='font-size:25px; color: #000;'></i></div>
+          <div><i class="fa fa-trash" aria-hidden="true" style="color:red; font-size:25px"></i></div>
+         </div>
+        </div>
+      </div>
+     
+        
+
+     
+
+
+    </div>
+
+   
+      
+
+
+
+  </ion-content>
