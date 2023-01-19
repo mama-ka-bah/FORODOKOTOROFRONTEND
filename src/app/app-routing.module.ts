@@ -42,7 +42,15 @@ const routes: Routes = [
   {
     path: 'champs',
     loadChildren: () => import('./champs/champs.module').then( m => m.ChampsPageModule)
+  },
+  {
+    path: 'profil-transporteur',
+    loadChildren: () => import('./profil-transporteur/profil-transporteur.module').then( m => m.ProfilTransporteurPageModule)
+  },  {
+    path: 'notifications',
+    loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
   }
+
   // ,
   // {
   //   path: 'detail-parserelle',

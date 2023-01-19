@@ -175,3 +175,61 @@ tbody tr{
     box-shadow: 0px 0px 5px 4px rgba(20, 174, 92, 0.06);
     border-radius: 10px;
 }
+
+.recolte{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.recolte .libelle{
+    color: #14AE5C;
+    font-weight: bold;
+}
+
+
+
+
+
+//Styles des details du champs
+
+//conteneur principal des details
+.detailChamp{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    gap: 10px;
+    margin-left: 5%;
+    margin-right: 2%;
+  }
+
+  .elementDetailChamp{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;  
+  }
+
+  .detail, .libelle{
+    display: flex;
+    justify-content: flex-start;
+  }
+ .libelle{
+   font-weight: bold;
+  }
+
+  .modifier{
+    --background:#14AE5C;
+    // --border:1px solid #14AE5C;
+    --border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }

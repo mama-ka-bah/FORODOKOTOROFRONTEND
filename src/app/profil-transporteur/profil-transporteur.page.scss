@@ -1,69 +1,4 @@
-
-//Le conteneur des elements de la page enfant direct de ion-content
-.produitagricole{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-}
-
-///le des produits agricoles
-ion-col {
-    background-color: #135d54;
-    border: solid 1px #fff;
-    color: #000;
-    text-align: center;
-    border-radius: 10px 10px 0px 0px;
-    background: #FFFFFF;
-    border: 1px solid #14AE5C;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    margin: 2vw;
-    width: 80vw;
-    height: 100%;
-  }
-
-  .conteneurImg{
-    --height: 80%!important;
-  }
-
-  .conteneurImg img{
-    border-radius: 10px 10px 0px 0px;
-    width: 100%!important;
-    height: 100px!important;
-
-  }
-  .voirplus{
-    background-color: #efecee;
-    border-radius: 15px;
-    color: #14AE5C;
-    height: 25px;
-    width: 60px;
-  }
-
-  .contenu h5{
-    font-weight: bold;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .barre-menu{
+.barre-menu{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -109,6 +44,8 @@ ion-col {
     // background-color: #efecee;
     border-radius: 50px;
     box-shadow: 0px 0px 4px 4px rgb(20 174 92 / 10%);
+
+    margin-bottom: 15px;
   }
   
 
@@ -138,7 +75,7 @@ ion-col {
     align-items: center;
     width: 100%;
   }
-
+  
   .libelle{
     font-weight: bold;
   }
@@ -147,17 +84,18 @@ ion-col {
     justify-content: flex-start;
     align-items: center;
   }
-  .libelle p, .valeur p{
-    font-size: 14px;
-  }
   .libelle{
     font-weight: bold;
+  }
+  .libelle p, .valeur p{
+    font-size: 14px;
   }
 
   .bouttons{
     display: flex;
     justify-content: space-around;
     width: 100%;
+    align-items: center;
   }
   .bouttons ion-button{
     --background:#fff;
@@ -167,6 +105,15 @@ ion-col {
     font-weight: bold;
   }
 
+  .contacter{
+    --background:#fff;
+    --border:1px solid #14AE5C;
+    --border-radius: 20px;
+    color: #14AE5C;
+    font-weight: bold;
+    width: 100%;
+  }
+
   .infoPersonnelles{
     margin: 20px;
     display: flex;
@@ -174,6 +121,7 @@ ion-col {
     align-items: center;
     flex-direction: column;
     width: 80%;
+    gap: 6px;
   }
 
 

@@ -161,10 +161,13 @@ ion-col {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-weight: bold;
   }
   .libelle p, .valeur p{
     font-size: 14px;
+  }
+
+  .libelle{
+    font-weight: bold;
   }
 
   .bouttons{
