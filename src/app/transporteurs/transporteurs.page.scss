@@ -1,3 +1,21 @@
+//La barre en haut
+ion-toolbar{
+    --background: #14AE5C;
+    color: #fff;
+    padding: 0;
+}
+
+//le titre de la barre
+ion-title{
+    font-size: 15px;
+}
+
+
+
+
+
+
+
 .barre-menu{
     display: flex;
     justify-content: space-between;

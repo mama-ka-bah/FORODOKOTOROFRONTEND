@@ -1,15 +1,10 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>AGRICULTURE</ion-title>
-  </ion-toolbar>
-</ion-header> -->
 <ion-header>
   <div class="barre-menu">
     <div class="element-menus">
       <div class="nomApp">
         <!-- style="width: 60%;" -->
         <!-- <img src="../../assets/images/forodokotoro.png" alt=""> -->
-        Agricultures
+        Marché
       </div>
       <!-- <div class="rechercche">
        
@@ -78,8 +73,15 @@
 </ion-header>
 
 <ion-content>
-  <div class="produitagricole">
-    <!-- partie recherche -->
+
+  <div class="conteneurMarche">
+
+    <div class="buttons">
+      <ion-button class="lu active" type="submit" expand="block">Graines</ion-button>
+      <ion-button class="nonlu" type="submit" expand="block">Semences</ion-button>
+    </div>
+
+
     <div class="conteneurInput">
       <div class="rechercche">
         <input type="search" placeholder="Recherche">
@@ -87,84 +89,80 @@
       </div>
     </div>
 
-    <div class="conteneurProduitAgricole">
 
-      <ion-grid>
 
-        <ion-row>
-          <ion-col>
-              <div class="conteneurImg">
-                <img src="../assets/images/mais.jpg" alt="image produit">
-              </div>
-              <div class="contenuPrincipal">
-                <div class="contenu">
-                  <h5>Maïs</h5>
-                  relying on meaningful content. Lorem ipsum 
-                  may be
+    <ion-grid>
+
+      <ion-row>
+        <ion-col>
+            <div class="conteneurImg">
+              <img class="imageProduit" src="../assets/images/mais.jpg" alt="image produit">
+            </div>
+            <div class="contenuPrincipal">
+              <div class="contenu">
+                <!-- <h5>Maïs</h5>
+                relying on meaningful content. Lorem ipsum 
+                may be -->
+                <div class="descriptions">
+                  <div class="colonne premier">
+
+                    <div class="element">
+                      <div class="libelle">
+                        Kilo
+                      </div>
+                      <div class="valeur">
+                        150 kg
+                      </div>
+                    </div>
+
+                    <div class="element">
+                      <div class="libelle">
+                        Prix
+                      </div>
+                      <div class="valeur">
+                       400 F/kg
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="colonne deuxieme">
+
+                    <div class="element">
+                      <div class="libelle">
+                        Adresse
+                      </div>
+                      <div class="valeur">
+                        Bamako
+                      </div>
+                    </div>
+
+                    <div class="element">
+                      <div class="libelle">
+                        Vendeur
+                      </div>
+                      <div class="valeur">
+                        Adama coulibaly
+                      </div>
+                    </div>
+
+                  </div>
+
                 </div>
-                <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
-              </div>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          
-          <ion-col>
-              <div class="conteneurImg">
-                <img src="../assets/images/arachide.jpg" alt="image produit">
-              </div>
-              <div class="contenuPrincipal">
-                <div class="contenu">
-                  <h5>Coton</h5>
-                  relying on meaningful content. Lorem ipsum 
-                  may be 
+                
+                <div class="mesBouttons">
+                  <i class="fas fa-thumbs-up"></i>
+                  <i class="fas fa-thumbs-down"></i>
+                  <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
                 </div>
-                <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
+
               </div>
-          </ion-col>
+            </div>
+        </ion-col>
+      </ion-row>
 
-        </ion-row>
-
-
-        <ion-row>
-          <ion-col>
-              <div class="conteneurImg">
-                <img src="../assets/images/coton.jpg" alt="image produit">
-              </div>
-              <div class="contenuPrincipal">
-                <div class="contenu">
-                  <h5>Coton</h5>
-                 relying on meaningful content. Lorem ipsum 
-                  may be
-                </div>
-                <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
-              </div>
-          </ion-col>
-
-        </ion-row>
-
-
-        <ion-row>
-
-          <ion-col>
-              <div class="conteneurImg">
-                <img src="../assets/images/mil.jpg" alt="image produit">
-              </div>
-              <div class="contenuPrincipal">
-                <div class="contenu">
-                  <h5>Mil</h5>
-                  relying on meaningful content. Lorem ipsum 
-                  may be
-                </div>
-                <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
-              </div>
-          </ion-col>
-
-        </ion-row>
-
-      </ion-grid>
-
-    </div>
+    </ion-grid>
 
   </div>
+
 </ion-content>

@@ -46,10 +46,26 @@ const routes: Routes = [
   {
     path: 'profil-transporteur',
     loadChildren: () => import('./profil-transporteur/profil-transporteur.module').then( m => m.ProfilTransporteurPageModule)
-  },  {
+  },
+  {
     path: 'notifications',
     loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
   }
+  // ,
+  // {
+  //   path: 'communautes',
+  //   loadChildren: () => import('./communautes/communautes.module').then( m => m.CommunautesPageModule)
+  // }
+
+  // ,
+  // {
+  //   path: 'transporteurs',
+  //   loadChildren: () => import('./transporteurs/transporteurs.module').then( m => m.TransporteursPageModule)
+  // },
+  // {
+  //   path: 'marche',
+  //   loadChildren: () => import('./marche/marche.module').then( m => m.MarchePageModule)
+  // }
 
   // ,
   // {

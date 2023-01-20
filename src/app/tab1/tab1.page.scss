@@ -117,11 +117,12 @@
 
 //partie concernant la meteo
 .meteo{
-    background-image: url("/assets/images/meteo.png");
+    // background-image: url("/assets/images/meteo.png");
     // filter: brightness(0.7);
     background-repeat: no-repeat;
     background-size: cover;
     height: 45vh;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)),  url("/assets/images/meteo.png");
 }
 
 
@@ -212,7 +213,8 @@
 
 
   .lien-transporteur{
-    background-image: url("/assets/images/retrouvez-transporteurs.png");
+    // background-image: url("/assets/images/retrouvez-transporteurs.png");
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), url("/assets/images/retrouvez-transporteurs.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 18vh;

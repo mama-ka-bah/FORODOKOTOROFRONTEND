@@ -19,9 +19,21 @@ const routes: Routes = [
       //   path: 'tab2',
       //   loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
       // },
+      // {
+      //   path: 'tab3',
+      //   loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+      // },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'transporteurs',
+        loadChildren: () => import('../transporteurs/transporteurs.module').then( m => m.TransporteursPageModule)
+      },
+      {
+        path: 'marche',
+        loadChildren: () => import('../marche/marche.module').then( m => m.MarchePageModule)
+      },
+      {
+        path: 'communautes',
+        loadChildren: () => import('../communautes/communautes.module').then( m => m.CommunautesPageModule)
       },
       {
         path: '',
