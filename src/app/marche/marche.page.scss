@@ -112,7 +112,7 @@
     justify-content: space-around;
     flex-direction: column;
     height: 100%;
-    gap: 15px;
+    gap: 5px;
 }
 
 ion-col{
@@ -148,7 +148,6 @@ ion-col{
     justify-content: space-around;
     align-items: center;
     width: 95%;
-    gap: 10px;
 }
 
 .premier{
@@ -169,7 +168,16 @@ ion-col{
 .mesBouttons{
     display: flex;
     justify-content: space-between;
-
+    margin-left: 13px;
+}
+.voirplus{
+    background: #14AE5C;
+    border-radius: 0px 0px 15px 0px;
+    width: 98px;
+    height: 26px;
+    color: #fff;
+    padding: -59px;
+    margin-right: -5px;
 }
 
 
