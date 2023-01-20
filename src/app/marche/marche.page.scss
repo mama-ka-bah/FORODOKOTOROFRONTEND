@@ -48,7 +48,7 @@
   .buttons ion-button{
     border: none;
     --box-shadow: none;
-    width: 90px;
+    width: 80px;
   }
 
   .nonlu{
@@ -103,8 +103,8 @@
 
 //debut style du contenu
 .conteneurMarche{
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 15px 0 0 0;
+    // margin-bottom: 15px;
 }
 
 .contenu{
@@ -112,20 +112,20 @@
     justify-content: space-around;
     flex-direction: column;
     height: 100%;
-    gap: 5px;
+    margin-bottom: 5px;
 }
 
 ion-col{
     background-color: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 4px 4px rgba(20, 174, 92, 0.07);
     border-radius: 15px;
-    height: 330px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .imageProduit{
     border-radius: 15px;
     height: 50%;
+    width: 100%;
 }
 
 .descriptions{
@@ -149,6 +149,7 @@ ion-col{
     justify-content: space-around;
     align-items: center;
     width: 95%;
+    margin-top: 6px;
 }
 
 .premier{
@@ -168,15 +169,25 @@ ion-col{
     display: flex;
     justify-content: space-between;
     margin-left: 13px;
+    position: relative;
+    bottom: -10px;
+}
+.like{
+    display: flex;
+    flex-direction: column;
 }
 .voirplus{
     background: #14AE5C;
     border-radius: 0px 0px 15px 0px;
     width: 98px;
-    height: 26px;
+    // height: 26px;
     color: #fff;
     padding: -59px;
     margin-right: -5px;
+    // margin-bottom: 2px;
+}
+.likevaleur{
+    font-size: 12px;
 }
 
 

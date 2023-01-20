@@ -53,6 +53,12 @@ const routes: Routes = [
   }
   // ,
   // {
+  //   path: 'detail-stock',
+  //   loadChildren: () => import('./detail-stock/detail-stock.module').then( m => m.DetailStockPageModule)
+  // }
+
+  // ,
+  // {
   //   path: 'communautes',
   //   loadChildren: () => import('./communautes/communautes.module').then( m => m.CommunautesPageModule)
   // }
