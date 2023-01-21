@@ -1,0 +1,43 @@
+    <div class="barre-menu">
+      <div class="element-menus">
+        <div class="libelle">
+          Recuperation de  mot de passe
+        </div>
+        <div (click)="closeModal()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div> 
+      </div>
+    </div>
+
+
+    <div class="containeur">
+      <div class="conteneur-logo">
+        <img class="logo" src="../assets/images/logo.png">
+      </div>
+    
+      <div class="texte">
+        Entrez votre e-mail et nous vous enverrons des instructions pour réinitialiser votre mot de passe.
+      </div>
+
+      <div>
+
+        <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
+          <div class="input">
+            <label>E-mail</label>
+            <input class="telephone-input" type="text" class="form-control" placeholder="kmahamadou858@gmail.com" formControlName="email">
+           
+            <!-- Ici on recupere les critere de validation avec "hasError" et on les verifie pour ensuite afficher une erreur -->
+
+            <!-- cette erreur est afficher lorsque le champ est touché et qu'il vide -->
+            <span class="erreur" *ngIf="myForm!.get('email')!.hasError('required') && myForm.get('email')!.touched">Cet champ est obligatoire</span>
+            
+           <!-- cette erreur est afficher lorsque le champ est touché et que l'email mis est valide -->
+            <span class="erreur" *ngIf="myForm.get('email')!.hasError('pattern') && myForm.get('email')!.touched">Email invalide</span>
+          </div>
+        
+          <div class="input">
+            <button class="envoyer-input" type="submit" expand="block" >ENVOYER</button>
+          </div>
+        </form>
+
+      </div>
+    
+    </div>

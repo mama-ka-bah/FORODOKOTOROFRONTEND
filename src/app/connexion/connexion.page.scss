@@ -41,6 +41,10 @@ ion-title{
     flex-direction: column;
 }
 
+.input label{
+    font-weight: bold;
+}
+
 //le conteneur de mon formullaire
 .formulaire{
     display: flex;

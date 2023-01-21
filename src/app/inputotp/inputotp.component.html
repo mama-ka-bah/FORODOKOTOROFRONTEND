@@ -1,0 +1,40 @@
+<div class="barre-menu">
+  <div class="element-menus">
+    <div class="libelle">
+      Recuperation de  mot de passe
+    </div>
+    <div (click)="closeModal()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div> 
+  </div>
+</div>
+
+
+<div class="containeur">
+  <div class="conteneur-logo">
+    <img class="logo" src="../assets/images/logo.png">
+  </div>
+
+  <div class="texte">
+    Veuillez saisir le code de verification à quatre chiffre envoyé à votre adresse mail
+  </div>
+ 
+  <form class="formulaire" [formGroup]="myForm">
+    <div class="inputOtpconteneur">
+      <input class="inputOtp" type="number" formControlName="code1" (input)="restrictInput($event)" class="form-control" style="width: 50px; border-color: #000;">
+      <input class="inputOtp" type="number" class="form-control" formControlName="code2" style="width: 50px; border-color: #000;">
+      <input class="inputOtp" type="number" class="form-control" formControlName="code3"  style="width: 50px; border-color: #000;">
+      <input class="inputOtp" type="number" class="form-control" formControlName="code4" style="width: 50px; border-color: #000;">
+      
+      <div class="erreur" class="erreur"
+       *ngIf="myForm.get('code1')!.hasError('pattern') && myForm.get('email')!.touched"
+        >
+      
+      </div>
+
+    </div>
+  
+    <div class="input">
+      <button class="envoyer-input" type="submit" expand="block">ENVOYER</button>
+    </div>
+  </form>
+  
+</div>

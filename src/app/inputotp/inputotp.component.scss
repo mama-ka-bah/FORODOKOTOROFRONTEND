@@ -1,0 +1,80 @@
+//debut style menus
+.barre-menu{
+    background-color: #14AE5C;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.element-menus{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.libelle{
+    color: bold;
+    color: #fff;
+}
+//fin style du menu
+
+
+//debut style du contenu
+.containeur{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 85%;
+    align-items: center;
+    margin: auto;
+}
+
+//Le logo de l'application
+.logo{
+    height: 140px;
+    width: 120px;
+}
+
+.texte{
+    text-align: justify;
+    width: 90%;
+}
+
+//le button envoyer
+.envoyer-input{
+    background-color: #14AE5C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    width: 90vw;
+}
+
+.inputOtpconteneur{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.inputOtp{
+    height: 40px!important;
+    border: 2px solid black;
+
+    width: 50px!important;
+    border-color: #000!important;
+}
+
+.formulaire{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 35vh;
+}
