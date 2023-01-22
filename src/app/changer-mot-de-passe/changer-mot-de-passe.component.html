@@ -1,0 +1,68 @@
+    
+
+    
+    <div class="barre-menu">
+      <div class="element-menus">
+        <div class="libelle">
+          Recuperation de  mot de passe
+        </div>
+        <div (click)="closeModal()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div> 
+      </div>
+    </div>
+
+
+    <div class="containeur">
+      <div class="conteneur-logo">
+        <img class="logo" src="../assets/images/logo.png">
+      </div>
+
+      <div>
+
+        <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
+          <div class="input">
+            <label>Mot de passe</label>
+            <input class="telephone-input" type="password" class="form-control" placeholder="Mot de passe" formControlName="motDePasse"
+            [ngClass]="{'is-invalid': myForm.get('motDePasse')!.invalid && myForm.get('motDePasse')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('motDePasse')!.valid && myForm.get('motDePasse')!.touched}"
+            >
+           
+            <!-- Ici on recupere les critere de validation avec "hasError" et on les verifie pour ensuite afficher une erreur -->
+
+            <!-- cette erreur est afficher lorsque le champ est touché et qu'il vide -->
+            <span class="erreur" *ngIf="myForm!.get('motDePasse')!.hasError('required') && myForm.get('motDePasse')!.touched">Cet champ est obligatoire</span>
+            
+           <!-- cette erreur est afficher lorsque le champ est touché et que l'email mis est valide -->
+            <span class="erreur" *ngIf="myForm.get('motDePasse')!.hasError('minlength') && myForm.get('motDePasse')!.touched">Mot de passe court</span>
+          </div>
+
+          <div class="input">
+            <label>Confirmer Le mot de passe</label>
+            <input class="telephone-input" type="password" class="form-control" placeholder="Confirmer le mot de passe" formControlName="motDePasseConfirme"
+            [ngClass]="{'is-invalid': myForm.get('motDePasseConfirme')!.invalid && myForm.get('motDePasseConfirme')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('motDePasseConfirme')!.valid && myForm.get('motDePasseConfirme')!.touched}"
+            >
+           
+            <!-- Ici on recupere les critere de validation avec "hasError" et on les verifie pour ensuite afficher une erreur -->
+
+            <!-- cette erreur est afficher lorsque le champ est touché et qu'il vide -->
+            <span class="erreur" *ngIf="myForm!.get('motDePasseConfirme')!.hasError('minlength') && myForm.get('motDePasseConfirme')!.touched">Mot de passe court</span>
+          
+
+             <!-- cette erreur est afficher lorsque le champ est touché et qu'il vide -->
+             <span class="erreur" *ngIf="myForm!.get('motDePasseConfirme')!.hasError('required') && myForm.get('motDePasseConfirme')!.touched">Cet champ est obligatoire</span>
+          
+
+             <span class="erreur"  *ngIf="myForm.valid  && myForm.get('motDePasse')!.touched && myForm.get('motDePasseConfirme')!.touched && myForm.get('motDePasse') != myForm.get('motDePasseConfirme') " >Mot de passe differents</span>
+
+
+          </div>
+
+       
+          <div class="input">
+            <button class="envoyer-input" type="submit" expand="block" >ENVOYER</button>
+          </div>
+        </form>
+
+      </div>
+    
+    </div>

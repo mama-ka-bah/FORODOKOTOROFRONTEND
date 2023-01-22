@@ -17,20 +17,22 @@
     Veuillez saisir le code de verification à quatre chiffre envoyé à votre adresse mail
   </div>
  
-  <form class="formulaire" [formGroup]="myForm">
+  <form class="formulaire" [formGroup]="myForm" (ngSubmit)="submitForm()">
     <div class="inputOtpconteneur">
-      <input class="inputOtp" type="number" formControlName="code1" (input)="restrictInput($event)" class="form-control" style="width: 50px; border-color: #000;">
-      <input class="inputOtp" type="number" class="form-control" formControlName="code2" style="width: 50px; border-color: #000;">
-      <input class="inputOtp" type="number" class="form-control" formControlName="code3"  style="width: 50px; border-color: #000;">
-      <input class="inputOtp" type="number" class="form-control" formControlName="code4" style="width: 50px; border-color: #000;">
-      
-      <div class="erreur" class="erreur"
-       *ngIf="myForm.get('code1')!.hasError('pattern') && myForm.get('email')!.touched"
-        >
-      
-      </div>
-
+      <input class="inputOtp" type="text" formControlName="code1" minlength="1" maxlength="1"   class="form-control" style="width: 50px; border-color: #000;">
+      <input class="inputOtp" type="text" class="form-control" minlength="1" maxlength="1"  formControlName="code2" maxlength="1" style="width: 50px; border-color: #000;">
+      <input class="inputOtp" type="text" class="form-control" minlength="1" maxlength="1" formControlName="code3" maxlength="1"  style="width: 50px; border-color: #000;">
+      <input class="inputOtp" type="text" class="form-control" minlength="1" maxlength="1"  formControlName="code4" maxlength="1" style="width: 50px; border-color: #000;">
     </div>
+    <span class="erreur"
+    *ngIf="myForm.get('code1')!.hasError('pattern') && myForm.get('code1')!.touched ||
+     myForm.get('code2')!.hasError('pattern') && myForm.get('code2')!.touched ||
+     myForm.get('code3')!.hasError('pattern') && myForm.get('code3')!.touched ||
+     myForm.get('code4')!.hasError('pattern') && myForm.get('code4')!.touched"
+      >
+      Code invalide
+    </span>
+    
   
     <div class="input">
       <button class="envoyer-input" type="submit" expand="block">ENVOYER</button>

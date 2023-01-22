@@ -16,8 +16,8 @@ import { ConnexionPage } from './connexion.page';
     FormsModule,
     IonicModule,
     ConnexionPageRoutingModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    FormsModule,
   ],
   declarations: [ConnexionPage]
 })

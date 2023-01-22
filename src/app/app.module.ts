@@ -13,15 +13,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OtpComponent } from './otp/otp.component';
 import { InputotpComponent } from './inputotp/inputotp.component';
-
-
-
-
+import { ChangerMotDePasseComponent } from './changer-mot-de-passe/changer-mot-de-passe.component';
+import { httpInterceptorProviders } from './_helpers/http.interceptor';
 
 
 
 @NgModule({
-  declarations: [AppComponent,OtpComponent,InputotpComponent],
+  declarations: [AppComponent,OtpComponent,InputotpComponent,ChangerMotDePasseComponent],
   imports: [
     BrowserModule,
      IonicModule.forRoot(),
@@ -32,7 +30,7 @@ import { InputotpComponent } from './inputotp/inputotp.component';
     ReactiveFormsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy
-  }, Platform],
+  }, Platform, httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

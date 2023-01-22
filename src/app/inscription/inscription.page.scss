@@ -73,6 +73,7 @@ ion-title{
 .input{
     font-weight: bold;
 }
+
 .conteneur-submit{
     width: 100%;
     display: flex;
@@ -86,4 +87,18 @@ ion-title{
 
 .connexion:hover{
     cursor: pointer;
+}
+
+.erreur{
+    color: red;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+}
+
+.is-invalid{
+    border-color: red;
+}
+.is-valid{
+    border-color: #14AE5C;
 }

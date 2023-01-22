@@ -79,4 +79,13 @@
 .erreur{
     color: red;
     text-align: center;
+    font-size: 12px;
+}
+
+
+.is-invalid{
+    border-color: red;
+}
+.is-valid{
+    border-color: #14AE5C;
 }

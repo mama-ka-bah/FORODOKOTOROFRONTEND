@@ -1,3 +1,7 @@
+    
+
+
+    
     <div class="barre-menu">
       <div class="element-menus">
         <div class="libelle">
@@ -22,7 +26,10 @@
         <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
           <div class="input">
             <label>E-mail</label>
-            <input class="telephone-input" type="text" class="form-control" placeholder="kmahamadou858@gmail.com" formControlName="email">
+            <input class="telephone-input" type="text" class="form-control" placeholder="kmahamadou858@gmail.com" formControlName="email"
+            [ngClass]="{'is-invalid': myForm.get('email')!.invalid && myForm.get('email')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('email')!.valid && myForm.get('email')!.touched}"
+            >
            
             <!-- Ici on recupere les critere de validation avec "hasError" et on les verifie pour ensuite afficher une erreur -->
 

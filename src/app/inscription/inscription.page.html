@@ -14,42 +14,116 @@
       <img class="logo" src="../assets/images/logo.png" alt="logo">
     </div>
 
-    <form class="formulaire">
+    <form class="formulaire"
+    [formGroup]="form" (ngSubmit)="onSubmit()"
+    >
       <div class="input">
         <label>Numéro de télephone <span class="obligatoire">*</span></label>
-        <input class="telephone-input" type="text" class="form-control" placeholder="82644606">
+        <input class="telephone-input" type="text" class="form-control" placeholder="82644606" formControlName="username"
+
+        [ngClass]="{'is-invalid': form.get('username')!.invalid && form.get('username')!.touched}"
+        [ngClass]="{'is-valid': form.get('username')!.valid && form.get('username')!.touched}"
+
+        >
+        <!-- [ngStyle]="{'border-color': (form.get('username')!.valid && form.get('username')!.touched) ? 'green' : 'red' }" -->
+
+       
+        
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('required') && form.get('username')!.touched">Cet champ est obligatoire</span>
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('minlength') && form.get('username')!.touched">Numero court</span>
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('maxlength') && form.get('username')!.touched">Numero Long</span>
+
+
+
       </div>
+
+      
 
       <div class="input">
         <label>Nom complet <span class="obligatoire">*</span></label>
-        <input class="telephone-input" type="password" class="form-control"  id="password" data-toggle="password" placeholder="Aboubacar keïta">
+        <input class="telephone-input" type="tel" class="form-control"  placeholder="Aboubacar keïta" formControlName="nomComplet"
+        
+        [ngClass]="{'is-invalid': form.get('nomComplet')!.invalid && form.get('nomComplet')!.touched}"
+        [ngClass]="{'is-valid': form.get('nomComplet')!.valid && form.get('nomComplet')!.touched}"
+
+        >
+      
+        <span class="erreur" *ngIf="form!.get('nomComplet')!.hasError('required') && form.get('nomComplet')!.touched">Cet champ est obligatoire</span>
+        <span class="erreur" *ngIf="form!.get('nomComplet')!.hasError('minlength') && form.get('nomComplet')!.touched">Nom court</span>
+        <span class="erreur" *ngIf="form!.get('nomComplet')!.hasError('maxlength') && form.get('nomComplet')!.touched">Nom Long</span>
+
       </div>
+
+      
 
       <div class="input"> 
         <label>Email</label>
-        <input class="telephone-input" type="password" class="form-control"  id="password" data-toggle="mahamadou@gmail.com" placeholder="mahamadou@gmail.com">
+        <input class="telephone-input" type="email" class="form-control" placeholder="mahamadou@gmail.com" formControlName="email"
+
+        [ngClass]="{'is-invalid': form.get('email')!.invalid && form.get('email')!.touched}"
+        [ngClass]="{'is-valid': form.get('email')!.valid && form.get('email')!.touched}"
+
+        >
+      
+        <span class="erreur" *ngIf="form.get('email')!.hasError('maxlength') && form.get('email')!.touched">Email Long</span>
+        <span class="erreur" *ngIf="form.get('email')!.hasError('pattern') && form.get('email')!.touched">Email invalide</span>
       </div>
+
+      
+    
 
       <div class="input">
         <label>Mot de passe <span class="obligatoire">*</span></label>
-        <input class="telephone-input" type="password" class="form-control"  id="password" data-toggle="password" placeholder="Mot de passe">
+        <input class="telephone-input" type="password" class="form-control"  placeholder="Mot de passe" formControlName="password"
+        
+        [ngClass]="{'is-invalid': form.get('password')!.invalid && form.get('password')!.touched}"
+        [ngClass]="{'is-valid': form.get('password')!.valid && form.get('password')!.touched}"
+
+        >
+      
+        <span class="erreur" *ngIf="form!.get('password')!.hasError('required') && form.get('password')!.touched">Cet champ est obligatoire</span>
+        <span class="erreur" *ngIf="form!.get('password')!.hasError('minlength') && form.get('password')!.touched">Numero court</span>
+        <span class="erreur" *ngIf="form!.get('password')!.hasError('maxlength') && form.get('password')!.touched">Numero Long</span>
+
       </div>
+      
+     
 
       <div class="input">
-        <label>Confirmer <span class="obligatoire">*</span></label>
-        <input class="telephone-input" type="password" class="form-control"  id="password" data-toggle="password" placeholder="Retaper le mot de passe">
+        <label>Confirmer Le mot de passe<span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="password" class="form-control" placeholder="Retaper le mot de passe" formControlName="confPassword"
+        
+        [ngClass]="{'is-invalid': form.get('confPassword')!.invalid && form.get('confPassword')!.touched}"
+        [ngClass]="{'is-valid': form.get('confPassword')!.valid && form.get('confPassword')!.touched}"
+
+        >
+      
+        <span class="erreur" *ngIf="form!.get('confPassword')!.hasError('required') && form.get('confPassword')!.touched">Cet champ est obligatoire</span>
+        <span class="erreur" *ngIf="form!.get('confPassword')!.hasError('minlength') && form.get('confPassword')!.touched">Mot de passe court</span>
+        <span class="erreur" *ngIf="form!.get('confPassword')!.hasError('maxlength') && form.get('confPassword')!.touched">Mot de passe Long</span>
+
+        <!-- <span class="erreur" *ngIf="erreur">Mot de passe differents</span> -->
+
+
+
       </div>
-
-
 
       <div class="conteneur-submit">
-        <ion-button class="envoyer-input" type="submit" expand="block" routerLink="/tabs/tab1">S'INSCRIRE</ion-button>
+        <!-- routerLink="/tabs/tab1" -->
+        <ion-button class="envoyer-input" type="submit" expand="block">S'INSCRIRE</ion-button>
       </div>
+
+    
+      
 
       <div class="autres-options">
         <div style="font-size: 14px;">
           Vous avez déjà un compte ? <span class="connexion" routerLink="/connexion">Connexion</span>
         </div>
+      </div>
+
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
       </div>
       
     </form>

@@ -26,7 +26,7 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    height: 85%;
+    height: 80%;
     align-items: center;
     margin: auto;
 }
@@ -42,6 +42,16 @@
     width: 90%;
 }
 
+.input{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.input label{
+    font-weight: bold;
+}
+
 //le button envoyer
 .envoyer-input{
     background-color: #14AE5C;
@@ -54,34 +64,26 @@
     align-items: center;
     height: 100%;
     text-align: center;
-    width: 90vw;
 }
 
-.inputOtpconteneur{
+.otpForm{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-}
-
-.inputOtp{
-    height: 40px!important;
-    border: 2px solid black;
-
-    width: 50px!important;
-    border-color: #000!important;
-}
-
-.formulaire{
-    display: flex;
-    justify-content: space-around;
     flex-direction: column;
-    height: 35vh;
+    align-items: center;
+    // flex-basis: 50%;
+    height: 50vh;
+    justify-content: space-around;
+    width: 100vw;
 }
 
 .erreur{
     color: red;
     text-align: center;
-    width: 100%;
-    font-size: 12px;
+}
+
+.is-invalid{
+    border-color: red;
+}
+.is-valid{
+    border-color: #14AE5C;
 }
