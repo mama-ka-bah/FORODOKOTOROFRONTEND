@@ -43,9 +43,10 @@
         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0" style="background-color: #efecee;">
           <a routerLink="/profil/champs" class="dropdown-item">
             <div class="d-flex align-items-center nomUser">
-              <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
+              <img *ngIf="currentUser.photo == null" class="rounded-circle" src="../../assets/images/profil.svg" alt="" style="width: 40px; height: 40px;">
+              <img *ngIf="currentUser.photo != null" class="rounded-circle" src="../../assets/images/agriculteur.jpg" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2" >
-                <h6 class="fw-normal mb-0 nomUser">{{currentUser.nomcomplet}}</h6>
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">{{currentUser.nomcomplet}}</h6>
                 <!-- <small>15 minutes ago</small> -->
               </div>
             </div>
@@ -53,9 +54,10 @@
           <hr class="dropdown-divider">
           <a routerLink="/notifications" class="dropdown-item">
             <div class="d-flex align-items-center">
-              <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
+              <!-- <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;"> -->
+              <i style="color: #000; font-size: 35px;" class="fa-solid fa-bell"></i>
               <div class="ms-2">
-                <h6 class="fw-normal mb-0 nomUser">Notification <span style="color: red;">(10)</span></h6>
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">Notification <span style="color: red;">(10)</span></h6>
                 <!-- <small>15 minutes ago</small> -->
               </div>
             </div>
@@ -64,19 +66,21 @@
           <!-- (click)="openPopover($event)" -->
           <a class="dropdown-item"  id="open-modal" expand="block">
             <div class="d-flex align-items-center">
-              <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
+              <img class="rounded-circle" src="../../assets/images/completerProfil.png" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2">
-                <h6 class="fw-normal mb-0 nomUser">Completer profil</h6>
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">Completer profil</h6>
                 <!-- <small>15 minutes ago</small> -->
               </div>
             </div>
           </a>
+
           <hr class="dropdown-divider">
           <a (click)="deconnexion()" class="dropdown-item">
             <div class="d-flex align-items-center">
-              <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
+              <!-- <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;"> -->
+              <i style="font-size: 35px; color: #000;" class="fa fa-sign-out" aria-hidden="true"></i>
               <div class="ms-2" >
-                <div class="fw-normal mb-0" style="color: red; font-weight: bold;">Deconnexion</div><h6 style="width: 180px; height: 0;"></h6>
+                <h6 class="fw-normal mb-0" style="color: red; font-weight: bold; display: flex; align-items: center; justify-content: flex-start; margin-left:8px;">Deconnexion</h6><h6 style="width: 180px; height: 0;"></h6>
               
               </div>
             </div>
@@ -168,14 +172,14 @@
       justify-content: space-around!important;
       flex-direction: column!important;">
 
-        <div class="ion-margin-top">
-          <ion-label class="libelleModal">Desirez-vous devenir Agriculteur ou transporteur ?</ion-label>
+        <div class="ion-margin-top" style="margin-bottom: 3%; width: 100%; text-align: center;">
+          <ion-label class="libelleModal" >Desirez-vous devenir Agriculteur ou transporteur ?</ion-label>
         </div>
           <ion-item class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
             <img style="height: 30px; width: 30px;" src="../assets/images/devenirAgriculteur.png" alt="images">
             <ion-label style="margin-left: 25px;">Agriculteur</ion-label>
           </ion-item>
-          <ion-item class="itemChoix" button="true" detail="false" style="width: 100%;">
+          <ion-item class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
             <i style="font-size: 30px;" class="fa-solid fa-car"></i>
             <ion-label  style="margin-left: 25px;" >transporteur</ion-label>
           </ion-item>
