@@ -27,12 +27,17 @@
           style="width:80px; height: 40px; border-radius: 25px; background-color: #FFF;"
           data-bs-toggle="dropdown">
           <div class="" style="display: flex;">
-            <img src="../../assets/images/agriculteur.jpg"
+            <img *ngIf="currentUser.photo == null" src="../../assets/images/profil.svg"
               style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
               alt="">
+              <img *ngIf="currentUser.photo != null" src="../../assets/images/agriculteur.jpg"
+              style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
+              alt="">
+              <!-- <i  style="font-size: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px; color: #14AE5C;"
+             class="fa-solid fa-circle-user"></i> -->
             <i
               style="background-color: red; width: 20px; height: 20px; border-radius: 100%; margin-top: 2%; font-size: 15px;">10</i>
-            <i class='bx bx-chevron-down py-3' style="font-size: 25px; font-weight: bold; color: #14AE5C;"></i>
+            <i  class='bx bx-chevron-down py-3' style="font-size: 25px; font-weight: bold; color: #14AE5C;"></i>
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0" style="background-color: #efecee;">
@@ -40,7 +45,7 @@
             <div class="d-flex align-items-center nomUser">
               <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2" >
-                <h6 class="fw-normal mb-0 nomUser">Sama Keita</h6>
+                <h6 class="fw-normal mb-0 nomUser">{{currentUser.nomcomplet}}</h6>
                 <!-- <small>15 minutes ago</small> -->
               </div>
             </div>
@@ -56,7 +61,8 @@
             </div>
           </a>
           <hr class="dropdown-divider">
-          <a class="dropdown-item">
+          <!-- (click)="openPopover($event)" -->
+          <a class="dropdown-item"  id="open-modal" expand="block">
             <div class="d-flex align-items-center">
               <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2">
@@ -66,10 +72,10 @@
             </div>
           </a>
           <hr class="dropdown-divider">
-          <a href="#" class="dropdown-item">
+          <a (click)="deconnexion()" class="dropdown-item">
             <div class="d-flex align-items-center">
               <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
-              <div class="ms-2">
+              <div class="ms-2" >
                 <div class="fw-normal mb-0" style="color: red; font-weight: bold;">Deconnexion</div><h6 style="width: 180px; height: 0;"></h6>
               
               </div>
@@ -82,6 +88,8 @@
 
   </div>
 </ion-header>
+
+
 
 <ion-content [fullscreen]="true">
   <div class="meteo">
@@ -133,18 +141,47 @@
   <div class="produitsagricoles">
     <ion-slides [options]="options" class="imagesproduits">
       <ion-slide class="images-produit">
-        <img src="../assets/images/arachide-accueil.png">
+        <img src="../assets/images/arachide-accueil.png" alt="images">
       </ion-slide>
       <ion-slide class="images-produit">
-        <img src="../assets/images/mais-accueil.png">
+        <img src="../assets/images/mais-accueil.png" alt="images">
       </ion-slide>
       <ion-slide class="images-produit">
-        <img src="../assets/images/coton-accueil.png">
+        <img src="../assets/images/coton-accueil.png" alt="images">
       </ion-slide>
       <ion-slide class="images-produit">
-        <img src="../assets/images/mais-accueil.png">
+        <img src="../assets/images/mais-accueil.png" alt="images">
       </ion-slide>
     </ion-slides>
   </div>
+
+
+  <ion-modal
+    trigger="open-modal"
+    [initialBreakpoint]="0.35"
+    [breakpoints]="[0, 0.35, 0.5, 0.75]"
+    handleBehavior="cycle"
+  >
+    <ng-template>
+      <ion-content class="ion-padding" style="gap: 50px!important;
+      display: flex!important;
+      justify-content: space-around!important;
+      flex-direction: column!important;">
+
+        <div class="ion-margin-top">
+          <ion-label class="libelleModal">Desirez-vous devenir Agriculteur ou transporteur ?</ion-label>
+        </div>
+          <ion-item class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
+            <img style="height: 30px; width: 30px;" src="../assets/images/devenirAgriculteur.png" alt="images">
+            <ion-label style="margin-left: 25px;">Agriculteur</ion-label>
+          </ion-item>
+          <ion-item class="itemChoix" button="true" detail="false" style="width: 100%;">
+            <i style="font-size: 30px;" class="fa-solid fa-car"></i>
+            <ion-label  style="margin-left: 25px;" >transporteur</ion-label>
+          </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
 
 </ion-content>

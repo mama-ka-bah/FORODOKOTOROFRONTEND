@@ -158,6 +158,7 @@ codeRetourne: any;
           console.log(data);
         });
 
+       
         this.router.navigateByUrl('/tabs/tab1');
 
       });
@@ -224,9 +225,10 @@ onSubmit(): void {
         this.isLoggedIn = true; //on met le boolean est connecte à true
         this.roles = this.storageService.getUser().roles;// on recuperes les differentes roles de l'utilisateurs
 
-        //this.reloadPage();//ici on recharge la page
+       this.form.reset();
         this.presentLoading();
         this.router.navigateByUrl('/tabs/tab1');
+        //this.reloadPage();//ici on recharge la page
       },
       error: err => {
         //en cas d'erreur d'erreur

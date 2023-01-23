@@ -56,3 +56,10 @@ ion-content{
     display: none;
   }
 }
+
+.inner-scroll{
+  gap: 50px!important;
+  display: flex!important;
+  justify-content: space-around!important;
+  flex-direction: column!important;
+}

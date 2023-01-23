@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { MeteoService } from '../services/meteo.service';
 import { Pipe, PipeTransform } from '@angular/core';
+import { StorageService } from '../services/stockage.service';
+import { Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+import { ChoisirProfilComponent } from '../choisir-profil/choisir-profil.component';
 
 
 
@@ -24,10 +28,19 @@ export class Tab1Page implements OnInit{
   tmp_temporaire2:any;
   tmp_temporaire3:any;
 
-  constructor(private meteoservice : MeteoService) {}
+  //utilisateur actuel
+  currentUser:any;
+
+  constructor(
+    private meteoservice : MeteoService,
+    private storageService : StorageService,
+    private router : Router,
+    public popoverController: PopoverController
+    ) {}
  
   ngOnInit(): void {
     this.getCurrentLocation();
+    this.currentUser = this.storageService.getUser();
   }
 
 
@@ -81,4 +94,38 @@ export class Tab1Page implements OnInit{
     autoplay:true
   }
 
+
+  //deconnexion
+  deconnexion(){
+    this.storageService.clean();
+    this.router.navigateByUrl("/connexion");
+
+  }
+
+
+
+
+  //popup
+  async openPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: ChoisirProfilComponent,
+      event: ev,
+      translucent: true,
+      cssClass: 'my-custom-class',
+      showBackdrop: true,
+      backdropDismiss: true,
+      componentProps: {
+        data: 'Data passed to PopoverPage'
+      }
+    });
+    return await popover.present();
+  }
+
+
+  closePopover() {
+    this.popoverController.dismiss();
+}
+
+   
+  
 }
