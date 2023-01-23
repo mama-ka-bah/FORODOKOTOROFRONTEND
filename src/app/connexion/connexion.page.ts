@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { ChangerMotDePasseComponent } from '../changer-mot-de-passe/changer-mot-de-passe.component';
 import { InputotpComponent } from '../inputotp/inputotp.component';
+import { Otp } from '../Models/Otp.model';
 import { OtpComponent } from '../otp/otp.component';
+import { AuthentificationService } from '../services/authentification.service';
+import { StorageService } from '../services/stockage.service';
 
 
 
@@ -17,25 +21,27 @@ import { OtpComponent } from '../otp/otp.component';
 export class ConnexionPage implements OnInit {
 
   myData = {
-    name: 'John Doe',
-    age: 30,
+    name: 'keita',
+    age: 23,
     address: {
-        street: 'Main St',
-        city: 'New York',
-        state: 'NY'
+        city: 'Badinko'
     },
-    hobbies: ['reading', 'music', 'travel']
+    hobbies: ['meditation', 'musique', 'voyage']
 };
 
+//le code otp generé et retourner par le backend
 codeRetourne: any;
+
+ objetOtp = new Otp();
 
 
   constructor(
     private popoverCtrl: PopoverController,
     private modalCtrl: ModalController,
-    // private tokenStorage: TokenStorageService,
-    // private utilisateursService: UtilisateursService,
-    private router : Router
+    private authentificationService: AuthentificationService,
+    private storageService: StorageService,
+    private router : Router,
+    public loadingController: LoadingController
     ) { }
 
     // Cette methode est utiliser pour creer un modal, on peut lui passer
@@ -53,16 +59,38 @@ codeRetourne: any;
       });
 
       //Cette methode contient les 
-      modal.onDidDismiss().then((codeRetourne) => {
+      modal.onDidDismiss().then((emailSaisie) => {
+
+        this.presentLoading();
 
         // this.dataRetour = JSON.stringify(retour);
         // console.log(this.dataRetour);
 
-        //ici j'affiche les donnée retournées par mon composant
-        console.log("Je suis le contenu de la page: " + codeRetourne.data.data.email);
+        this.objetOtp.email = emailSaisie.data.data.email;
 
-        //Ici J'ouvre un autre modal lors de la fermeture(validation) du present modal
-        this.presentModal1();
+        //demande de renitialisation du mot de passe au backend
+      this.authentificationService.motdepasseoublier(this.objetOtp).subscribe( data => {
+          
+        //le retour du backend
+        this.objetOtpRetourner = data;
+
+        
+        if(this.objetOtpRetourner.status == 1){
+          //Ici J'ouvre un autre modal lors de la fermeture(validation) du present modal
+         
+          this.presentModal1();
+
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: this.objetOtpRetourner.message,
+            heightAuto:false
+          });
+        }
+
+      });
+        
       });
   
       //ceci retourne le present modal lorsqu'on fait appelle à cette fonction
@@ -84,7 +112,23 @@ codeRetourne: any;
 
         // this.dataRetour = JSON.stringify(retour);
         // console.log(this.dataRetour);
-        this.presentModal2();
+        const codeSaisie = resultatConfirmation.data.data.code1.toString() + resultatConfirmation.data.data.code2.toString() +
+         resultatConfirmation.data.data.code3.toString() +resultatConfirmation.data.data.code4.toString();
+        const codeGenerer = this.objetOtpRetourner.code.toString;
+
+        console.log("codeSaisie " + codeSaisie)
+        console.log("codeGenerer " + this.objetOtpRetourner.code)
+
+        if(codeSaisie == this.objetOtpRetourner.code){
+          this.presentModal2();
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Code invalide !',
+            heightAuto:false
+          });
+        }
 
         console.log("Je suis le contenu de la page: " + resultatConfirmation.data.data.code1);
       });
@@ -108,6 +152,14 @@ codeRetourne: any;
         // console.log(this.dataRetour);
 
         console.log("Je suis le contenu de la page: " + resultatConfirmation.data.data.motDePasse);
+        console.table(this.objetOtpRetourner.iduser);
+
+        this.authentificationService.modifierMotDePasse(this.objetOtpRetourner.iduser, resultatConfirmation.data.data.motDePasse).subscribe(data =>{
+          console.log(data);
+        });
+
+        this.router.navigateByUrl('/tabs/tab1');
+
       });
   
       await modal.present();
@@ -115,20 +167,33 @@ codeRetourne: any;
 
 
   ngOnInit() {
+
+    //ici on verifie si l'utilisateur existe
+    if (this.storageService.isLoggedIn()) {
+      //on met le boolean "isLoggedIn" à true
+      this.isLoggedIn = true;
+      //on recupere les roles de l'utilisateur
+      this.roles = this.storageService.getUser().roles;
+    }
+
   }
 
-//la gestion du formulaire de connexion
-
-// myForm = new FormGroup({
-//   telephone: new FormControl('', [Validators.required, Validators.minLength(4)]),
-//   password: new FormControl('', [Validators.required, Validators.minLength(4)])
 // });
 
 //declaration de l'objet qui recevra mes donnée
-form: any = {
-  username: null,
-  password: null
-};
+
+  username: any;
+  password: any;
+
+  envoyer:boolean | undefined;
+
+  objetOtpRetourner:any;
+
+  form = new FormGroup({
+    username: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(9)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)])
+  });
+
 //boolean utiliser pour verifier si l'utilisateur est connecter ou pas
 isLoggedIn = false;
 //boolean utiliser pour verifier si la connexion a marché ou pas
@@ -138,10 +203,68 @@ errorMessage = '';
 //cette variable va stocker les données de l'utilisateur
 roles: string[] = [];
 
+onSubmit(): void {
+
+  this.envoyer = true;
+
+  this.username = this.form.controls.username.value;
+  this.password = this.form.controls.password.value;
+
+  if(this.form.valid){
+
+    //on envoie les l'username et le password au service d'authentification
+    this.authentificationService.login(this.username, this.password).subscribe({
+      //on arrive là s'il y a pas déerreur
+      next: data => {
+        //si la connexion s'est bien passé on enregistre les données de l'utilisateur dans sessionStorage
+        this.storageService.saveUser(data);
+
+        //Et on attribut des données réelles à ces differents bollean
+        this.isLoginFailed = false;// on precise que l'authentification n'a pas echouer
+        this.isLoggedIn = true; //on met le boolean est connecte à true
+        this.roles = this.storageService.getUser().roles;// on recuperes les differentes roles de l'utilisateurs
+
+        //this.reloadPage();//ici on recharge la page
+        this.presentLoading();
+        this.router.navigateByUrl('/tabs/tab1');
+      },
+      error: err => {
+        //en cas d'erreur d'erreur
+        this.errorMessage = err.error.message;
+        //et on met est authentifié à false
+        this.isLoginFailed = true;
+      }
+    });
+    
+  }
+
+}
+
+//fonction utilisée pour recharger la page
+reloadPage(): void {
+  window.location.reload();
+}
+
+ //loading controlleur
+ async presentLoading() {
+  const loading = await this.loadingController.create({
+    message: 'Please wait...',
+    duration: 3000
+  });
+  await loading.present();
+
+  const { role, data } = await loading.onDidDismiss();
+  console.log('Loading dismissed!');
+}
 
 
+//  recuperationCodeRenitialisation(email:string){
+//   this.authentificationService.motdepasseoublier(email).subscribe( data => {
+//     this.objetOtpRetourner = data;
+//   });
 
-
+//   return this.objetOtpRetourner;
+// }
 
 
 }

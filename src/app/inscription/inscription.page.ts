@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthentificationService } from '../services/authentification.service';
+import { LoadingController } from '@ionic/angular';
+
 
 
 @Component({
@@ -52,7 +54,8 @@ form = new FormGroup({
 
   constructor(
     private authentificationService: AuthentificationService,
-    private router : Router
+    private router : Router,
+    public loadingController: LoadingController
     ) { }
 
 
@@ -99,7 +102,8 @@ form = new FormGroup({
             heightAuto:false
           })
         }else{
-          this.router.navigateByUrl('/tabs/tab1');
+          this.presentLoading();
+          this.router.navigateByUrl('/connexion');
         }
         
       },
@@ -127,6 +131,19 @@ form = new FormGroup({
     }
    
   }
+
+  //loading controlleur
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+      duration: 2000
+    });
+    await loading.present();
+  
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }
+
 
   ngOnInit() {
   }

@@ -31,11 +31,13 @@ export class StorageService {
 
   //verifie si l'utilisateur est connecter ou non
   public isLoggedIn(): boolean {
+    //recuperer utilisateur dans session storage
     const user = window.sessionStorage.getItem(USER_KEY);
+    //si utilisateur existe on retourne true
     if (user) {
       return true;
     }
-
+    //sinon on retourne false
     return false;
   }
 }

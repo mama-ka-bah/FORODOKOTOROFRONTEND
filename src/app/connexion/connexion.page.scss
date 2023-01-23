@@ -79,3 +79,18 @@ ion-title{
 .inscription:hover, .oui:hover{
     cursor: pointer;
 }
+
+
+.is-invalid{
+    border-color: red;
+}
+.is-valid{
+    border-color: #14AE5C;
+}
+
+.erreur{
+    color: red;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+}

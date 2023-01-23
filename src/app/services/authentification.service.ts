@@ -19,6 +19,8 @@ export class AuthentificationService {
 
   // fonction permettant de gerer la connexion
   login(username: string, password: string): Observable<any> {
+    console.table("username: " + username);
+    console.table("mot de passe" + password);
     return this.http.post(
       AUTH_API + 'signin',
       {
@@ -47,4 +49,25 @@ export class AuthentificationService {
   logout(): Observable<any> {
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
   }
+
+
+  motdepasseoublier(email:any): Observable<any> {    
+
+    return this.http.post(
+      AUTH_API + "motdepasseoublier",
+      email
+    );
+  }
+
+
+  modifierMotDePasse(iduser:any, password:any): Observable<any> {    
+
+    return this.http.patch(
+      AUTH_API + `modifierutilisateur/${iduser}`,
+      {password},
+      httpOptions
+    );
+  }
+
+
 }

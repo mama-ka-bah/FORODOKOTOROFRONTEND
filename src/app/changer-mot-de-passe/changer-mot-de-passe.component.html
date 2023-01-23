@@ -20,7 +20,7 @@
 
         <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
           <div class="input">
-            <label>Mot de passe</label>
+            <label>Nouveau mot de passe</label>
             <input class="telephone-input" type="password" class="form-control" placeholder="Mot de passe" formControlName="motDePasse"
             [ngClass]="{'is-invalid': myForm.get('motDePasse')!.invalid && myForm.get('motDePasse')!.touched}"
             [ngClass]="{'is-valid': myForm.get('motDePasse')!.valid && myForm.get('motDePasse')!.touched}"
