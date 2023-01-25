@@ -1,0 +1,75 @@
+    
+
+
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+        Devenir Trannsporteur
+      </div>
+      <div (click)="closeModal()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div> 
+    </div>
+  </div>
+
+
+  <div class="containeur">
+    <div class="conteneur-logo" style="text-align: justify; font-size: 16px; padding: 0 15px 15px 15px ;">
+      Vous êtes sur le point de soumettre une demande pour devenir transporteur
+      Veuillez renseigner le formulaire ci-dessous 
+    </div>
+
+      <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
+        <div class="input">
+          <label>Numero de plaque <span class="obligatoire">*</span></label>
+          <input class="telephone-input" type="text" class="form-control" placeholder="AB 1245 MD" formControlName="numeroplaque"
+          [ngClass]="{'is-invalid': myForm.get('numeroplaque')!.invalid && myForm.get('numeroplaque')!.touched}"
+          [ngClass]="{'is-valid': myForm.get('numeroplaque')!.valid && myForm.get('numeroplaque')!.touched}"
+          >
+
+          <!-- cette erreur est afficher lorsque le champ est touché et qu'il vide -->
+          <span class="erreur" *ngIf="myForm!.get('numeroplaque')!.hasError('required') && myForm.get('numeroplaque')!.touched">Cet champ est obligatoire</span>
+          
+         <!-- cette erreur est afficher lorsque le champ est touché et que l'email mis est valide -->
+          <span class="erreur" *ngIf="myForm.get('numeroplaque')!.hasError('minlength') && myForm.get('numeroplaque')!.touched">Mot de passe court</span>
+        </div>
+
+        <div class="input">
+          <label>Permis de conduire <span class="obligatoire">*</span></label>
+          <input type="file" id="avatar"  class="form-control" name="avatar"  accept="image/png, image/jpeg"
+          multiple (change)="onFileChangePermis($event)"  formControlName="file"
+          [ngClass]="{'is-invalid': myForm.get('file')!.invalid && myForm.get('file')!.touched}"
+          [ngClass]="{'is-valid': myForm.get('file')!.valid && myForm.get('file')!.touched}"
+          >
+         
+          <!-- Ici on recupere les critere de validation avec "hasError" et on les verifie pour ensuite afficher une erreur -->
+
+          <!-- cette erreur est afficher lorsque le champ est touché et qu'il vide -->
+          <span class="erreur" *ngIf="myForm!.get('file')!.hasError('required') && myForm.get('file')!.touched">Cet champ est obligatoire</span>
+        </div>
+
+        <div class="input">
+          <label>Disponibilité <span class="obligatoire">*</span></label>
+          <!-- <input class="telephone-input" type="password" class="form-control" placeholder="Confirmer le mot de passe" formControlName="motDePasseConfirme"
+          > -->
+        <select class="telephone-input form-control" id="opt" name="opt" formControlName="disponibilite"
+        [ngClass]="{'is-invalid': myForm.get('disponibilite')!.invalid && myForm.get('disponibilite')!.touched}"
+        [ngClass]="{'is-valid': myForm.get('disponibilite')!.valid && myForm.get('disponibilite')!.touched}"
+        >
+          <option value="" selected disabled>Choisir votre disponibilité</option>
+          <option value="Disponible">Disponible</option>
+          <option value="Insdisponible">Insdisponible</option>
+        </select>
+
+        <span class="erreur" *ngIf="myForm!.get('disponibilite')!.hasError('required') && myForm.get('disponibilite')!.touched">Cet champ est obligatoire</span>
+
+
+        </div>
+    
+        <div class="input">
+          <button class="envoyer-input" type="submit" expand="block" >SOUMETTRE</button>
+        </div>
+      </form>
+
+    </div>
+  
+    
+    

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DonneesStockerService } from '../services/donnees-stocker.service';
 
 @Component({
   selector: 'app-produit-agricoles',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProduitAgricolesPage implements OnInit {
 
-  constructor() { }
+  constructor(private donneesService: DonneesStockerService) { }
 
   ngOnInit() {
+    this.donneesService.setpageActuel("Agricultures");
   }
 
 }

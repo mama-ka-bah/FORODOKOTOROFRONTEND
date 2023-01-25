@@ -64,8 +64,7 @@ export class AuthentificationService {
 
     return this.http.patch(
       AUTH_API + `modifierutilisateur/${iduser}`,
-      {password},
-      httpOptions
+      password
     );
   }
 

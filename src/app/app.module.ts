@@ -16,11 +16,12 @@
   import { ChangerMotDePasseComponent } from './changer-mot-de-passe/changer-mot-de-passe.component';
   import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import { ChoisirProfilComponent } from './choisir-profil/choisir-profil.component';
+import { DevenirTransporteurComponent } from './devenir-transporteur/devenir-transporteur.component';
 
 
 
   @NgModule({
-    declarations: [AppComponent,OtpComponent,InputotpComponent,ChangerMotDePasseComponent, ChoisirProfilComponent],
+    declarations: [AppComponent,OtpComponent,InputotpComponent,ChangerMotDePasseComponent, ChoisirProfilComponent, DevenirTransporteurComponent],
     imports: [
       BrowserModule,
       IonicModule.forRoot(),
@@ -31,7 +32,7 @@ import { ChoisirProfilComponent } from './choisir-profil/choisir-profil.componen
       ReactiveFormsModule,
     ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy
-    }, Platform],
+    }, Platform, httpInterceptorProviders],
     //httpInterceptorProviders
     bootstrap: [AppComponent],
   })

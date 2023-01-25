@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DonneesStockerService } from '../services/donnees-stocker.service';
 
 @Component({
   selector: 'app-marche',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarchePage implements OnInit {
 
-  constructor() { }
+  constructor(private donneesService: DonneesStockerService) { }
 
   ngOnInit() {
+    this.donneesService.setpageActuel("Marché");
   }
 
 }

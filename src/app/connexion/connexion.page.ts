@@ -154,12 +154,24 @@ codeRetourne: any;
         console.log("Je suis le contenu de la page: " + resultatConfirmation.data.data.motDePasse);
         console.table(this.objetOtpRetourner.iduser);
 
-        this.authentificationService.modifierMotDePasse(this.objetOtpRetourner.iduser, resultatConfirmation.data.data.motDePasse).subscribe(data =>{
+        const objeAEnvoyer = {
+          "password":resultatConfirmation.data.data.motDePasse
+        }
+
+        this.authentificationService.modifierMotDePasse(this.objetOtpRetourner.iduser, objeAEnvoyer).subscribe(data =>{
           console.log(data);
         });
 
-       
-        this.router.navigateByUrl('/tabs/tab1');
+        Swal.fire({
+          // position: 'top-end',
+          icon: 'success',
+          title: 'Mot de passe modifié avec succès',
+          showConfirmButton: false,
+          timer: 2000,
+          heightAuto:false
+        })
+
+        this.router.navigateByUrl('/connexion');
 
       });
   

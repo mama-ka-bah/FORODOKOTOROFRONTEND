@@ -4,8 +4,10 @@ import { MeteoService } from '../services/meteo.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { StorageService } from '../services/stockage.service';
 import { Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { ChoisirProfilComponent } from '../choisir-profil/choisir-profil.component';
+import { DonneesStockerService } from '../services/donnees-stocker.service';
+import { DevenirTransporteurComponent } from '../devenir-transporteur/devenir-transporteur.component';
 
 
 
@@ -35,12 +37,15 @@ export class Tab1Page implements OnInit{
     private meteoservice : MeteoService,
     private storageService : StorageService,
     private router : Router,
-    public popoverController: PopoverController
+    public popoverController: PopoverController,
+    private donneesService: DonneesStockerService,
+
     ) {}
  
   ngOnInit(): void {
     this.getCurrentLocation();
     this.currentUser = this.storageService.getUser();
+    this.donneesService.setpageActuel("FORODOKOTORO");
   }
 
 
@@ -79,12 +84,6 @@ export class Tab1Page implements OnInit{
   })
   
   };
-  
-
-  //  async recupererpartieEntiersTemperature (temperature: number) {
-    
-  //   return null;
-  // }
 
   options = {
     slidesPerView:3,   // NOMBRE DE SLIDE PAR PAGE = 1
@@ -94,16 +93,11 @@ export class Tab1Page implements OnInit{
     autoplay:true
   }
 
-
   //deconnexion
   deconnexion(){
     this.storageService.clean();
     this.router.navigateByUrl("/connexion");
-
   }
-
-
-
 
   //popup
   async openPopover(ev: any) {
@@ -121,10 +115,10 @@ export class Tab1Page implements OnInit{
     return await popover.present();
   }
 
+  reloadPage(): void {
+    window.location.reload();
+  }
 
-  closePopover() {
-    this.popoverController.dismiss();
-}
 
    
   

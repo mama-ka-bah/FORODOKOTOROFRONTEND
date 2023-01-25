@@ -57,14 +57,14 @@ submitForm() {
 
   //verifie si le formulaire est valide
   if(this.myForm.valid && this.myForm.controls.motDePasse.value == this.myForm.controls.motDePasseConfirme.value) {
+    alert("je suis là")
 
     // Fermer le modal et retourner les données du formulaire à notre page
     this.modalCtrl.dismiss({data: this.myForm.value});
 
      console.log("Donnée envoyé avec succès " + this.myForm.controls.motDePasse.value);
      console.log("Donnée envoyé avec succès " + this.myForm.controls.motDePasseConfirme.value);
-    
-  
+      
      //On arrive là lorsque les champs ne sont pas validés
     } else if (this.myForm.controls.motDePasse.value != this.myForm.controls.motDePasseConfirme.value){
       Swal.fire({
@@ -74,7 +74,7 @@ submitForm() {
         heightAuto:false
       });
   }else{
-    
+
   }
 }
 
