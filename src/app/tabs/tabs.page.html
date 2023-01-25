@@ -34,7 +34,7 @@
             </div>
           </a>
           <hr class="dropdown-divider">
-          <a routerLink="/notifications" class="dropdown-item">
+          <a href="/notifications" class="dropdown-item">
             <div class="d-flex align-items-center">
               <i style="color: #000; font-size: 35px;" class="fa-solid fa-bell"></i>
               <div class="ms-2">
@@ -86,7 +86,7 @@
         <div class="ion-margin-top" style="margin-bottom: 3%; width: 100%; text-align: center;">
           <ion-label class="libelleModal" >Desirez-vous devenir Agriculteur ou transporteur ?</ion-label>
         </div>
-          <ion-item class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
+          <ion-item (click)="openPopover($event)" class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
             <img style="height: 30px; width: 30px;" src="../assets/images/devenirAgriculteur.png" alt="images">
             <ion-label style="margin-left: 25px;">Agriculteur</ion-label>
           </ion-item>

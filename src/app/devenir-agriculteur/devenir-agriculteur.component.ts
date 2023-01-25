@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-devenir-agriculteur',
@@ -7,8 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DevenirAgriculteurComponent implements OnInit {
 
-  constructor() { }
+  constructor(    public popoverController: PopoverController,
+    ) { }
 
   ngOnInit() {}
+
+  itemSelected(item: string) {
+    console.log("Selected Item", item);
+  }
+
+  closePopover() {
+    let data = { etat: false};
+    this.popoverController.dismiss(data);
+  }
+
+  
+  envoyer() {
+    let data = { etat: true};
+    this.popoverController.dismiss(data);
+  }
 
 }

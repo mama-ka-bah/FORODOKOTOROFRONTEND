@@ -37,7 +37,6 @@ export class Tab1Page implements OnInit{
     private meteoservice : MeteoService,
     private storageService : StorageService,
     private router : Router,
-    public popoverController: PopoverController,
     private donneesService: DonneesStockerService,
 
     ) {}
@@ -97,22 +96,6 @@ export class Tab1Page implements OnInit{
   deconnexion(){
     this.storageService.clean();
     this.router.navigateByUrl("/connexion");
-  }
-
-  //popup
-  async openPopover(ev: any) {
-    const popover = await this.popoverController.create({
-      component: ChoisirProfilComponent,
-      event: ev,
-      translucent: true,
-      cssClass: 'my-custom-class',
-      showBackdrop: true,
-      backdropDismiss: true,
-      componentProps: {
-        data: 'Data passed to PopoverPage'
-      }
-    });
-    return await popover.present();
   }
 
   reloadPage(): void {
