@@ -4,7 +4,7 @@ import { MeteoService } from '../services/meteo.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { StorageService } from '../services/stockage.service';
 import { Router } from '@angular/router';
-import { ModalController, PopoverController } from '@ionic/angular';
+import { LoadingController, ModalController, PopoverController } from '@ionic/angular';
 import { ChoisirProfilComponent } from '../choisir-profil/choisir-profil.component';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { DevenirTransporteurComponent } from '../devenir-transporteur/devenir-transporteur.component';
@@ -38,11 +38,16 @@ export class Tab1Page implements OnInit{
     private storageService : StorageService,
     private router : Router,
     private donneesService: DonneesStockerService,
+    public loadingController: LoadingController
+
 
     ) {}
  
   ngOnInit(): void {
+
+    this.presentLoading()
     this.getCurrentLocation();
+    this.dismissLoading()
     this.currentUser = this.storageService.getUser();
     this.donneesService.setpageActuel("FORODOKOTORO");
   }
@@ -101,6 +106,26 @@ export class Tab1Page implements OnInit{
   reloadPage(): void {
     window.location.reload();
   }
+
+
+
+
+  
+ //loading controlleur
+ async presentLoading() {
+  const loading = await this.loadingController.create({
+    message: 'Patienter...',
+    duration: 3000
+  });
+  await loading.present();
+
+  // const { role, data } = await loading.onDidDismiss();
+  // console.log('Loading dismissed!');
+}
+
+async dismissLoading() {
+  await this.loadingController.dismiss();
+}
 
 
    

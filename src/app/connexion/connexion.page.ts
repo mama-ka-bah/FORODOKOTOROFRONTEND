@@ -61,19 +61,21 @@ codeRetourne: any;
       //Cette methode contient les 
       modal.onDidDismiss().then((emailSaisie) => {
 
-        this.presentLoading();
+        // this.presentLoading();
 
         // this.dataRetour = JSON.stringify(retour);
         // console.log(this.dataRetour);
 
         this.objetOtp.email = emailSaisie.data.data.email;
 
+        this.presentLoading()
         //demande de renitialisation du mot de passe au backend
       this.authentificationService.motdepasseoublier(this.objetOtp).subscribe( data => {
           
         //le retour du backend
         this.objetOtpRetourner = data;
 
+        this.dismissLoading();
         
         if(this.objetOtpRetourner.status == 1){
           //Ici J'ouvre un autre modal lors de la fermeture(validation) du present modal
@@ -157,9 +159,10 @@ codeRetourne: any;
         const objeAEnvoyer = {
           "password":resultatConfirmation.data.data.motDePasse
         }
-
+        this.presentLoading()
         this.authentificationService.modifierMotDePasse(this.objetOtpRetourner.iduser, objeAEnvoyer).subscribe(data =>{
           console.log(data);
+          this.dismissLoading()
         });
 
         Swal.fire({
@@ -238,7 +241,6 @@ onSubmit(): void {
         this.roles = this.storageService.getUser().roles;// on recuperes les differentes roles de l'utilisateurs
 
        this.form.reset();
-        this.presentLoading();
         this.router.navigateByUrl('/tabs/tab1');
         //this.reloadPage();//ici on recharge la page
       },
@@ -262,13 +264,17 @@ reloadPage(): void {
  //loading controlleur
  async presentLoading() {
   const loading = await this.loadingController.create({
-    message: 'Please wait...',
-    duration: 3000
+    message: 'Patienter...',
+    // duration: 3000
   });
   await loading.present();
 
-  const { role, data } = await loading.onDidDismiss();
-  console.log('Loading dismissed!');
+  // const { role, data } = await loading.onDidDismiss();
+  // console.log('Loading dismissed!');
+}
+
+async dismissLoading() {
+  await this.loadingController.dismiss();
 }
 
 

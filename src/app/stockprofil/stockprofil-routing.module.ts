@@ -9,7 +9,7 @@ const routes: Routes = [
     component: StockprofilPage
   },
   {
-    path: 'detail-stocks',
+    path: 'detail-stocks/:id',
     loadChildren: () => import('../detail-stocks/detail-stocks.module').then( m => m.DetailStocksPageModule)
   }
 ];

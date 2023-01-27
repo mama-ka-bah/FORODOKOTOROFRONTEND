@@ -6,7 +6,7 @@
         <ion-back-button defaultHref="home"></ion-back-button>
       </ion-buttons>
       <div class="nomApp" style="flex-basis: 80%;">
-        Sama keita
+       {{currentUser.nomcomplet}}
       </div>
     </div>
 
@@ -33,25 +33,25 @@
               <p>Téléphone : </p>
             </div>
             <div class="valeur">
-              <p>82644606</p>
+              <p>{{currentUser.username}}</p>
             </div>
           </div>
   
-          <div class="adresse">
+          <div class="adresse" *ngIf="currentUser.addresse != null">
             <div class="libelle">
               <p>Adresse : </p>
             </div>
             <div class="valeur">
-              <p>Badinko / Kita</p>
+              <p>{{currentUser.addresse}}</p>
             </div>
           </div>
   
-          <div class="mail">
+          <div class="mail" *ngIf="currentUser.email != null">
             <div class="libelle">
               <p>E-mail : </p>
             </div>
             <div class="valeur">
-              <p style="padding: 0;">mahamadou@gmail.com</p>
+              <p style="padding: 0;">{{currentUser.email}}</p>
             </div>
           </div>
   
@@ -74,59 +74,20 @@
 
     <div class="conteneurProduitAgricole">
       <ion-grid>
-        <ion-row>
-          <ion-col>
+        <ion-row class="mesec" *ngIf="existe">
+          <ion-col *ngFor="let stock of stocksUserActuel">
               <div class="conteneurImg">
-                <img src="../assets/images/mais.jpg" alt="image produit">
+                <img src="{{stock.photo}}" alt="image produit">
               </div>
               <div class="contenuPrincipal">
                 <div class="contenu">
-                  <h5>Stocks 1</h5>
+                  <h5>{{stock.libelle.slice(0, 10)}}..</h5>
                 </div>
-                <button class="voirplus" routerLink="/profil/stockprofil/detail-stocks"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <button class="voirplus" [routerLink]="['/profil/stockprofil/detail-stocks', stock.id]"><i class="fa fa-eye" aria-hidden="true"></i></button>
               </div>
           </ion-col>
-
-          <ion-col>
-            <div class="conteneurImg">
-              <img src="../assets/images/arachide.jpg" alt="image produit">
-            </div>
-            <div class="contenuPrincipal">
-              <div class="contenu">
-                <h5>Stocks 2</h5>
-              </div>
-              <button class="voirplus" routerLink="/profil/stockprofil/detail-stocks"><i class="fa fa-eye" aria-hidden="true"></i></button>
-            </div>
-        </ion-col>
-
         </ion-row>
-
-        <ion-row>
-          <ion-col>
-              <div class="conteneurImg">
-                <img src="../assets/images/coton.jpg" alt="image produit">
-              </div>
-              <div class="contenuPrincipal">
-                <div class="contenu">
-                  <h5>Stocks 3</h5>
-                </div>
-                <button class="voirplus" routerLink="/profil/stockprofil/detail-stocks"><i class="fa fa-eye" aria-hidden="true"></i></button>
-              </div>
-          </ion-col>
-
-          <ion-col>
-            <div class="conteneurImg">
-              <img src="../assets/images/mil.jpg" alt="image produit">
-            </div>
-            <div class="contenuPrincipal">
-              <div class="contenu">
-                <h5>Stocks 4</h5>
-              </div>
-              <button class="voirplus" routerLink="/profil/stockprofil/detail-stocks"><i class="fa fa-eye" aria-hidden="true"></i></button>
-            </div>
-        </ion-col>
-
-        </ion-row>
+        <div *ngIf="!existe" style="display: flex; justify-content: center; width: 100%; font-weight: bold;">Aucun stock</div>
 
       </ion-grid>
 

@@ -32,7 +32,8 @@ export class AuthentificationService {
   }
 
     // fonction permettant de gerer l'inscription
-  register(donneesuser:any): Observable<any> {
+  
+    register(donneesuser:any): Observable<any> {
     const data:FormData=new FormData();
 
     data.append('donneesuser', JSON.stringify(donneesuser).slice(1,JSON.stringify(donneesuser).lastIndexOf(']')));

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { ModalController, NavController, PopoverController } from '@ionic/angular';
+import { LocalNotifications } from 'capacitor-local-notifications';
 import Swal from 'sweetalert2';
 import { ChoisirProfilComponent } from '../choisir-profil/choisir-profil.component';
 import { DevenirAgriculteurComponent } from '../devenir-agriculteur/devenir-agriculteur.component';
@@ -8,6 +10,7 @@ import { DevenirTransporteurComponent } from '../devenir-transporteur/devenir-tr
 import { AgriculteurService } from '../services/agriculteur.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { StorageService } from '../services/stockage.service';
+
 
 @Component({
   selector: 'app-tabs',
@@ -20,6 +23,7 @@ export class TabsPage implements OnInit{
   headerTitle:any;
   reponseDemandeTrans:any
   reponseDemandeAgri:any
+  agriculteur:boolean | undefined
   
 
 
@@ -67,6 +71,15 @@ export class TabsPage implements OnInit{
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser();
     console.log("url actuel " + this.router.url);
+
+    console.log(this.currentUser.roles)
+
+    if(this.currentUser.roles.includes("ROLE_AGRIGULTEUR") == true){
+      this.agriculteur = true;
+    }else{
+      this.agriculteur = false;
+      console.log(this.agriculteur)
+    }
   }
 
   
@@ -239,5 +252,6 @@ if(data.data.etat == true){
 
     return await popover.present();
   }
+
 
 }

@@ -200,3 +200,20 @@ ion-col {
       width: 120%;
     }
   }
+
+
+  @media (max-width: 767px) {
+    .mesec {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      // gap: 5px;
+      margin-bottom: 15px;
+      margin-top: 8px;
+      row-gap: 12px;
+    }
+    ion-col{
+      margin: 2% !important;
+      width: 95% !important;
+    }
+  }

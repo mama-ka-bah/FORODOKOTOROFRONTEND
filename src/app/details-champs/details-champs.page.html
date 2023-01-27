@@ -6,7 +6,7 @@
           <ion-back-button defaultHref="profil"></ion-back-button>
         </ion-buttons>
         <div class="nomApp" style="flex-basis: 80%;">
-          Champ 1
+          {{detailsChamp.nom}}
         </div>
       </div>
   
@@ -18,8 +18,8 @@
 
     <div class="conteneurDetailChamp">
       <div class="photoChamp">
-        <img class="monChamp" src="../../assets/images/monChamp.jpg" alt="Image du champ">
-        <div class="temperature" >25 °C</div>
+        <img class="monChamp" src="{{detailsChamp.photo}}" alt="Image du champ">
+        <div class="temperature" >{{temperatureActuelChamp}} °C</div>
       </div>
         <!-- <div class="filtre">
           <ion-item>
@@ -49,31 +49,31 @@
       <div class="detailChamp">
         <div class="elementDetailChamp">
           <div class="libelle">Adresse</div>
-          <div class="detail">Badinko / kita</div>
+          <div class="detail"> {{detailsChamp.adresse}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Longitude</div>
-          <div class="detail">12.5555</div>
+          <div class="detail">{{detailsChamp.longitude}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Latitude</div>
-          <div class="detail">-05.898</div>
+          <div class="detail">{{detailsChamp.latitude}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Longueur</div>
-          <div class="detail">45216 m</div>
+          <div class="detail">{{detailsChamp.longueur}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Largeur</div>
-          <div class="detail">3255 m</div>
+          <div class="detail">{{detailsChamp.largeur}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Perimetre</div>
-          <div class="detail">44444 m</div>
+          <div class="detail">{{(detailsChamp.largeur + detailsChamp.longueur)*2}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Surface</div>
-          <div class="detail">655551 m²</div>
+          <div class="detail">{{detailsChamp.largeur*detailsChamp.longueur}}</div>
         </div>
         <div class="elementDetailChamp modifier">
           <ion-button class="modifier" type="submit" expand="block">Modifier</ion-button>
@@ -91,29 +91,11 @@
         </thead>
         <tbody>
           <tr>
-            <td>Parserelle 1</td>
             <td>120 m</td>
             <td>90 Km</td>
             <td routerLink="/profil/champs/details-champs/detail-parserelle"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
           </tr>
-          <tr>
-            <td>Parserelle 2</td>
-            <td>50 m</td>
-            <td>50 Km</td>
-            <td routerLink="/profil/champs/details-champs/detail-parserelle"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
-          </tr>
-          <tr>
-            <td>Parserelle 3</td>
-            <td>60 m</td>
-            <td>50 m</td>
-            <td routerLink="/profil/champs/details-champs/detail-parserelle"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
-          </tr>
-          <tr>
-            <td>Parserelle 4</td>
-            <td>70 m</td>
-            <td>80 m</td>
-            <td routerLink="/profil/champs/details-champs/detail-parserelle"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
-          </tr>
+         
         </tbody>
       </table>
      

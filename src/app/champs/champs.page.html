@@ -6,7 +6,7 @@
         <ion-back-button defaultHref="tabs"></ion-back-button>
       </ion-buttons>
       <div class="nomApp" style="flex-basis: 80%;">
-        Sama keita
+       {{currentUser.nomcomplet}}
       </div>
     </div>
 
@@ -34,25 +34,25 @@
               <p>Téléphone : </p>
             </div>
             <div class="valeur">
-              <p>82644606</p>
+              <p>{{currentUser.username}}</p>
             </div>
           </div>
   
-          <div class="adresse">
+          <div *ngIf="currentUser.addresse != null" class="adresse">
             <div class="libelle">
               <p>Adresse : </p>
             </div>
             <div class="valeur">
-              <p>Badinko / Kita</p>
+              <p>{{currentUser.addresse}}</p>
             </div>
           </div>
   
-          <div class="mail">
+          <div *ngIf="currentUser.email != null" class="mail">
             <div class="libelle">
               <p>E-mail : </p>
             </div>
             <div class="valeur">
-              <p style="padding: 0;">mahamadou@gmail.com</p>
+              <p style="padding: 0;">{{currentUser.email}}</p>
             </div>
           </div>
   
@@ -75,61 +75,22 @@
 
     <div class="conteneurProduitAgricole">
       <ion-grid>
-        <ion-row>
-          <ion-col>
+        <ion-row class="mesec" *ngIf="existe">
+          <ion-col *ngFor="let champ of champUserActuel ; index as i">
               <div class="conteneurImg">
-                <img src="../assets/images/mais.jpg" alt="image produit">
+                <img src="{{champ.photo}}" alt="image produit">
               </div>
               <div class="contenuPrincipal">
                 <div class="contenu">
-                  <h5>Champ 1</h5>
+                  <h5>{{champ.nom.slice(0, 10)}}..</h5>
                 </div>
-                <button class="voirplus" routerLink="/profil/champs/details-champs"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <button class="voirplus" [routerLink]="['/profil/champs/details-champs', champ.id]" ><i class="fa fa-eye" aria-hidden="true"></i></button>
               </div>
           </ion-col>
-
-          <ion-col>
-            <div class="conteneurImg">
-              <img src="../assets/images/arachide.jpg" alt="image produit">
-            </div>
-            <div class="contenuPrincipal">
-              <div class="contenu">
-                <h5>Champ 2</h5>
-              </div>
-              <button class="voirplus" routerLink="/profil/champs/details-champs"><i class="fa fa-eye" aria-hidden="true"></i></button>
-            </div>
-        </ion-col>
-
-        </ion-row>
-
-        <ion-row>
-          <ion-col>
-              <div class="conteneurImg">
-                <img src="../assets/images/coton.jpg" alt="image produit">
-              </div>
-              <div class="contenuPrincipal">
-                <div class="contenu">
-                  <h5>Champ 3</h5>
-                </div>
-                <button class="voirplus" routerLink="/profil/champs/details-champs"><i class="fa fa-eye" aria-hidden="true"></i></button>
-              </div>
-          </ion-col>
-
-          <ion-col>
-            <div class="conteneurImg">
-              <img src="../assets/images/mil.jpg" alt="image produit">
-            </div>
-            <div class="contenuPrincipal">
-              <div class="contenu">
-                <h5>Champ 4</h5>
-              </div>
-              <button class="voirplus" routerLink="/profil/champs/details-champs"><i class="fa fa-eye" aria-hidden="true"></i></button>
-            </div>
-        </ion-col>
-
         </ion-row>
 
       </ion-grid>
+      <div *ngIf="!existe" style="display: flex; justify-content: center; width: 100%; font-weight: bold;">Aucun Champ</div>
 
     </div>
 

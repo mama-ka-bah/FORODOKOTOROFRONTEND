@@ -6,7 +6,7 @@
           <ion-back-button defaultHref="profil"></ion-back-button>
         </ion-buttons>
         <div class="nomApp" style="flex-basis: 80%;">
-          Mais
+         {{detailsStocks.libelle}}
         </div>
       </div>
   
@@ -20,30 +20,32 @@
     <!-- Le conteneur principal du detail champs -->
     <div class="conteneurDetailStock">
       <div class="photoChamp">
-        <img class="monChamp" src="../../assets/images/maisGraine.jpg" alt="Image du champ">
+        <img class="monChamp" src="{{detailsStocks.photo}}" alt="Image du champ">
         <!-- <div class="temperature" >25 °C</div> -->
       </div>
 
       <div class="detailChamp">
         <div class="elementDetailChamp">
           <div class="libelle">Prix/kg</div>
-          <div class="detail">500 FCFA</div>
+          <div class="detail">{{detailsStocks.prixkilo}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Nombre kilos</div>
-          <div class="detail">20 kg</div>
+          <div class="detail">{{detailsStocks.nombrekilo}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Restes</div>
-          <div class="detail">20 kg</div>
+          <div class="detail">{{detailsStocks.quantiterestant}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Disponibilité</div>
-          <div style="color: #14AE5C; font-weight: bold;" class="detail">Disponible</div>
+          <div *ngIf="detailsStocks.disponibilite" style="color: #14AE5C; font-weight: bold;" class="detail">Disponible</div>
+          <div *ngIf="!detailsStocks.disponibilite" style="color: #14AE5C; font-weight: bold;" class="detail">Disponible</div>
+
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Publication</div>
-          <div class="detail">12/03/2022</div>
+          <div class="detail">{{detailsStocks.datepublication}}</div>
         </div>
         <div class="actionsStocks">
           <div class="iconAction">

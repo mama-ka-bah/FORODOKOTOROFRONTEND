@@ -21,4 +21,8 @@ export class MeteoService {
     return this.http.get(`https://api.openweathermap.org/data/2.5/forecast/?lat=${latitude}&lon=${longitude}&appid=${this.API_KEY}`);
   }
 
+  // recupererTemperatureDunChamp(latitude: number, longitude: number): Observable<any> {
+  //   return this.http.get(`https://api.openweathermap.org/data/2.5/forecast/?lat=${latitude}&lon=${longitude}&appid=${this.API_KEY}`);
+  // }
+
 }

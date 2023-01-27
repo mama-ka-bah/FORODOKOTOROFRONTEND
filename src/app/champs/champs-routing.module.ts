@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ChampsPage
   },
   {
-    path: 'details-champs',
+    path: 'details-champs/:id',
     loadChildren: () => import('../details-champs/details-champs.module').then( m => m.DetailsChampsPageModule)
   }
 ];
