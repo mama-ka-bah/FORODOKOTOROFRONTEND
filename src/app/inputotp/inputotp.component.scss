@@ -26,9 +26,10 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    height: 85%;
+    height: 100%;
     align-items: center;
-    margin: auto;
+    margin: 15px 0 15px 0;
+    gap: 20px;
 }
 
 //Le logo de l'application
@@ -76,7 +77,8 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    height: 35vh;
+    height: 100%;
+    gap: 30px;
 }
 
 .erreur{

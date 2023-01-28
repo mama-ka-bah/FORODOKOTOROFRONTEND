@@ -1,17 +1,20 @@
 
-  <div class="barre-menu">
-    <div class="element-menus">
-      <div class="libelle">
-        Devenir Agriculteur
+  <ion-content>
+    <div class="barre-menu">
+      <div class="element-menus">
+        <div class="libelle">
+          Devenir Agriculteur
+        </div>
+        <div (click)="closePopover()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div> 
       </div>
-      <div (click)="closePopover()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div> 
     </div>
+    <div class="texte">
+      Vous êtes sur le point de soumettre une demander pour devenir agriculteur sur FORODOKOTORO.
+      Etant agriculteur vous allez beneficier de plusieurs fonctionnalités comme: Créer des champs virtuel, recevoir des previsions meteorologiques, consulter des conseils ... 
   </div>
-  <div class="texte">
-    Vous êtes sur le point de soumettre une demander pour devenir agriculteur sur FORODOKOTORO.
-    Etant agriculteur vous allez beneficier de plusieurs fonctionnalités comme: Créer des champs virtuel, recevoir des previsions meteorologiques, consulter des conseils ... 
-</div>
-
-<div class="commencer">
-  <button (click)="envoyer()" class="commencer-button" expand="block" >SOUMETTRE</button>
-</div>
+  
+  <div class="commencer">
+    <button (click)="envoyer()" class="commencer-button" expand="block" >SOUMETTRE</button>
+  </div>
+  </ion-content>
+ 

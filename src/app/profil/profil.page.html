@@ -1,4 +1,7 @@
         
+        <ion-content>
+
+                  
         <ion-modal
         trigger="open-modal1"
         [initialBreakpoint]="0.45"
@@ -14,11 +17,11 @@
             <div class="ion-margin-top" style="margin-bottom: 3%; width: 100%; text-align: center;">
               <ion-label class="libelleModal" >Veuillez choisir une option</ion-label>
             </div>
-              <ion-item  class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
+              <ion-item (click)="ajouterChamp()" class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
                 <img style="height: 30px; width: 30px;" src="../assets/images/devenirAgriculteur.png" alt="images">
                 <ion-label style="margin-left: 25px;">Champ</ion-label>
               </ion-item>
-              <ion-item class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
+              <ion-item class="itemChoix" button="true" (click)="ajouterParserelle()" detail="false" style="margin-bottom: 3%; width: 100%;">
                 <i style="font-size: 30px;" class="fa-solid fa-car"></i>
                 <ion-label  style="margin-left: 25px;" >Parserelle</ion-label>
               </ion-item>
@@ -29,9 +32,8 @@
           </ion-content>
         </ng-template>
       </ion-modal>
-       
-        
-        
+
+        </ion-content>
         
         
         

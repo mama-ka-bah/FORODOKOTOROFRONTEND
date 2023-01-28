@@ -90,10 +90,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>120 m</td>
-            <td>90 Km</td>
-            <td routerLink="/profil/champs/details-champs/detail-parserelle"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
+          <tr *ngFor="let parselle of lesParserelleDunChamp">
+            <td>{{parselle.nom}}</td>
+            <td>{{parselle.longueur}} m</td>
+            <td>{{parselle.largeur}} m</td>
+            <!-- [routerLink]="['/profil/champs/details-champs/detail-parserelle', parselle.id]" -->
+            <td (click)="voirListeCultiveDuneParserelle()"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
           </tr>
          
         </tbody>

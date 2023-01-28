@@ -53,5 +53,4 @@ export class ChampsPage implements OnInit {
   }
 
 
-
 }

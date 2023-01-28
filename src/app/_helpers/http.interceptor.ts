@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { StorageService } from '../services/stockage.service';
 
 // HttpInterceptor a une intercept()méthode pour inspecter et transformer les requêtes
 //  HTTP avant qu'elles ne soient envoyées au serveur.
@@ -16,14 +17,22 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 //     return next.handle(req);
 //   }
 
+
+constructor(private stockageService: StorageService){
+
+}
+
+userToken:any
+
 intercept(req: HttpRequest<any>, next: HttpHandler) {
     if(req.url.includes('signin') || req.url.includes('signin') || req.url.includes('api.openweathermap.org')){
       return next.handle(req);
     }else{
+      this.userToken = this.stockageService.getUser().token;
       const authToken = sessionStorage.getItem('jwt');
-      console.log("tttttttttttttttttttttttttttttttttttttttttt:  "+authToken);
+      console.log("le token qui sera envoye dans header:  "+ this.userToken);
       const authReq = req.clone({
-        headers: req.headers.set('Authorization', 'Bearer ' + authToken)
+        headers: req.headers.set('Authorization', 'Bearer ' + this.userToken)
       });
       return next.handle(authReq);
     }

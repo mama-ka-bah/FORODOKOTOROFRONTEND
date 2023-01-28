@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, ModalController, PopoverController } from '@ionic/angular';
+import { CultureParserelleComponent } from '../culture-parserelle/culture-parserelle.component';
 import { AgriculteurService } from '../services/agriculteur.service';
 import { ChampService } from '../services/champ.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
@@ -13,11 +14,28 @@ import { StorageService } from '../services/stockage.service';
   styleUrls: ['./details-champs.page.scss'],
 })
 export class DetailsChampsPage implements OnInit {
+
+  myData = {
+    name: 'keita',
+    age: 23,
+    address: {
+        city: 'Badinko'
+    },
+    hobbies: ['meditation', 'musique', 'voyage']
+};
+
+
+
+reponseAjoutChamp:any
+currentUser:any
+
+
   idChampActuel:any
   detailsChamp:any;
   tousLesChampDunUserActuel:any
   tmp:any //temperature recurer
   temperatureActuelChamp:any
+  lesParserelleDunChamp:any
 
 
   constructor(
@@ -36,6 +54,7 @@ export class DetailsChampsPage implements OnInit {
 
   ngOnInit() {
     this.recupererDetailChamp();
+    this.recupererParserelleDunChamp();
   }
 
   recupererDetailChamp(){
@@ -59,7 +78,37 @@ export class DetailsChampsPage implements OnInit {
 
   }
 
+
+  recupererParserelleDunChamp(){
+
+    this.champService.recupererParsererelleDunChamp(this.idChampActuel).subscribe((data) =>{
+    
+      this.lesParserelleDunChamp =  data;
   
+  
+    })
+
+  }
+
+  
+
+
+   //modal permettant d'ajouter une parserelle de champ
+   async voirListeCultiveDuneParserelle() {
+    const modal = await this.modalCtrl.create({
+      component: CultureParserelleComponent,
+      componentProps: {
+      data: this.myData
+  }
+    });
+
+    modal.onDidDismiss().then((resultatAjoutChamp) => {
+      //this.router.navigateByUrl('/connexion');
+      console.log(resultatAjoutChamp.data);
+    });
+
+    await modal.present();
+  }
   
 
 

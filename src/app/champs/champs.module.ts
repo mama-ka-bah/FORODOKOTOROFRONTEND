@@ -13,7 +13,7 @@ import { ChampsPage } from './champs.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ChampsPageRoutingModule
+    ChampsPageRoutingModule,
   ],
   declarations: [ChampsPage]
 })
