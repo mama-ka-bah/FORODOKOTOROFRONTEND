@@ -39,7 +39,7 @@
 
     <div class="semer">
       <div class="iconAct"><i  class='far fa-edit' style='font-size:25px; color: blue;'></i></div>
-      <ion-button class="fermer" type="submit" expand="block">Semer</ion-button>
+      <ion-button class="fermer" type="submit" id="open-modal2" expand="block">Semer</ion-button>
       <div class="iconAct"><i class="fa fa-trash" aria-hidden="true" style="color:red; font-size:25px"></i></div>
     </div>
 
@@ -85,4 +85,115 @@
 </div>
 
   </div>
+
+
+
+
+
+  <ion-modal
+  trigger="open-modal2"
+  [initialBreakpoint]="0.80"
+  [breakpoints]="[0, 0.60, 0.5, 0.75, 0.80]"
+  handleBehavior="cycle"
+>
+  <ng-template>
+    <ion-content class="ion-padding" style="gap: 50px!important;
+    display: flex!important;
+    justify-content: space-around!important;
+    flex-direction: column!important;">
+
+    <form class="formulaire">
+
+      <div class="ion-margin-top" style="margin-bottom: 3%; width: 100%; text-align: center;">
+        <ion-label class="libelleModal" >Veuillez choisir une option</ion-label>
+      </div>
+      <div class="input">
+
+        <label>Produit Agricole <span class="obligatoire">*</span></label>     
+        <!-- [ngClass]="{'is-invalid': myForm.get('typeChamp')!.invalid && myForm.get('typeChamp')!.touched}" -->
+        <!-- formControlName="champ" -->
+        <select  class="form-control telephone-input"
+        >
+        <option style="color: #000;" value="Choisir un type" selected disabled>Choisir un produit</option>
+        <!-- *ngFor="let champ of lesChampDeCurrentUser" value="{{champ.id}}" -->
+        <!-- {{champ.nom}} -->
+          <option value=""></option>
+        </select>
+
+        <!-- <span class="erreur" *ngIf="myForm!.get('champ')!.hasError('required') && myForm.get('champ')!.touched">Cet champ est obligatoire</span> -->
+
+      </div>
+
+      <div class="input">
+
+        <label>Semence <span class="obligatoire">*</span></label>     
+        <!-- [ngClass]="{'is-invalid': myForm.get('typeChamp')!.invalid && myForm.get('typeChamp')!.touched}" -->
+        <!-- formControlName="champ" -->
+        <select  class="form-control telephone-input"
+        >
+        <option style="color: #000;" value="Choisir un type" selected disabled>Choisir une semence</option>
+        <!-- *ngFor="let champ of lesChampDeCurrentUser" value="{{champ.id}}" -->
+        <!-- {{champ.nom}} -->
+          <option value=""></option>
+        </select>
+
+        <!-- <span class="erreur" *ngIf="myForm!.get('champ')!.hasError('required') && myForm.get('champ')!.touched">Cet champ est obligatoire</span> -->
+
+      </div>
+
+      <div class="input">
+        <label>Date debut <span class="obligatoire">*</span></label>
+        <!-- formControlName="username" -->
+        <input class="telephone-input" type="date" class="form-control" placeholder="82644606"
+        >
+
+        <!-- [ngClass]="{'is-invalid': form.get('username')!.invalid && form.get('username')!.touched}"
+        [ngClass]="{'is-valid': form.get('username')!.valid && form.get('username')!.touched}" -->
+
+        <!-- [ngStyle]="{'border-color': (form.get('username')!.valid && form.get('username')!.touched) ? 'green' : 'red' }" -->
+
+       
+<!--         
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('required') && form.get('username')!.touched">Cet champ est obligatoire</span>
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('minlength') && form.get('username')!.touched">Numero court</span>
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('maxlength') && form.get('username')!.touched">Numero Long</span>
+
+ -->
+
+      </div>
+
+
+      <div class="input">
+        <label>Date fin <span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="date" class="form-control" placeholder="82644606" formControlName="username"
+        >
+
+        <!-- [ngClass]="{'is-invalid': form.get('username')!.invalid && form.get('username')!.touched}"
+        [ngClass]="{'is-valid': form.get('username')!.valid && form.get('username')!.touched}" -->
+
+        <!-- [ngStyle]="{'border-color': (form.get('username')!.valid && form.get('username')!.touched) ? 'green' : 'red' }" -->
+
+       
+<!--         
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('required') && form.get('username')!.touched">Cet champ est obligatoire</span>
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('minlength') && form.get('username')!.touched">Numero court</span>
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('maxlength') && form.get('username')!.touched">Numero Long</span>
+
+ -->
+
+      </div>
+
+      <div class="conteneur-submit">
+        <!-- routerLink="/tabs/tab1" -->
+        <ion-button class="envoyer-input" type="submit" expand="block">SEMER</ion-button>
+      </div>
+
+    </form>
+      
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
 </ion-content>

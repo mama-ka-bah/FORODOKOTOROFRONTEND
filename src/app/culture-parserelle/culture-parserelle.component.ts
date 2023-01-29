@@ -36,6 +36,7 @@ export class CultureParserelleComponent implements OnInit {
   recupererlesCultiveActiveDuneParserelle(){
     this.champService.recupererLesCultiveDuneParsererelle(this.idparserelleEnvoyer).subscribe(data =>{
       this.lesCultivesActivesDuneParserelle = data;
+      this.storageService.saveCultive(this.lesCultivesActivesDuneParserelle);
       console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx: " + this.lesCultivesActivesDuneParserelle)
     })
   }

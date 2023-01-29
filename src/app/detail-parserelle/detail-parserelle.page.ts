@@ -16,6 +16,8 @@ import { StorageService } from '../services/stockage.service';
 })
 export class DetailParserellePage implements OnInit {
 
+  tousLesCultivesStockerDansSession:any
+
   constructor(
     private routes : ActivatedRoute,
     private router : Router,
@@ -33,6 +35,14 @@ export class DetailParserellePage implements OnInit {
   }
 
 
+  
+  recupererDetailDuneParserelle(){
+    this.tousLesCultivesStockerDansSession = this.storageService.getCultive();
+   this.voirListeCultiveDuneParserelle(this.tousLesCultivesStockerDansSession[0].parserelle, this.tousLesCultivesStockerDansSession[0].parserelle.id);
+
+  }
+
+
    //modal permettant d'ajouter une parserelle de champ
    async voirListeCultiveDuneParserelle(detailParserelleClique:any, idParserelleCliquer:any) {
     const modal = await this.modalCtrl.create({
@@ -42,6 +52,8 @@ export class DetailParserellePage implements OnInit {
       data1: idParserelleCliquer
   }
     });
+
+    await modal.present();
 
   }
 }

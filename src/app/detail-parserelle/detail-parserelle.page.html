@@ -1,14 +1,15 @@
 <ion-header>
   <ion-header>
     <div class="barre-menu">
-      <div class="element-menus">
+      <!-- <div class="element-menus"> -->
         <ion-buttons slot="start" >
           <ion-back-button defaultHref="profil"></ion-back-button>
         </ion-buttons>
         <div class="nomApp" style="flex-basis: 80%;">
-          Parserelle 1
+          <span style="font-size: 15px;">Liste culture</span>
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
   </ion-header>
 </ion-header>
@@ -48,7 +49,7 @@
           <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday">
         </div>
         <div class="semer">
-          <ion-button class="fermer" type="submit" expand="block">Semer</ion-button>
+          <ion-button class="fermer" type="submit" expand="block" (click)="recupererDetailDuneParserelle()">Semer</ion-button>
          <div class="actions-buuton">
           <div><i  class='far fa-edit' style='font-size:25px; color: blue;'></i></div>
           <div><i class="fa fa-trash" aria-hidden="true" style="color:red; font-size:25px"></i></div>

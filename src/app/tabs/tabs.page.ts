@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { ModalController, NavController, PopoverController } from '@ionic/angular';
+import { IonModal, ModalController, NavController, PopoverController } from '@ionic/angular';
 import { LocalNotifications } from 'capacitor-local-notifications';
 import Swal from 'sweetalert2';
 import { ChoisirProfilComponent } from '../choisir-profil/choisir-profil.component';
@@ -18,6 +18,11 @@ import { StorageService } from '../services/stockage.service';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage implements OnInit{
+
+
+  // closeModal() {
+  //   this.myModal.dismiss();
+  // }
 
   currentUser:any;
   headerTitle:any;
@@ -121,9 +126,9 @@ export class TabsPage implements OnInit{
 
         if(typeof emailSaisie !== 'undefined'){
 
-          console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,: " + JSON.stringify(emailSaisie));
-          console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,: " + JSON.stringify(emailSaisie.data.donneesTransporteur[0].numeroplaque));
-          console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,: " + JSON.stringify(emailSaisie.data.photo));
+          // console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,: " + JSON.stringify(emailSaisie));
+          // console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,: " + JSON.stringify(emailSaisie.data.donneesTransporteur[0].numeroplaque));
+          // console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,: " + JSON.stringify(emailSaisie.data.photo));
   
           Swal.fire({
             title: 'Etes vous sur d\'envoyer cette demande',
@@ -201,7 +206,7 @@ if(data.data.etat == true){
   Swal.fire({
     title: 'Etes vous sur d\'envoyer cette demande',
     showDenyButton: true,
-    showCancelButton: true,
+    // showCancelButton: true,
     confirmButtonText: 'Envoyer',
     denyButtonText: `Annuler`,
     heightAuto:false,
@@ -218,7 +223,7 @@ if(data.data.etat == true){
             icon: 'success',
             title: data.message,
             showConfirmButton: true,
-            timer: 2000,
+            // timer: 2000,
             heightAuto:false,
           })
         }else{
