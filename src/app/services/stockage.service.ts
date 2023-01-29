@@ -4,6 +4,8 @@ const USER_KEY = 'auth-user';
 const TOKEN_KEY = 'jwt';
 const CHAMP_KEY = 'champ';
 const STOCKS_KEY = 'stocks';
+const PARSERELLE_KEY = 'parserelle';
+const CULTIVE_KEY = 'cultive'
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +76,11 @@ export class StorageService {
 
 
 
+
+
+
+
+
   //enregistrement des stocks
 
   //permet d'enregistrer un stocks dans sessionStorrage
@@ -89,6 +96,55 @@ export class StorageService {
       return JSON.parse(messtocks);
     }
 
+    return {};
+  }
+
+
+
+
+
+
+
+
+  //enregistrement des parserelles de l'utilisateur
+
+  //permet d'enregistrer les parserelles dans sessionStorrage
+  public saveParserelle(parserellesDeMonChamp: any): void {
+    window.sessionStorage.removeItem(PARSERELLE_KEY);
+    window.sessionStorage.setItem(PARSERELLE_KEY, JSON.stringify(parserellesDeMonChamp));
+  }
+
+  //permeet de recuperer un champ dans sessionStorrage
+  public getParserelle(): any {
+    const parserellesDeMonChamp = window.sessionStorage.getItem(PARSERELLE_KEY);
+    if (parserellesDeMonChamp) {
+      return JSON.parse(parserellesDeMonChamp);
+    }
+
+    return {};
+  }
+
+
+
+
+
+
+
+
+   //enregistrement des cultives liées à une parserelle
+
+  //permet d'enregistrer les cultives dans sessionStorrage
+  public saveCultive(cultiveDeMonParserelle: any): void {
+    window.sessionStorage.removeItem(CULTIVE_KEY);
+    window.sessionStorage.setItem(CULTIVE_KEY, JSON.stringify(cultiveDeMonParserelle));
+  }
+  
+  //permeet de recuperer les cultives de la parserelle enregistrés dans sessionStorrage
+  public getCultive(): any {
+    const cultiveDeMonParserelle = window.sessionStorage.getItem(CULTIVE_KEY);
+    if (cultiveDeMonParserelle) {
+      return JSON.parse(cultiveDeMonParserelle);
+    }
     return {};
   }
 

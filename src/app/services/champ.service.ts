@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 const AUTH_API = 'http://localhost:8081/champs/';
 const AUTH_API1 = 'http://localhost:8081/parserelle/';
+const AUTH_API2 = 'http://localhost:8081/cultive/';
 
 
 //l'entete du navigateur
@@ -46,11 +47,20 @@ export class ChampService {
     return this.http.post(AUTH_API1 + `ajouterparserelle/${idChamp}`, data);
   }
 
-  //permet d'ajouter une parserelle à un champ
+  //permet de recuperer les Parsererelles Dun Champ
   recupererParsererelleDunChamp(idChamp:any): Observable<any> {
     
     console.log("id du champ: " + idChamp)
     return this.http.get(AUTH_API1 + `recupererlesparserelledunchamp/${idChamp}`);
+  }
+ 
+
+
+  //permet de  recuperer Les Cultive active Dune Parsererelle ordonne par date de fin
+  recupererLesCultiveDuneParsererelle(idparserelle:any): Observable<any> {
+    
+    console.log("id du champ: " + idparserelle)
+    return this.http.get(AUTH_API2 + `recupererlescultivesactiveduneparserelleordonnepardatedefin/${idparserelle}`);
   }
 
 }

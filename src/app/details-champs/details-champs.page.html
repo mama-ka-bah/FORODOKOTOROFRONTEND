@@ -61,19 +61,19 @@
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Longueur</div>
-          <div class="detail">{{detailsChamp.longueur}}</div>
+          <div class="detail">{{detailsChamp.longueur}} m</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Largeur</div>
-          <div class="detail">{{detailsChamp.largeur}}</div>
+          <div class="detail">{{detailsChamp.largeur}} m</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Perimetre</div>
-          <div class="detail">{{(detailsChamp.largeur + detailsChamp.longueur)*2}}</div>
+          <div class="detail">{{(detailsChamp.largeur + detailsChamp.longueur)*2}} m</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Surface</div>
-          <div class="detail">{{detailsChamp.largeur*detailsChamp.longueur}}</div>
+          <div class="detail">{{detailsChamp.largeur*detailsChamp.longueur}} m²</div>
         </div>
         <div class="elementDetailChamp modifier">
           <ion-button class="modifier" type="submit" expand="block">Modifier</ion-button>
@@ -95,7 +95,7 @@
             <td>{{parselle.longueur}} m</td>
             <td>{{parselle.largeur}} m</td>
             <!-- [routerLink]="['/profil/champs/details-champs/detail-parserelle', parselle.id]" -->
-            <td (click)="voirListeCultiveDuneParserelle()"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
+            <td (click)=" recupererDetailDuneParserelle(parselle.id)"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
           </tr>
          
         </tbody>

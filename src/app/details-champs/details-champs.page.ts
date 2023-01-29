@@ -36,6 +36,10 @@ currentUser:any
   tmp:any //temperature recurer
   temperatureActuelChamp:any
   lesParserelleDunChamp:any
+  detailDuneParserelle:any
+  tousLesParserelleStockerDansSession:any
+  idParserelleActive:any;
+  lesCultivesActivesDuneParserelle:any;
 
 
   constructor(
@@ -84,21 +88,34 @@ currentUser:any
     this.champService.recupererParsererelleDunChamp(this.idChampActuel).subscribe((data) =>{
     
       this.lesParserelleDunChamp =  data;
-  
+
+      if(this.lesParserelleDunChamp != null){
+        this.storageService.saveParserelle(this.lesParserelleDunChamp);
+      }
   
     })
 
   }
 
-  
+
+
+  recupererDetailDuneParserelle(idParserelleCliquer:any){
+    this.idParserelleActive = idParserelleCliquer;
+    this.tousLesParserelleStockerDansSession = this.storageService.getParserelle();
+    this.detailDuneParserelle = this.tousLesParserelleStockerDansSession[idParserelleCliquer-1];
+    //const lesCultives = this.recupererlesCultiveActiveDuneParserelle(idParserelleCliquer)
+   this.voirListeCultiveDuneParserelle(this.detailDuneParserelle, idParserelleCliquer);
+
+  }
 
 
    //modal permettant d'ajouter une parserelle de champ
-   async voirListeCultiveDuneParserelle() {
+   async voirListeCultiveDuneParserelle(detailParserelleClique:any, idParserelleCliquer:any) {
     const modal = await this.modalCtrl.create({
       component: CultureParserelleComponent,
       componentProps: {
-      data: this.myData
+      data: detailParserelleClique,
+      data1: idParserelleCliquer
   }
     });
 

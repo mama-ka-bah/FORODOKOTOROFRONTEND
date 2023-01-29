@@ -8,11 +8,7 @@ const routes: Routes = [
     path: '',
     component: DetailsChampsPage
   }
-  ,
-  {
-    path: 'detail-parserelle',
-    loadChildren: () => import('../detail-parserelle/detail-parserelle.module').then( m => m.DetailParserellePageModule)
-  }
+  
 ];
 
 @NgModule({

@@ -56,6 +56,10 @@ const routes: Routes = [
     path: 'notifications',
     loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'detail-parserelle',
+    loadChildren: () => import('./detail-parserelle/detail-parserelle.module').then( m => m.DetailParserellePageModule)
   }
 
 
