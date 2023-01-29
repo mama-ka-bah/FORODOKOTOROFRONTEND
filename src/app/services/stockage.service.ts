@@ -5,7 +5,8 @@ const TOKEN_KEY = 'jwt';
 const CHAMP_KEY = 'champ';
 const STOCKS_KEY = 'stocks';
 const PARSERELLE_KEY = 'parserelle';
-const CULTIVE_KEY = 'cultive'
+const CULTIVE_KEY = 'cultive';
+const PRODUITAGRICOLE_KEY = 'produitagricole'
 
 @Injectable({
   providedIn: 'root'
@@ -150,6 +151,20 @@ export class StorageService {
 
 
   
-
+   //enregistrement des  produits agricoles
+  //permet d'enregistrer les cultives dans sessionStorrage
+  public saveProduitAgricole(produitsAgricolesAStocker: any): void {
+    window.sessionStorage.removeItem(PRODUITAGRICOLE_KEY);
+    window.sessionStorage.setItem(PRODUITAGRICOLE_KEY, JSON.stringify(produitsAgricolesAStocker));
+  }
+  
+  //permeet de recuperer les cultives de la parserelle enregistrés dans sessionStorrage
+  public getProduitAgricole(): any {
+    const produitsAgricolesAStocker = window.sessionStorage.getItem(PRODUITAGRICOLE_KEY);
+    if (produitsAgricolesAStocker) {
+      return JSON.parse(produitsAgricolesAStocker);
+    }
+    return {};
+  }
 
 }
