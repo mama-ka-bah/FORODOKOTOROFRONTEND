@@ -41,15 +41,24 @@ export class Tab1Page implements OnInit{
     public loadingController: LoadingController
 
 
-    ) {}
+    ) {  }
+
+    ionViewDidEnter(){
+      this.donneesService.showMenu.next(true);
+    }
  
   ngOnInit(): void {
-
-    this.presentLoading()
-    this.getCurrentLocation();
-    this.dismissLoading()
+    if(!this.tmp){
+      this.presentLoading()
+      this.getCurrentLocation();
+      this.dismissLoading()
+    }
+    
     this.currentUser = this.storageService.getUser();
     this.donneesService.setpageActuel("FORODOKOTORO");
+
+    const currentUrl = this.router.url;
+    this.storageService.saveCurrentUrl(currentUrl);
   }
 
 

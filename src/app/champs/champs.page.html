@@ -22,8 +22,14 @@
       <div class="details">
   
         <div class="photoProfil1">
-          <img class="image-detail" src="../assets/images/agriculteur.jpg">
-          <i  class='far fa-edit' style='font-size:35px; color: #000; position: relative; bottom: 66px; left: 33px; color: #fff;'></i>
+          
+          <!-- Lorsque l'image de profil est vide -->
+           <img *ngIf="currentUser.photo == null" class="image-detail"  src="../../assets/images/profil.svg" style="margin-top: 10px;">
+           <i *ngIf="currentUser.photo == null"  class='far fa-edit' style='font-size:28px; color: #000; position: relative;  bottom: 66px; left: 10px;'></i>
+
+           <!-- Lorsque l'image de profil n'est pas vide -->
+          <img *ngIf="currentUser.photo != null" class="image-detail" src="{{currentUser.photo}}">
+          <i *ngIf="currentUser.photo != null" class='far fa-edit' style='font-size:35px; color: #000; position: relative; top: 5px; bottom: 66px; left: 33px; color: #fff;'></i>
         </div>
   
   

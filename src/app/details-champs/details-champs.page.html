@@ -90,12 +90,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let parselle of lesParserelleDunChamp">
+          <tr *ngFor="let parselle of lesParserelleDunChamp ; index as i">
             <td>{{parselle.nom}}</td>
             <td>{{parselle.longueur}} m</td>
             <td>{{parselle.largeur}} m</td>
             <!-- [routerLink]="['/profil/champs/details-champs/detail-parserelle', parselle.id]" -->
-            <td (click)=" recupererDetailDuneParserelle(parselle.id)"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
+            <td (click)=" recupererDetailDuneParserelle(i, parselle.id)"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
           </tr>
          
         </tbody>

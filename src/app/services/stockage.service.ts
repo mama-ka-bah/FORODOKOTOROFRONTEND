@@ -6,7 +6,8 @@ const CHAMP_KEY = 'champ';
 const STOCKS_KEY = 'stocks';
 const PARSERELLE_KEY = 'parserelle';
 const CULTIVE_KEY = 'cultive';
-const PRODUITAGRICOLE_KEY = 'produitagricole'
+const PRODUITAGRICOLE_KEY = 'produitagricole';
+const CURRENTURL_KEY = "currenturl";
 
 @Injectable({
   providedIn: 'root'
@@ -163,6 +164,25 @@ export class StorageService {
     const produitsAgricolesAStocker = window.sessionStorage.getItem(PRODUITAGRICOLE_KEY);
     if (produitsAgricolesAStocker) {
       return JSON.parse(produitsAgricolesAStocker);
+    }
+    return {};
+  }
+
+
+
+  
+   //enregistrement de l'url actuel dans session
+  //permet d'enregistrer l'url actuel dans sessionStorrage
+  public saveCurrentUrl(urlAStocker: any): void {
+    window.sessionStorage.removeItem(CURRENTURL_KEY);
+    window.sessionStorage.setItem(CURRENTURL_KEY, JSON.stringify(urlAStocker));
+  }
+  
+  //permeet de recuperer l'url enregistré dans sessionStorrage
+  public getCurrentUrl(): any {
+    const urlStocker = window.sessionStorage.getItem(CURRENTURL_KEY);
+    if (urlStocker) {
+      return JSON.parse(urlStocker);
     }
     return {};
   }

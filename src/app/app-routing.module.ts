@@ -58,7 +58,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'detail-parserelle',
+    path: 'detail-parserelle/:id',
     loadChildren: () => import('./detail-parserelle/detail-parserelle.module').then( m => m.DetailParserellePageModule)
   }
 

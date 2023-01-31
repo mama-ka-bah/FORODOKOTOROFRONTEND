@@ -41,6 +41,8 @@
     // // gap: 10px;
     // margin-bottom: 10px;
     margin-bottom: 15px;
+
+    background-color: #F4F5F8;
   }
 
 
@@ -72,106 +74,30 @@
 }
 
 
-//style du filtre debut
-.filtre{
-    background: #FFFFFF;
-    border: 2px solid #14AE5C;
-    border-radius: 5px;
-    display: flex;
-    // float: right;
-    // margin-top: 15px;
-    // margin-right: 15vw;
-    height: 35px;
-    width: 95%;
-    float: right;
-    margin: auto;
-    box-shadow: 0px 0px 4px 4px rgba(20, 174, 92, 0.25);
-
-    // display: flex;
-    // align-items: center;
-    // justify-content: flex-end;
-}
-
-//input du filtre
-.input-filtre{
-   width: 100%;
-    height: 30px;
-    border: none;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.filtre ion-item{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0;
-}
-
-.filtre[_ngcontent-hgk-c163] {
-    width: 95%!important;
-    margin: auto!important;
-}
-
-//le style de l'icone filtre
-.fa-filter {
-    position: relative;
-    font-size: 20px;
-    color: #14AE5C;
-    top: 8px;
-    right: 10px;
-}
-ion-select::part(icon) {
-    display: none !important;
-   }
-
- 
-//style du filtre fin
-
-
 
 .calendrier{
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
 }
 
   //le input du calendrier
   .calendar-input{
-    border: none;
-    height: 35px;
-    box-shadow: 0px 0px 4px 4px rgba(20, 174, 92, 0.25);
-    width: 100%;
-    padding-right: 8px;
-    padding-left: 8px;
     border-radius: 10px;
   }
 
-  .semer ion-button{
+  .fermer{
     --background: #14AE5C;
     --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     --border-radius: 10px;
      color: #fff;
-
-    //  --background:#fff;
-    //  --border:1px solid #14AE5C;
-    //  --border-radius: 20px;
-    //  color: #14AE5C;
-    //  font-weight: bold;
      height: 35px;
+     width: 90%;
+     margin: auto;
   }
-  .semer{
-    // border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    height: 100%;
-    height: 80%;
-  }
+ 
   .actions-buuton{
     display: flex;
     align-items: center;
@@ -181,28 +107,62 @@ ion-select::part(icon) {
 
   .calendrier-semer{
     display: flex;
-    // gap: 10px;
     justify-content: space-around;
     align-items: center;
-    height: 18vh;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0 15px 0;
+    width: 100%;
+    // height: 18vh;
   }
 
   .accesprevision{
-    display: flex;
-    justify-content: flex-start;
+    --background: #fff;
+    color: #14AE5C;
+    --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    --border-radius: 10px;
+     height: 35px;
+     width: 100%;
+     margin: auto;
+
+     display: flex;
+     justify-content: center;
+     align-items: center;
   }
 
-  .accesprevision ion-button{
-    --background: #fff;
-    --border:1px solid #14AE5C;
-    --border-radius: 10px;
-    color: #14AE5C;
-    font-weight: bold;
-    // width: 95%;
-    width: 93%;
+  .ion-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .datedf{
     display: flex;
     justify-content: center;
-    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap:3px;
+  }
+  .libDate{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 13px;
+  }
+  .recolteInputConteneur{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .inputRecolte{
+    height: 28px;
+    width: 65px;
+    border-color: #14AE5C;
+    border-radius: 7px;
   }
 
 
@@ -352,6 +312,21 @@ tbody tr{
     column-gap: 10px;
     margin-top: 10px;
     margin-right: 17px;
+    font-weight: bold;
+  }
+
+
+
+
+  .elementPrevision{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 10px 0;
+    width: 100%;
+    padding-bottom: 3px;
+  }
+  .libellePre{
     font-weight: bold;
   }
  

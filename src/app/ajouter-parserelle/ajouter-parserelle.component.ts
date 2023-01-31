@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController, NavParams } from '@ionic/angular';
 import Swal from 'sweetalert2';
 import { ChampService } from '../services/champ.service';
 import { StorageService } from '../services/stockage.service';
+import { IonContent } from '@ionic/angular';
+import { IonRefresher } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-ajouter-parserelle',
@@ -12,6 +16,23 @@ import { StorageService } from '../services/stockage.service';
   styleUrls: ['./ajouter-parserelle.component.scss'],
 })
 export class AjouterParserelleComponent implements OnInit {
+
+  @ViewChild(IonRefresher, { static: false }) refresher!: IonRefresher;
+
+  
+  refreshPage() {
+    this.refresher.complete();
+  }
+
+  doRefresh(event:any) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+  
+  
 
   mondata = {
     name: 'keita',
@@ -84,16 +105,8 @@ lesChampDeCurrentUser:any
                }
         ]
 
-    //     const typeParserelle = [
-            
-    //       {
-    //         "typeParserelle":this.myForm.controls.typeChamp.value,
-    //        }
-    // ]
-
         const data:FormData=new FormData();
         data.append('parserelleReçu', JSON.stringify(parserelleReçu).slice(1,JSON.stringify(parserelleReçu).lastIndexOf(']')));
-        // data.append('typeParserelle', JSON.stringify(typeParserelle).slice(1,JSON.stringify(typeParserelle).lastIndexOf(']')));
 
 
             Swal.fire({
@@ -105,16 +118,14 @@ lesChampDeCurrentUser:any
               heightAuto:false,
               position:'center'
             }).then((result) => {
-              /* Read more about isConfirmed, isDenied below */
               if (result.isConfirmed) {         
                 this.champService.ajouterParserelle(data, this.myForm.controls.champ.value).subscribe(data =>{
                   this.resultatAjoutChamp = data;
                   console.log(data);
 
-                  ///si l'ajout du champ a marché
+                  ///si l'ajout de parserelle a marché
                   if(this.resultatAjoutChamp.status == 1){
                     this.modalCtrl.dismiss(this.resultatAjoutChamp);
-                    // this.router.navigateByUrl("/profil/champs");
                     Swal.fire({
                       icon: 'success',
                       title: data.message,

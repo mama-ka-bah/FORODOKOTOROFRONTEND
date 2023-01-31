@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController, NavParams } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { ChampService } from '../services/champ.service';
 import { ProduitAgricolesService } from '../services/produit-agricoles.service';
 import { StorageService } from '../services/stockage.service';
@@ -13,14 +14,14 @@ import { StorageService } from '../services/stockage.service';
 })
 export class CultureParserelleComponent implements OnInit {
 
-  detailParserelleClique:any
-  idparserelleEnvoyer:any;
-  lesCultivesActivesDuneParserelle:any;
-  lesCultivesStockerDansSession:any;
-  lesProduitAgricoleRecuperer:any
-  lesSemencesPourLeProduitActive:any
+    detailParserelleClique:any;
+    idparserelleEnvoyer:any;
+    lesCultivesActivesDuneParserelle:any;
+    lesCultivesStockerDansSession:any;
+    lesProduitAgricoleRecuperer:any;
+    lesSemencesPourLeProduitActive:any;
 
-
+    resultatatAjoutCultive:any;
   
     //l'objet form froup lié à mon formulaire dans le template
     myForm = new FormGroup({
@@ -54,7 +55,56 @@ export class CultureParserelleComponent implements OnInit {
 
 
 submitForm(){
+   //verifie si le formulaire est valide
+   if(this.myForm.valid) {
+    const cultive = {
+      "datedebutsemis":this.myForm.controls.datedebutsemis.value,
+      "datefinsemis":this.myForm.controls.datefinsemis.value,
+      "quantiteseme":this.myForm.controls.quantiteSemis.value
+    }
 
+    const varieteid =  this.myForm.controls.semence.value;
+
+    Swal.fire({
+      title: 'Etes vous sur d\'ajouter cette parserelle',
+      showDenyButton: true,
+      confirmButtonText: 'Envoyer',
+      denyButtonText: `Annuler`,
+      heightAuto:false,
+      position:'center'
+    }).then((result) => {
+      if (result.isConfirmed) {  
+        this.produitAgricolesService.ajouterCultive(cultive, varieteid, this.idparserelleEnvoyer).subscribe(data => {
+          this.resultatatAjoutCultive = data;
+          console.log(this.resultatatAjoutCultive);
+
+          ///si l'ajout de parserelle a marché
+          if(this.resultatatAjoutCultive.status == 1){
+            // this.modalCtrl.dismiss(this.resultatAjoutChamp);
+            this.myForm.reset();
+            Swal.fire({
+              icon: 'success',
+              title: data.message,
+              timer: 2000,
+              customClass: {
+                container: 'small-text'
+              },
+              heightAuto:false,
+            })
+          }else{
+            Swal.fire({
+              icon: 'info',
+              title: data.message,
+              showConfirmButton: true,
+              heightAuto:false,
+            })
+          }
+          
+        })
+      } 
+    })
+
+   }
 }
 
 
@@ -66,9 +116,12 @@ submitForm(){
     })
   }
 
-  voirDetailDuneCultive(idCultive:any){
+  //ici je recupere l'index du cultive cliqué pour afficher ces details
+  voirDetailDuneCultive(indexCultiveDansSession:any){
     this.modalCtrl.dismiss();
-   this.router.navigate(["/detail-parserelle"]);
+
+    //ces cet index qui se trouve dans l'url dans la page detail cultive
+   this.router.navigate(["/detail-parserelle", indexCultiveDansSession]);
   }
 
   recupererTousLesProduitsAgricoles(){

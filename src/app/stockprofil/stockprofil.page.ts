@@ -37,6 +37,11 @@ export class StockprofilPage implements OnInit {
     this.recuperStockDunAgriculteur();
   }
 
+  //pour retourner en arriere
+retourner() {
+  this.navCtrl.back();
+}
+
 
   recuperStockDunAgriculteur(){
     this.stocksService.recupererStocksParProprietaire(this.currentUser.id).subscribe( (data) =>{

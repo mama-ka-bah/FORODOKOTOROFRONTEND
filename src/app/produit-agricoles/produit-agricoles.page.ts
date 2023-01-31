@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
+import { StorageService } from '../services/stockage.service';
 
 @Component({
   selector: 'app-produit-agricoles',
@@ -8,10 +10,24 @@ import { DonneesStockerService } from '../services/donnees-stocker.service';
 })
 export class ProduitAgricolesPage implements OnInit {
 
-  constructor(private donneesService: DonneesStockerService) { }
+  currentUrl:any
+
+  constructor(
+    private donneesService: DonneesStockerService,
+    private storageService : StorageService,
+    private router : Router,
+
+    ) { }
+
+    ionViewDidEnter(){
+      this.donneesService.showMenu.next(true);
+    }
 
   ngOnInit() {
+    this.donneesService.showMenu.next(true);
     this.donneesService.setpageActuel("Agricultures");
+    this.currentUrl = this.router.url;
+    this.storageService.saveCurrentUrl(this.currentUrl);
   }
 
 }

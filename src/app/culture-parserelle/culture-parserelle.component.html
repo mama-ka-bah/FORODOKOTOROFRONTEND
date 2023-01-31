@@ -42,8 +42,6 @@
       <ion-button class="fermer" type="submit" id="open-modal2" expand="block">Semer</ion-button>
       <div class="iconAct"><i class="fa fa-trash" aria-hidden="true" style="color:red; font-size:25px"></i></div>
     </div>
-
-
   </div>
 
   
@@ -59,7 +57,7 @@
   </div>
 </div>
 
-<div class="detailChamp" *ngFor="let cultive of lesCultivesActivesDuneParserelle">
+<div class="detailChamp" *ngFor="let cultive of lesCultivesActivesDuneParserelle ; index as i">
   <div class="status">
    <span>{{cultive.status}}</span>
   </div>
@@ -80,7 +78,7 @@
     <div class="detail">{{cultive.varietes.nom}}</div>
   </div>
   <div class="elementDetailChamp contVoirplus">
-    <button class="voirplus" (click)="voirDetailDuneCultive(cultive.id)"><i class="fa fa-eye" aria-hidden="true"></i></button>
+    <button class="voirplus" (click)="voirDetailDuneCultive(i)"><i class="fa fa-eye" aria-hidden="true"></i></button>
   </div>
 </div>
 
@@ -92,8 +90,8 @@
 
   <ion-modal
   trigger="open-modal2"
-  [initialBreakpoint]="0.95"
-  [breakpoints]="[0.95]"
+  [initialBreakpoint]="0.90"
+  [breakpoints]="[0.90, 0.95]"
   handleBehavior="cycle"
 >
   <ng-template>
@@ -131,7 +129,6 @@
         </select>
 
         <span class="erreur" *ngIf="myForm!.get('semence')!.hasError('required') && myForm.get('semence')!.touched">Cet champ est obligatoire</span>
-
       </div>
 
       <div class="input">
@@ -155,7 +152,6 @@
         [ngClass]="{'is-valid': myForm.get('datedebutsemis')!.valid && myForm.get('datedebutsemis')!.touched}"
         >
         <span class="erreur" *ngIf="myForm!.get('datedebutsemis')!.hasError('required') && myForm.get('datedebutsemis')!.touched">Cet champ est obligatoire</span>
-
       </div>
 
       <div class="input">

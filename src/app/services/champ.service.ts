@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 const AUTH_API = 'http://localhost:8081/champs/';
 const AUTH_API1 = 'http://localhost:8081/parserelle/';
 const AUTH_API2 = 'http://localhost:8081/cultive/';
+const AUTH_API3 = 'http://localhost:8081/previsions/';
 
 
 //l'entete du navigateur
@@ -51,5 +52,10 @@ export class ChampService {
   recupererLesCultiveDuneParsererelle(idparserelle:any): Observable<any> {
         return this.http.get(AUTH_API2 + `recupererlescultivesactiveduneparserelleordonnepardatedefin/${idparserelle}`);
   }
+
+    //permet de recuperer les previsions d'un cultive donnée
+    recupererPrevisionDunCultive(idCulltive:any): Observable<any> {
+      return this.http.get(AUTH_API3 + `recupererlesprevisionsduncultive/${idCulltive}`);
+    }
 
 }

@@ -6,6 +6,8 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    position: fixed;
+    z-index: 1000;
 }
 .element-menus{
     display: flex;
@@ -117,6 +119,7 @@
     font-size: 12px;
     align-items: center;
     background-color: #14AE5C;
+    padding: 5px;
 }
 
 

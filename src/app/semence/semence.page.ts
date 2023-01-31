@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DonneesStockerService } from '../services/donnees-stocker.service';
 
 @Component({
   selector: 'app-semence',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SemencePage implements OnInit {
 
-  constructor() { }
+  constructor(private donneesStockerService: DonneesStockerService) { }
+
+  ionViewDidEnter(){
+    this.donneesStockerService.showMenu.next(false);
+  }
 
   ngOnInit() {
+    this.donneesStockerService.showMenu.next(false);
   }
 
 }

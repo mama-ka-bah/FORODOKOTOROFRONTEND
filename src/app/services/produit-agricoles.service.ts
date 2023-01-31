@@ -5,6 +5,7 @@ import { StorageService } from './stockage.service';
 
 const AUTH_API = 'http://localhost:8081/produitagricoles/';
 const AUTH_API1 = 'http://localhost:8081/varietes/';
+const AUTH_API2 = 'http://localhost:8081/cultive/';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,11 @@ lesProduitAgricoleRecuperer:any;
   //permet de recuperer les varietes d'un produit agricoles
   recupererLesVarietesDunProduitAgricole(idProduitAgricole:any): Observable<any> {
     return this.http.get(AUTH_API1 + `recuperervarietesparproduit/${idProduitAgricole}`);
+  }
+
+  //permet d'ajouter un cultive
+  ajouterCultive(cultive:any, varieteid:any, parserelleid:any): Observable<any> {
+    return this.http.post(AUTH_API2 + `ajouter/${varieteid}/${parserelleid}`, cultive);
   }
 
 }

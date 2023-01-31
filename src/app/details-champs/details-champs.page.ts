@@ -24,11 +24,8 @@ export class DetailsChampsPage implements OnInit {
     hobbies: ['meditation', 'musique', 'voyage']
 };
 
-
-
 reponseAjoutChamp:any
 currentUser:any
-
 
   idChampActuel:any
   detailsChamp:any;
@@ -71,13 +68,9 @@ currentUser:any
 
 
   recupererTemperatureChamp(latitude:any, longitude:any){
-
     this.meteoservice.getWeather(latitude, longitude).subscribe((data) =>{
-    
       this.tmp =  data;
-  
       this.temperatureActuelChamp = Math.round(this.tmp.main.temp - 273.15);//en degre
-  
     })
 
   }
@@ -99,10 +92,12 @@ currentUser:any
 
 
 
-  recupererDetailDuneParserelle(idParserelleCliquer:any){
+  recupererDetailDuneParserelle(index:any, idParserelleCliquer:any){
     this.idParserelleActive = idParserelleCliquer;
     this.tousLesParserelleStockerDansSession = this.storageService.getParserelle();
-    this.detailDuneParserelle = this.tousLesParserelleStockerDansSession[idParserelleCliquer-1];
+    // alert("parserelle cliqué" + this.idParserelleActive);
+    this.detailDuneParserelle = this.tousLesParserelleStockerDansSession[index];
+    // console.log("me voilà: eeeeeeeeeeeeeeeeeeeee " + this.detailDuneParserelle);
     //const lesCultives = this.recupererlesCultiveActiveDuneParserelle(idParserelleCliquer)
    this.voirListeCultiveDuneParserelle(this.detailDuneParserelle, idParserelleCliquer);
 

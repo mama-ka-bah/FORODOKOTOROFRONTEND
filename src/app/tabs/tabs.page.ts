@@ -29,53 +29,81 @@ export class TabsPage implements OnInit{
   reponseDemandeTrans:any
   reponseDemandeAgri:any
   agriculteur:boolean | undefined
-  
+
+  currentUrl:any
+
+  conditionAfichageMenu:boolean | undefined;
 
 
   constructor(
     private router : Router,
     private storageService : StorageService,
     private navCtrl: NavController,
-    private donneesService: DonneesStockerService,
+    public donneesService: DonneesStockerService,
     private modalCtrl: ModalController,
     private agriculteurService: AgriculteurService,
     public popoverController: PopoverController,
+  ) {}
 
 
-  ) {
-    const currentUrl = this.router.url;
-    
-    const pageName = currentUrl.split('/')[1];
-    this.headerTitle = donneesService.getpageActuel();
-
-    console.log("url url url url " + this.headerTitle);
-
-
-    
-    // switch (currentUrl) {
-    //   case '/tabs/tab1':
-    //     this.headerTitle = 'FORODOKOTORO';
-    //     break;
-    //   case '/tabs/produit-agricoles':
-    //     this.headerTitle = 'Agriculture';
-    //     break;
-    //   case '/tabs/transporteurs':
-    //     this.headerTitle = 'Transporteurs';
-    //     break;
-    //     case '/tabs/marche':
-    //       this.headerTitle = 'Marché';
-    //       break;
-    //       default: 
-    //         this.headerTitle = '';
-    //         break; 
-    // }
-
-
+  navigateToPage1() {
+    // Navigate to page 1
   }
 
-  ngOnInit(): void {
+  navigateToPage2() {
+    // Navigate to page 2
+  }
+
+  ionViewDidEnter(){
+    this.donneesService.showMenu.next(true);
+    this.donneesService.showMenu$.subscribe(value => {
+      this.conditionAfichageMenu = value;
+    });
+  }
+  reccupererTitreAccueil(){
+    this.headerTitle = "FORODOKOTORO";
+  }
+  reccupererTitreAgriculture(){
+    this.headerTitle = "Agriculture";
+  }
+  reccupererTitreMarche(){
+    this.headerTitle = "Marché";
+  }
+  reccupererTitreTransporteur(){
+    this.headerTitle = "Transports";
+  }
+
+  ngOnInit(): void {    
+
+    // this.donneesService.showMenu.next(true);
+   
+    this.donneesService.showMenu$.subscribe(value => {
+      this.conditionAfichageMenu = value;
+    });
+    
+    this.currentUrl = this.router.url;
+    // this.headerTitle = this.currentUrl;
+    this.storageService.saveCurrentUrl(this.currentUrl);
     this.currentUser = this.storageService.getUser();
-    console.log("url actuel " + this.router.url);
+
+    switch (this.currentUrl) {
+      case '/tabs/tab1':
+        this.headerTitle = 'FORODOKOTORO';
+        break;
+      case '/tabs/produit-agricoles':
+        this.headerTitle = 'Agriculture';
+        break;
+      case '/tabs/transporteurs':
+        this.headerTitle = 'Transporteurs';
+        break;
+        case '/tabs/marche':
+          this.headerTitle = 'Marché';
+          break;
+          default: 
+            this.headerTitle = '';
+            this.donneesService.showMenu.next(false);
+            break; 
+    }
 
     console.log(this.currentUser.roles)
 
@@ -85,6 +113,14 @@ export class TabsPage implements OnInit{
       this.agriculteur = false;
       console.log(this.agriculteur)
     }
+
+
+    if(this.storageService.getCurrentUrl() == "/tabs/tab1" || this.storageService.getCurrentUrl() == "/tabs/produit-agricoles" || this.storageService.getCurrentUrl() == "/tabs/transporteurs" || this.storageService.getCurrentUrl() == "/tabs/marche"){
+      this.conditionAfichageMenu = true;
+    }else{
+      this.conditionAfichageMenu = false;
+    }
+
   }
 
   
