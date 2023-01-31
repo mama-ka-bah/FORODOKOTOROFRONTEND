@@ -277,16 +277,6 @@ async dismissLoading() {
   await this.loadingController.dismiss();
 }
 
-
-//  recuperationCodeRenitialisation(email:string){
-//   this.authentificationService.motdepasseoublier(email).subscribe( data => {
-//     this.objetOtpRetourner = data;
-//   });
-
-//   return this.objetOtpRetourner;
-// }
-
-
 }
 
 

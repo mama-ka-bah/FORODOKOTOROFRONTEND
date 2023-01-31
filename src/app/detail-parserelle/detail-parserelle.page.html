@@ -6,7 +6,7 @@
         <ion-back-button defaultHref="profil"></ion-back-button>
       </ion-buttons>
       <div class="nomApp" style="flex-basis: 80%;" (click)="recupererDetailDuneParserelle()">
-        <span style="font-size: 15px;">Cultures</span>
+        <span style="font-size: 13px;">Cultures</span>
         <i class="fa fa-angle-right" aria-hidden="true"></i>
       </div>
       <!-- </div> -->
@@ -168,12 +168,9 @@
       </table>
     </div>
 
-    <div class="ajouterPhase">
+    <div class="ajouterPhase" (click)="modalAjoutAction()">
       <div><i class="fa fa-plus" aria-hidden="true" style="font-size:30px"></i></div>
       <div class="texteAjouter">Ajouter une phase</div>
-      <!-- <div class="modifier" type="submit" expand="block">
-        Ajouter
-      </ion-button> -->
     </div>
 
   </div>

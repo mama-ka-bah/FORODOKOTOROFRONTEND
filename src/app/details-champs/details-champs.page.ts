@@ -72,22 +72,16 @@ currentUser:any
       this.tmp =  data;
       this.temperatureActuelChamp = Math.round(this.tmp.main.temp - 273.15);//en degre
     })
-
   }
 
 
   recupererParserelleDunChamp(){
-
-    this.champService.recupererParsererelleDunChamp(this.idChampActuel).subscribe((data) =>{
-    
+    this.champService.recupererParsererelleDunChamp(this.idChampActuel).subscribe((data) =>{  
       this.lesParserelleDunChamp =  data;
-
       if(this.lesParserelleDunChamp != null){
         this.storageService.saveParserelle(this.lesParserelleDunChamp);
       }
-  
     })
-
   }
 
 
@@ -122,7 +116,4 @@ currentUser:any
     await modal.present();
   }
   
-
-
-
 }

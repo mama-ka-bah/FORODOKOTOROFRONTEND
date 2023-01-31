@@ -6,6 +6,7 @@ const AUTH_API = 'http://localhost:8081/champs/';
 const AUTH_API1 = 'http://localhost:8081/parserelle/';
 const AUTH_API2 = 'http://localhost:8081/cultive/';
 const AUTH_API3 = 'http://localhost:8081/previsions/';
+const AUTH_API4 = 'http://localhost:8081/phases/';
 
 
 //l'entete du navigateur
@@ -56,6 +57,12 @@ export class ChampService {
     //permet de recuperer les previsions d'un cultive donnée
     recupererPrevisionDunCultive(idCulltive:any): Observable<any> {
       return this.http.get(AUTH_API3 + `recupererlesprevisionsduncultive/${idCulltive}`);
+    }
+
+
+     //permet d'ajouter une phase à un cultive
+     AjouterPhaseACultive(data:any, idCultive:any): Observable<any> {
+      return this.http.post(AUTH_API4 + `ajouter/${idCultive}`, data);
     }
 
 }

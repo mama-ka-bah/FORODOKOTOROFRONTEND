@@ -14,7 +14,7 @@
           style="width:80px; height: 40px; border-radius: 25px; background-color: #FFF;"
           data-bs-toggle="dropdown">
           <div class="" style="display: flex;">
-            <img *ngIf="currentUser.photo == null" src="../../assets/images/profil.svg"
+            <img *ngIf="currentUser.photo == null" src="../../assets/images/profil.png"
               style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
               alt="">
               <img *ngIf="currentUser.photo != null" src="../../assets/images/agriculteur.jpg"
@@ -28,7 +28,7 @@
         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0" style="background-color: #efecee;">
           <a *ngIf="agriculteur" routerLink="/profil/champs" class="dropdown-item">
             <div class="d-flex align-items-center nomUser">
-              <img *ngIf="currentUser.photo == null" class="rounded-circle" src="../../assets/images/profil.svg" alt="" style="width: 40px; height: 40px;">
+              <img *ngIf="currentUser.photo == null" class="rounded-circle" src="../../assets/images/profil.png" alt="" style="width: 40px; height: 40px;">
               <img *ngIf="currentUser.photo != null" class="rounded-circle" src="../../assets/images/agriculteur.jpg" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2" >
                 <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">{{currentUser.nomcomplet}}</h6>
@@ -37,7 +37,7 @@
           </a>
           <a *ngIf="!agriculteur" routerLink="/profil-transporteur" class="dropdown-item">
             <div class="d-flex align-items-center nomUser">
-              <img *ngIf="currentUser.photo == null" class="rounded-circle" src="../../assets/images/profil.svg" alt="" style="width: 40px; height: 40px;">
+              <img *ngIf="currentUser.photo == null" class="rounded-circle" src="../../assets/images/profil.png" alt="" style="width: 40px; height: 40px;">
               <img *ngIf="currentUser.photo != null" class="rounded-circle" src="../../assets/images/agriculteur.jpg" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2" >
                 <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">{{currentUser.nomcomplet}}</h6>

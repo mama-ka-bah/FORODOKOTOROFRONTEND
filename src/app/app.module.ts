@@ -21,13 +21,14 @@ import { AjouterChampComponent } from './ajouter-champ/ajouter-champ.component';
 import { DevenirAgriculteurComponent } from './devenir-agriculteur/devenir-agriculteur.component';
 import { AjouterParserelleComponent } from './ajouter-parserelle/ajouter-parserelle.component';
 import { CultureParserelleComponent } from './culture-parserelle/culture-parserelle.component';
+import { AjouterPhaseCultiveComponent } from './ajouter-phase-cultive/ajouter-phase-cultive.component';
 
 
 
   @NgModule({
     declarations: [AppComponent,OtpComponent,InputotpComponent,ChangerMotDePasseComponent, ChoisirProfilComponent,
        DevenirTransporteurComponent, DevenirAgriculteurComponent, AjouterChampComponent, AjouterParserelleComponent,
-      CultureParserelleComponent],
+      CultureParserelleComponent, AjouterPhaseCultiveComponent],
     imports: [
       BrowserModule,
       IonicModule.forRoot(),

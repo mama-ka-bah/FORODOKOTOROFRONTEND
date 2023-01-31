@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, ModalController, PopoverController } from '@ionic/angular';
+import { AjouterPhaseCultiveComponent } from '../ajouter-phase-cultive/ajouter-phase-cultive.component';
 import { CultureParserelleComponent } from '../culture-parserelle/culture-parserelle.component';
 import { DetailsChampsPage } from '../details-champs/details-champs.page';
 import { AgriculteurService } from '../services/agriculteur.service';
@@ -22,6 +23,7 @@ export class DetailParserellePage implements OnInit {
   indexCultiveActuel:any//son index dans la session
   lesCultiveREcuperer:any;
   lesPrevisionsDunCultive:any;
+
 
   constructor(
     private routes : ActivatedRoute,
@@ -96,7 +98,24 @@ export class DetailParserellePage implements OnInit {
       Collapsed: ${collapsedItems.join(', ')}
     `;
   };
-    /* de but du ts de drop down */
+    /* fin ts de drop down */
 
+
+    async modalAjoutAction() {
+      const modal = await this.modalCtrl.create({
+        //le composant contenant le modal
+        component: AjouterPhaseCultiveComponent,
+        //Ici on envoi l'id de cultive actuel au composant contenant le formulaire de creation de 
+        componentProps: {
+        data: this.idDeCultiveActuel
+    }
+      });
+      //Cette methode contient les 
+      modal.onDidDismiss().then((emailSaisie) => {
+      });
+      await modal.present();
+    }
 
 }
+
+
