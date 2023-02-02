@@ -1,6 +1,3 @@
-// ion-content{
-//     --background: red;
-// }
 
 //La barre en haut
 ion-toolbar{
@@ -9,14 +6,19 @@ ion-toolbar{
     padding: 0;
 }
 
+
 //le titre de la barre
 ion-title{
     font-size: 15px;
 }
 
-// .containeur{
-   
-// }
+ion-title.ios{
+    padding-top: 22px!important;
+    font-weight: bold!important;
+}
+ion-toolbar.ios{
+    --height: 70px!important
+}
 
 //le logo de l'app
 .logo{

@@ -47,6 +47,10 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
+
+    top: 75px;
+    background-color: #fff;
+    position: fixed;
   }
   .active{
     --background: #14AE5C;

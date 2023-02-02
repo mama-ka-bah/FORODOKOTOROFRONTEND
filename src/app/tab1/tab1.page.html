@@ -92,11 +92,11 @@
   <div class="decouvrir">
     <span class="libelle-decouvrir">Decouvrir</span>
     <div class="images-decouvrir">
-      <div class="elt-decouvrir">
+      <div class="elt-decouvrir" routerLink="/tabs/produit-agricoles" (click)="donneesService.reccupererTitreAgriculture()">
         <img src="../assets/images/agriculture.png">
         <label class="label-decouvrir">Agriculture</label>
       </div>
-      <div class="elt-decouvrir">
+      <div class="elt-decouvrir" routerLink="/tabs/marche" (click)="donneesService.reccupererTitreMarche()">
         <img src="../assets/images/marche.png">
         <label class="label-decouvrir">Marche</label>
       </div>
@@ -104,13 +104,13 @@
         <img src="../assets/images/conseil.png">
         <label class="label-decouvrir">Conseil</label>
       </div>
-      <div class="elt-decouvrir">
+      <div class="elt-decouvrir" >
         <img src="../assets/images/champs.png">
         <label class="label-decouvrir">Champs</label>
       </div>
     </div>
   </div>
-  <div class="transports" routerLink="/tabs/transporteurs">
+  <div class="transports" routerLink="/tabs/transporteurs" (click)="donneesService.reccupererTitreTransporteur()">
     <span class="libelle-transport">Retrouver un transporteur</span>
 
     <div class="lien-transporteur">
@@ -121,10 +121,10 @@
   <span class="libelle-produitsagricoles">Produits agricoles</span>
   <div class="produitsagricoles">
     <ion-slides [options]="options" class="imagesproduits">
-      <ion-slide class="images-produit">
-        <img src="../assets/images/arachide-accueil.png" alt="images">
+      <ion-slide class="images-produit" *ngFor="let produit of lesProduitsAgricoles" >
+        <img src="{{produit.photo}}" alt="images">
       </ion-slide>
-      <ion-slide class="images-produit">
+      <!-- <ion-slide class="images-produit">
         <img src="../assets/images/mais-accueil.png" alt="images">
       </ion-slide>
       <ion-slide class="images-produit">
@@ -132,7 +132,7 @@
       </ion-slide>
       <ion-slide class="images-produit">
         <img src="../assets/images/mais-accueil.png" alt="images">
-      </ion-slide>
+      </ion-slide> -->
     </ion-slides>
   </div>
 

@@ -65,4 +65,20 @@ export class ChampService {
       return this.http.post(AUTH_API4 + `ajouter/${idCultive}`, data);
     }
 
+     //permet de recuperer Phase Actives Dune cultive
+     recupererPhaseActivesDunecultive(idCultive:any): Observable<any> {
+      return this.http.get(AUTH_API4 + `recupererphaseactivesdunecultive/${idCultive}`);
+    }
+
+
+     //permet de mettre à jour la quantité du recolte réelle realisé par l'agriculteur
+     mettreAjourQuantiteReelleDeRecolte(idCultive:any, quantite:any): Observable<any> {
+      return this.http.patch(AUTH_API2 + `modifier/${idCultive}`,
+        {
+          "recolterealise":quantite
+        }
+      );
+    }
+
+
 }

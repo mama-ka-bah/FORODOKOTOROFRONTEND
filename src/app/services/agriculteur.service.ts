@@ -19,10 +19,6 @@ export class AgriculteurService {
 
   devenirTransporteur(file:any, donneesTransporteur:any, id:any): Observable<any> {
     const data:FormData=new FormData();
-        console.log("mes donnees: " + donneesTransporteur.numeroPlaque)
-    console.log("mes donnees: " + donneesTransporteur.disponibilite)
-    console.log("mes donnees: " + id)
-    console.log("mes donnees: " + file)
     data.append("file", file);
     data.append('donneesTransporteur', JSON.stringify(donneesTransporteur).slice(1,JSON.stringify(donneesTransporteur).lastIndexOf(']')));
 

@@ -1,0 +1,60 @@
+<ion-header>
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+      Details de l'action
+      </div>
+      <div (click)="closeModal()"> <i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+    </div>
+  </div>
+
+</ion-header>
+<ion-content style="background:#efecee;">
+
+  <div class="photoChamp">
+    <img class="monChamp" src="{{detailsPhaseAAficher.photo}}" alt="Image du champ">
+  </div>
+
+
+  <div class="conteneurDetailChamp">
+
+    <div class="detailChamp">
+      <div class="elementDetailChamp">
+        <div class="libelled">ACTION</div>
+        <div class="detail"> {{detailsPhaseAAficher.libelle}}</div>
+      </div>
+      <div class="elementDetailChamp">
+        <div class="libelled">DATE DEBUT</div>
+        <div class="detail">{{detailsPhaseAAficher.datedebut}}</div>
+      </div>
+      <div class="elementDetailChamp">
+        <div class="libelled">DATE FIN</div>
+        <div class="detail">{{detailsPhaseAAficher.datefin}}</div>
+      </div>
+      <div class="elementDetailChamp">
+        <div class="libelled"><i style="color: #fff; font-size: 25px;" class="fa-solid fa-cloud"></i></div>
+        <div class="detail" *ngIf="detailsPhaseAAficher.nbrepluies>0">{{detailsPhaseAAficher.nbrepluies}} fois de pluies</div>
+        <div class="detail" *ngIf="detailsPhaseAAficher.nbrepluies == 0 || detailsPhaseAAficher.nbrepluies == 1">{{detailsPhaseAAficher.nbrepluies}} fois de pluies</div>
+      </div>
+
+      <div class="remarque">
+        <div class="libelleRemarque">REMARQUES</div>
+        <div class="texte-remarque" style="text-align: justify;">{{detailsPhaseAAficher.remarques}}</div>
+      </div>
+      
+      
+      <div class="semer">
+        <div class="iconAct"><i  class='far fa-edit' style='font-size:25px; color: blue;'></i></div>
+        <!-- <ion-button class="fermer" type="submit" id="open-modal2" expand="block">Semer</ion-button> -->
+        <div class="iconAct"><i class="fa fa-trash" aria-hidden="true" style="color:red; font-size:25px"></i></div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+</ion-content>

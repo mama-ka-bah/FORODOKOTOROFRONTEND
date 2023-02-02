@@ -8,6 +8,7 @@ import { LoadingController, ModalController, PopoverController } from '@ionic/an
 import { ChoisirProfilComponent } from '../choisir-profil/choisir-profil.component';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { DevenirTransporteurComponent } from '../devenir-transporteur/devenir-transporteur.component';
+import { ProduitAgricolesService } from '../services/produit-agricoles.service';
 
 
 
@@ -29,6 +30,7 @@ export class Tab1Page implements OnInit{
   tmp_temporaire1:any;
   tmp_temporaire2:any;
   tmp_temporaire3:any;
+  lesProduitsAgricoles:any;
 
   //utilisateur actuel
   currentUser:any;
@@ -37,10 +39,9 @@ export class Tab1Page implements OnInit{
     private meteoservice : MeteoService,
     private storageService : StorageService,
     private router : Router,
-    private donneesService: DonneesStockerService,
-    public loadingController: LoadingController
-
-
+    public donneesService: DonneesStockerService,
+    public loadingController: LoadingController,
+    private produitService: ProduitAgricolesService
     ) {  }
 
     ionViewDidEnter(){
@@ -53,6 +54,7 @@ export class Tab1Page implements OnInit{
       this.getCurrentLocation();
       this.dismissLoading()
     }
+    this.recupererTousLesproduitsAgricole();
     
     this.currentUser = this.storageService.getUser();
     this.donneesService.setpageActuel("FORODOKOTORO");
@@ -98,10 +100,18 @@ export class Tab1Page implements OnInit{
   
   };
 
+//ici on recupere tous les produits agricole depuis la base donn"e nom de la fonction service à corriger
+  recupererTousLesproduitsAgricole(){
+    this.produitService.recupererParsererelleDunChamp().subscribe(data =>{
+      this.lesProduitsAgricoles = data;
+    })
+  }
+
+
   options = {
     slidesPerView:3,   // NOMBRE DE SLIDE PAR PAGE = 1
     centeredSlider:true,
-    //loop:true,
+    loop:true,
     spaceBetween:10,
     autoplay:true
   }

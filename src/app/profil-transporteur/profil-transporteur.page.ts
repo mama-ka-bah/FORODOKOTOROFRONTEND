@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../services/stockage.service';
 
 @Component({
   selector: 'app-profil-transporteur',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilTransporteurPage implements OnInit {
 
-  constructor() { }
+  currentUser:any
+
+  constructor( private storageService : StorageService,
+    ) { }
 
   ngOnInit() {
+    this.currentUser = this.storageService.getUser();
   }
 
 }

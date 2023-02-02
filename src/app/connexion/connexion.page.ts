@@ -261,7 +261,7 @@ reloadPage(): void {
   window.location.reload();
 }
 
- //loading controlleur
+ //loading controlleur utilise pour montrer à l'user que le programme est en cours de chargement
  async presentLoading() {
   const loading = await this.loadingController.create({
     message: 'Patienter...',

@@ -3,6 +3,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalController, NavParams } from '@ionic/angular';
 import { AgriculteurService } from '../services/agriculteur.service';
 
+/**
+ * Les données de cette formulaire ont été gérées dans la page tabs page de bottom barre
+ * 
+ */
 
 @Component({
   selector: 'app-devenir-transporteur',

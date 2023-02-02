@@ -65,9 +65,11 @@
 .meteo{
     background-repeat: no-repeat;
     background-size: cover;
-    height: 45vh;
+    // height: 45vh;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)),  url("/assets/images/meteo.png");
     margin-top: 75px;
+
+    padding: 15px;
 }
 
 
@@ -212,10 +214,20 @@
   //images d'un produit
   .images-produit{
     border-radius: 15px;
-    width: 100px;
-    height: 153px;
+   
+    overflow: hidden;
   }
+// .images-produit img{
+//   // max-width: 130%;
+//   // max-height: 130%;
+//   object-fit: cover;
+// }
 
+.swiper-slide img {
+  width: 100px;
+    height: 120px;
+  object-fit: cover;
+}
   .wicon{
     height: 10px;
     width: 20px;

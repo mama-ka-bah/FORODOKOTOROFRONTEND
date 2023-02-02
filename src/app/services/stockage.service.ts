@@ -8,6 +8,8 @@ const PARSERELLE_KEY = 'parserelle';
 const CULTIVE_KEY = 'cultive';
 const PRODUITAGRICOLE_KEY = 'produitagricole';
 const CURRENTURL_KEY = "currenturl";
+const PHASESCULTIVE_KEY = "phasescultive";
+
 
 @Injectable({
   providedIn: 'root'
@@ -186,5 +188,24 @@ export class StorageService {
     }
     return {};
   }
+
+
+
+  //enregistrement des phases d'un cultive dans la session
+  //permet d'enregistrer les phases du cultive active dans sessionStorrage
+  public savePhases(phasesAStocker: any): void {
+    window.sessionStorage.removeItem(PHASESCULTIVE_KEY);
+    window.sessionStorage.setItem(PHASESCULTIVE_KEY, JSON.stringify(phasesAStocker));
+  }
+  
+  //permeet de recuperer les phases du cultive active dans la sessionStorrage
+  public getPhases(): any {
+    const phasesARecuperer = window.sessionStorage.getItem(PHASESCULTIVE_KEY);
+    if (phasesARecuperer) {
+      return JSON.parse(phasesARecuperer);
+    }
+    return {};
+  }
+
 
 }

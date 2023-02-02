@@ -103,7 +103,11 @@
           <div class="calendar-input">{{detailDunCutive.datedebutsemis}}</div>
         </div>
         <div class="calendrier">
-          <div class="libDate">DATE FIN</div>
+          <div class="libDate">DATE FIN SEMIS</div>
+          <div class="calendar-input">{{detailDunCutive.datefinsemis}}</div>
+        </div>
+        <div class="calendrier" *ngIf="detailDunCutive.datefinCultive != null">
+          <div class="libDate">DATE FIN CULTIVE</div>
           <div class="calendar-input">{{detailDunCutive.datefinsemis}}</div>
         </div>
         <div class="calendrier">
@@ -122,9 +126,9 @@
           <div class="libDate">RECOLTE PREVUE</div>
           <div class="calendar-input">{{detailDunCutive.recoleprevue}} kg</div>
         </div>
-        <form class="calendrier recolteInputConteneur">
+        <form class="calendrier recolteInputConteneur"  [formGroup]="myForm" (ngSubmit)="submitForm()">
           <div class="libDate">RECOLTE REELLE</div>
-          <input class="calendar-input inputRecolte" type="number" value="{{detailDunCutive.recolterealise}}">
+          <input class="calendar-input inputRecolte" type="number" name="recolterealise" formControlName="recolterealise" value="{{detailDunCutive.recolterealise}}">
           <button type="submit"><i class="fa fa-refresh" aria-hidden="true"
               style="font-size: 22px; color: #14AE5C;"></i></button>
         </form>
@@ -148,22 +152,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Action..</td>
-            <td>12/06/22</td>
-            <td>30/06/22</td>
+          <tr *ngFor="let phase of lesPhaseActivesDunecultive  ; index as i">
+            <td>{{phase.libelle}}</td>
+            <td>{{phase.datedebut}}</td>
+            <td>{{phase.datefin}}</td>
             <!-- <td>Detail...</td> -->
-            <td routerLink="/profil/champs/details-champs/detail-parserelle"><i style="color: #14AE5C;"
-                class="fa fa-info-circle" aria-hidden="true"></i></td>
+            <!-- routerLink="/profil/champs/details-champs/detail-parserelle" -->
+            <td id="open-modal" expand="block" (click)="recupererLesDetailDunePhases(i)"><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i>
+              </td>
           </tr>
-          <tr>
-            <td>Action..</td>
-            <td>15/07/22</td>
-            <td>16/07/22</td>
-            <!-- <td>Detail...</td> -->
-            <td routerLink="/profil/champs/details-champs/detail-parserelle"><i style="color: #14AE5C;"
-                class="fa fa-info-circle" aria-hidden="true"></i></td>
-          </tr>
+          
         </tbody>
       </table>
     </div>
@@ -174,9 +172,6 @@
     </div>
 
   </div>
-
-
-
 
 
 

@@ -100,8 +100,7 @@ onFileChangePermis(event: any) {
                 "adresse":this.myForm.controls.adresse.value,
                 "longitude":this.myForm.controls.longitude.value,
                 "latitude":this.myForm.controls.latitude.value
-               }
-            
+               }      
             
         ]
 
@@ -129,7 +128,7 @@ onFileChangePermis(event: any) {
                   ///si l'ajout du champ a marché
                   if(this.resultatAjoutChamp.status == 1){
                     this.modalCtrl.dismiss(this.resultatAjoutChamp);
-                    // this.router.navigateByUrl("/profil/champs");
+                    this.router.navigateByUrl("/profil/champs");
                     Swal.fire({
                       icon: 'success',
                       title: data.message,
@@ -151,10 +150,7 @@ onFileChangePermis(event: any) {
                     })
                   }
                   
-                })
-    
-                
-               
+                })                
               } 
             })
 

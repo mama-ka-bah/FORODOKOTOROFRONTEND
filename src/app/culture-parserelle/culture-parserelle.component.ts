@@ -91,6 +91,7 @@ submitForm(){
               },
               heightAuto:false,
             })
+            this.ngOnInit();
           }else{
             Swal.fire({
               icon: 'info',

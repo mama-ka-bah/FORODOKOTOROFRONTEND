@@ -56,6 +56,7 @@ currentUser:any
   
         modal.onDidDismiss().then((resultatAjoutChamp) => {
           //this.router.navigateByUrl('/connexion');
+          this.ngOnInit();
           console.log(resultatAjoutChamp.data);
         });
     
@@ -76,6 +77,7 @@ currentUser:any
     
           modal.onDidDismiss().then((resultatAjoutChamp) => {
             //this.router.navigateByUrl('/connexion');
+            this.ngOnInit();
             console.log(resultatAjoutChamp.data);
           });
       

@@ -113,23 +113,23 @@
 <ion-tabs>
 
   <ion-tab-bar class="bottom" slot="bottom">
-    <ion-tab-button class="tabulation" (click)=" reccupererTitreAccueil()" tab="tab1">
+    <ion-tab-button class="tabulation" (click)="donneesService.reccupererTitreAccueil()" tab="tab1">
       <ion-icon name="home" aria-hidden="true"></ion-icon>
       <ion-label>Accueil</ion-label>
       <!-- <ion-badge>6</ion-badge> -->
     </ion-tab-button>
 
-    <ion-tab-button (click)="reccupererTitreAgriculture()" tab="produit-agricoles">
+    <ion-tab-button (click)="donneesService.reccupererTitreAgriculture()" tab="produit-agricoles">
       <ion-icon name="person-circle" aria-hidden="true"></ion-icon>
       <ion-label>Agriculture</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="reccupererTitreTransporteur()" tab="transporteurs">
+    <ion-tab-button (click)="donneesService.reccupererTitreTransporteur()" tab="transporteurs">
       <ion-icon name="map" aria-hidden="true"></ion-icon>
       <ion-label>transport</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="reccupererTitreMarche()" tab="marche">
+    <ion-tab-button (click)="donneesService.reccupererTitreMarche()" tab="marche">
       <ion-icon name="information-circle" aria-hidden="true"></ion-icon>
       <ion-label>Marché</ion-label>
     </ion-tab-button>

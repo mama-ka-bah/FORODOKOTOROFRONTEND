@@ -20,7 +20,7 @@ lesProduitAgricoleRecuperer:any;
     ) { }
 
 
-   //permet de recuperer les produit agricoles depuis la base des données
+   //permet de recuperer les produit agricoles depuis la base des données, le nom doit etre corrigé
    recupererParsererelleDunChamp(): Observable<any> {
     this.lesProduitAgricoleRecuperer =  this.http.get(AUTH_API + "produitagricoleactives");
     return this.lesProduitAgricoleRecuperer;

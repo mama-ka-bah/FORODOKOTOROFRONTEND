@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavController, ModalController, PopoverController } from '@ionic/angular';
+import { NavController, ModalController, PopoverController, IonModal } from '@ionic/angular';
 import { AjouterPhaseCultiveComponent } from '../ajouter-phase-cultive/ajouter-phase-cultive.component';
 import { CultureParserelleComponent } from '../culture-parserelle/culture-parserelle.component';
 import { DetailsChampsPage } from '../details-champs/details-champs.page';
@@ -9,6 +9,12 @@ import { ChampService } from '../services/champ.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { MeteoService } from '../services/meteo.service';
 import { StorageService } from '../services/stockage.service';
+import { OverlayEventDetail } from '@ionic/core/components';
+import { DetailPhaseCultiveComponent } from '../detail-phase-cultive/detail-phase-cultive.component';
+import { FormGroup, FormControl } from '@angular/forms';
+import { ChargementService } from '../services/chargement.service';
+
+
 
 @Component({
   selector: 'app-detail-parserelle',
@@ -23,7 +29,12 @@ export class DetailParserellePage implements OnInit {
   indexCultiveActuel:any//son index dans la session
   lesCultiveREcuperer:any;
   lesPrevisionsDunCultive:any;
+  lesPhaseActivesDunecultive:any;
+  lesDetailsDunePhases:any;
 
+  //lié à input formulaire
+  recolterealise: any;
+  myForm:any
 
   constructor(
     private routes : ActivatedRoute,
@@ -35,12 +46,21 @@ export class DetailParserellePage implements OnInit {
     private agriculteurService: AgriculteurService,
     public popoverController: PopoverController,
     private champService: ChampService,
-    private meteoservice: MeteoService
-  ) { }
+    private meteoservice: MeteoService,
+    private chargementServie: ChargementService,
+    // private cultureParserelle: CultureParserelleComponent
+  ) { 
+    this. recupererdetailDunCultive();
+  //l'objet form group lié à mon formulaire dans le template
+ this.myForm = new FormGroup({
+    recolterealise: new FormControl(this.recolterealise)
+});
+  }
 
   ngOnInit() {
     this. recupererdetailDunCultive();
     this.recupererPrevissionsDunCultive(this.idDeCultiveActuel);
+    this.recupererPhaseActivesDunecultive(this.idDeCultiveActuel);
   }
 
   //cette fonction est utiliser pour afficher les details liée à un cultive donné
@@ -51,8 +71,35 @@ export class DetailParserellePage implements OnInit {
 
     //ici je recupere l'id du cultive
     this.idDeCultiveActuel = this.detailDunCutive.id;
+    this.recolterealise = this.detailDunCutive.recolterealise;
   }
 
+
+
+ //La fonction appeler lors de l'envoie de mon formulaire
+ submitForm() {
+
+  //verifie si le formulaire est valide
+  if(this.myForm.valid) {
+    this.chargementServie.presentLoading();
+
+    this.champService.mettreAjourQuantiteReelleDeRecolte(this.detailDunCutive.id, this.myForm.controls.recolterealise.value).subscribe(data =>{
+      // this.chargementServie.dismissLoading();
+    })
+//this.cultureParserelle.recupererlesCultiveActiveDuneParserelle();
+this.champService.recupererLesCultiveDuneParsererelle(this.detailDunCutive.parserelle.id).subscribe( data =>{  this.storageService.saveCultive(data);
+  
+});
+const lesCultivesstockerDansSessions = this.storageService.getCultive();
+    this.detailDunCutive = lesCultivesstockerDansSessions[this.indexCultiveActuel];
+    this.recolterealise = this.detailDunCutive.recolterealise;
+  this.ngOnInit();
+
+  }
+}
+
+
+  //ici on recupere les differentes prevision lié à un cultive
   recupererPrevissionsDunCultive(recupererPrevissionsDunCultive:any){
     this.champService.recupererPrevisionDunCultive(this.idDeCultiveActuel).subscribe(data =>{
       this.lesPrevisionsDunCultive = data;
@@ -64,6 +111,25 @@ export class DetailParserellePage implements OnInit {
   recupererDetailDuneParserelle(){
     this.tousLesCultivesStockerDansSession = this.storageService.getCultive();
    this.voirListeCultiveDuneParserelle(this.tousLesCultivesStockerDansSession[0].parserelle, this.tousLesCultivesStockerDansSession[0].parserelle.id);
+  }
+
+
+  recupererPhaseActivesDunecultive(idDeCultiveActuel: any){
+    this.champService.recupererPhaseActivesDunecultive(idDeCultiveActuel).subscribe(data => {
+      this.lesPhaseActivesDunecultive = data;
+
+      if(this.lesPhaseActivesDunecultive)
+      this.storageService.savePhases(this.lesPhaseActivesDunecultive);
+    })
+  }
+
+  
+  //permet de recuperer les details parmi les les phases de la cultives actuelle dans dans la sessionStorage
+  recupererLesDetailDunePhases(indexPhases:any){
+    const toutesLesPhasesStockerDansSession =  this.storageService.getPhases();
+    this.lesDetailsDunePhases = toutesLesPhasesStockerDansSession[indexPhases];
+    this.detailAction(this.lesDetailsDunePhases)
+   
   }
 
 
@@ -101,6 +167,7 @@ export class DetailParserellePage implements OnInit {
     /* fin ts de drop down */
 
 
+//on fait appel au composant pout ajouter une nouvelle ction
     async modalAjoutAction() {
       const modal = await this.modalCtrl.create({
         //le composant contenant le modal
@@ -110,11 +177,35 @@ export class DetailParserellePage implements OnInit {
         data: this.idDeCultiveActuel
     }
       });
+
       //Cette methode contient les 
-      modal.onDidDismiss().then((emailSaisie) => {
+      modal.onDidDismiss().then((result) => {
+       console.log(JSON.stringify(result));
+       this.ngOnInit();
       });
       await modal.present();
     }
+
+
+
+    //on fait appel au composant pour afficher lees details d'une action (ou phase de cultive)
+    async detailAction(detailAAfficher:any) {
+      const modal = await this.modalCtrl.create({
+        //le composant contenant le modal
+        component: DetailPhaseCultiveComponent,
+
+        //Ici on envoi les details de la phase (action) à afficher au composant pour les afficher
+        componentProps: {
+        data: detailAAfficher
+    }
+      });
+
+      //Cette methode contient les 
+      modal.onDidDismiss().then(() => {
+      });
+      await modal.present();
+    }
+
 
 }
 

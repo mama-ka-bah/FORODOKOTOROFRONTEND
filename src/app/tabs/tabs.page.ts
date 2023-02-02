@@ -60,18 +60,21 @@ export class TabsPage implements OnInit{
       this.conditionAfichageMenu = value;
     });
   }
-  reccupererTitreAccueil(){
-    this.headerTitle = "FORODOKOTORO";
-  }
-  reccupererTitreAgriculture(){
-    this.headerTitle = "Agriculture";
-  }
-  reccupererTitreMarche(){
-    this.headerTitle = "Marché";
-  }
-  reccupererTitreTransporteur(){
-    this.headerTitle = "Transports";
-  }
+  
+//  public reccupererTitreAccueil(){
+//     this.headerTitle = "FORODOKOTORO";
+//   }
+//   public reccupererTitreAgriculture(){
+//     this.headerTitle = "AGRICULTURE";
+//   }
+//   public reccupererTitreMarche(){
+//     this.headerTitle = "MARCHE";
+//   }
+//   public reccupererTitreTransporteur(){
+//     this.headerTitle = "TRANSPORTS";
+//   }
+
+
 
   ngOnInit(): void {    
 
@@ -79,6 +82,10 @@ export class TabsPage implements OnInit{
    
     this.donneesService.showMenu$.subscribe(value => {
       this.conditionAfichageMenu = value;
+    });
+
+    this.donneesService.headerTitle$.subscribe(value => {
+      this.headerTitle = value;
     });
     
     this.currentUrl = this.router.url;
@@ -91,13 +98,13 @@ export class TabsPage implements OnInit{
         this.headerTitle = 'FORODOKOTORO';
         break;
       case '/tabs/produit-agricoles':
-        this.headerTitle = 'Agriculture';
+        this.headerTitle = 'AGRICULTURE';
         break;
       case '/tabs/transporteurs':
-        this.headerTitle = 'Transporteurs';
+        this.headerTitle = 'TRANSPORTS';
         break;
         case '/tabs/marche':
-          this.headerTitle = 'Marché';
+          this.headerTitle = 'MARCHE';
           break;
           default: 
             this.headerTitle = '';
@@ -160,7 +167,7 @@ export class TabsPage implements OnInit{
       //Cette methode contient les 
       modal.onDidDismiss().then((emailSaisie) => {
 
-        if(typeof emailSaisie !== 'undefined'){
+        if(emailSaisie.data){
 
           // console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,: " + JSON.stringify(emailSaisie));
           // console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,: " + JSON.stringify(emailSaisie.data.donneesTransporteur[0].numeroplaque));
@@ -168,7 +175,7 @@ export class TabsPage implements OnInit{
   
           Swal.fire({
             title: 'Etes vous sur d\'envoyer cette demande',
-            showDenyButton: true,
+            // showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: 'Envoyer',
             denyButtonText: `Annuler`,
