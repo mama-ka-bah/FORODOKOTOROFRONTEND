@@ -1,6 +1,11 @@
         
         <ion-content>
 
+          <ion-refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content>
+            </ion-refresher-content>
+          </ion-refresher>
+
                   
         <ion-modal
         trigger="open-modal1"
@@ -15,7 +20,7 @@
           flex-direction: column!important;">
     
             <div class="ion-margin-top" style="margin-bottom: 3%; width: 100%; text-align: center;">
-              <ion-label class="libelleModal" >Veuillez choisir une option</ion-label>
+              <ion-label (click)="dismiss()" class="libelleModal" >Veuillez choisir une option</ion-label>
             </div>
               <ion-item (click)="ajouterChamp()" class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
                 <img style="height: 30px; width: 30px;" src="../assets/images/devenirAgriculteur.png" alt="images">

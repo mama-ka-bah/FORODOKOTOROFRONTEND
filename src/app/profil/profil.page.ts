@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { PopoverController, ModalController, LoadingController } from '@ionic/angular';
+import { PopoverController, ModalController, LoadingController, IonRefresher, NavController, IonModal } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { AjouterChampComponent } from '../ajouter-champ/ajouter-champ.component';
 import { AjouterParserelleComponent } from '../ajouter-parserelle/ajouter-parserelle.component';
 import { AuthentificationService } from '../services/authentification.service';
 import { ChampService } from '../services/champ.service';
+import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { StorageService } from '../services/stockage.service';
 
 @Component({
@@ -13,6 +15,31 @@ import { StorageService } from '../services/stockage.service';
   styleUrls: ['./profil.page.scss'],
 })
 export class ProfilPage implements OnInit {
+
+ 
+  //code lié à mon modal pour gerer sa fermeture debut
+  @ViewChild(IonModal) modal!: IonModal;
+
+  dismiss() {
+    this.modal.dismiss(null, 'dismiss');
+  }  //code lié à mon modal pour gerer sa fermeture debut
+
+
+
+
+
+  @ViewChild(IonRefresher, { static: false }) refresher!: IonRefresher;
+  refreshPage() {
+    this.refresher.complete();
+  }
+
+  doRefresh(event:any) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
 
 
   myData = {
@@ -35,7 +62,9 @@ currentUser:any
     private storageService: StorageService,
     private router : Router,
     public loadingController: LoadingController,
-    private champService: ChampService
+    private champService: ChampService,
+    private navCtrl: NavController,
+    private donneesService: DonneesStockerService
   ) { }
 
   ngOnInit() {
@@ -55,8 +84,13 @@ currentUser:any
         });
   
         modal.onDidDismiss().then((resultatAjoutChamp) => {
-          //this.router.navigateByUrl('/connexion');
-          this.ngOnInit();
+        
+          //on met à jour les donnée du champ apres l'ajout du champ dans la la base
+            this.champService.recupererChampParProprietaire(this.currentUser.id).subscribe( data =>{
+              this.donneesService.lesChampsDeLuserActuel.next(data);             
+            });
+        this.dismiss();
+          this.navCtrl.navigateForward('/profil/champs')
           console.log(resultatAjoutChamp.data);
         });
     
@@ -75,10 +109,13 @@ currentUser:any
         }
           });
     
-          modal.onDidDismiss().then((resultatAjoutChamp) => {
+          modal.onDidDismiss().then((idChamp) => {
             //this.router.navigateByUrl('/connexion');
-            this.ngOnInit();
-            console.log(resultatAjoutChamp.data);
+            //this.ngOnInit();
+            this.dismiss();
+            this.router.navigate(['/profil/champs/details-champs', idChamp.data]);
+             //this.router.navigate(['/profil/champs']);
+            console.log(idChamp.data);
           });
       
           await modal.present();

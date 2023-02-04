@@ -28,7 +28,7 @@ reponseAjoutChamp:any
 currentUser:any
 
   idChampActuel:any
-  detailsChamp:any;
+  
   tousLesChampDunUserActuel:any
   tmp:any //temperature recurer
   temperatureActuelChamp:any
@@ -37,7 +37,30 @@ currentUser:any
   tousLesParserelleStockerDansSession:any
   idParserelleActive:any;
   lesCultivesActivesDuneParserelle:any;
+  indexChampActuel:any;
 
+  existeParserelle:boolean | undefined
+
+  //
+    //les details de mon champ debut
+  //
+  detailsChamp = {
+    id: 0,
+    nom :"",
+    longueur:0,
+    largeur:0,
+    longitude:0,
+    latitude:0,
+    adresse:"",
+    nombreParserelle:0,
+    photo:"",
+    proprietaire:null
+  }
+
+  perimetre:any = 0;
+  surface:any = 0;
+  loadingController: any;
+  
 
   constructor(
     private routes : ActivatedRoute,
@@ -58,14 +81,29 @@ currentUser:any
     this.recupererParserelleDunChamp();
   }
 
+
+
   recupererDetailChamp(){
+    //id du champ actuel
     this.idChampActuel = this.routes.snapshot.params['id'];
-    this.tousLesChampDunUserActuel = this.storageService.getChamps();
-    this.detailsChamp = this.tousLesChampDunUserActuel[this.idChampActuel-1];
+   
+    // this.tousLesChampDunUserActuel = this.storageService.getChamps();
+    // this.detailsChamp = this.tousLesChampDunUserActuel[this.indexChampActuel];
+
+    this.champService.recupererChampParId(this.idChampActuel).subscribe((data)=>{
+      this.detailsChamp =  data; 
+      this.detailsChamp = this.detailsChamp;
+
+      console.log("valeur data : " + data.nom);
+
+      this.perimetre= (this.detailsChamp.largeur + this.detailsChamp.longueur)*2;
+      this.surface = this.detailsChamp.largeur * this.detailsChamp.longueur;
+      
+    });
+
     this.recupererTemperatureChamp(this.detailsChamp.latitude, this.detailsChamp.longitude);
     console.log(this.detailsChamp);
   }
-
 
   recupererTemperatureChamp(latitude:any, longitude:any){
     this.meteoservice.getWeather(latitude, longitude).subscribe((data) =>{
@@ -74,13 +112,17 @@ currentUser:any
     })
   }
 
-
   recupererParserelleDunChamp(){
     this.champService.recupererParsererelleDunChamp(this.idChampActuel).subscribe((data) =>{  
       this.lesParserelleDunChamp =  data;
-      if(this.lesParserelleDunChamp != null){
+      
+      if(data.length > 0){
         this.storageService.saveParserelle(this.lesParserelleDunChamp);
+        this.existeParserelle = true;
+      }else{
+        this.existeParserelle = false;
       }
+
     })
   }
 
@@ -115,5 +157,11 @@ currentUser:any
 
     await modal.present();
   }
+
+
+
+
+
+
   
 }

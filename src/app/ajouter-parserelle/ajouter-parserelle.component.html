@@ -1,3 +1,15 @@
+<ion-header>
+  
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+       Ajouter Une parserelle
+      </div>
+      <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+    </div>
+  </div>
+</ion-header>
+
 <ion-content>
 
   <ion-refresher (ionRefresh)="doRefresh($event)">
@@ -6,16 +18,6 @@
   </ion-refresher>
 
   <div class="ajout-champ-modal">
-
-    <div class="barre-menu">
-      <div class="element-menus">
-        <div class="libelle">
-         Ajouter Une parserelle
-        </div>
-        <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
-      </div>
-    </div>
-
 
     <div class="containeur">
       <div class="conteneur-logo">
@@ -27,7 +29,7 @@
           <!-- Nom -->
           <div class="input">
 
-            <label>Nom</label>
+            <label>Nom <span class="obligatoire">*</span></label>
             <input class="telephone-input" type="text" class="form-control" placeholder="Nom du champ" formControlName="nom"
             [ngClass]="{'is-invalid': myForm.get('nom')!.invalid && myForm.get('nom')!.touched}"
             [ngClass]="{'is-valid': myForm.get('nom')!.valid && myForm.get('nom')!.touched}"
@@ -41,7 +43,7 @@
           <!-- Longueur -->
           <div class="input">
 
-            <label>Longueur</label>
+            <label>Longueur <span class="obligatoire">*</span></label>
             <input class="telephone-input" type="number" class="form-control" placeholder="En (metre)" formControlName="longueur"
             [ngClass]="{'is-invalid': myForm.get('longueur')!.invalid && myForm.get('longueur')!.touched}"
             [ngClass]="{'is-valid': myForm.get('longueur')!.valid && myForm.get('longueur')!.touched}"
@@ -55,7 +57,7 @@
           <!-- largeur -->
           <div class="input">
 
-            <label>Largeur</label>
+            <label>Largeur <span class="obligatoire">*</span></label>
             <input class="telephone-input" type="number" class="form-control" placeholder="En (metre)" formControlName="largeur"
             [ngClass]="{'is-invalid': myForm.get('largeur')!.invalid && myForm.get('largeur')!.touched}"
             [ngClass]="{'is-valid': myForm.get('largeur')!.valid && myForm.get('largeur')!.touched}"
@@ -70,7 +72,7 @@
            <!-- Le champ conserné -->
            <div class="input">
 
-            <label>Le champ</label>     
+            <label>Le champ <span class="obligatoire">*</span></label>     
             <select formControlName="champ" class="form-control telephone-input"
             [ngClass]="{'is-invalid': myForm.get('typeChamp')!.invalid && myForm.get('typeChamp')!.touched}"
             >
@@ -85,7 +87,7 @@
            <!-- Le champ conserné -->
            <div class="input">
 
-            <label>Type de Parserelle</label>     
+            <label>Type de Parserelle <span class="obligatoire">*</span></label>     
             <select formControlName="typeChamp" class="form-control telephone-input"
             [ngClass]="{'is-invalid': myForm.get('typeChamp')!.invalid && myForm.get('typeChamp')!.touched}"
             >

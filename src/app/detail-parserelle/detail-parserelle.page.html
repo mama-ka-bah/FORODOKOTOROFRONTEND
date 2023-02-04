@@ -92,7 +92,7 @@
 
       <!-- fin de prevision -->
 
-      <ion-button class="fermer" type="submit" expand="block">METTRE FIN</ion-button>
+      <ion-button class="fermer" type="submit" expand="block" id="open-modal3" [disabled]="etatFinission">METTRE FIN</ion-button>
 
       <div class="datedf">
         <div class="calendrier" style="font-weight: bold; justify-content: center; color: #14AE5C;">
@@ -108,7 +108,7 @@
         </div>
         <div class="calendrier" *ngIf="detailDunCutive.datefinCultive != null">
           <div class="libDate">DATE FIN CULTIVE</div>
-          <div class="calendar-input">{{detailDunCutive.datefinsemis}}</div>
+          <div class="calendar-input">{{detailDunCutive.datefinCultive}}</div>
         </div>
         <div class="calendrier">
           <div class="libDate">STATUS</div>
@@ -128,8 +128,8 @@
         </div>
         <form class="calendrier recolteInputConteneur"  [formGroup]="myForm" (ngSubmit)="submitForm()">
           <div class="libDate">RECOLTE REELLE</div>
-          <input class="calendar-input inputRecolte" type="number" name="recolterealise" formControlName="recolterealise" value="{{detailDunCutive.recolterealise}}">
-          <button type="submit"><i class="fa fa-refresh" aria-hidden="true"
+          <input [readonly]="etatFinission" class="calendar-input inputRecolte" type="number" name="recolterealise" formControlName="recolterealise" value="{{detailDunCutive.recolterealise}}">
+          <button [disabled]="etatFinission" type="submit"><i class="fa fa-refresh" aria-hidden="true" 
               style="font-size: 22px; color: #14AE5C;"></i></button>
         </form>
 
@@ -153,7 +153,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let phase of lesPhaseActivesDunecultive  ; index as i">
-            <td>{{phase.libelle}}</td>
+            <td>{{phase.libelle.slice(0, 10)}}<span *ngIf="phase.libelle.length > 10">...</span></td>
             <td>{{phase.datedebut}}</td>
             <td>{{phase.datefin}}</td>
             <!-- <td>Detail...</td> -->
@@ -166,12 +166,67 @@
       </table>
     </div>
 
-    <div class="ajouterPhase" (click)="modalAjoutAction()">
-      <div><i class="fa fa-plus" aria-hidden="true" style="font-size:30px"></i></div>
-      <div class="texteAjouter">Ajouter une phase</div>
+    <div class="ajouterPhase">
+      <div><i class="fa fa-plus" aria-hidden="true" style="font-size:30px; color: #14AE5C;"></i></div>
+      <ion-button style="--background: #fff; height: 40px ;color: #14AE5C; width: 177px;"  [disabled]="etatFinission" (click)="modalAjoutAction()" class="texteAjouter">Ajouter une phase</ion-button>
     </div>
 
   </div>
+
+
+
+
+
+
+    <ion-modal
+  trigger="open-modal3"
+  [initialBreakpoint]="0.55"
+  [breakpoints]="[0.70]"
+  handleBehavior="cycle"
+>
+  <ng-template>
+    <ion-content class="ion-padding" style="gap: 50px!important;
+    display: flex!important;
+    justify-content: space-around!important;
+    flex-direction: column!important;">
+
+    <form class="formulaire" [formGroup]="myForm1" (ngSubmit)="submitForm1()">
+
+      <div class="ion-margin-top" style="margin-bottom: 3%; width: 100%; text-align: center;">
+        <ion-label class="libelleModal" style="color: #14AE5C; font-weight: bold;">Veuillez remplir les champs</ion-label>
+      </div>     
+
+      <div class="input">
+        <label>Recolte Réalisé<span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="number" min="1" class="form-control" placeholder=" 2 en (kg)" formControlName="recolte"
+        
+        [ngClass]="{'is-invalid': myForm1.get('recolte')!.invalid && myForm1.get('recolte')!.touched}"
+        [ngClass]="{'is-valid': myForm1.get('recolte')!.valid && myForm1.get('recolte')!.touched}"
+        >
+        
+        <span class="erreur" *ngIf="myForm1!.get('recolte')!.hasError('required') && myForm1.get('recolte')!.touched">Cet champ est obligatoire</span>
+
+      </div>
+
+      <div class="input">
+        <label>Date fin culture<span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="date" class="form-control" formControlName="dateFinCultive"
+
+        [ngClass]="{'is-invalid': myForm1.get('dateFinCultive')!.invalid && myForm1.get('dateFinCultive')!.touched}"
+        [ngClass]="{'is-valid': myForm1.get('dateFinCultive')!.valid && myForm1.get('dateFinCultive')!.touched}"
+        >
+        <span class="erreur" *ngIf="myForm1!.get('dateFinCultive')!.hasError('required') && myForm1.get('dateFinCultive')!.touched">Cet champ est obligatoire</span>
+      </div>
+      <div class="conteneur-submit">
+        <ion-button class="envoyer-input" type="submit" expand="block">Envoyer</ion-button>
+      </div>
+
+    </form>
+      
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
 
 
 

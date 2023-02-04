@@ -295,6 +295,7 @@ tbody tr{
     width: 75%;
     margin: auto;
     cursor: pointer;
+    gap: 10px;
   }
 
   //style du liens choisir culture
@@ -330,4 +331,81 @@ tbody tr{
     font-weight: bold;
   }
  
+
+
+
+
+
+
+  //formulaire
+
+.input{
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.input input, select{
+  width: 90vw;
+}
+
+//le champ numero de telephone
+.telephone-input{
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+//le button envoyer
+.envoyer-input{
+  --background: #14AE5C;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  width: 90%;
+}
+
+
+
+
+.obligatoire{
+  color: red;
+}
+
+.input{
+  font-weight: bold;
+}
+
+.conteneur-submit{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+//le conteneur de mon formullaire
+.formulaire{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+
+.is-invalid{
+  border-color: red;
+}
+.is-valid{
+  border-color: #14AE5C;
+}
+
+.erreur{
+  color: red;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+}
+
+//fin style foormulaire
+
+  
 

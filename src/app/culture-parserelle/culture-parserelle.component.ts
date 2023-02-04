@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalController, NavParams } from '@ionic/angular';
+import { IonModal, IonRefresher, ModalController, NavParams } from '@ionic/angular';
 import Swal from 'sweetalert2';
 import { ChampService } from '../services/champ.service';
 import { ProduitAgricolesService } from '../services/produit-agricoles.service';
@@ -13,6 +13,30 @@ import { StorageService } from '../services/stockage.service';
   styleUrls: ['./culture-parserelle.component.scss'],
 })
 export class CultureParserelleComponent implements OnInit {
+  
+  //code lié à mon modal pour gerer sa fermeture debut
+  @ViewChild(IonModal) modal!: IonModal;
+
+  dismiss() {
+    this.modal.dismiss(null, 'dismiss');
+  }  //code lié à mon modal pour gerer sa fermeture debut
+
+
+  //permet de gerer le rafraichissement de la page à revoir (debut)
+  @ViewChild(IonRefresher, { static: false }) refresher!: IonRefresher;
+  refreshPage() {
+    this.refresher.complete();
+  }
+
+  doRefresh(event:any) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+    //permet de gerer le rafraichissement de la page à revoir (fin)
+
 
     detailParserelleClique:any;
     idparserelleEnvoyer:any;
@@ -22,6 +46,9 @@ export class CultureParserelleComponent implements OnInit {
     lesSemencesPourLeProduitActive:any;
 
     resultatatAjoutCultive:any;
+
+    existeCultive:boolean | undefined;
+    statusParserelle:boolean | undefined;
   
     //l'objet form froup lié à mon formulaire dans le template
     myForm = new FormGroup({
@@ -31,6 +58,27 @@ export class CultureParserelleComponent implements OnInit {
       datefinsemis: new FormControl(null, [Validators.required]),
       quantiteSemis: new FormControl('', [Validators.required,  Validators.maxLength(6)])
   });
+
+  desactiverBoutonSemer(){
+    if(this.detailParserelleClique.status == "OCCUPE"){
+      this.statusParserelle = true;
+    }else{
+      this.statusParserelle =false;
+    }
+  }
+
+ 
+  ionViewWillEnter(){
+   
+    this.desactiverBoutonSemer();
+    this.recupererlesCultiveActiveDuneParserelle();
+    this.recupererTousLesProduitsAgricoles();
+
+  }
+
+  ngOnInit() {
+    this.ionViewWillEnter();
+   }
 
   constructor(
     private navParams: NavParams,
@@ -49,6 +97,7 @@ export class CultureParserelleComponent implements OnInit {
 
      this.myForm.get('produitAgricole')!.valueChanges.subscribe(value => {
       this.recupererLesSemencesProduitAgricole(value);
+     
     });
    }
 
@@ -66,7 +115,7 @@ submitForm(){
     const varieteid =  this.myForm.controls.semence.value;
 
     Swal.fire({
-      title: 'Etes vous sur d\'ajouter cette parserelle',
+      text: 'Etes vous sur d\'ajouter cette parserelle',
       showDenyButton: true,
       confirmButtonText: 'Envoyer',
       denyButtonText: `Annuler`,
@@ -81,10 +130,13 @@ submitForm(){
           ///si l'ajout de parserelle a marché
           if(this.resultatatAjoutCultive.status == 1){
             // this.modalCtrl.dismiss(this.resultatAjoutChamp);
+            this.dismiss();
+            this.ngOnInit();
             this.myForm.reset();
+            this.recupererParserelleParId();
             Swal.fire({
               icon: 'success',
-              title: data.message,
+              text: data.message,
               timer: 2000,
               customClass: {
                 container: 'small-text'
@@ -95,7 +147,7 @@ submitForm(){
           }else{
             Swal.fire({
               icon: 'info',
-              title: data.message,
+              text: data.message,
               showConfirmButton: true,
               heightAuto:false,
             })
@@ -113,7 +165,14 @@ submitForm(){
   recupererlesCultiveActiveDuneParserelle(){
     this.champService.recupererLesCultiveDuneParsererelle(this.idparserelleEnvoyer).subscribe(data =>{
       this.lesCultivesActivesDuneParserelle = data;
-      this.storageService.saveCultive(this.lesCultivesActivesDuneParserelle);
+
+      if(data.length > 0){
+        this.storageService.saveCultive(this.lesCultivesActivesDuneParserelle);
+        this.existeCultive = true;
+      }else{
+        this.existeCultive = false;
+      }
+
     })
   }
 
@@ -139,10 +198,14 @@ submitForm(){
     })
   }
 
-  ngOnInit() {
-    this.recupererlesCultiveActiveDuneParserelle();
-    this.recupererTousLesProduitsAgricoles();
+  recupererParserelleParId(){
+    this.champService.recupererParserelleParId(this.idparserelleEnvoyer).subscribe(data => {
+      this.detailParserelleClique = data;
+      this.desactiverBoutonSemer();
+    })
   }
+
+
 
     //cette fonction permet de fermer le modal
     async closeModal() {

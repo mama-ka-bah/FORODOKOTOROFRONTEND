@@ -54,7 +54,7 @@
             </div>
           </a>
           <hr class="dropdown-divider">
-          <a class="dropdown-item"  id="open-modal" expand="block">
+          <a class="dropdown-item" id="open-modal" expand="block">
             <div class="d-flex align-items-center">
               <img class="rounded-circle" src="../../assets/images/completerProfil.png" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2">
@@ -97,11 +97,11 @@
         <div class="ion-margin-top" style="margin-bottom: 3%; width: 100%; text-align: center;">
           <ion-label class="libelleModal" >Desirez-vous devenir Agriculteur ou transporteur ?</ion-label>
         </div>
-          <ion-item (click)="openPopover($event)" class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
+          <ion-item (click)="dismiss()" (click)="openPopover($event)" class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
             <img style="height: 30px; width: 30px;" src="../assets/images/devenirAgriculteur.png" alt="images">
             <ion-label style="margin-left: 25px;">Agriculteur</ion-label>
           </ion-item>
-          <ion-item (click)="presentModal()" class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
+          <ion-item (click)="dismiss()" (click)="presentModal()" class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
             <i style="font-size: 30px;" class="fa-solid fa-car"></i>
             <ion-label  style="margin-left: 25px;" >transporteur</ion-label>
           </ion-item>

@@ -85,9 +85,9 @@ lesChampDeCurrentUser:any
     this.champService.recupererChampParProprietaire(this.currentUser.id).subscribe( data => {
       this.lesChampDeCurrentUser = data;
       console.log(this.lesChampDeCurrentUser);
-    })
-    
+    }) 
   }
+
 
   //La fonction appeler lors de l'envoie de mon formulaire
     submitForm() {
@@ -110,7 +110,7 @@ lesChampDeCurrentUser:any
 
 
             Swal.fire({
-              title: 'Etes vous sur d\'ajouter cette parserelle',
+              text: 'Etes vous sur d\'ajouter cette parserelle',
               showDenyButton: true,
               // showCancelButton: true,
               confirmButtonText: 'Envoyer',
@@ -123,23 +123,25 @@ lesChampDeCurrentUser:any
                   this.resultatAjoutChamp = data;
                   console.log(data);
 
-                  ///si l'ajout de parserelle a marché
+                  ///si l'ajout de parserelle est ok
                   if(this.resultatAjoutChamp.status == 1){
-                    this.modalCtrl.dismiss(this.resultatAjoutChamp);
+                  
+                    this.modalCtrl.dismiss(this.myForm.controls.champ.value);
+                    this.myForm.reset();
+                   this.closeModal();
                     Swal.fire({
                       icon: 'success',
-                      title: data.message,
+                      text: data.message,
                       timer: 2000,
                       customClass: {
                         container: 'small-text'
                       },
-
                       heightAuto:false,
                     })
                   }else{
                     Swal.fire({
                       icon: 'info',
-                      title: data.message,
+                      text: data.message,
                       showConfirmButton: true,
                       heightAuto:false,
                     })

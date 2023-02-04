@@ -28,7 +28,7 @@ export class ChampService {
 
   //permet de recuperer un champ par son id
   recupererChampParId(id:any): Observable<any> {
-    return this.http.get(AUTH_API + `detailChamp/${id}`, { withCredentials: true });
+    return this.http.get(AUTH_API + `detailChamp/${id}`);
   }
 
 
@@ -46,6 +46,11 @@ export class ChampService {
   recupererParsererelleDunChamp(idChamp:any): Observable<any> {
         return this.http.get(AUTH_API1 + `recupererlesparserelledunchamp/${idChamp}`);
   }
+
+  //permet de recuperer cultive par son id
+  recupererCultiveParSonId(idCulltive:any): Observable<any> {
+    return this.http.get(AUTH_API2 + `detailCultive/${idCulltive}`);
+}
  
 
 
@@ -78,6 +83,20 @@ export class ChampService {
           "recolterealise":quantite
         }
       );
+    }
+
+
+    mettrefinAunCultive(idCultive:any, dateFinCultive:any, quantiteRecolte:any){
+
+      const data:FormData=new FormData();
+
+        data.append('datefin', JSON.stringify(dateFinCultive).slice(1,JSON.stringify(dateFinCultive).lastIndexOf(']')));
+
+      return this.http.patch(AUTH_API2 + `mettrefinauncultive/${idCultive}/${quantiteRecolte}`, data);
+    }
+
+    recupererParserelleParId(idParserelle:any){
+      return this.http.get(AUTH_API1 + `recupererparserelleparsonid/${idParserelle}`);
     }
 
 

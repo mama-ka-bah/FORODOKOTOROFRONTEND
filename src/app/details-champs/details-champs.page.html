@@ -23,30 +23,6 @@
         <img class="monChamp" src="{{detailsChamp.photo}}" alt="Image du champ">
         <div class="temperature" >{{temperatureActuelChamp}} °C</div>
       </div>
-        <!-- <div class="filtre">
-          <ion-item>
-            <ion-select class="input-filtre" placeholder="Choisir une parselle" okText="Choose Fruit" cancelText="Cancel Choice">
-              <ion-select-option value="apples">Apples</ion-select-option>
-              <ion-select-option value="oranges">Oranges</ion-select-option>
-              <ion-select-option value="bananas">Bananas</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <i class="fa fa-filter" aria-hidden="true" routerLink="/profil/champs/details-champs/detail-parserelle" ></i>
-      </div>
-      
-      <div class="calendrier-semer">
-        <div class="calendrier">
-          <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday">
-          <input class="calendar-input" type="date" id="birthday" value="2023-01-13" name="birthday">
-        </div>
-        <div class="semer">
-          <ion-button class="fermer" type="submit" expand="block">Semer</ion-button>
-         <div class="actions-buuton">
-          <div><i  class='far fa-edit' style='font-size:25px; color: #000;'></i></div>
-          <div><i class="fa fa-trash" aria-hidden="true" style="color:red; font-size:25px"></i></div>
-         </div>
-        </div>
-      </div> -->
 
       <div class="detailChamp">
         <div class="elementDetailChamp">
@@ -70,6 +46,10 @@
           <div class="detail">{{detailsChamp.largeur}} m</div>
         </div>
         <div class="elementDetailChamp">
+          <div class="libelle">Nombre Parserelle</div>
+          <div class="detail"  style="color: #14AE5C; font-weight: bold;">{{detailsChamp.nombreParserelle}}</div>
+        </div>
+        <div class="elementDetailChamp">
           <div class="libelle">Perimetre</div>
           <div class="detail">{{(detailsChamp.largeur + detailsChamp.longueur)*2}} m</div>
         </div>
@@ -91,9 +71,9 @@
             <th>Largeur</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="existeParserelle">
           <tr *ngFor="let parselle of lesParserelleDunChamp ; index as i">
-            <td>{{parselle.nom}}</td>
+            <td> {{parselle.nom.slice(0, 10)}}<span *ngIf="parselle.nom.length > 10">...</span></td>
             <td>{{parselle.longueur}} m</td>
             <td>{{parselle.largeur}} m</td>
             <!-- [routerLink]="['/profil/champs/details-champs/detail-parserelle', parselle.id]" -->
@@ -102,6 +82,8 @@
          
         </tbody>
       </table>
+
+      <div  style="color: #14AE5C; display: flex; justify-content: center; margin-bottom: 15px;" *ngIf="!existeParserelle">AUCCUNE PARSERELLE</div>
 
     </div>
 

@@ -113,7 +113,7 @@ onFileChangePhase(event: any) {
       data.append("datefin", JSON.stringify(this.myForm.controls.datefin.value).slice(1,JSON.stringify(this.myForm.controls.datefin.value).lastIndexOf(']')));
 
           Swal.fire({
-            title: 'Etes vous sur d\'ajouter cette action',
+            text: 'Etes vous sur d\'ajouter cette action',
             showDenyButton: true,
             // showCancelButton: true,
             confirmButtonText: 'Envoyer',
@@ -131,7 +131,7 @@ onFileChangePhase(event: any) {
                   this.modalCtrl.dismiss(this.resultatAjoutAction);
                   Swal.fire({
                     icon: 'success',
-                    title: data.message,
+                    text: data.message,
                     timer: 2000,
                     customClass: {
                       container: 'small-text'
@@ -142,12 +142,11 @@ onFileChangePhase(event: any) {
                 }else{
                   Swal.fire({
                     icon: 'info',
-                    title: data.message,
+                    text: data.message,
                     showConfirmButton: true,
                     heightAuto:false,
                   })
-                }
-                
+                }       
               })
             } 
           })

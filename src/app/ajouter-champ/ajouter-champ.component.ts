@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavParams, ModalController } from '@ionic/angular';
+import { NavParams, ModalController, NavController } from '@ionic/angular';
 import Swal from 'sweetalert2';
 import { ChampService } from '../services/champ.service';
 import { StorageService } from '../services/stockage.service';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-ajouter-champ',
@@ -67,7 +68,7 @@ onFileChangePermis(event: any) {
     private champService: ChampService,
     private storageService: StorageService,
     private router : Router,
-
+    public navCtrl: NavController
     ) {
     //ici je recuperere ces données dans mondata  
     this.mondata = this.navParams.get('data');
@@ -101,7 +102,6 @@ onFileChangePermis(event: any) {
                 "longitude":this.myForm.controls.longitude.value,
                 "latitude":this.myForm.controls.latitude.value
                }      
-            
         ]
 
         const data:FormData=new FormData();
@@ -111,7 +111,7 @@ onFileChangePermis(event: any) {
             // Fermer le modal et retourner les données du formulaire à notre page
 
             Swal.fire({
-              title: 'Etes vous sur d\'envoyer cette demande',
+              text: 'Etes vous sur d\'ajouter ce champ',
               showDenyButton: true,
               // showCancelButton: true,
               confirmButtonText: 'Envoyer',
@@ -127,23 +127,23 @@ onFileChangePermis(event: any) {
 
                   ///si l'ajout du champ a marché
                   if(this.resultatAjoutChamp.status == 1){
+                   // this.router.navigateByUrl("/profil/champs");
+                  // this.router.navigate(['/profil/champs']);
                     this.modalCtrl.dismiss(this.resultatAjoutChamp);
-                    this.router.navigateByUrl("/profil/champs");
                     Swal.fire({
                       icon: 'success',
-                      title: data.message,
+                      text: data.message,
                       // showConfirmButton: true,
                       timer: 2000,
                       customClass: {
                         container: 'small-text'
                       },
-
                       heightAuto:false,
                     })
                   }else{
                     Swal.fire({
                       icon: 'info',
-                      title: data.message,
+                      text: data.message,
                       showConfirmButton: true,
                       // timer: 2000,
                       heightAuto:false,
@@ -166,6 +166,28 @@ onFileChangePermis(event: any) {
           // Afficher une erreur si les données sont manquantes
           console.log("veuillez remplir tous les champs");
       }
+    }
+
+
+    async openTOS() {
+     
+      
+      Swal.fire({
+        text: 'Vous serez rediriger vers google Maps',
+        showDenyButton: true,
+        // showCancelButton: true,
+        confirmButtonText: 'Accepter',
+        denyButtonText: `Annuler`,
+        heightAuto:false,
+        position:'center'
+      }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {         
+          await Browser.open({ url: 'https://www.google.com/maps'});               
+        } 
+      })
+     
+
     }
 
 }

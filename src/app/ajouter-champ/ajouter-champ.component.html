@@ -1,15 +1,17 @@
+<ion-header style="position: fixed;">
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+       Ajouter un champ
+      </div>
+      <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+    </div>
+  </div>
+</ion-header>  
+  
   <ion-content>
 
     <div class="ajout-champ-modal">
-
-      <div class="barre-menu">
-        <div class="element-menus">
-          <div class="libelle">
-           Ajouter un champ
-          </div>
-          <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
-        </div>
-      </div>
   
   
       <div class="containeur">
@@ -22,7 +24,7 @@
             <!-- Nom -->
             <div class="input">
   
-              <label>Nom</label>
+              <label>Nom <span class="obligatoire">*</span></label>
               <input class="telephone-input" type="text" class="form-control" placeholder="Nom du champ" formControlName="nom"
               [ngClass]="{'is-invalid': myForm.get('nom')!.invalid && myForm.get('nom')!.touched}"
               [ngClass]="{'is-valid': myForm.get('nom')!.valid && myForm.get('nom')!.touched}"
@@ -36,7 +38,7 @@
             <!-- Longueur -->
             <div class="input">
   
-              <label>Longueur</label>
+              <label>Longueur <span class="obligatoire">*</span></label>
               <input class="telephone-input" type="number" class="form-control" placeholder="En (metre)" formControlName="longueur"
               [ngClass]="{'is-invalid': myForm.get('longueur')!.invalid && myForm.get('longueur')!.touched}"
               [ngClass]="{'is-valid': myForm.get('longueur')!.valid && myForm.get('longueur')!.touched}"
@@ -50,7 +52,7 @@
             <!-- largeur -->
             <div class="input">
   
-              <label>Largeur</label>
+              <label>Largeur <span class="obligatoire">*</span></label>
               <input class="telephone-input" type="number" class="form-control" placeholder="En (metre)" formControlName="largeur"
               [ngClass]="{'is-invalid': myForm.get('largeur')!.invalid && myForm.get('largeur')!.touched}"
               [ngClass]="{'is-valid': myForm.get('largeur')!.valid && myForm.get('largeur')!.touched}"
@@ -65,7 +67,7 @@
             <!-- Adresse -->
             <div class="input">
   
-              <label>Adresse</label>
+              <label>Adresse <span class="obligatoire">*</span></label>
               <input class="telephone-input" type="text" class="form-control" placeholder="Badinko/kita" formControlName="adresse"
               [ngClass]="{'is-invalid': myForm.get('adresse')!.invalid && myForm.get('adresse')!.touched}"
               [ngClass]="{'is-valid': myForm.get('adresse')!.valid && myForm.get('adresse')!.touched}"
@@ -78,8 +80,12 @@
   
             <!-- Longitude -->
             <div class="input">
+              <div style="display: flex; justify-content: space-between;">
+                <label>Longitude <span class="obligatoire">*</span></label>
+                <a (click)=" openTOS()" style="color: #14AE5C; display: flex; justify-content: flex-end;">Localiser</a>
   
-              <label>Longitude</label>
+              </div>
+              
               <input class="telephone-input" type="number" class="form-control" placeholder="18.22" formControlName="longitude"
               [ngClass]="{'is-invalid': myForm.get('longitude')!.invalid && myForm.get('longitude')!.touched}"
               [ngClass]="{'is-valid': myForm.get('longitude')!.valid && myForm.get('longitude')!.touched}"
@@ -87,13 +93,13 @@
   
               <span class="erreur" *ngIf="myForm!.get('longitude')!.hasError('required') && myForm.get('longitude')!.touched">Cet champ est obligatoire</span>
               <span class="erreur" *ngIf="myForm.get('longitude')!.hasError('minlength') && myForm.get('longitude')!.touched">Longitude court</span>
-  
             </div>
-  
+
+             
             <!-- Longitude -->
             <div class="input">
   
-              <label>Latitude</label>
+              <label>Latitude <span class="obligatoire">*</span></label>
               <input class="telephone-input" type="number" class="form-control" placeholder="1228.45" formControlName="latitude"
               [ngClass]="{'is-invalid': myForm.get('latitude')!.invalid && myForm.get('latitude')!.touched}"
               [ngClass]="{'is-valid': myForm.get('latitude')!.valid && myForm.get('latitude')!.touched}"

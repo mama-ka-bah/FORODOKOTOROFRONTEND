@@ -17,7 +17,13 @@ import { StorageService } from '../services/stockage.service';
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
-export class TabsPage implements OnInit{
+export class TabsPage implements OnInit{   
+  //code lié à mon modal pour gerer sa fermeture debut
+  @ViewChild(IonModal) modal!: IonModal;
+
+  dismiss() {
+    this.modal.dismiss(null, 'dismiss');
+  }  //code lié à mon modal pour gerer sa fermeture debut
 
 
   // closeModal() {
@@ -174,7 +180,7 @@ export class TabsPage implements OnInit{
           // console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,: " + JSON.stringify(emailSaisie.data.photo));
   
           Swal.fire({
-            title: 'Etes vous sur d\'envoyer cette demande',
+            text: 'Etes vous sur d\'envoyer cette demande',
             // showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: 'Envoyer',
@@ -191,7 +197,7 @@ export class TabsPage implements OnInit{
                 if(data.status == 1){
                   Swal.fire({
                     icon: 'success',
-                    title: data.message,
+                    text: data.message,
                     showConfirmButton: true,
                     timer: 2000,
                     heightAuto:false,
@@ -199,7 +205,7 @@ export class TabsPage implements OnInit{
                 }else{
                   Swal.fire({
                     icon: 'info',
-                    title: data.message,
+                    text: data.message,
                     showConfirmButton: true,
                     // timer: 3000,
                     heightAuto:false,
@@ -210,7 +216,7 @@ export class TabsPage implements OnInit{
             } else if (result.isDenied) {
                Swal.fire({
                     icon: 'info',
-                    title: 'Demande annuler',
+                    text: 'Demande annuler',
                     showConfirmButton: true,
                     // timer: 3000,
                     heightAuto:false,
@@ -247,7 +253,7 @@ export class TabsPage implements OnInit{
 if(data.data.etat == true){
 
   Swal.fire({
-    title: 'Etes vous sur d\'envoyer cette demande',
+    text: 'Etes vous sur d\'envoyer cette demande',
     showDenyButton: true,
     // showCancelButton: true,
     confirmButtonText: 'Envoyer',
@@ -264,7 +270,7 @@ if(data.data.etat == true){
         if(data.status == 1){
           Swal.fire({
             icon: 'success',
-            title: data.message,
+            text: data.message,
             showConfirmButton: true,
             // timer: 2000,
             heightAuto:false,
@@ -272,7 +278,7 @@ if(data.data.etat == true){
         }else{
           Swal.fire({
             icon: 'info',
-            title: data.message,
+            text: data.message,
             showConfirmButton: true,
             // timer: 3000,
             heightAuto:false,
@@ -283,7 +289,7 @@ if(data.data.etat == true){
     } else if (result.isDenied) {
        Swal.fire({
             icon: 'info',
-            title: 'Demande annuler',
+            text: 'Demande annuler',
             showConfirmButton: true,
             // timer: 3000,
             heightAuto:false,
@@ -293,7 +299,6 @@ if(data.data.etat == true){
 
 }
       
-
   });
 
   

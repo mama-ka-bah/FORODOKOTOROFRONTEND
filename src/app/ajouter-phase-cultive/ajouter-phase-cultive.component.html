@@ -26,7 +26,7 @@
 
           <!-- action / libelle -->
           <div class="input">
-              <label>Action</label>
+              <label>Action <span class="obligatoire">*</span></label>
               <input class="telephone-input" max="100" min="1" type="text" class="form-control" placeholder="Action" formControlName="libelle"
               [ngClass]="{'is-invalid': myForm.get('libelle')!.invalid && myForm.get('libelle')!.touched}"
               [ngClass]="{'is-valid': myForm.get('libelle')!.valid && myForm.get('libelle')!.touched}"
@@ -41,7 +41,7 @@
           <!-- date de debut -->
           <div class="input">
 
-            <label>Nombre de pluie</label>
+            <label>Nombre de pluie <span class="obligatoire">*</span></label>
             <input class="telephone-input" type="number" class="form-control" placeholder="Nombre de pluie" formControlName="nbrepluies"
             [ngClass]="{'is-invalid': myForm.get('nbrepluies')!.invalid && myForm.get('nbrepluies')!.touched}"
             [ngClass]="{'is-valid': myForm.get('nbrepluies')!.valid && myForm.get('nbrepluies')!.touched}"
@@ -54,7 +54,7 @@
           <!-- Date de fin -->
           <div class="input">
 
-            <label>Date debut</label>
+            <label>Date debut <span class="obligatoire">*</span></label>
             <input class="telephone-input" type="date" class="form-control" formControlName="datedebut"
             [ngClass]="{'is-invalid': myForm.get('datedebut')!.invalid && myForm.get('datedebut')!.touched}"
             [ngClass]="{'is-valid': myForm.get('datedebut')!.valid && myForm.get('datedebut')!.touched}"
@@ -67,7 +67,7 @@
 
           <div class="input">
 
-            <label>Date fin</label>
+            <label>Date fin <span class="obligatoire">*</span></label>
             <input class="telephone-input" type="date" class="form-control" formControlName="datefin"
             [ngClass]="{'is-invalid': myForm.get('datefin')!.invalid && myForm.get('datefin')!.touched}"
             [ngClass]="{'is-valid': myForm.get('datefin')!.valid && myForm.get('datefin')!.touched}"
@@ -95,7 +95,7 @@
 
           <!-- remarque -->
           <div class="input">
-            <label>Remarques</label>
+            <label>Remarques <span class="obligatoire">*</span> </label>
             <input class="telephone-input" max="255" min="1" type="text" class="form-control" placeholder="remarque" formControlName="remarques"
             style="height: 70px; padding: 5px;"
             [ngClass]="{'is-invalid': myForm.get('remarques')!.invalid && myForm.get('remarques')!.touched}"
@@ -104,7 +104,6 @@
             <span class="erreur" *ngIf="myForm!.get('remarques')!.hasError('required') && myForm.get('remarques')!.touched">Cet champ est obligatoire</span>
             <span class="erreur" *ngIf="myForm!.get('remarques')!.hasError('minlength') && myForm.get('remarques')!.touched">Trop court</span>
             <span class="erreur" *ngIf="myForm!.get('remarques')!.hasError('maxlength') && myForm.get('remarques')!.touched">Trop long</span>
-
 
         </div>
 

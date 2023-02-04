@@ -1,5 +1,10 @@
 <ion-content>
 
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
   <div class="barre-menu">
     <div class="element-menus">
       <div class="libelle" style="color: #fff; font-size: 20px;">
@@ -17,10 +22,15 @@
       <div class="libelle" style="font-size: 14px;">LONGUEUR</div>
       <div class="detail">{{detailParserelleClique.longueur}} m</div>
     </div>
+
     <div class="elementDetailChamp">
       <div class="libelle" style="font-size: 14px;">LARGEUR</div>
       <div class="detail">{{detailParserelleClique.largeur}} m</div>
     </div>
+    <!-- <div class="elementDetailChamp">
+      <div class="libelle" style="font-size: 14px;">NOMBRE DE CULTURE</div>
+      <div class="detail" style="color: #14AE5C; font-weight: bold;">{{detailParserelleClique.nombrecultive}}</div>
+    </div> -->
     <div class="elementDetailChamp">
       <div class="libelle" style="font-size: 14px;">SURFACE</div>
       <div class="detail" style="font-size: 14px;">{{detailParserelleClique.longueur * detailParserelleClique.largeur}} m²</div>
@@ -30,7 +40,7 @@
       <div class="detail">{{detailParserelleClique.longueur + detailParserelleClique.largeur}} m</div>
     </div>
     <div class="elementDetailChamp">
-      <div class="libelle" style="font-size: 14px;">Status</div>
+      <div class="libelle" style="font-size: 14px;">STATUS</div>
       <div class="detail"  style="color: #14AE5C; font-weight: bold;">{{detailParserelleClique.status}}</div>
     </div>
     <div class="elementDetailChamp">
@@ -41,50 +51,54 @@
 
     <div class="semer">
       <div class="iconAct"><i  class='far fa-edit' style='font-size:25px; color: blue;'></i></div>
-      <ion-button class="fermer" type="submit" id="open-modal2" expand="block">Semer</ion-button>
+      <ion-button class="fermer" type="submit" id="open-modal2" expand="block" [disabled]="statusParserelle">Semer</ion-button>
       <div class="iconAct"><i class="fa fa-trash" aria-hidden="true" style="color:red; font-size:25px"></i></div>
     </div>
   </div>
 
-  
+  <div class="listeCulture" style="margin-top:10px; margin-bottom: 10px;">Liste des cultures</div>
 
-  <div class="conteneur">
-      
-<div class="listeCulture">Liste des cultures</div>
+  <div class="conteneur" *ngIf="existeCultive">
 
-<div class="conteneurInput">
-  <div class="rechercche">
-    <input type="search" placeholder="Recherche">
-    <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
-  </div>
+  <!-- <div *ngIf="existeCultive"> -->
+    <div class="conteneurInput" *ngIf="detailParserelleClique.nombrecultive > 1">
+    <div class="rechercche">
+      <input type="search" placeholder="Recherche">
+      <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
+    </div>
+    </div>
+
+    <div class="detailChamp" *ngFor="let cultive of lesCultivesActivesDuneParserelle ; index as i">
+    <div class="status">
+      <span>{{cultive.status}}</span>
+    </div>
+    <div class="elementDetailChamp">
+    <!-- <div class="libelle">Réference</div> -->
+      <div class="detail" style="text-align: center; font-weight: bold; ">{{cultive.reference}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle">Debut</div>
+      <div class="detail">{{cultive.datedebutsemis}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle">Fin</div>
+      <div class="detail">{{cultive.datefinsemis}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle">Variété</div>
+      <div class="detail">{{cultive.varietes.nom}}</div>
+    </div>
+    <div class="elementDetailChamp contVoirplus">
+      <button class="voirplus" (click)="voirDetailDuneCultive(i)"><i class="fa fa-eye" aria-hidden="true"></i></button>
+    </div>
+    </div> 
+  <!-- </div> -->
+
 </div>
 
-<div class="detailChamp" *ngFor="let cultive of lesCultivesActivesDuneParserelle ; index as i">
-  <div class="status">
-   <span>{{cultive.status}}</span>
-  </div>
-  <div class="elementDetailChamp">
- <!-- <div class="libelle">Réference</div> -->
-    <div class="detail" style="text-align: center; font-weight: bold; ">{{cultive.reference}}</div>
-  </div>
-  <div class="elementDetailChamp">
-    <div class="libelle">Debut</div>
-    <div class="detail">{{cultive.datedebutsemis}}</div>
-  </div>
-  <div class="elementDetailChamp">
-    <div class="libelle">Fin</div>
-    <div class="detail">{{cultive.datefinsemis}}</div>
-  </div>
-  <div class="elementDetailChamp">
-    <div class="libelle">Variété</div>
-    <div class="detail">{{cultive.varietes.nom}}</div>
-  </div>
-  <div class="elementDetailChamp contVoirplus">
-    <button class="voirplus" (click)="voirDetailDuneCultive(i)"><i class="fa fa-eye" aria-hidden="true"></i></button>
-  </div>
+<div *ngIf="!existeCultive" style="font-weight: bold; display: flex; justify-content: center;">
+  AUCCUN CULTURE
 </div>
-
-  </div>
 
 
 
