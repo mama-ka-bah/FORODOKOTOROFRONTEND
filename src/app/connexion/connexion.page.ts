@@ -9,6 +9,7 @@ import { InputotpComponent } from '../inputotp/inputotp.component';
 import { Otp } from '../Models/Otp.model';
 import { OtpComponent } from '../otp/otp.component';
 import { AuthentificationService } from '../services/authentification.service';
+import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { StorageService } from '../services/stockage.service';
 
 
@@ -33,6 +34,7 @@ export class ConnexionPage implements OnInit {
 codeRetourne: any;
 
  objetOtp = new Otp();
+  resultatOuvertureCompte: any;
 
 
   constructor(
@@ -41,7 +43,8 @@ codeRetourne: any;
     private authentificationService: AuthentificationService,
     private storageService: StorageService,
     private router : Router,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private donneesService: DonneesStockerService
     ) { }
 
     // Cette methode est utiliser pour creer un modal, on peut lui passer
@@ -192,6 +195,16 @@ codeRetourne: any;
       this.roles = this.storageService.getUser().roles;
     }
 
+    const usernameDansStorage =  localStorage.getItem("forousername");
+    const passwordDansLocalStorage =  localStorage.getItem("foropass");
+
+    if(usernameDansStorage && passwordDansLocalStorage){
+      this.username = usernameDansStorage;
+      this.password = passwordDansLocalStorage;
+      this.authentification(this.username, this.password);
+    }
+
+
   }
 
 // });
@@ -207,7 +220,8 @@ codeRetourne: any;
 
   form = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(9)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)])
+    password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
+    sesouvenir: new FormControl(false),
   });
 
 //boolean utiliser pour verifier si l'utilisateur est connecter ou pas
@@ -228,33 +242,112 @@ onSubmit(): void {
 
   if(this.form.valid){
 
-    //on envoie les l'username et le password au service d'authentification
-    this.authentificationService.login(this.username, this.password).subscribe({
-      //on arrive là s'il y a pas déerreur
-      next: data => {
-        //si la connexion s'est bien passé on enregistre les données de l'utilisateur dans sessionStorage
-        this.storageService.saveUser(data);
+   this.authentification(this.username, this.password);
 
-        //Et on attribut des données réelles à ces differents bollean
-        this.isLoginFailed = false;// on precise que l'authentification n'a pas echouer
-        this.isLoggedIn = true; //on met le boolean est connecte à true
-        this.roles = this.storageService.getUser().roles;// on recuperes les differentes roles de l'utilisateurs
-
-       this.form.reset();
-        this.router.navigateByUrl('/tabs/tab1');
-        //this.reloadPage();//ici on recharge la page
-      },
-      error: err => {
-        //en cas d'erreur d'erreur
-        this.errorMessage = err.error.message;
-        //et on met est authentifié à false
-        this.isLoginFailed = true;
-      }
-    });
     
   }
 
 }
+
+
+
+
+
+authentification(username:any, password:any){
+      //on envoie les l'username et le password au service d'authentification
+      this.authentificationService.login(username, password).subscribe({
+        //on arrive là s'il y a pas déerreur
+        next: data => {
+  
+          if(data.etat == true){
+            //si la connexion s'est bien passé on enregistre les données de l'utilisateur dans sessionStorage
+          this.storageService.saveUser(data);
+          //Et on attribut des données réelles à ces differents bollean
+          this.isLoginFailed = false;// on precise que l'authentification n'a pas echouer
+          this.isLoggedIn = true; //on met le boolean est connecte à true
+          this.roles = this.storageService.getUser().roles;// on recuperes les differentes roles de l'utilisateurs
+
+          this.donneesService.rolesUser.next(this.roles);
+  
+          if(this.form.controls.sesouvenir.value){
+            localStorage.setItem("forousername", this.username);
+            localStorage.setItem("foropass", this.password);
+
+            const user = {
+              "sesouvenir":true
+            }
+
+            this.authentificationService.modifierProfilUtilisateur(data.id, user).subscribe(value1 =>{
+             console.log(value1);
+            })
+          }
+  
+          const jwts = {
+            "token": this.storageService.getUser().token
+          }
+         
+          this.storageService.SaveJwts(jwts);
+  
+         this.form.reset();
+
+          this.router.navigateByUrl('/tabs/tab1');
+          //this.reloadPage();//ici on recharge la page
+          }else{
+            
+        Swal.fire({
+          text: 'Votre compte est fermer voulez vous l\'ouvrir',
+          showDenyButton: true,
+          // showCancelButton: true,
+          confirmButtonText: 'Ouvrir',
+          denyButtonText: `Annuler`,
+          heightAuto:false,
+          position:'center'
+        }).then((result) => {
+          if (result.isConfirmed) {  
+            const user = {
+              "etat":true
+            }
+   
+            this.presentLoading();
+            this.authentificationService.modifierProfilUtilisateur(data.id, user).subscribe(value =>{
+              this.resultatOuvertureCompte = value;
+              this.dismissLoading();
+              Swal.fire({
+                icon: 'success',
+                text: "Compte ouvert avec succès",
+                timer: 2000,
+                customClass: {
+                  container: 'small-text'
+                },
+                heightAuto:false,
+              });
+             
+              this.storageService.saveUser(this.resultatOuvertureCompte);
+  
+              const jwts = {
+                "token": this.storageService.getUser().token
+              }
+  
+              this.storageService.SaveJwts(jwts);
+  
+              this.form.reset();
+              this.router.navigateByUrl('/tabs/tab1');
+            })
+          } 
+        })
+          }
+          
+        },
+        error: err => {
+          //en cas d'erreur d'erreur
+          this.errorMessage = err.error.message;
+          //et on met est authentifié à false
+          this.isLoginFailed = true;
+        }
+      });
+}
+
+
 
 //fonction utilisée pour recharger la page
 reloadPage(): void {

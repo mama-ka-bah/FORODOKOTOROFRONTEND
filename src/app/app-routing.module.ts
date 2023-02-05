@@ -17,7 +17,7 @@ const routes: Routes = [
   },
  
   {
-    path: 'bienvenue', component: BienvenuePage, canActivate: [AuthGuard],
+    path: 'bienvenue', component: BienvenuePage,
     loadChildren: () => import('./bienvenue/bienvenue.module').then( m => m.BienvenuePageModule)
   },
 

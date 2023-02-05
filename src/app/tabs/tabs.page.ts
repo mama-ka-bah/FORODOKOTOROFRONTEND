@@ -20,6 +20,7 @@ import { StorageService } from '../services/stockage.service';
 export class TabsPage implements OnInit{   
   //code lié à mon modal pour gerer sa fermeture debut
   @ViewChild(IonModal) modal!: IonModal;
+  rolutilisateur: any;
 
   dismiss() {
     this.modal.dismiss(null, 'dismiss');
@@ -37,6 +38,7 @@ export class TabsPage implements OnInit{
   agriculteur:boolean | undefined
 
   currentUrl:any
+  photoExiste:any
 
   conditionAfichageMenu:boolean | undefined;
 
@@ -65,6 +67,12 @@ export class TabsPage implements OnInit{
     this.donneesService.showMenu$.subscribe(value => {
       this.conditionAfichageMenu = value;
     });
+
+
+    this.storageService.saveCurrentUrl(this.currentUrl);
+    this.currentUser = this.storageService.getUser();
+    // alert(this.currentUser.nomcomplet)
+    this.verifierExistancePhotoProfil();
   }
   
 //  public reccupererTitreAccueil(){
@@ -81,8 +89,15 @@ export class TabsPage implements OnInit{
 //   }
 
 
+verifierExistancePhotoProfil(){
+  if(this.currentUser.photo){
+    this.photoExiste = true;
+  }else{
+    this.photoExiste =false;
+  }
+}
 
-  ngOnInit(): void {    
+  ngOnInit(): void {  
 
     // this.donneesService.showMenu.next(true);
    
@@ -93,11 +108,24 @@ export class TabsPage implements OnInit{
     this.donneesService.headerTitle$.subscribe(value => {
       this.headerTitle = value;
     });
+
+    this.donneesService.rolesUser$.subscribe(value => {
+      this.rolutilisateur = value;
+    });
+
+    if( this.rolutilisateur.includes("ROLE_AGRIGULTEUR") == true){
+      this.agriculteur = true;
+    }else{
+      this.agriculteur = false;
+    }
+
     
     this.currentUrl = this.router.url;
     // this.headerTitle = this.currentUrl;
     this.storageService.saveCurrentUrl(this.currentUrl);
     this.currentUser = this.storageService.getUser();
+    // alert(this.currentUser.nomcomplet)
+    this.verifierExistancePhotoProfil();
 
     switch (this.currentUrl) {
       case '/tabs/tab1':
@@ -120,14 +148,6 @@ export class TabsPage implements OnInit{
 
     console.log(this.currentUser.roles)
 
-    if(this.currentUser.roles.includes("ROLE_AGRIGULTEUR") == true){
-      this.agriculteur = true;
-    }else{
-      this.agriculteur = false;
-      console.log(this.agriculteur)
-    }
-
-
     if(this.storageService.getCurrentUrl() == "/tabs/tab1" || this.storageService.getCurrentUrl() == "/tabs/produit-agricoles" || this.storageService.getCurrentUrl() == "/tabs/transporteurs" || this.storageService.getCurrentUrl() == "/tabs/marche"){
       this.conditionAfichageMenu = true;
     }else{
@@ -140,7 +160,12 @@ export class TabsPage implements OnInit{
   //deconnexion
   deconnexion(){
     this.storageService.clean();
-    this.router.navigateByUrl("/connexion");
+    if(this.currentUser.sesouvenir == true){
+      this.router.navigateByUrl("/bienvenue");
+    }else{
+      this.router.navigateByUrl("/connexion");
+    }
+    
   }
 
 
@@ -225,7 +250,6 @@ export class TabsPage implements OnInit{
           })
 
         }
-
       
         
       });

@@ -1,3 +1,103 @@
-<p>
-  modifier-profil works!
-</p>
+<ion-header>
+  
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+       Modifier votre profil
+      </div>
+      <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+    </div>
+  </div>
+</ion-header>
+
+<ion-content style="background-color: #F4F5F8">
+
+  <div class="containeur">
+    <form class="formulaire"
+    [formGroup]="form" (ngSubmit)="onSubmit()"
+    >
+      <div class="input">
+        <label>Numéro de télephone <span class="obligatoire">*</span></label>
+        <input readonly class="telephone-input" type="text" class="form-control" placeholder="82644606" formControlName="username"
+
+        [ngClass]="{'is-invalid': form.get('username')!.invalid && form.get('username')!.touched}"
+        [ngClass]="{'is-valid': form.get('username')!.valid && form.get('username')!.touched}"
+
+        >
+        <!-- [ngStyle]="{'border-color': (form.get('username')!.valid && form.get('username')!.touched) ? 'green' : 'red' }" -->
+
+       
+        
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('required') && form.get('username')!.touched">Cet champ est obligatoire</span>
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('minlength') && form.get('username')!.touched">Numero court</span>
+        <span class="erreur" *ngIf="form!.get('username')!.hasError('maxlength') && form.get('username')!.touched">Numero Long</span>
+
+
+
+      </div>
+
+      
+
+      <div class="input">
+        <label>Nom complet <span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="tel" class="form-control"  placeholder="Aboubacar keïta" formControlName="nomcomplet"
+        
+        [ngClass]="{'is-invalid': form.get('nomcomplet')!.invalid && form.get('nomcomplet')!.touched}"
+        [ngClass]="{'is-valid': form.get('nomcomplet')!.valid && form.get('nomcomplet')!.touched}"
+
+        >
+      
+        <span class="erreur" *ngIf="form!.get('nomcomplet')!.hasError('required') && form.get('nomcomplet')!.touched">Cet champ est obligatoire</span>
+        <span class="erreur" *ngIf="form!.get('nomcomplet')!.hasError('minlength') && form.get('nomcomplet')!.touched">Nom court</span>
+        <span class="erreur" *ngIf="form!.get('nomcomplet')!.hasError('maxlength') && form.get('nomcomplet')!.touched">Nom Long</span>
+
+      </div>
+
+      <div class="input">
+        <label>Adresse </label>
+        <input class="telephone-input" type="tel" class="form-control"  placeholder="Adresse" formControlName="adresse"
+        
+        [ngClass]="{'is-invalid': form.get('adresse')!.invalid && form.get('adresse')!.touched}"
+        [ngClass]="{'is-valid': form.get('adresse')!.valid && form.get('adresse')!.touched}"
+
+        >
+      
+        <span class="erreur" *ngIf="form!.get('adresse')!.hasError('maxlength') && form.get('adresse')!.touched">Adresse Long</span>
+
+      </div>
+
+      
+
+      <div class="input"> 
+        <label>Email</label>
+        <input class="telephone-input" type="email" class="form-control" placeholder="mahamadou@gmail.com" formControlName="email"
+
+        [ngClass]="{'is-invalid': form.get('email')!.invalid && form.get('email')!.touched}"
+        [ngClass]="{'is-valid': form.get('email')!.valid && form.get('email')!.touched}"
+
+        >
+      
+        <span class="erreur" *ngIf="form.get('email')!.hasError('maxlength') && form.get('email')!.touched">Email Long</span>
+        <span class="erreur" *ngIf="form.get('email')!.hasError('pattern') && form.get('email')!.touched">Email invalide</span>
+      </div>
+
+      
+    
+
+      
+      
+     
+
+     
+
+      <div class="conteneur-submit">
+        <!-- routerLink="/tabs/tab1" -->
+        <ion-button class="envoyer-input" type="submit" expand="block">Mofier</ion-button>
+      </div>
+
+    
+      
+    </form>
+  </div>
+
+</ion-content>

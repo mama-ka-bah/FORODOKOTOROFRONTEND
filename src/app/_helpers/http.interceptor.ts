@@ -25,11 +25,12 @@ constructor(private stockageService: StorageService){
 userToken:any
 
 intercept(req: HttpRequest<any>, next: HttpHandler) {
-    if(req.url.includes('signin') || req.url.includes('signin') || req.url.includes('api.openweathermap.org')){
+    if(req.url.includes('signin') || req.url.includes('signup') || req.url.includes('api.openweathermap.org')){
       return next.handle(req);
     }else{
-      this.userToken = this.stockageService.getUser().token;
-      const authToken = sessionStorage.getItem('jwt');
+      // this.userToken = this.stockageService.getUser().token;
+      // const authToken = sessionStorage.getItem('jwt');
+      this.userToken = this.stockageService.GetJwts().token;
       console.log("le token qui sera envoye dans header:  "+ this.userToken);
       const authReq = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + this.userToken)

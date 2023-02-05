@@ -13,17 +13,6 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./inscription.page.scss'],
 })
 export class InscriptionPage implements OnInit {
-
-//les données du formulaire
-  // form: any = {
-  //   username: null,
-  //   email: null,
-  //   nomComplet: null,
-  //   password: null,
-  //   confpassword: null,
-  // };
-
-
   
 //l'objet form froup lié à mon formulaire dans le template
 //ici on precise que les champs codes ne peuvent prendre que des chiffres comprise entre 0 et 9

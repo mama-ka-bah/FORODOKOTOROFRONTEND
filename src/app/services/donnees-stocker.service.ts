@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import Swal from 'sweetalert2';
+import { AuthentificationService } from './authentification.service';
+import { ChargementService } from './chargement.service';
+import { StorageService } from './stockage.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DonneesStockerService {
+export class DonneesStockerService{
 
   public enteteAccueil="Forodokotoro";
   public enteteMarche="Marché";
@@ -28,14 +33,22 @@ export class DonneesStockerService {
 
   
   //detail de cultive actuel
-  public detailCultive = new BehaviorSubject<any>(null);
+  public detailCultive = new BehaviorSubject<any>([]);
   public detailCultive$ = this.detailCultive.asObservable();
+
+
+  
+  //le role de l'user
+  public rolesUser = new BehaviorSubject<any>(null);
+  public rolesUser$ = this.rolesUser.asObservable();
+
 
 
 
   pageActuel = "FORODOKOTORO";
 
   currentUrl= "";
+  resultatFermetureCompte: any;
  
 
   getpageActuel(){
@@ -75,7 +88,42 @@ export class DonneesStockerService {
   
  
 
-  constructor() { }
+  constructor(private userService: AuthentificationService, private chargementService: ChargementService, private storageService : StorageService,private router : Router,
+    ) { }
+
+
+
+
+  fermerUnCompte(currentUserId:any){
+    Swal.fire({
+      text: 'Etes vous sûr de fermer votre compte',
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: 'Ouvrir',
+      denyButtonText: `Annuler`, 
+      heightAuto:false,
+      position:'center'
+    }).then((result) => {
+      if (result.isConfirmed) {  
+        const user = {
+          "etat":false,
+          "sesouvenir":false
+        }
+
+        this.chargementService.presentLoading();
+
+        this.userService.modifierProfilUtilisateur(currentUserId, user).subscribe(value =>{
+          this.resultatFermetureCompte = value;
+
+          this.chargementService.dismissLoading();
+
+          localStorage.clear();
+          this.storageService.clean();
+          this.router.navigateByUrl("/bienvenue"); 
+        })
+      } 
+    })
+  }
 
 
 }

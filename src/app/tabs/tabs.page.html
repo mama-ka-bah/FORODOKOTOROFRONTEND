@@ -14,10 +14,10 @@
           style="width:80px; height: 40px; border-radius: 25px; background-color: #FFF;"
           data-bs-toggle="dropdown">
           <div class="" style="display: flex;">
-            <img *ngIf="currentUser.photo == null" src="../../assets/images/profil.png"
+            <img *ngIf="!photoExiste" src="../../assets/images/profil.png"
               style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
               alt="">
-              <img *ngIf="currentUser.photo != null" src="../../assets/images/agriculteur.jpg"
+              <img *ngIf="photoExiste" src="../../assets/images/agriculteur.jpg"
               style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
               alt="">
             <i
@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0" style="background-color: #efecee;">
-          <a *ngIf="agriculteur" routerLink="/profil/champs" class="dropdown-item">
+          <a *ngIf="agriculteur == true" routerLink="/profil/champs" class="dropdown-item">
             <div class="d-flex align-items-center nomUser">
               <img *ngIf="currentUser.photo == null" class="rounded-circle" src="../../assets/images/profil.png" alt="" style="width: 40px; height: 40px;">
               <img *ngIf="currentUser.photo != null" class="rounded-circle" src="../../assets/images/agriculteur.jpg" alt="" style="width: 40px; height: 40px;">
@@ -35,7 +35,7 @@
               </div>
             </div>
           </a>
-          <a *ngIf="!agriculteur" routerLink="/profil-transporteur" class="dropdown-item">
+          <a *ngIf="agriculteur == false" routerLink="/profil-transporteur" class="dropdown-item">
             <div class="d-flex align-items-center nomUser">
               <img *ngIf="currentUser.photo == null" class="rounded-circle" src="../../assets/images/profil.png" alt="" style="width: 40px; height: 40px;">
               <img *ngIf="currentUser.photo != null" class="rounded-circle" src="../../assets/images/agriculteur.jpg" alt="" style="width: 40px; height: 40px;">

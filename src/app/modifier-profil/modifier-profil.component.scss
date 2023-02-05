@@ -1,0 +1,104 @@
+//debut style menus
+.barre-menu{
+    background-color: #14AE5C;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.element-menus{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.libelle{
+    color: bold;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+//fin style du menu
+
+
+//le conteneur de l'application
+.conteneur-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // height: 25vh;
+    margin: 20px 0 20px 0;
+}
+
+.input{
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.input input{
+    width: 90vw;
+}
+
+//le conteneur de mon formullaire
+.formulaire{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+//le champ numero de telephone
+.telephone-input{
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+//le button envoyer
+.envoyer-input{
+    --background: #14AE5C;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    width: 90%;
+}
+
+.obligatoire{
+    color: red;
+}
+
+.input{
+    font-weight: bold;
+}
+
+.conteneur-submit{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.connexion{
+    color: #14AE5C;
+    font-weight: bold;
+}
+
+.connexion:hover{
+    cursor: pointer;
+}
+
+.erreur{
+    color: red;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+}
+
+.is-invalid{
+    border-color: red;
+}
+.is-valid{
+    border-color: #14AE5C;
+}

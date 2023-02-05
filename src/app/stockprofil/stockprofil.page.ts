@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, ModalController, PopoverController } from '@ionic/angular';
 import { DetailStocksPage } from '../detail-stocks/detail-stocks.page';
+import { ModifierProfilComponent } from '../modifier-profil/modifier-profil.component';
 import { AgriculteurService } from '../services/agriculteur.service';
 import { ChampService } from '../services/champ.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
@@ -63,6 +64,32 @@ retourner() {
       }
 
     });
+  }
+
+
+  
+  fermerCompte(){   
+    this.donneesService.fermerUnCompte(this.currentUser.id);
+  }
+
+
+   //on fait appel au composant pout ajouter une nouvelle ction
+   async modifierProfil() {
+    const modal = await this.modalCtrl.create({
+      //le composant contenant le modal
+      component: ModifierProfilComponent,
+      //Ici on envoi l'id de cultive actuel au composant contenant le formulaire de creation de 
+  //     componentProps: {
+  //     data: this.idDeCultiveActuel
+  // }
+    });
+
+    //Cette methode contient les 
+    modal.onDidDismiss().then((result) => {
+     console.log(JSON.stringify(result));
+     this.ngOnInit();
+    });
+    await modal.present();
   }
 
 }

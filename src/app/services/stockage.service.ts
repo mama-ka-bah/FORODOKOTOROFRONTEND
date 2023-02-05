@@ -28,8 +28,8 @@ export class StorageService {
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
 
 
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, JSON.stringify(user.token));
+    // window.sessionStorage.removeItem(TOKEN_KEY);
+    // window.sessionStorage.setItem(TOKEN_KEY, JSON.stringify(user.token));
   }
 
   //permeet de recuperer user dans sessionStorrage
@@ -41,6 +41,26 @@ export class StorageService {
 
     return {};
   }
+
+
+
+  SaveJwts(jwts:any){
+    window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.setItem(TOKEN_KEY, JSON.stringify(jwts));
+  }
+
+  GetJwts(){
+
+    const jwts = window.sessionStorage.getItem(TOKEN_KEY);
+    if (jwts) {
+      return  JSON.parse(jwts);
+    }
+
+    return {};
+
+  }
+
+
 
   //verifie si l'utilisateur est connecter ou non
   public isLoggedIn(): boolean {
