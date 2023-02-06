@@ -22,4 +22,16 @@ export class StocksService {
 
     return this.http.get(AUTH_API + `recuperertousstocksvalidesagriculteur/${id}`);
   }
+
+  recupererStockParId(id:any): Observable<any> {
+
+    return this.http.get(AUTH_API + `detailstock/${id}`);
+  }
+
+
+  //permet d'ajouter un stock
+  ajouterStock(varieteid:any, idProprietaire:any, stock:any): Observable<any> {
+    return this.http.post(AUTH_API + `ajouter/${varieteid}/${idProprietaire}`, stock);
+  }
+
 }

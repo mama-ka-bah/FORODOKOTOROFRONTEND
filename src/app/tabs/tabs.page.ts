@@ -1,14 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { IonModal, ModalController, NavController, PopoverController } from '@ionic/angular';
+import { IonModal, LoadingController, ModalController, NavController, PopoverController } from '@ionic/angular';
 import { LocalNotifications } from 'capacitor-local-notifications';
 import Swal from 'sweetalert2';
 import { ChoisirProfilComponent } from '../choisir-profil/choisir-profil.component';
 import { DevenirAgriculteurComponent } from '../devenir-agriculteur/devenir-agriculteur.component';
 import { DevenirTransporteurComponent } from '../devenir-transporteur/devenir-transporteur.component';
 import { AgriculteurService } from '../services/agriculteur.service';
+import { AuthentificationService } from '../services/authentification.service';
+import { ChargementService } from '../services/chargement.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
+import { NotificationService } from '../services/notification.service';
 import { StorageService } from '../services/stockage.service';
 
 
@@ -36,6 +39,9 @@ export class TabsPage implements OnInit{
   reponseDemandeTrans:any
   reponseDemandeAgri:any
   agriculteur:boolean | undefined
+  nombreDeNotificationNonLu:any
+  boollNbreNotif:boolean | undefined
+  notifiExiste:boolean | undefined
 
   currentUrl:any
   photoExiste:any
@@ -51,7 +57,25 @@ export class TabsPage implements OnInit{
     private modalCtrl: ModalController,
     private agriculteurService: AgriculteurService,
     public popoverController: PopoverController,
-  ) {}
+    private notificationService: NotificationService,
+    private chargementService: ChargementService,
+    public loadingController: LoadingController,
+    private authentificationService: AuthentificationService,
+
+  ) {
+    this.currentUser = this.storageService.getUser();
+
+    // alert(this.currentUser.nomcomplet)
+
+    this.notificationService.recupererNotificationNonLuDunUser(this.currentUser.id).subscribe(data =>{
+      this.nombreDeNotificationNonLu = data;
+      // alert(data)
+      this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
+     
+    })
+
+
+   }
 
 
   navigateToPage1() {
@@ -63,16 +87,43 @@ export class TabsPage implements OnInit{
   }
 
   ionViewDidEnter(){
+    this.donneesService.rolesUser.next(this.currentUser.roles);
     this.donneesService.showMenu.next(true);
     this.donneesService.showMenu$.subscribe(value => {
       this.conditionAfichageMenu = value;
     });
-
-
-    this.storageService.saveCurrentUrl(this.currentUrl);
-    this.currentUser = this.storageService.getUser();
     // alert(this.currentUser.nomcomplet)
     this.verifierExistancePhotoProfil();
+
+      
+    if( this.rolutilisateur.includes("ROLE_AGRIGULTEUR") == true){
+      this.agriculteur = true;
+    }else{
+      this.agriculteur = false;
+    }
+
+    if(this.nombreDeNotificationNonLu > 9){
+      this.boollNbreNotif = true
+    }else{
+      this.boollNbreNotif =false
+    }
+   
+    this.donneesService.nombreDeNotificationNonLu$.subscribe(value => {
+      this.nombreDeNotificationNonLu = value;
+    });
+
+
+    if(this.nombreDeNotificationNonLu > 9){
+      this.boollNbreNotif = true
+    }else{
+      this.boollNbreNotif =false
+    }
+
+    if(this.nombreDeNotificationNonLu > 0){
+      this.notifiExiste = true
+    }else{
+      this.boollNbreNotif =false
+    }
   }
   
 //  public reccupererTitreAccueil(){
@@ -95,10 +146,32 @@ verifierExistancePhotoProfil(){
   }else{
     this.photoExiste =false;
   }
+  
 }
 
   ngOnInit(): void {  
+    this.currentUser = this.storageService.getUser();
+   
+    this.verifierExistancePhotoProfil();
 
+    
+    this.storageService.saveCurrentUrl(this.currentUrl);
+    this.currentUser = this.storageService.getUser();
+
+   
+
+
+    // if( this.rolutilisateur.includes("ROLE_AGRIGULTEUR") == true){
+    //   this.agriculteur = true;
+    // }else{
+    //   this.agriculteur = false;
+    // }
+
+    this.donneesService.nombreDeNotificationNonLu$.subscribe(value => {
+      this.nombreDeNotificationNonLu = value;
+    });
+
+    
     // this.donneesService.showMenu.next(true);
    
     this.donneesService.showMenu$.subscribe(value => {
@@ -112,20 +185,17 @@ verifierExistancePhotoProfil(){
     this.donneesService.rolesUser$.subscribe(value => {
       this.rolutilisateur = value;
     });
-
-    if( this.rolutilisateur.includes("ROLE_AGRIGULTEUR") == true){
-      this.agriculteur = true;
-    }else{
-      this.agriculteur = false;
-    }
+   
+    // if( this.rolutilisateur.includes("ROLE_AGRIGULTEUR") == true){
+    //   this.agriculteur = true;
+    // }else{
+    //   this.agriculteur = false;
+    // }
 
     
     this.currentUrl = this.router.url;
     // this.headerTitle = this.currentUrl;
     this.storageService.saveCurrentUrl(this.currentUrl);
-    this.currentUser = this.storageService.getUser();
-    // alert(this.currentUser.nomcomplet)
-    this.verifierExistancePhotoProfil();
 
     switch (this.currentUrl) {
       case '/tabs/tab1':
@@ -156,13 +226,29 @@ verifierExistancePhotoProfil(){
 
   }
 
-  
+reloadPage(): void {
+  window.location.reload();
+}
+
   //deconnexion
   deconnexion(){
-    this.storageService.clean();
+   
     if(this.currentUser.sesouvenir == true){
+      this.storageService.clean();
+      this.navCtrl.navigateRoot([{clearHistory: true}]);
+
+      const user = {
+        "sesouvenir":false
+      }
+
+      this.authentificationService.modifierProfilUtilisateur(this.currentUser.id, user).subscribe(value1 =>{
+       console.log(value1);
+      })
+
       this.router.navigateByUrl("/bienvenue");
     }else{
+      this.storageService.clean();
+      this.navCtrl.navigateRoot([{clearHistory: true}]);
       this.router.navigateByUrl("/connexion");
     }
     
@@ -215,18 +301,29 @@ verifierExistancePhotoProfil(){
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-  
+              this.presentLoading();
               this.agriculteurService.devenirTransporteur(emailSaisie.data.photo, emailSaisie.data.donneesTransporteur, this.currentUser.id).subscribe(data =>{
                 this.reponseDemandeTrans = data;
+
+                this.notificationService.recupererNotificationNonLuDunUser(data.id).subscribe(data =>{
+                  this.nombreDeNotificationNonLu = data;
+                  // alert(data)
+                  this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
+
+                  this.dismissLoading();
+                 
+                })
+
                 console.log(data.message)
                 if(data.status == 1){
                   Swal.fire({
                     icon: 'success',
                     text: data.message,
                     showConfirmButton: true,
-                    timer: 2000,
+                    // timer: 2000,
                     heightAuto:false,
                   })
+
                 }else{
                   Swal.fire({
                     icon: 'info',
@@ -287,9 +384,20 @@ if(data.data.etat == true){
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-
+      this.presentLoading();
       this.agriculteurService.devenirAgriculteur(this.currentUser).subscribe(data =>{
         this.reponseDemandeAgri = data;
+
+
+        this.notificationService.recupererNotificationNonLuDunUser(data.id).subscribe(data =>{
+          this.nombreDeNotificationNonLu = data;
+          // alert(data)
+          this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
+
+          this.dismissLoading();
+         
+        })
+
         console.log(data.message)
         if(data.status == 1){
           Swal.fire({
@@ -299,6 +407,8 @@ if(data.data.etat == true){
             // timer: 2000,
             heightAuto:false,
           })
+
+
         }else{
           Swal.fire({
             icon: 'info',
@@ -329,6 +439,25 @@ if(data.data.etat == true){
 
     return await popover.present();
   }
+
+
+
+
+   //loading controlleur utilise pour montrer à l'user que le programme est en cours de chargement
+ async presentLoading() {
+  const loading = await this.loadingController.create({
+    message: 'Patienter...',
+    duration: 5000
+  });
+  await loading.present();
+
+  // const { role, data } = await loading.onDidDismiss();
+  // console.log('Loading dismissed!');
+}
+
+async dismissLoading() {
+  await this.loadingController.dismiss();
+}
 
 
 }

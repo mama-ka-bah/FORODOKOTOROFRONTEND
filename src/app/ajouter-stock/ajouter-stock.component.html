@@ -1,3 +1,126 @@
-<p>
-  ajouter-stock works!
-</p>
+<ion-header style="position: fixed;">
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+       Ajouter un stock
+      </div>
+      <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+    </div>
+  </div>
+</ion-header>  
+  
+  <ion-content>
+
+    <div class="ajout-champ-modal">
+  
+  
+      <div class="containeur">
+        <div class="conteneur-logo">
+          <img class="logo" src="../assets/images/chamStock.png">
+        </div>
+  
+          <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
+  
+            <!-- Nom -->
+            <div class="input">
+  
+              <label>Nom <span class="obligatoire">*</span></label>
+              <input class="telephone-input" type="text" class="form-control" placeholder="Nom du champ" formControlName="nom"
+              [ngClass]="{'is-invalid': myForm.get('nom')!.invalid && myForm.get('nom')!.touched}"
+              [ngClass]="{'is-valid': myForm.get('nom')!.valid && myForm.get('nom')!.touched}"
+              >
+  
+              <span class="erreur" *ngIf="myForm!.get('nom')!.hasError('required') && myForm.get('nom')!.touched">Cet champ est obligatoire</span>
+              <span class="erreur" *ngIf="myForm.get('nom')!.hasError('minlength') && myForm.get('nom')!.touched">Nom court</span>
+  
+            </div>
+  
+            <!-- Longueur -->
+            <div class="input">
+  
+              <label>prix / kg <span class="obligatoire">*</span></label>
+              <input class="telephone-input" type="number" min="1" max="100000" class="form-control" placeholder="En (FCFA)" formControlName="prixkilo"
+              [ngClass]="{'is-invalid': myForm.get('prixkilo')!.invalid && myForm.get('prixkilo')!.touched}"
+              [ngClass]="{'is-valid': myForm.get('prixkilo')!.valid && myForm.get('prixkilo')!.touched}"
+              >
+  
+              <span class="erreur" *ngIf="myForm!.get('prixkilo')!.hasError('required') && myForm.get('prixkilo')!.touched">Cet champ est obligatoire</span>
+  
+            </div>
+
+  
+  
+            <!-- Adresse -->
+            <div class="input">
+  
+              <label>Nombre kilo <span class="obligatoire">*</span></label>
+              <input class="telephone-input" type="text" class="form-control" placeholder="Badinko/kita" formControlName="nombrekilo"
+              [ngClass]="{'is-invalid': myForm.get('nombrekilo')!.invalid && myForm.get('nombrekilo')!.touched}"
+              [ngClass]="{'is-valid': myForm.get('nombrekilo')!.valid && myForm.get('nombrekilo')!.touched}"
+              >
+  
+              <span class="erreur" *ngIf="myForm!.get('nombrekilo')!.hasError('required') && myForm.get('nombrekilo')!.touched">Cet champ est obligatoire</span>
+  
+            </div>
+
+
+            <div class="input">
+
+              <label>Produit Agricole <span class="obligatoire">*</span></label>     
+              <select  class="form-control telephone-input" formControlName="produitAgricole" 
+              [ngClass]="{'is-invalid': myForm.get('produitAgricole')!.invalid && myForm.get('produitAgricole')!.touched}"
+              >
+              <option style="color: #000;" value="Choisir un type" selected disabled>Choisir un produit</option>
+                <option *ngFor="let produit of lesProduitAgricoleRecuperer" value="{{produit.id}}">{{produit.nom}}</option>
+              </select>
+
+              <span class="erreur" *ngIf="myForm!.get('produitAgricole')!.hasError('required') && myForm.get('produitAgricole')!.touched">Cet champ est obligatoire</span>
+
+            </div>
+
+
+
+            <div class="input">
+              <label>Semence <span class="obligatoire">*</span></label>     
+              <select  class="form-control telephone-input" formControlName="semence"
+              [ngClass]="{'is-invalid': myForm.get('semence')!.invalid && myForm.get('semence')!.touched}"
+              >
+              <option style="color: #000;" value="Choisir un semence" selected disabled>Choisir une semence</option>
+                <option *ngFor="let semence of lesSemencesPourLeProduitActive" value="{{semence.id}}">{{semence.nom}}</option>
+              </select>
+      
+              <span class="erreur" *ngIf="myForm!.get('semence')!.hasError('required') && myForm.get('semence')!.touched">Cet champ est obligatoire</span>
+            </div>
+  
+           
+
+           
+
+             <!-- photo du champ -->
+             <div class="input">
+  
+              <label>Photo stock <span class="obligatoire">*</span></label>
+              <input type="file" id="avatar"  class="form-control" name="avatar"  accept="image/png, image/jpeg"
+              multiple (change)="onFileChangePermis($event)"  formControlName="file"
+              [ngClass]="{'is-invalid': myForm.get('file')!.invalid && myForm.get('file')!.touched}"
+              [ngClass]="{'is-valid': myForm.get('file')!.valid && myForm.get('file')!.touched}"
+              >
+  
+              <span class="erreur" *ngIf="myForm!.get('file')!.hasError('required') && myForm.get('file')!.touched">Cet champ est obligatoire</span>
+
+            </div>
+  
+  
+            <div class="input">
+              <button class="envoyer-input" type="submit" expand="block" >Ajouter</button>
+            </div>
+          </form>
+  
+        </div>
+      
+  
+    </div>
+     
+
+  </ion-content>
+  

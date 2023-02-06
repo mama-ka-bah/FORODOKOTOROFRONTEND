@@ -43,6 +43,12 @@ export class DonneesStockerService{
   public rolesUser$ = this.rolesUser.asObservable();
 
 
+  
+  //le role de l'user
+  public nombreDeNotificationNonLu = new BehaviorSubject<any>(null);
+  public nombreDeNotificationNonLu$ = this.nombreDeNotificationNonLu.asObservable();
+
+
 
 
   pageActuel = "FORODOKOTORO";

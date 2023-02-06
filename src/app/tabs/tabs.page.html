@@ -20,9 +20,14 @@
               <img *ngIf="photoExiste" src="../../assets/images/agriculteur.jpg"
               style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
               alt="">
-            <i
-              style="background-color: red; width: 20px; height: 20px; border-radius: 100%; margin-top: 2%; font-size: 15px;">10</i>
-            <i  class='bx bx-chevron-down py-3' style="font-size: 25px; font-weight: bold; color: #14AE5C;"></i>
+              <i *ngIf="nombreDeNotificationNonLu > 0" style="background-color: red; width: 20px; height: 20px; border-radius: 100%; margin-top: 2%; font-size: 15px;">{{nombreDeNotificationNonLu > 9 ? '9+' : nombreDeNotificationNonLu}}</i>
+            <!-- <span  *ngIf="nombreDeNotificationNonLu > 0"> -->
+              <!-- <i
+              style="background-color: red; width: 20px; height: 20px; border-radius: 100%; margin-top: 2%; font-size: 15px;"><span *ngIf="!nombreDeNotificationNonLu">{{nombreDeNotificationNonLu}}</span><span *ngIf="boollNbreNotif">9+</span></i> -->
+            <!-- </span> -->
+              <i  class='bx bx-chevron-down py-3' style="font-size: 25px; font-weight: bold; color: #14AE5C;"></i>
+           
+              
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0" style="background-color: #efecee;">
@@ -49,7 +54,7 @@
             <div class="d-flex align-items-center">
               <i style="color: #000; font-size: 35px;" class="fa-solid fa-bell"></i>
               <div class="ms-2">
-                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">Notification <span style="color: red;">(10)</span></h6>
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">Notification <span style="color: red;" *ngIf="nombreDeNotificationNonLu > 0">({{nombreDeNotificationNonLu}})</span></h6>
               </div>
             </div>
           </a>

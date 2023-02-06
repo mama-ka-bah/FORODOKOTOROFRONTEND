@@ -4,6 +4,7 @@ import { PopoverController, ModalController, LoadingController, IonRefresher, Na
 import Swal from 'sweetalert2';
 import { AjouterChampComponent } from '../ajouter-champ/ajouter-champ.component';
 import { AjouterParserelleComponent } from '../ajouter-parserelle/ajouter-parserelle.component';
+import { AjouterStockComponent } from '../ajouter-stock/ajouter-stock.component';
 import { AuthentificationService } from '../services/authentification.service';
 import { ChampService } from '../services/champ.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
@@ -120,5 +121,28 @@ currentUser:any
       
           await modal.present();
         }
+
+
+
+
+           
+  //on fait appel au composant pout ajouter une nouvelle ction
+  async ajouterStock() {
+    const modal = await this.modalCtrl.create({
+      //le composant contenant le modal
+      component: AjouterStockComponent,
+      //Ici on envoi l'id de cultive actuel au composant contenant le formulaire de creation de 
+  //     componentProps: {
+  //     data: this.idDeCultiveActuel
+  // }
+    });
+
+    //Cette methode contient les 
+    modal.onDidDismiss().then((result) => {
+     console.log(JSON.stringify(result));
+     this.ngOnInit();
+    });
+    await modal.present();
+  }
 
 }

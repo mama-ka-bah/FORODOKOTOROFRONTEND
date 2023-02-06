@@ -10,6 +10,7 @@ import { Otp } from '../Models/Otp.model';
 import { OtpComponent } from '../otp/otp.component';
 import { AuthentificationService } from '../services/authentification.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
+import { NotificationService } from '../services/notification.service';
 import { StorageService } from '../services/stockage.service';
 
 
@@ -35,6 +36,7 @@ codeRetourne: any;
 
  objetOtp = new Otp();
   resultatOuvertureCompte: any;
+  nombreDeNotificationNonLu: any;
 
 
   constructor(
@@ -44,7 +46,8 @@ codeRetourne: any;
     private storageService: StorageService,
     private router : Router,
     public loadingController: LoadingController,
-    private donneesService: DonneesStockerService
+    private donneesService: DonneesStockerService,
+    private notificationService: NotificationService,
     ) { }
 
     // Cette methode est utiliser pour creer un modal, on peut lui passer
@@ -204,6 +207,8 @@ codeRetourne: any;
       this.authentification(this.username, this.password);
     }
 
+   
+
 
   }
 
@@ -267,7 +272,14 @@ authentification(username:any, password:any){
           this.isLoggedIn = true; //on met le boolean est connecte à true
           this.roles = this.storageService.getUser().roles;// on recuperes les differentes roles de l'utilisateurs
 
-          this.donneesService.rolesUser.next(this.roles);
+          this.donneesService.rolesUser.next(data.roles);
+
+          this.notificationService.recupererNotificationNonLuDunUser(data.id).subscribe(data =>{
+            this.nombreDeNotificationNonLu = data;
+            // alert(data)
+            this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
+           
+          })
   
           if(this.form.controls.sesouvenir.value){
             localStorage.setItem("forousername", this.username);
@@ -276,7 +288,6 @@ authentification(username:any, password:any){
             const user = {
               "sesouvenir":true
             }
-
             this.authentificationService.modifierProfilUtilisateur(data.id, user).subscribe(value1 =>{
              console.log(value1);
             })
@@ -312,10 +323,11 @@ authentification(username:any, password:any){
             this.authentificationService.modifierProfilUtilisateur(data.id, user).subscribe(value =>{
               this.resultatOuvertureCompte = value;
               this.dismissLoading();
+              
               Swal.fire({
                 icon: 'success',
                 text: "Compte ouvert avec succès",
-                timer: 2000,
+                // timer: 2000,
                 customClass: {
                   container: 'small-text'
                 },
@@ -331,6 +343,9 @@ authentification(username:any, password:any){
               this.storageService.SaveJwts(jwts);
   
               this.form.reset();
+
+             
+
               this.router.navigateByUrl('/tabs/tab1');
             })
           } 

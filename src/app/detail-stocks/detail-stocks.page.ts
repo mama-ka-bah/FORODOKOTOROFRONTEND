@@ -6,6 +6,7 @@ import { ChampService } from '../services/champ.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { MeteoService } from '../services/meteo.service';
 import { StorageService } from '../services/stockage.service';
+import { StocksService } from '../services/stocks.service';
 
 @Component({
   selector: 'app-detail-stocks',
@@ -16,7 +17,7 @@ export class DetailStocksPage implements OnInit {
 
   idStockActuel:any;
   tousLesStocksDunUserActuel:any;
-  detailsStocks:any
+  
 
   constructor(
     private routes : ActivatedRoute,
@@ -28,19 +29,46 @@ export class DetailStocksPage implements OnInit {
     private agriculteurService: AgriculteurService,
     public popoverController: PopoverController,
     private champService: ChampService,
-    private meteoservice: MeteoService
+    private meteoservice: MeteoService,
+    private stockService: StocksService
   ) { }
 
-  ngOnInit() {
-    this.recupererDetailStocks();
+  date = new Date();
+  formattedDate = this.date.toLocaleDateString();
+
+  detailsStocks= {
+
+      id:0,
+      libelle:"",
+      prixkilo:0,
+      nombrekilo:0,
+      quantiterestant:0,
+      photo:"",
+      disponibilite:false,
+      datepublication:this.formattedDate,
+      varietes:{},
+      proprietaire:{}
   }
 
-  recupererDetailStocks(){
+
+
+  ngOnInit() {
+    this.recupererDetailStock();
+  }
+
+  // recupererDetailStocks(){
+  //   this.idStockActuel = this.routes.snapshot.params['id'];
+  //   console.log("element: " +  this.idStockActuel);
+  //   this.tousLesStocksDunUserActuel = this.storageService.getStocks();
+  //   this.detailsStocks = this.tousLesStocksDunUserActuel[this.idStockActuel-1];
+  //   console.log("element: " +  this.detailsStocks);
+  // }
+
+  recupererDetailStock(){
     this.idStockActuel = this.routes.snapshot.params['id'];
-    console.log("element: " +  this.idStockActuel);
-    this.tousLesStocksDunUserActuel = this.storageService.getStocks();
-    this.detailsStocks = this.tousLesStocksDunUserActuel[this.idStockActuel-1];
-    console.log("element: " +  this.detailsStocks);
+    this.stockService.recupererStockParId(this.idStockActuel).subscribe(data =>{
+      this.detailsStocks = data;
+    })
   }
 
 }
