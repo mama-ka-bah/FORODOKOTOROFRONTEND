@@ -31,6 +31,11 @@ lesProduitAgricoleRecuperer:any;
     return this.http.get(AUTH_API1 + `recuperervarietesparproduit/${idProduitAgricole}`);
   }
 
+  //permet de recuperer les details d'un produit agricoles
+  recupererLesDetailsProduitAgricole(idProduitAgricole:any): Observable<any> {
+    return this.http.get(AUTH_API1 + `detailproduitagricole/${idProduitAgricole}`);
+  }
+
   //permet d'ajouter un cultive
   ajouterCultive(cultive:any, varieteid:any, parserelleid:any): Observable<any> {
     return this.http.post(AUTH_API2 + `ajouter/${varieteid}/${parserelleid}`, cultive);

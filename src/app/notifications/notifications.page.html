@@ -15,14 +15,119 @@
 
 <ion-content>
 
+  <!-- style="margin-top: 31px;" -->
   <div class="conteneurNotification">
      <div class="buttons">
-      <ion-button class="nonlu" type="submit" expand="block">Lu</ion-button>
-      <ion-button class="lu active" type="submit" expand="block">TOUT</ion-button>
-      <ion-button class="nonlu" type="submit" expand="block">Non lu</ion-button>
+      <!-- <ion-button class="nonlu" type="submit" expand="block">Lu</ion-button> -->
+      <!-- <ion-button (click)="activeTout()" [ngClass]="{'active': toutActive, 'nonActive': !toutActive}"  type="submit" expand="block">TOUT</ion-button> -->
+      <ion-button (click)="activeLu()" [ngClass]="{'active': luActive, 'nonActive': !luActive}"  type="submit" expand="block">Lu</ion-button>
+      <ion-button (click)="activeNonLu()" [ngClass]="{'active': nonLuActive, 'nonActive': !nonLuActive}"  type="submit" expand="block">Non lu</ion-button>
      </div>
 
-     <div class="notification">
+     <div *ngIf="luActive == true" style="margin-top: 15px;">
+
+      <div class="notification" style="margin-top: 10px; width: 100vw;" *ngFor="let notif of lesNotificationsLus">
+        <div class="titre">
+         {{notif.titre}}
+        </div>
+        <div class="contenuNot">
+          <div class="logo">
+            <img class="logoImage" src="../../assets/images/logo.png" alt="l'utilisateu concerné">
+          </div>
+          <div class="texte">
+           {{notif.contenu}}
+          </div>
+        </div>
+        <div class="dureeExp">
+          <div class="expediteur">
+           FORODOKOTORO
+          </div>
+          <!-- <div class="dureeNot">
+            {{notif.datenotification}}
+          </div> -->
+        </div>
+       </div>
+
+     </div>
+
+
+
+     <div *ngIf="nonLuActive == true" style="margin-top: 15px;">
+
+      <div class="notification" style="width: 100vw; margin-top: 10px;" *ngFor="let notif of lesNotificationsNonLus">
+        <div class="titre">
+         {{notif.titre}}
+        </div>
+        <div class="contenuNot">
+          <div class="logo">
+            <img class="logoImage" src="../../assets/images/logo.png" alt="l'utilisateu concerné">
+          </div>
+          <div class="texte">
+           {{notif.contenu}}
+          </div>
+        </div>
+        <div class="dureeExp">
+          <div class="expediteur">
+           FORODOKOTORO
+          </div>
+          <!-- <div class="dureeNot">
+            {{notif.datenotification}}
+          </div> -->
+        </div>
+       </div>
+
+     </div>
+     
+
+     <!-- <div class="notification">
+      <div class="titre">
+        Le tiitre de la notification
+      </div>
+      <div class="contenuNot">
+        <div class="logo">
+          <img class="logoImage" src="../../assets/images/agriculteur.jpg" alt="l'utilisateu concerné">
+        </div>
+        <div class="texte">
+          L'arachide, également connue sous le nom d'arachide, de goober, de pindar
+           ou de noix de singe, est une légumineuse.
+        </div>
+      </div>
+      <div class="dureeExp">
+        <div class="expediteur">
+          Keita Sama
+        </div>
+        <div class="dureeNot">
+          Il y a 5 jours
+        </div> 
+      </div>
+     </div> -->
+
+     <!-- <div class="notification">
+      <div class="titre">
+        Le tiitre de la notification
+      </div>
+      <div class="contenuNot">
+        <div class="logo">
+          <img class="logoImage" src="../../assets/images/agriculteur.jpg" alt="l'utilisateu concerné">
+        </div>
+        <div class="texte">
+          L'arachide, également connue sous le nom d'arachide, de goober, de pindar
+           ou de noix de singe, est une légumineuse.
+        </div>
+      </div>
+      <div class="dureeExp">
+        <div class="expediteur">
+          Keita Sama
+        </div>
+        <div class="dureeNot">
+          Il y a 5 jours
+        </div>
+        
+      </div>
+     </div> -->
+
+
+     <!-- <div class="notification">
       <div class="titre">
         Le tiitre de la notification
       </div>
@@ -45,90 +150,10 @@
         <div class="dureeNot">
           Il y a 5 jours
         </div>
-      </div>
-     </div>
-
-     <div class="notification">
-      <div class="titre">
-        Le tiitre de la notification
-      </div>
-      <div class="contenuNot">
-        <div class="logo">
-          <img class="logoImage" src="../../assets/images/agriculteur.jpg" alt="l'utilisateu concerné">
-        </div>
-        <div class="texte">
-          L'arachide, également connue sous le nom d'arachide, de goober, de pindar
-           ou de noix de singe, est une légumineuse.
-        </div>
-        <!-- <div class="icon">
-  
-        </div> -->
-      </div>
-      <div class="dureeExp">
-        <div class="expediteur">
-          Keita Sama
-        </div>
-        <div class="dureeNot">
-          Il y a 5 jours
-        </div>
         
       </div>
-     </div>
+     </div> -->
 
-     <div class="notification">
-      <div class="titre">
-        Le tiitre de la notification
-      </div>
-      <div class="contenuNot">
-        <div class="logo">
-          <img class="logoImage" src="../../assets/images/agriculteur.jpg" alt="l'utilisateu concerné">
-        </div>
-        <div class="texte">
-          L'arachide, également connue sous le nom d'arachide, de goober, de pindar
-           ou de noix de singe, est une légumineuse.
-        </div>
-        <div class="icon">
-  
-        </div>
-      </div>
-      <div class="dureeExp">
-        <div class="expediteur">
-          Keita Sama
-        </div>
-        <div class="dureeNot">
-          Il y a 5 jours
-        </div>
-        
-      </div>
-     </div>
-
-
-     <div class="notification">
-      <div class="titre">
-        Le tiitre de la notification
-      </div>
-      <div class="contenuNot">
-        <div class="logo">
-          <img class="logoImage" src="../../assets/images/agriculteur.jpg" alt="l'utilisateu concerné">
-        </div>
-        <div class="texte">
-          L'arachide, également connue sous le nom d'arachide, de goober, de pindar
-           ou de noix de singe, est une légumineuse.
-        </div>
-        <div class="icon">
-  
-        </div>
-      </div>
-      <div class="dureeExp">
-        <div class="expediteur">
-          Keita Sama
-        </div>
-        <div class="dureeNot">
-          Il y a 5 jours
-        </div>
-        
-      </div>
-     </div>
   </div>
 
 </ion-content>

@@ -37,7 +37,6 @@ export class DetailStocksPage implements OnInit {
   formattedDate = this.date.toLocaleDateString();
 
   detailsStocks= {
-
       id:0,
       libelle:"",
       prixkilo:0,

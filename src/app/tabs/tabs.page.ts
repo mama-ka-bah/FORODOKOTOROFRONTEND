@@ -235,6 +235,7 @@ reloadPage(): void {
    
     if(this.currentUser.sesouvenir == true){
       this.storageService.clean();
+      localStorage.clear();
       this.navCtrl.navigateRoot([{clearHistory: true}]);
 
       const user = {
@@ -309,6 +310,9 @@ reloadPage(): void {
                   this.nombreDeNotificationNonLu = data;
                   // alert(data)
                   this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
+                  this.donneesService.nombreDeNotificationNonLu$.subscribe(value => {
+                    this.nombreDeNotificationNonLu = value;
+                  });
 
                   this.dismissLoading();
                  
@@ -393,6 +397,9 @@ if(data.data.etat == true){
           this.nombreDeNotificationNonLu = data;
           // alert(data)
           this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
+          this.donneesService.nombreDeNotificationNonLu$.subscribe(value => {
+            this.nombreDeNotificationNonLu = value;
+          });
 
           this.dismissLoading();
          

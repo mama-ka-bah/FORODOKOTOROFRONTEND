@@ -81,9 +81,6 @@ export class DetailParserellePage implements OnInit {
 submitForm1() {
 
   if(this.myForm.valid) {
-  
-   
-
       Swal.fire({
         text: 'Etes vous sur d\'ajouter cette parserelle',
         // showDenyButton: true,

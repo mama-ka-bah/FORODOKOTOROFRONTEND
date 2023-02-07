@@ -15,7 +15,8 @@ const routes: Routes = [
   {
     path: 'semence',
     loadChildren: () => import('../semence/semence.module').then( m => m.SemencePageModule)
-  },
+  }
+  ,
   {
     path: 'profil',
     loadChildren: () => import('../profil/profil.module').then( m => m.ProfilPageModule)

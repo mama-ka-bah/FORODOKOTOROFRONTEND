@@ -20,18 +20,26 @@ export class NotificationService {
 
 //permet de recuperer les notifications d'un utilisateur
 recupererNotificationUser(idUser:any): Observable<any> {
-  return this.http.get(AUTH_API + `recupererNombreDeNotificationNonLuDunUser/${idUser}`);
+  return this.http.get(AUTH_API + `recupererLesNotificationDunUser/${idUser}`);
 }
 
  //permet de recuperer les notifications non lus d'un utilisateur
  recupererNotificationNonLuUser(idUser:any): Observable<any> {
-  return this.http.get(AUTH_API + `recupererNombreDeNotificationNonLuDunUser/${idUser}`);
+  return this.http.get(AUTH_API + `recupererLesNotificationNonLuDunUser/${idUser}`);
 }
 
- //permet de recuperer les notifications lus d'un utilisateur
- recupererNotificationLuDunUser(idUser:any): Observable<any> {
-  return this.http.get(AUTH_API + `recupererNombreDeNotificationNonLuDunUser/${idUser}`);
+//permet de recuperer les notifications non lus d'un utilisateur
+recupererNotificationLuUser(idUser:any): Observable<any> {
+  return this.http.get(AUTH_API + `recupererLesNotificationLuDunUser/${idUser}`);
 }
+
+
+//permet de mettre à jour le profil de l'utilisateur
+marquerLesNotificationDunUserCommeLus(idUser:any, notifications:any): Observable<any> {
+  return this.http.patch(AUTH_API + `marquerlesNotificationdunusercommelus/${idUser}`, notifications
+  );
+}
+
 
 
 
