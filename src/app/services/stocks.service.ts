@@ -23,9 +23,19 @@ export class StocksService {
     return this.http.get(AUTH_API + `recuperertousstocksvalidesagriculteur/${id}`);
   }
 
+  recupererTousLesStocks(): Observable<any> {
+
+    return this.http.get(AUTH_API + `stocksactives`);
+  }
+
   recupererStockParId(id:any): Observable<any> {
 
     return this.http.get(AUTH_API + `detailstock/${id}`);
+  }
+
+  //permet de recuper les évolution d'un
+  recupererTousevolutionStocksDunStocks(idStock:any): Observable<any> {
+    return this.http.get(AUTH_API + `recuperertousevolutionstocksdunstocks/${idStock}`);
   }
 
 
@@ -33,5 +43,11 @@ export class StocksService {
   ajouterStock(varieteid:any, idProprietaire:any, stock:any): Observable<any> {
     return this.http.post(AUTH_API + `ajouter/${varieteid}/${idProprietaire}`, stock);
   }
+
+   //permet de mettre à jour un stock
+   mettreAjourStock(stockid:any, quantiteRestant:any, evolutionstock:any): Observable<any> {
+    return this.http.post(AUTH_API + `mettrejourstock/${stockid}/${quantiteRestant}`, evolutionstock);
+  }
+
 
 }

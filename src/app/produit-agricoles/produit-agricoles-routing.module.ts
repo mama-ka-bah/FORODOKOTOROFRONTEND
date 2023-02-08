@@ -9,12 +9,8 @@ const routes: Routes = [
     component: ProduitAgricolesPage
   },
   {
-    path: 'detail-produit-agricoles',
+    path: 'detail-produit-agricoles/:idproduit',
     loadChildren: () => import('../detail-produit-agricoles/detail-produit-agricoles.module').then( m => m.DetailProduitAgricolesPageModule)
-  },
-  {
-    path: 'semence',
-    loadChildren: () => import('../semence/semence.module').then( m => m.SemencePageModule)
   }
   ,
   {

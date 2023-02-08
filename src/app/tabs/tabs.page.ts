@@ -23,7 +23,7 @@ import { StorageService } from '../services/stockage.service';
 export class TabsPage implements OnInit{   
   //code lié à mon modal pour gerer sa fermeture debut
   @ViewChild(IonModal) modal!: IonModal;
-  rolutilisateur: any;
+  rolutilisateur: string[] = [];
 
   dismiss() {
     this.modal.dismiss(null, 'dismiss');
@@ -61,8 +61,8 @@ export class TabsPage implements OnInit{
     private chargementService: ChargementService,
     public loadingController: LoadingController,
     private authentificationService: AuthentificationService,
-
   ) {
+    
     this.currentUser = this.storageService.getUser();
 
     // alert(this.currentUser.nomcomplet)

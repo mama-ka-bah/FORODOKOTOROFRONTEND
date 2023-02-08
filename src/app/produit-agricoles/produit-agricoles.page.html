@@ -22,7 +22,7 @@
                   <h5>{{produit.nom}}</h5>
                  {{produit.description.slice(0, 60)}}<span *ngIf="produit.description.length > 60">...</span>
                 </div>
-                <button class="voirplus" routerLink="/tabs/produit-agricoles/detail-produit-agricoles">Voir plus</button>
+                <button class="voirplus" [routerLink]="['detail-produit-agricoles', produit.id]">Voir plus</button>
               </div>
           </ion-col>
         </ion-row>

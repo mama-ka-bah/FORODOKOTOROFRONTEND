@@ -1,0 +1,147 @@
+//debut style menus
+.barre-menu{
+    background-color: #14AE5C;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+}
+.element-menus{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.libelle{
+    color: bold;
+    // color: #fff;
+}
+//fin style du menu
+
+
+
+
+.detailPar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    // width: 90%;
+    height: 100%;
+    gap: 10px;
+    // padding: 18px;
+
+    background-color: #efecee;
+    padding: 15px;
+    margin-top: 80px;
+  }
+
+
+
+
+//debut style carde des details
+.detailChamp{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: calc(100% - 30px) ;
+    height: 100%;
+    gap: 10px;
+    padding: 15px; 
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 4px rgba(20, 174, 92, 0.1);
+    border-radius: 15px;
+  }
+
+  .elementDetailChamp{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;  
+  }
+
+  .detail, .libelle{
+    display: flex;
+    justify-content: flex-start;
+  }
+ .libelle{
+   font-weight: bold;
+  }
+  //fin style card
+
+
+  .conteneur{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #efecee;
+  }
+
+  .contVoirplus{
+    display: flex;
+    justify-content: center;
+  }
+
+  .listeCulture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #14AE5C;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  ion-content{
+    --background:#efecee;
+  }
+
+
+  .status{
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;  
+    font-size: 12px;
+    align-items: center;
+    background-color: #14AE5C;
+    padding: 5px;
+}
+
+
+
+
+
+
+.iconAct{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.is-invalid{
+  border-color: red;
+}
+.is-valid{
+  border-color: #14AE5C;
+}
+
+.erreur{
+  color: red;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+}
+
+
+
+  

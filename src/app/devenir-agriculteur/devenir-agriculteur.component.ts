@@ -8,7 +8,7 @@ import { PopoverController } from '@ionic/angular';
 })
 export class DevenirAgriculteurComponent implements OnInit {
 
-  constructor(    public popoverController: PopoverController,
+  constructor(public popoverController: PopoverController,
     ) { }
 
   ngOnInit() {}
@@ -18,8 +18,10 @@ export class DevenirAgriculteurComponent implements OnInit {
   }
 
   closePopover() {
-    let data = { etat: false};
-    this.popoverController.dismiss(data);
+    // let data = { etat: false};
+    // this.popoverController.dismiss(data);
+    this.popoverController.dismiss();
+
   }
 
   

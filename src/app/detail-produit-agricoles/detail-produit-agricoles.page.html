@@ -11,12 +11,13 @@
   <div class="barre-menu">
     <div class="element-menus">
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="home"></ion-back-button>
+        <ion-back-button   defaultHref="/tabs/produit-agricoles"></ion-back-button>
       </ion-buttons>
       <div class="nomApp">
         <!-- style="width: 60%;" -->
         <!-- <img src="../../assets/images/forodokotoro.png" alt=""> -->
-        Maïs
+        {{detailsProduitsAgricoles.nom}}
+        
       </div>
       <!-- <div class="rechercche">
         <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
@@ -85,25 +86,23 @@
   <div class="conteneurDetailProduitAgricole">
 
     <div class="conteneurImage">
-      <img class="image-detail" src="../assets/images/mais.jpg">
-      <ion-button>Subventionné</ion-button>
+      <img class="image-detail" src="{{detailsProduitsAgricoles.photo}}">
+      <ion-button *ngIif="detailsProduitsAgricoles.statusubvention  == true">Subventionné</ion-button>
     </div>
 
     <div class="description">
       <h5>Description</h5>
       <div class="texte">
         <div style="justify-content: justify;">
-          L'arachide, également connue sous le nom d'arachide, de goober, de
-          pindar ou de noix de singe, est une légumineuse cultivée principalement
-           pour ses graines comestibles.
+         {{detailsProduitsAgricoles.description}}
         </div>
-        <button>Voir plus</button>
+        <!-- <button>Voir plus</button> -->
       </div>
     </div>
 
     <div class="varietes">
       <h5 class="libelle-produitsagricoles">Differentes varietes</h5> 
-  <div class="produitsagricoles">
+  <!-- <div class="produitsagricoles">
     <ion-slides [options]="options" class="imagesproduits">
       <ion-slide class="images-produit" routerLink="/tabs/produit-agricoles/semence">
         <img src="../assets/images/arachide-accueil.png">
@@ -118,7 +117,26 @@
         <img src="../assets/images/mais-accueil.png">
       </ion-slide>
     </ion-slides>
+  </div> -->
+
+
+  <div class="produitsagricoles">
+    <ion-slides [options]="options" class="imagesproduits">
+      <ion-slide class="images-produit" *ngFor="let variete of lesvarietesDuProduitActuel" >
+        <img src="{{variete.photo}}" alt="images"   [routerLink]="['semence', variete.id]">
+      </ion-slide>
+      <!-- <ion-slide class="images-produit">
+        <img src="../assets/images/mais-accueil.png" alt="images">
+      </ion-slide>
+      <ion-slide class="images-produit">
+        <img src="../assets/images/coton-accueil.png" alt="images">
+      </ion-slide>
+      <ion-slide class="images-produit">
+        <img src="../assets/images/mais-accueil.png" alt="images">
+      </ion-slide> -->
+    </ion-slides>
   </div>
+
     </div>
 
   </div>

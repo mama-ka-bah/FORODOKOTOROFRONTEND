@@ -127,3 +127,42 @@ ion-title{
 .varietes{
     margin-bottom: 25px;
 }
+
+
+
+
+
+//les images des produits conteneur
+.imagesproduits{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    --width: 100%;
+  }
+
+
+
+
+  
+
+  //images d'un produit
+  .images-produit{
+    border-radius: 15px;
+   
+    overflow: hidden;
+  }
+// .images-produit img{
+//   // max-width: 130%;
+//   // max-height: 130%;
+//   object-fit: cover;
+// }
+
+.swiper-slide img {
+  width: 100px;
+    height: 120px;
+  object-fit: cover;
+}
+  .wicon{
+    height: 10px;
+    width: 20px;
+  }

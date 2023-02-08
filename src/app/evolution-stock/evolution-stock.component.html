@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle" style="color: #fff; font-size: 20px;">
+       Evolution du stock
+      </div>
+      <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+    </div>
+  </div>
+  
+
+  <!-- <div class="listeCulture" style="margin-top:10px; margin-bottom: 10px;">Liste des cultures</div> -->
+<div style="margin-top: 100px;">
+
+  <div class="conteneur" *ngFor="let evolution of evolutionStock">
+
+    <div class="detailChamp" >
+    <div class="status">
+      <span>{{evolution.motif}}</span>
+    </div>
+    <div class="elementDetailChamp">
+    <div class="libelle">Date</div>
+      <div class="detail" style="text-align: center; font-weight: bold; ">{{evolution.date}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle">Quantité ajoutée</div>
+      <div class="detail">{{evolution.quantiteajoute}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle">Quantité deduit</div>
+      <div class="detail">{{evolution.quantitededuit}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle">Reste</div>
+      <div class="detail">{{evolution.quantiterestant}}</div>
+    </div>
+    </div> 
+
+</div>
+
+
+</div>
+  
+
+</ion-content>

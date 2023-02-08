@@ -31,14 +31,24 @@ lesProduitAgricoleRecuperer:any;
     return this.http.get(AUTH_API1 + `recuperervarietesparproduit/${idProduitAgricole}`);
   }
 
-  //permet de recuperer les details d'un produit agricoles
+  //permet de recuperer les details d'une variete
   recupererLesDetailsProduitAgricole(idProduitAgricole:any): Observable<any> {
-    return this.http.get(AUTH_API1 + `detailproduitagricole/${idProduitAgricole}`);
+    return this.http.get(AUTH_API + `detailproduitagricole/${idProduitAgricole}`);
+  }
+
+   //permet de recuperer les details d'un produit agricoles
+   recupererLesDetailsDunevariete(idvariete:any): Observable<any> {
+    return this.http.get(AUTH_API1 + `detailVarietes/${idvariete}`);
   }
 
   //permet d'ajouter un cultive
   ajouterCultive(cultive:any, varieteid:any, parserelleid:any): Observable<any> {
     return this.http.post(AUTH_API2 + `ajouter/${varieteid}/${parserelleid}`, cultive);
+  }
+
+   //permet recuperer les previsions dune variete
+   recupererPrevisionsDuneVariete(varieteid:any): Observable<any> {
+    return this.http.get(AUTH_API1 + `recupererprevisionsdunevariete/${varieteid}`);
   }
 
 }

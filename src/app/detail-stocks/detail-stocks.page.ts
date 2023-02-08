@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, ModalController, PopoverController } from '@ionic/angular';
+import { DevenirAgriculteurComponent } from '../devenir-agriculteur/devenir-agriculteur.component';
+import { EvolutionStockComponent } from '../evolution-stock/evolution-stock.component';
+import { MettreAjourStockComponent } from '../mettre-ajour-stock/mettre-ajour-stock.component';
 import { AgriculteurService } from '../services/agriculteur.service';
 import { ChampService } from '../services/champ.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
@@ -49,11 +52,16 @@ export class DetailStocksPage implements OnInit {
       proprietaire:{}
   }
 
+    //pour retourner en arriere
+retourner() {
+  this.navCtrl.back();
+}
 
 
-  ngOnInit() {
-    this.recupererDetailStock();
-  }
+
+ngOnInit() {
+  this.recupererDetailStock();
+}
 
   // recupererDetailStocks(){
   //   this.idStockActuel = this.routes.snapshot.params['id'];
@@ -69,5 +77,74 @@ export class DetailStocksPage implements OnInit {
       this.detailsStocks = data;
     })
   }
+
+
+
+
+  // Cette methode est utiliser pour creer un modal, on peut lui passer
+    //  des parametres et il peut également recuperer des données envoyer par le composant 
+    async evolutionStock() {
+      const modal = await this.modalCtrl.create({
+  
+        //le composant contenant le modal
+        component: EvolutionStockComponent,
+  
+        //Ici on envoi l'objet myData au composant
+        componentProps: {
+          data: this.idStockActuel,
+    }
+      });
+  
+      //Cette methode contient les 
+      modal.onDidDismiss().then((emailSaisie) => {
+      })
+      await modal.present();
+    }
+
+
+     //popup
+     async mettreAjourSonStock(ev: any) {
+      const popover = await this.popoverController.create({
+        component: MettreAjourStockComponent,
+        event: ev,
+        translucent: true,
+        componentProps: {
+          data: this.idStockActuel,
+          data1:this.detailsStocks
+        }
+      });
+
+      await popover.present();
+  
+      popover.onDidDismiss().then((data) => {
+        console.log(data.data);
+     })
+
+    }
+
+
+
+      // //popup
+      // async evolutionStock(ev: any) {
+      //   const popover = await this.popoverController.create({
+      //     component: MettreAjourStockComponent,
+      //     event: ev,
+      //     translucent: true,
+      //     componentProps: {
+      //       data: this.idStockActuel,
+      //       data1:this.detailsStocks
+      //     }
+      //   });
+  
+      //   await popover.present();
+    
+      //   popover.onDidDismiss().then((data) => {
+      //     console.log(data.data);
+      //  })
+  
+      // }
+  
+
+    
 
 }

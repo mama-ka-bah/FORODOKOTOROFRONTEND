@@ -3,7 +3,7 @@
     <div class="barre-menu">
       <div class="element-menus">
         <ion-buttons slot="start" >
-          <ion-back-button defaultHref="profil"></ion-back-button>
+          <ion-back-button (click)="retourner()" defaultHref="profil"></ion-back-button>
         </ion-buttons>
         <div class="nomApp" style="flex-basis: 80%;">
          {{detailsStocks.libelle}}
@@ -51,19 +51,22 @@
           <!-- <div class="iconAction">
             <i style="color: red;" class="fa fa-trash" aria-hidden="true"></i>
           </div> -->
-          <div class="iconAction">
+          <div class="iconAction" (click)="mettreAjourSonStock($event)">
             <i class="fas fa-edit" style="color: #0000FF;"></i>
           </div>
-          <div class="iconAction">
+          <div (click)="evolutionStock()" class="iconAction" style="color: #14AE5C;">
+            Liste mise à jour <i class="fa-solid fa-arrow-right"></i>
+           </div>
+          <!-- <div class="iconAction"  (click)="mettreAjourSonStock($event)" >
             <i style="color: #14AE5C;" class="fa fa-plus" aria-hidden="true"></i>
           </div>
-          <div class="iconAction">
+          <div class="iconAction"  (click)="mettreAjourSonStock($event)">
             <i class="fas fa-minus"></i>
-          </div>
+          </div> -->
         </div>
-        <div class="history">
+        <!-- <div class="history">
          Liste mise à jour <i class="fa-solid fa-arrow-right"></i>
-        </div>
+        </div> -->
       </div>
 
       <div class="liens">
