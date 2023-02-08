@@ -34,8 +34,14 @@ recupererNotificationLuUser(idUser:any): Observable<any> {
 }
 
 
+//permet de mettre à jour une notification
+marquerLesNotificationDunUserCommeLus(idnotif:any, notifications:any): Observable<any> {
+  return this.http.patch(AUTH_API + `modifier/${idnotif}`, notifications);
+}
+
+
 //permet de mettre à jour le profil de l'utilisateur
-marquerLesNotificationDunUserCommeLus(idUser:any, notifications:any): Observable<any> {
+marquerUneNotificationDunUserCommeLus(idUser:any, notifications:any): Observable<any> {
   return this.http.patch(AUTH_API + `marquerlesNotificationdunusercommelus/${idUser}`, notifications
   );
 }

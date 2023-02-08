@@ -1,0 +1,129 @@
+//debut style menus
+.barre-menu{
+    background-color: #14AE5C;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.element-menus{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.libelle{
+    color: bold;
+    color: #fff;
+}
+//fin style du menu
+
+
+
+  .conteneurNotification{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    flex-direction: column;
+  }
+
+  //le style des buttons
+  .buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+    top: 75px;
+    background-color: #fff;
+    position: fixed;
+  }
+  .active{
+    --background: #14AE5C;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .buttons ion-button{
+    border: none;
+    --box-shadow: none;
+    width: 80px;
+  }
+
+  .nonActive{
+    color: #000;
+    --background:#fff;
+  }
+  //fin style des buttons
+
+
+  //les styles d'une notification debut
+  .icon{
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #14AE5C;
+  }
+
+  .notification{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #efecee;
+    margin-top: 0!important;
+  }
+  .contenuNot{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2px;
+  }
+  .texte{
+    text-align: justify;
+    flex-basis: 75%;
+    font-size: 15px;
+  }
+  .logo{
+    flex-basis: 25%;
+    width: 100%;
+    height: 100%;
+  }
+  .logo img{
+    width: 65px;
+    height: 65px;
+    // border-radius: 32px;
+  }
+  .titre{
+    font-weight: bold;
+  }
+  .dureeExp{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+  }
+  .expediteur{
+    font-weight: bold;
+  }
+  //fin style notification
+
+
+
+//   .content-sizing .inner-scroll {
+//     position: absolute!important;
+//     top: 50%!important;
+//     left: 50%!important;
+//     transform: translate(-50%, -50%)!important;
+// }
+
+
+.ion-popover {
+    top: 30% !important;
+
+}

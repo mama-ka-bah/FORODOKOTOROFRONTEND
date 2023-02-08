@@ -27,6 +27,7 @@ import { ModifierProfilComponent } from './modifier-profil/modifier-profil.compo
 import { AjouterStockComponent } from './ajouter-stock/ajouter-stock.component';
 import { MettreAjourStockComponent } from './mettre-ajour-stock/mettre-ajour-stock.component';
 import { EvolutionStockComponent } from './evolution-stock/evolution-stock.component';
+import { DetailNotificationComponent } from './detail-notification/detail-notification.component';
 
 
 
@@ -34,7 +35,7 @@ import { EvolutionStockComponent } from './evolution-stock/evolution-stock.compo
     declarations: [AppComponent,OtpComponent,InputotpComponent, ChangerMotDePasseComponent, ChoisirProfilComponent,
        DevenirTransporteurComponent, DevenirAgriculteurComponent, AjouterChampComponent, AjouterParserelleComponent,
       CultureParserelleComponent, AjouterPhaseCultiveComponent, DetailPhaseCultiveComponent,ModifierProfilComponent,
-       AjouterStockComponent, MettreAjourStockComponent, EvolutionStockComponent],
+       AjouterStockComponent, MettreAjourStockComponent, EvolutionStockComponent, DetailNotificationComponent],
 
     imports: [
       BrowserModule,

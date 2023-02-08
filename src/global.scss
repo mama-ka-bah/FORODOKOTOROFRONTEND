@@ -71,6 +71,7 @@ ion-popover {
   --box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
   --color: white;
  --width: calc(100% - 20px);
+ --background:none;
 }
 
 ion-popover ion-content {
@@ -81,16 +82,11 @@ ion-popover ion-content {
 }
 
 
-.popover-content {
-  left: calc(9.55554px + var(--offset-x, 0px))!important;
-  top: 150px!important;
-}
-
-
   //images d'un produit
   .images-produit{
     border-radius: 15px;
     width: 30%!important;
     height: 50%!important;
   }
+
 

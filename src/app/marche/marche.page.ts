@@ -27,14 +27,14 @@ export class MarchePage implements OnInit {
 
      searchTerm:any
 
-     ionViewDidEnter(){
+     ionViewWillEnter(){
       this.donneesService.showMenu.next(true);
     }
 
   ngOnInit() {
     this.donneesService.showMenu.next(true);
     this.donneesService.setpageActuel("Marché");
-    this. recupererTousStocks();
+    this.recupererTousStocks();
   }
 
   recupererTousStocks(){
