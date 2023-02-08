@@ -60,6 +60,11 @@ const routes: Routes = [
   {
     path: 'detail-parserelle/:id',
     loadChildren: () => import('./detail-parserelle/detail-parserelle.module').then( m => m.DetailParserellePageModule)
+  },
+  
+  {
+    path: 'detail-stocks/:id',
+    loadChildren: () => import('./detail-stocks/detail-stocks.module').then( m => m.DetailStocksPageModule)
   }
 
 
