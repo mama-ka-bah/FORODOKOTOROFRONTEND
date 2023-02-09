@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 //url de mon controlleur d'authentification
 const AUTH_API = 'http://localhost:8081/api/auth/';
+const AUTH_API1 = 'http://localhost:8081/transporteurs/';
 
 //l'entete du navigateur
 const httpOptions = {
@@ -32,7 +33,8 @@ export class AuthentificationService {
   }
 
     // fonction permettant de gerer l'inscription
-  register(donneesuser:any): Observable<any> {
+  
+    register(donneesuser:any): Observable<any> {
     const data:FormData=new FormData();
 
     data.append('donneesuser', JSON.stringify(donneesuser).slice(1,JSON.stringify(donneesuser).lastIndexOf(']')));
@@ -59,13 +61,30 @@ export class AuthentificationService {
     );
   }
 
+   //permet de mettre à jour le profil de l'utilisateur
+   modifierProfilUtilisateur(idUser:any, user:any): Observable<any> {
+    return this.http.patch(AUTH_API + `modifierutilisateur/${idUser}`, user
+    );
+  }
+
+   //permet de mettre à jour le profil de l'utilisateur
+   modifierPhotoProfil(idUser:any, data:any): Observable<any> {
+    return this.http.patch(AUTH_API + `modifierprofil/${idUser}`, data
+    );
+  }
+
+  //permet de mettre à jour le profil de l'utilisateur
+  recupererTousLesTransporteur(): Observable<any> {
+    return this.http.get(AUTH_API1 + 'RecupererTousTransporteur'
+    );
+  }
+
 
   modifierMotDePasse(iduser:any, password:any): Observable<any> {    
 
     return this.http.patch(
       AUTH_API + `modifierutilisateur/${iduser}`,
-      {password},
-      httpOptions
+      password
     );
   }
 

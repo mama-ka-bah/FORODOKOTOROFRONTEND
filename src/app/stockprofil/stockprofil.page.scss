@@ -109,7 +109,7 @@ ion-col {
     flex-direction: column;
     grid-column: 25px;
     // background-color: #efecee;
-    border-radius: 50px;
+    border-radius: 0 0 50px 50px;
     box-shadow: 0px 0px 4px 4px rgb(20 174 92 / 10%);
   }
   
@@ -200,3 +200,42 @@ ion-col {
       width: 120%;
     }
   }
+
+
+  @media (max-width: 767px) {
+    .mesec {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      // gap: 5px;
+      margin-bottom: 15px;
+      margin-top: 8px;
+      row-gap: 12px;
+    }
+    ion-col{
+      margin: 2% !important;
+      width: 95% !important;
+    }
+  }
+
+
+
+  
+//style du bootton input
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+
+  font-size: 15px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+  position: absolute;
+  top: -15px!important;
+}
+//fin style

@@ -1,0 +1,121 @@
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="ajout-champ-modal">
+
+    <div class="barre-menu">
+      <div class="element-menus">
+        <div class="libelle">
+         Ajouter une action
+        </div>
+        <div (click)="closeModal()"> <i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+      </div>
+    </div>
+
+
+    <div class="containeur">
+      <div class="conteneur-logo">
+        <img class="logo" src="../assets/images/chamStock.png">
+      </div>
+
+        <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
+
+          <!-- action / libelle -->
+          <div class="input">
+              <label>Action <span class="obligatoire">*</span></label>
+              <input class="telephone-input" max="100" min="1" type="text" class="form-control" placeholder="Action" formControlName="libelle"
+              [ngClass]="{'is-invalid': myForm.get('libelle')!.invalid && myForm.get('libelle')!.touched}"
+              [ngClass]="{'is-valid': myForm.get('libelle')!.valid && myForm.get('libelle')!.touched}"
+              >
+              <span class="erreur" *ngIf="myForm!.get('libelle')!.hasError('required') && myForm.get('libelle')!.touched">Cet champ est obligatoire</span>
+              <span class="erreur" *ngIf="myForm!.get('libelle')!.hasError('minlength') && myForm.get('libelle')!.touched">Trop court</span>
+              <span class="erreur" *ngIf="myForm!.get('libelle')!.hasError('maxlength') && myForm.get('libelle')!.touched">Trop long</span>
+
+
+          </div>
+
+          <!-- date de debut -->
+          <div class="input">
+
+            <label>Nombre de pluie <span class="obligatoire">*</span></label>
+            <input class="telephone-input" type="number" class="form-control" placeholder="Nombre de pluie" formControlName="nbrepluies"
+            [ngClass]="{'is-invalid': myForm.get('nbrepluies')!.invalid && myForm.get('nbrepluies')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('nbrepluies')!.valid && myForm.get('nbrepluies')!.touched}"
+            >
+
+            <span class="erreur" *ngIf="myForm!.get('nbrepluies')!.hasError('required') && myForm.get('nbrepluies')!.touched">Cet champ est obligatoire</span>
+          
+          </div>
+
+          <!-- Date de fin -->
+          <div class="input">
+
+            <label>Date debut <span class="obligatoire">*</span></label>
+            <input class="telephone-input" type="date" class="form-control" formControlName="datedebut"
+            [ngClass]="{'is-invalid': myForm.get('datedebut')!.invalid && myForm.get('datedebut')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('datedebut')!.valid && myForm.get('datedebut')!.touched}"
+            >
+
+            <span class="erreur" *ngIf="myForm!.get('datedebut')!.hasError('required') && myForm.get('datedebut')!.touched">Cet champ est obligatoire</span>
+
+          </div>
+
+
+          <div class="input">
+
+            <label>Date fin <span class="obligatoire">*</span></label>
+            <input class="telephone-input" type="date" class="form-control" formControlName="datefin"
+            [ngClass]="{'is-invalid': myForm.get('datefin')!.invalid && myForm.get('datefin')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('datefin')!.valid && myForm.get('datefin')!.touched}"
+            >
+
+            <span class="erreur" *ngIf="myForm!.get('datefin')!.hasError('required') && myForm.get('datefin')!.touched">Cet champ est obligatoire</span>
+
+          </div>
+
+
+          <!-- photo de la phase -->
+          <div class="input">
+  
+            <label>Photo de la phase <span class="obligatoire">*</span></label>
+            <input type="file" id="avatar"  class="form-control" name="avatar"  accept="image/png, image/jpeg"
+            multiple (change)="onFileChangePhase($event)"  formControlName="file"
+            [ngClass]="{'is-invalid': myForm.get('file')!.invalid && myForm.get('file')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('file')!.valid && myForm.get('file')!.touched}"
+            >
+
+            <span class="erreur" *ngIf="myForm!.get('file')!.hasError('required') && myForm.get('file')!.touched">Cet champ est obligatoire</span>
+
+          </div>
+
+
+          <!-- remarque -->
+          <div class="input">
+            <label>Remarques <span class="obligatoire">*</span> </label>
+            <input class="telephone-input" max="255" min="1" type="text" class="form-control" placeholder="remarque" formControlName="remarques"
+            style="height: 70px; padding: 5px;"
+            [ngClass]="{'is-invalid': myForm.get('remarques')!.invalid && myForm.get('remarques')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('remarques')!.valid && myForm.get('remarques')!.touched}"
+            >
+            <span class="erreur" *ngIf="myForm!.get('remarques')!.hasError('required') && myForm.get('remarques')!.touched">Cet champ est obligatoire</span>
+            <span class="erreur" *ngIf="myForm!.get('remarques')!.hasError('minlength') && myForm.get('remarques')!.touched">Trop court</span>
+            <span class="erreur" *ngIf="myForm!.get('remarques')!.hasError('maxlength') && myForm.get('remarques')!.touched">Trop long</span>
+
+        </div>
+
+          <div class="input">
+            <button class="envoyer-input" type="submit" expand="block" >Ajouter</button>
+          </div>
+        </form>
+
+      </div>
+    
+
+  </div>
+   
+
+</ion-content>

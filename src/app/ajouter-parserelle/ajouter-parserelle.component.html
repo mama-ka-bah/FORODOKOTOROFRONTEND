@@ -1,0 +1,115 @@
+<ion-header>
+  
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+       Ajouter Une parserelle
+      </div>
+      <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="ajout-champ-modal">
+
+    <div class="containeur">
+      <div class="conteneur-logo">
+        <img class="logo" src="../assets/images/chamStock.png">
+      </div>
+
+        <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
+
+          <!-- Nom -->
+          <div class="input">
+
+            <label>Nom <span class="obligatoire">*</span></label>
+            <input class="telephone-input" type="text" class="form-control" placeholder="Nom du champ" formControlName="nom"
+            [ngClass]="{'is-invalid': myForm.get('nom')!.invalid && myForm.get('nom')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('nom')!.valid && myForm.get('nom')!.touched}"
+            >
+
+            <span class="erreur" *ngIf="myForm!.get('nom')!.hasError('required') && myForm.get('nom')!.touched">Cet champ est obligatoire</span>
+            <span class="erreur" *ngIf="myForm.get('nom')!.hasError('minlength') && myForm.get('nom')!.touched">Nom court</span>
+
+          </div>
+
+          <!-- Longueur -->
+          <div class="input">
+
+            <label>Longueur <span class="obligatoire">*</span></label>
+            <input class="telephone-input" type="number" class="form-control" placeholder="En (metre)" formControlName="longueur"
+            [ngClass]="{'is-invalid': myForm.get('longueur')!.invalid && myForm.get('longueur')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('longueur')!.valid && myForm.get('longueur')!.touched}"
+            >
+
+            <span class="erreur" *ngIf="myForm!.get('longueur')!.hasError('required') && myForm.get('longueur')!.touched">Cet champ est obligatoire</span>
+            <span class="erreur" *ngIf="myForm.get('longueur')!.hasError('minlength') && myForm.get('longueur')!.touched">Longueur court</span>
+
+          </div>
+
+          <!-- largeur -->
+          <div class="input">
+
+            <label>Largeur <span class="obligatoire">*</span></label>
+            <input class="telephone-input" type="number" class="form-control" placeholder="En (metre)" formControlName="largeur"
+            [ngClass]="{'is-invalid': myForm.get('largeur')!.invalid && myForm.get('largeur')!.touched}"
+            [ngClass]="{'is-valid': myForm.get('largeur')!.valid && myForm.get('largeur')!.touched}"
+            >
+
+            <span class="erreur" *ngIf="myForm!.get('largeur')!.hasError('required') && myForm.get('largeur')!.touched">Cet champ est obligatoire</span>
+            <span class="erreur" *ngIf="myForm.get('largeur')!.hasError('minlength') && myForm.get('largeur')!.touched">Largeur court</span>
+
+          </div>
+
+
+           <!-- Le champ conserné -->
+           <div class="input">
+
+            <label>Le champ <span class="obligatoire">*</span></label>     
+            <select formControlName="champ" class="form-control telephone-input"
+            [ngClass]="{'is-invalid': myForm.get('typeChamp')!.invalid && myForm.get('typeChamp')!.touched}"
+            >
+            <option style="color: #000;" value="Choisir un type" selected disabled>Choisir un champ</option>
+              <option *ngFor="let champ of lesChampDeCurrentUser" value="{{champ.id}}">{{champ.nom}}</option>
+            </select>
+
+            <span class="erreur" *ngIf="myForm!.get('champ')!.hasError('required') && myForm.get('champ')!.touched">Cet champ est obligatoire</span>
+
+          </div>
+
+           <!-- Le champ conserné -->
+           <div class="input">
+
+            <label>Type de Parserelle <span class="obligatoire">*</span></label>     
+            <select formControlName="typeChamp" class="form-control telephone-input"
+            [ngClass]="{'is-invalid': myForm.get('typeChamp')!.invalid && myForm.get('typeChamp')!.touched}"
+            >
+            <option value="Choisir un type" selected disabled>Graine</option>
+              <option value="graine">Graine</option>
+              <option value="semence">Semence</option>
+            </select>
+
+            <span class="erreur" *ngIf="myForm!.get('typeChamp')!.hasError('required') && myForm.get('typeChamp')!.touched">Cet champ est obligatoire</span>
+
+          </div>
+
+
+          <div class="input">
+            <button class="envoyer-input" type="submit" expand="block" >Ajouter</button>
+          </div>
+        </form>
+
+      </div>
+    
+
+  </div>
+   
+
+</ion-content>

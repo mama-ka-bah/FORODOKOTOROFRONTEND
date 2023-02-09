@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { StorageService } from '../services/stockage.service';
 
 @Component({
   selector: 'app-bienvenue',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BienvenuePage implements OnInit {
 
-  constructor() { }
+  currentUser:any;
+
+  constructor(
+    private storageService : StorageService,
+    private router : Router
+    ) { }
 
   ngOnInit() {
+   
   }
 
 }

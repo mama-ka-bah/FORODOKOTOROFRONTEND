@@ -12,11 +12,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [AuthGuard]
   },
  
   {
-    path: 'bienvenue', component: BienvenuePage, canActivate: [AuthGuard],
+    path: 'bienvenue', component: BienvenuePage,
     loadChildren: () => import('./bienvenue/bienvenue.module').then( m => m.BienvenuePageModule)
   },
 
@@ -32,25 +33,41 @@ const routes: Routes = [
   },
   {
     path: 'detail-produit-agricoles',
-    loadChildren: () => import('./detail-produit-agricoles/detail-produit-agricoles.module').then( m => m.DetailProduitAgricolesPageModule)
+    loadChildren: () => import('./detail-produit-agricoles/detail-produit-agricoles.module').then( m => m.DetailProduitAgricolesPageModule),
+    canActivate: [AuthGuard]
   }
   ,
   {
     path: 'profil',
-    loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule)
+    loadChildren: () => import('./profil/profil.module').then( m => m.ProfilPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'champs',
-    loadChildren: () => import('./champs/champs.module').then( m => m.ChampsPageModule)
+    loadChildren: () => import('./champs/champs.module').then( m => m.ChampsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'profil-transporteur',
-    loadChildren: () => import('./profil-transporteur/profil-transporteur.module').then( m => m.ProfilTransporteurPageModule)
+    loadChildren: () => import('./profil-transporteur/profil-transporteur.module').then( m => m.ProfilTransporteurPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'notifications',
-    loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
+    loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'detail-parserelle/:id',
+    loadChildren: () => import('./detail-parserelle/detail-parserelle.module').then( m => m.DetailParserellePageModule)
+  },
+  
+  {
+    path: 'detail-stocks/:id',
+    loadChildren: () => import('./detail-stocks/detail-stocks.module').then( m => m.DetailStocksPageModule)
   }
+
+
   // ,
   // {
   //   path: 'detail-stock',

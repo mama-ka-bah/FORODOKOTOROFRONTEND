@@ -1,0 +1,195 @@
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle" style="color: #fff; font-size: 20px;">
+       {{detailParserelleClique.nom}}
+      </div>
+      <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+
+      <!-- <div (click)="closeModal()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div>  -->
+    </div>
+  </div>
+
+
+  <div class="detailPar">
+    <div class="elementDetailChamp">
+      <div class="libelle" style="font-size: 14px;">LONGUEUR</div>
+      <div class="detail">{{detailParserelleClique.longueur}} m</div>
+    </div>
+
+    <div class="elementDetailChamp">
+      <div class="libelle" style="font-size: 14px;">LARGEUR</div>
+      <div class="detail">{{detailParserelleClique.largeur}} m</div>
+    </div>
+    <!-- <div class="elementDetailChamp">
+      <div class="libelle" style="font-size: 14px;">NOMBRE DE CULTURE</div>
+      <div class="detail" style="color: #14AE5C; font-weight: bold;">{{detailParserelleClique.nombrecultive}}</div>
+    </div> -->
+    <div class="elementDetailChamp">
+      <div class="libelle" style="font-size: 14px;">SURFACE</div>
+      <div class="detail" style="font-size: 14px;">{{detailParserelleClique.longueur * detailParserelleClique.largeur}} m²</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle" style="font-size: 14px;">PERIMETRE</div>
+      <div class="detail">{{detailParserelleClique.longueur + detailParserelleClique.largeur}} m</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle" style="font-size: 14px;">STATUS</div>
+      <div class="detail"  style="color: #14AE5C; font-weight: bold;">{{detailParserelleClique.status}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle" style="font-size: 14px;">TYPE</div>
+      <div class="detail">{{detailParserelleClique.etypeparserelle}}</div>
+    </div>
+
+
+    <div class="semer">
+      <div class="iconAct"><i  class='far fa-edit' style='font-size:25px; color: blue;'></i></div>
+      <ion-button class="fermer" type="submit" id="open-modal2" expand="block" [disabled]="statusParserelle">Semer</ion-button>
+      <div class="iconAct"><i class="fa fa-trash" aria-hidden="true" style="color:red; font-size:25px"></i></div>
+    </div>
+  </div>
+
+  <div class="listeCulture" style="margin-top:10px; margin-bottom: 10px;">Liste des cultures</div>
+
+  <div class="conteneur" *ngIf="existeCultive">
+
+  <!-- <div *ngIf="existeCultive"> -->
+    <div class="conteneurInput" *ngIf="detailParserelleClique.nombrecultive > 1">
+    <div class="rechercche">
+      <input type="search" placeholder="Recherche">
+      <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
+    </div>
+    </div>
+
+    <div class="detailChamp" *ngFor="let cultive of lesCultivesActivesDuneParserelle ; index as i">
+    <div class="status">
+      <span>{{cultive.status}}</span>
+    </div>
+    <div class="elementDetailChamp">
+    <!-- <div class="libelle">Réference</div> -->
+      <div class="detail" style="text-align: center; font-weight: bold; ">{{cultive.reference}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle">Debut</div>
+      <div class="detail">{{cultive.datedebutsemis}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle">Fin</div>
+      <div class="detail">{{cultive.datefinsemis}}</div>
+    </div>
+    <div class="elementDetailChamp">
+      <div class="libelle">Variété</div>
+      <div class="detail">{{cultive.varietes.nom}}</div>
+    </div>
+    <div class="elementDetailChamp contVoirplus">
+      <button class="voirplus" (click)="voirDetailDuneCultive(i)"><i class="fa fa-eye" aria-hidden="true"></i></button>
+    </div>
+    </div> 
+  <!-- </div> -->
+
+</div>
+
+<div *ngIf="!existeCultive" style="font-weight: bold; display: flex; justify-content: center;">
+  AUCCUN CULTURE
+</div>
+
+
+
+
+
+  <ion-modal
+  trigger="open-modal2"
+  [initialBreakpoint]="0.90"
+  [breakpoints]="[0.90, 0.95]"
+  handleBehavior="cycle"
+>
+  <ng-template>
+    <ion-content class="ion-padding" style="gap: 50px!important;
+    display: flex!important;
+    justify-content: space-around!important;
+    flex-direction: column!important;">
+
+    <form class="formulaire" [formGroup]="myForm" (ngSubmit)="submitForm()">
+
+      <div class="ion-margin-top" style="margin-bottom: 3%; width: 100%; text-align: center;">
+        <ion-label class="libelleModal" style="color: #14AE5C; font-weight: bold;">Veuillez remplir les champs</ion-label>
+      </div>
+      
+      <div class="input">
+
+        <label>Produit Agricole <span class="obligatoire">*</span></label>     
+        <select  class="form-control telephone-input" formControlName="produitAgricole" 
+        [ngClass]="{'is-invalid': myForm.get('produitAgricole')!.invalid && myForm.get('produitAgricole')!.touched}"
+        >
+        <option style="color: #000;" value="Choisir un type" selected disabled>Choisir un produit</option>
+          <option *ngFor="let produit of lesProduitAgricoleRecuperer" value="{{produit.id}}">{{produit.nom}}</option>
+        </select>
+
+        <span class="erreur" *ngIf="myForm!.get('produitAgricole')!.hasError('required') && myForm.get('produitAgricole')!.touched">Cet champ est obligatoire</span>
+
+      </div>
+
+      <div class="input">
+        <label>Semence <span class="obligatoire">*</span></label>     
+        <select  class="form-control telephone-input" formControlName="semence"
+        [ngClass]="{'is-invalid': myForm.get('semence')!.invalid && myForm.get('semence')!.touched}"
+        >
+        <option style="color: #000;" value="Choisir un semence" selected disabled>Choisir une semence</option>
+          <option *ngFor="let semence of lesSemencesPourLeProduitActive" value="{{semence.id}}">{{semence.nom}}</option>
+        </select>
+
+        <span class="erreur" *ngIf="myForm!.get('semence')!.hasError('required') && myForm.get('semence')!.touched">Cet champ est obligatoire</span>
+      </div>
+
+      <div class="input">
+        <label>Quantité semée<span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="number" min="1" class="form-control" placeholder=" 2 en (kg)" formControlName="quantiteSemis"
+        
+        [ngClass]="{'is-invalid': myForm.get('quantiteSemis')!.invalid && myForm.get('quantiteSemis')!.touched}"
+        [ngClass]="{'is-valid': myForm.get('quantiteSemis')!.valid && myForm.get('quantiteSemis')!.touched}"
+        >
+        
+        <span class="erreur" *ngIf="myForm!.get('quantiteSemis')!.hasError('required') && myForm.get('quantiteSemis')!.touched">Cet champ est obligatoire</span>
+        <span class="erreur" *ngIf="myForm!.get('quantiteSemis')!.hasError('maxlength') && myForm.get('quantiteSemis')!.touched">Quantité Long</span>
+
+      </div>
+
+      <div class="input">
+        <label>Date debut <span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="date" class="form-control" formControlName="datedebutsemis"
+          
+        [ngClass]="{'is-invalid': myForm.get('datedebutsemis')!.invalid && myForm.get('datedebutsemis')!.touched}"
+        [ngClass]="{'is-valid': myForm.get('datedebutsemis')!.valid && myForm.get('datedebutsemis')!.touched}"
+        >
+        <span class="erreur" *ngIf="myForm!.get('datedebutsemis')!.hasError('required') && myForm.get('datedebutsemis')!.touched">Cet champ est obligatoire</span>
+      </div>
+
+      <div class="input">
+        <label>Date fin <span class="obligatoire">*</span></label>
+        <input class="telephone-input" type="date" class="form-control" formControlName="datefinsemis"
+
+        [ngClass]="{'is-invalid': myForm.get('datefinsemis')!.invalid && myForm.get('datefinsemis')!.touched}"
+        [ngClass]="{'is-valid': myForm.get('datefinsemis')!.valid && myForm.get('datefinsemis')!.touched}"
+        >
+        <span class="erreur" *ngIf="myForm!.get('datefinsemis')!.hasError('required') && myForm.get('datefinsemis')!.touched">Cet champ est obligatoire</span>
+      </div>
+      <div class="conteneur-submit">
+        <ion-button class="envoyer-input" type="submit" expand="block">SEMER</ion-button>
+      </div>
+
+    </form>
+      
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
+</ion-content>

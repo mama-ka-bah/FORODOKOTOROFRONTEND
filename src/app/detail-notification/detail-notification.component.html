@@ -1,0 +1,32 @@
+
+<ion-content>
+
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+        {{notif.titre}}
+      </div>
+      <div (click)="closePopover()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+      <!-- <div (click)="closePopover()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div>  -->
+    </div>
+  </div>
+
+  <div class="notification" style="width: 100vw; margin-top: 10px;">
+    <div class="contenuNot">
+      <!-- <div class="logo">
+        <img class="logoImage" src="../../assets/images/logo.png" alt="l'utilisateu concerné">
+      </div> -->
+      <div class="texte">
+       {{notif.contenu}}
+      </div>
+    </div>
+    <div class="dureeExp">
+      <div class="expediteur">
+       FORODOKOTORO
+      </div>
+      <!-- <div class="dureeNot">
+        {{notif.datenotification}}
+      </div> -->
+    </div>
+   </div>
+</ion-content>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { DonneesStockerService } from '../services/donnees-stocker.service';
+import { ProduitAgricolesService } from '../services/produit-agricoles.service';
 
 @Component({
   selector: 'app-detail-produit-agricoles',
@@ -7,9 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailProduitAgricolesPage implements OnInit {
 
-  constructor() { }
+  
+  idProduitActuel:any
+  lesvarietesDuProduitActuel:any
+
+  constructor(
+    private donneesStockerService: DonneesStockerService,
+    private produitAgricolesService: ProduitAgricolesService,
+    private routes : ActivatedRoute,
+    private navCtrl: NavController,
+
+    ) { }
+
+  ionViewDidEnter(){
+    this.donneesStockerService.showMenu.next(false);
+  }
+
+
+  detailsProduitsAgricoles = {
+    id:0,
+    nom:"",
+    description:"",
+    photo:"",
+    statusubvention:""
+  }
 
   ngOnInit() {
+    this.donneesStockerService.showMenu.next(false);
+    this.idProduitActuel = this.routes.snapshot.params['idproduit'];
+    // alert(this.idProduitActuel)
+    this.recupererDetailsDunProduitAgricole();
+    this.recupererLesVarietesDunProduit();
   }
 
   options = {
@@ -19,6 +51,26 @@ export class DetailProduitAgricolesPage implements OnInit {
     spaceBetween:10,
     autoplay:true
   }
+
+    //pour retourner en arriere
+retourner() {
+  this.navCtrl.back();
+}
+
+  recupererDetailsDunProduitAgricole(){
+    this.produitAgricolesService.recupererLesDetailsProduitAgricole(this.idProduitActuel).subscribe(data =>{
+      this.detailsProduitsAgricoles = data;
+      console.log(this.detailsProduitsAgricoles)
+    })
+  }
+
+  recupererLesVarietesDunProduit(){
+    this.produitAgricolesService.recupererLesVarietesDunProduitAgricole(this.idProduitActuel).subscribe(data =>{
+      this.lesvarietesDuProduitActuel = data;
+    })
+  }
+
+
 
 
 }

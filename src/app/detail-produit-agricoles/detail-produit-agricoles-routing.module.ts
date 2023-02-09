@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: DetailProduitAgricolesPage
+  },
+  {
+    path: 'semence/:idvariete',
+    loadChildren: () => import('../semence/semence.module').then( m => m.SemencePageModule)
   }
 ];
 

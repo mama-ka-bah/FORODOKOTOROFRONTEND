@@ -1,9 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>CONNEXION</ion-title>
+  <ion-toolbar class="connexionToolBarre">
+    <ion-title class="connexionTitle" style="text-align: center">CONNEXION</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,8 +22,6 @@
         >
       </div>
 
-
-
       <div class="input">
         <label>Mot de passe</label>
         <input class="telephone-input" type="password" class="form-control"  id="password" data-toggle="password" placeholder="Mot de passe" formControlName="password"
@@ -34,6 +29,10 @@
         [ngClass]="{'is-invalid': form.get('password')!.invalid && form.get('password')!.touched}"
         [ngClass]="{'is-valid': form.get('password')!.valid && form.get('password')!.touched}"
         >
+      </div>
+
+      <div style="font-size: 14px; color: #14AE5C; display: flex; justify-content: flex-end; width: 100%; margin-right: 10px;" (click)="presentModal()">
+        Mot de passe oublié ?
       </div>
 
       <!-- <div *ngIf="form.valid && envoyer && isLoginFailed" class="alert alert-danger" role="alert"> -->
@@ -47,8 +46,10 @@
       </div>
 
       <div class="autres-options">
-        <div style="font-size: 14px;" (click)="presentModal()">
-          Mot de passe oublié ? <span class="oui">Oui</span>
+
+        <div style="display: flex; flex-direction: row; gap: 10px; align-items: center; margin-bottom: 10px;">
+          <label style="margin-bottom: 0;" >Se souvenir de moi</label>
+          <input type="checkbox"  formControlName="sesouvenir" style="border-color: #14AE5C;">
         </div>
         <div style="font-size: 14px;">
           Vous n’avez pas de compte ? <span class="inscription" routerLink="/inscription">Inscription</span>

@@ -1,0 +1,77 @@
+<ion-content>
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+        Mettre à jour le stock
+      </div>
+      <div (click)="closePopover()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+      <!-- <div (click)="closePopover()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div>  -->
+    </div>
+  </div>
+ 
+<form [formGroup]="myForm" (ngSubmit)="submitForm()">
+
+  <div class="input">
+  
+    <label>Motif</label>
+    <input class="telephone-input" type="text" class="form-control"  formControlName="motif"
+    [ngClass]="{'is-invalid': myForm.get('motif')!.invalid && myForm.get('motif')!.touched}"
+    [ngClass]="{'is-valid': myForm.get('motif')!.valid && myForm.get('motif')!.touched}"
+    >
+
+    <span class="erreur" *ngIf="myForm!.get('motif')!.hasError('minlength') && myForm.get('motif')!.touched">Trop court</span>
+    <span class="erreur" *ngIf="myForm!.get('motif')!.hasError('maxlength') && myForm.get('motif')!.touched">Trop long</span>
+
+  </div>
+
+  <div class="input">
+  
+    <label>Nombre kilo à ajouter</label>
+    <input class="telephone-input" type="number" class="form-control" formControlName="nombrekiloaajouter"
+    [ngClass]="{'is-invalid': myForm.get('nombrekiloaajouter')!.invalid && myForm.get('nombrekiloaajouter')!.touched}"
+    [ngClass]="{'is-valid': myForm.get('nombrekiloaajouter')!.valid && myForm.get('nombrekiloaajouter')!.touched}"
+    >
+
+    <span class="erreur" *ngIf="myForm!.get('nombrekiloaajouter')!.hasError('required') && myForm.get('nombrekiloaajouter')!.touched">Ce champ est obligatoire</span>
+    <span class="erreur" *ngIf="myForm!.get('nombrekiloaajouter')!.hasError('min') && myForm.get('nombrekiloaajouter')!.touched">Trop court</span>
+    <span class="erreur" *ngIf="myForm!.get('nombrekiloaajouter')!.hasError('max') && myForm.get('nombrekiloaajouter')!.touched">Trop long</span>
+  </div>
+
+  <div class="input">
+  
+    <label>Nombre kilo à enlever</label>
+    <input class="telephone-input" type="number" class="form-control"  formControlName="nombrekiloaenlever"
+    [ngClass]="{'is-invalid': myForm.get('nombrekiloaenlever')!.invalid && myForm.get('nombrekiloaenlever')!.touched}"
+    [ngClass]="{'is-valid': myForm.get('nombrekiloaenlever')!.valid && myForm.get('nombrekiloaenlever')!.touched}"
+    >
+
+    <span class="erreur" *ngIf="myForm!.get('nombrekiloaenlever')!.hasError('required') && myForm.get('nombrekiloaenlever')!.touched">Ce champ est obligatoire</span>
+    <span class="erreur" *ngIf="myForm!.get('nombrekiloaenlever')!.hasError('min') && myForm.get('nombrekiloaenlever')!.touched">Trop long</span>
+    <span class="erreur" *ngIf="myForm!.get('nombrekiloaenlever')!.hasError('max') && myForm.get('nombrekiloaenlever')!.touched">Trop court</span>
+  </div>
+
+  <div class="input">
+  
+    <label>Quantité restant</label>
+    <input class="telephone-input" type="number" class="form-control" formControlName="quantiterestant"
+    [ngClass]="{'is-valid': quantiterestant>=0, 'is-invalid': quantiterestant<0}"
+    [value]="quantiterestant"
+    >
+    <span class="erreur" *ngIf="quantiterestant<0">Stock insuffisant</span>
+    <!-- 
+    [ngClass]="{'is-invalid': myForm.get('quantiterestant')!.invalid}"
+    [ngClass]="{'is-valid': myForm.get('quantiterestant')!.valid}" -->
+
+    <!-- <span class="erreur" *ngIf="myForm!.get('quantiterestant')!.hasError('min')"> Trop long </span>
+    <span class="erreur" *ngIf="myForm!.get('quantiterestant')!.hasError('max')">Trop court</span>
+    <span class="erreur" *ngIf="myForm!.get('quantiterestant')!.hasError('pattern')">Stock insuffisant</span> -->
+  </div>
+
+
+  <div class="input">
+    <button class="envoyer-input" type="submit" expand="block" [disabled]="quantiterestant<0">Enregistrer</button>
+  </div>
+
+</form>
+
+</ion-content>

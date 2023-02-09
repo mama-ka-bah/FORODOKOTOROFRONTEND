@@ -15,22 +15,41 @@ import { OtpComponent } from './otp/otp.component';
 import { InputotpComponent } from './inputotp/inputotp.component';
 import { ChangerMotDePasseComponent } from './changer-mot-de-passe/changer-mot-de-passe.component';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { ChoisirProfilComponent } from './choisir-profil/choisir-profil.component';
+import { DevenirTransporteurComponent } from './devenir-transporteur/devenir-transporteur.component';
+import { AjouterChampComponent } from './ajouter-champ/ajouter-champ.component';
+import { DevenirAgriculteurComponent } from './devenir-agriculteur/devenir-agriculteur.component';
+import { AjouterParserelleComponent } from './ajouter-parserelle/ajouter-parserelle.component';
+import { CultureParserelleComponent } from './culture-parserelle/culture-parserelle.component';
+import { AjouterPhaseCultiveComponent } from './ajouter-phase-cultive/ajouter-phase-cultive.component';
+import { DetailPhaseCultiveComponent } from './detail-phase-cultive/detail-phase-cultive.component';
+import { ModifierProfilComponent } from './modifier-profil/modifier-profil.component';
+import { AjouterStockComponent } from './ajouter-stock/ajouter-stock.component';
+import { MettreAjourStockComponent } from './mettre-ajour-stock/mettre-ajour-stock.component';
+import { EvolutionStockComponent } from './evolution-stock/evolution-stock.component';
+import { DetailNotificationComponent } from './detail-notification/detail-notification.component';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
 
-@NgModule({
-  declarations: [AppComponent,OtpComponent,InputotpComponent,ChangerMotDePasseComponent],
-  imports: [
-    BrowserModule,
-     IonicModule.forRoot(),
-    AppRoutingModule,
-    MatSlideToggleModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy
-  }, Platform, httpInterceptorProviders],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
+  @NgModule({
+    declarations: [AppComponent,OtpComponent,InputotpComponent, ChangerMotDePasseComponent, ChoisirProfilComponent,
+       DevenirTransporteurComponent, DevenirAgriculteurComponent, AjouterChampComponent, AjouterParserelleComponent,
+      CultureParserelleComponent, AjouterPhaseCultiveComponent, DetailPhaseCultiveComponent,ModifierProfilComponent,
+       AjouterStockComponent, MettreAjourStockComponent, EvolutionStockComponent, DetailNotificationComponent],
+
+    imports: [
+      BrowserModule,
+      IonicModule.forRoot(),
+      AppRoutingModule,
+      MatSlideToggleModule,
+      HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule,
+    ],
+    providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy
+    }, Platform, httpInterceptorProviders, CallNumber],
+    //httpInterceptorProviders
+    bootstrap: [AppComponent],
+  })
+  export class AppModule {}

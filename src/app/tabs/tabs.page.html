@@ -1,45 +1,141 @@
-<!-- <ion-tabs>
+<!-- headerTitle !=' '  -->
+<ion-header *ngIf="conditionAfichageMenu == true">
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="nomApp">
+       {{headerTitle}}
+       <!-- FORODOKOTORO -->
+      </div>
+      <div class="rechercche">
+        <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
+      </div>
+      <div class="nav-item dropdown">
+        <div cclass="nav-link dropdown-toggle"
+          style="width:80px; height: 40px; border-radius: 25px; background-color: #FFF;"
+          data-bs-toggle="dropdown">
+          <div class="" style="display: flex;">
+            <img *ngIf="!photoExiste" src="../../assets/images/profil.png"
+              style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
+              alt="">
+              <img *ngIf="photoExiste" src="{{photo}}"
+              style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
+              alt="">
+              <i *ngIf="nombreDeNotificationNonLu > 0" style="background-color: red; width: 20px; height: 20px; border-radius: 100%; margin-top: 2%; font-size: 15px;">{{nombreDeNotificationNonLu > 9 ? '9+' : nombreDeNotificationNonLu}}</i>
+            <!-- <span  *ngIf="nombreDeNotificationNonLu > 0"> -->
+              <!-- <i
+              style="background-color: red; width: 20px; height: 20px; border-radius: 100%; margin-top: 2%; font-size: 15px;"><span *ngIf="!nombreDeNotificationNonLu">{{nombreDeNotificationNonLu}}</span><span *ngIf="boollNbreNotif">9+</span></i> -->
+            <!-- </span> -->
+              <i  class='bx bx-chevron-down py-3' style="font-size: 25px; font-weight: bold; color: #14AE5C;"></i>
+           
+              
+          </div>
+        </div>
+        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0" style="background-color: #efecee;">
+          <a *ngIf="agriculteur == true" routerLink="/profil/champs" class="dropdown-item">
+            <div class="d-flex align-items-center nomUser">
+              <img *ngIf="currentUser.photo == null" class="rounded-circle" src="../../assets/images/profil.png" alt="" style="width: 40px; height: 40px;">
+              <img *ngIf="currentUser.photo != null" class="rounded-circle" src="{{photo}}" alt="" style="width: 40px; height: 40px;">
+              <div class="ms-2" >
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">{{currentUser.nomcomplet}}</h6>
+              </div>
+            </div>
+          </a>
+          <a *ngIf="agriculteur == false" routerLink="/profil-transporteur" class="dropdown-item">
+            <div class="d-flex align-items-center nomUser">
+              <img *ngIf="currentUser.photo == null" class="rounded-circle" src="../../assets/images/profil.png" alt="" style="width: 40px; height: 40px;">
+              <img *ngIf="currentUser.photo != null" class="rounded-circle" src="{{photo}}" alt="" style="width: 40px; height: 40px;">
+              <div class="ms-2" >
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">{{currentUser.nomcomplet}}</h6>
+              </div>
+            </div>
+          </a>
+          <hr class="dropdown-divider">
+          <a routerLink="/notifications" class="dropdown-item">
+            <div class="d-flex align-items-center">
+              <i style="color: #000; font-size: 35px;" class="fa-solid fa-bell"></i>
+              <div class="ms-2">
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">Notification <span style="color: red;" *ngIf="nombreDeNotificationNonLu > 0">({{nombreDeNotificationNonLu}})</span></h6>
+              </div>
+            </div>
+          </a>
+          <hr class="dropdown-divider">
+          <a class="dropdown-item" id="open-modal" expand="block">
+            <div class="d-flex align-items-center">
+              <img class="rounded-circle" src="../../assets/images/completerProfil.png" alt="" style="width: 40px; height: 40px;">
+              <div class="ms-2">
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">Completer profil</h6>
+              </div>
+            </div>
+          </a>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1">
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
-    </ion-tab-button>
+          <hr class="dropdown-divider">
+          <a (click)="deconnexion()" class="dropdown-item">
+            <div class="d-flex align-items-center">
+              <i style="font-size: 35px; color: #000;" class="fa fa-sign-out" aria-hidden="true"></i>
+              <div class="ms-2" >
+                <h6 class="fw-normal mb-0" style="color: red; font-weight: bold; display: flex; align-items: center; justify-content: flex-start; margin-left:8px;">Deconnexion</h6><h6 style="width: 180px; height: 0;"></h6>
+              
+              </div>
+            </div>
+          </a>
 
-    <ion-tab-button tab="tab2">
-      <ion-icon name="ellipse"></ion-icon>
-      <ion-label>Tab 2</ion-label>
-    </ion-tab-button>
+        </div>
+      </div>
+    </div>
 
-    <ion-tab-button tab="tab3">
-      <ion-icon name="square"></ion-icon>
-      <ion-label>Tab 3</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
+  </div>
+</ion-header>
 
-</ion-tabs> -->
+
+<ion-modal
+    trigger="open-modal"
+    [initialBreakpoint]="0.35"
+    [breakpoints]="[0, 0.35, 0.5, 0.75]"
+    handleBehavior="cycle"
+  >
+    <ng-template>
+      <ion-content class="ion-padding" style="gap: 50px!important;
+      display: flex!important;
+      justify-content: space-around!important;
+      flex-direction: column!important;">
+
+        <div class="ion-margin-top" style="margin-bottom: 3%; width: 100%; text-align: center;">
+          <ion-label class="libelleModal" >Desirez-vous devenir Agriculteur ou transporteur ?</ion-label>
+        </div>
+          <ion-item (click)="dismiss()" (click)="openPopover($event)" class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
+            <img style="height: 30px; width: 30px;" src="../assets/images/devenirAgriculteur.png" alt="images">
+            <ion-label style="margin-left: 25px;">Agriculteur</ion-label>
+          </ion-item>
+          <ion-item (click)="dismiss()" (click)="presentModal()" class="itemChoix" button="true" detail="false" style="margin-bottom: 3%; width: 100%;">
+            <i style="font-size: 30px;" class="fa-solid fa-car"></i>
+            <ion-label  style="margin-left: 25px;" >transporteur</ion-label>
+          </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
 
 <ion-tabs>
 
   <ion-tab-bar class="bottom" slot="bottom">
-    <ion-tab-button class="tabulation" tab="tab1">
+    <ion-tab-button class="tabulation" (click)="donneesService.reccupererTitreAccueil()" tab="tab1">
       <ion-icon name="home" aria-hidden="true"></ion-icon>
       <ion-label>Accueil</ion-label>
       <!-- <ion-badge>6</ion-badge> -->
     </ion-tab-button>
 
-    <ion-tab-button tab="produit-agricoles">
+    <ion-tab-button (click)="donneesService.reccupererTitreAgriculture()" tab="produit-agricoles">
       <ion-icon name="person-circle" aria-hidden="true"></ion-icon>
+      <!-- <i class="fa-solid fa-farm"></i> -->
       <ion-label>Agriculture</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="transporteurs">
+    <ion-tab-button (click)="donneesService.reccupererTitreTransporteur()" tab="transporteurs">
       <ion-icon name="map" aria-hidden="true"></ion-icon>
       <ion-label>transport</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="marche">
+    <ion-tab-button (click)="donneesService.reccupererTitreMarche()" tab="marche">
       <ion-icon name="information-circle" aria-hidden="true"></ion-icon>
       <ion-label>Marché</ion-label>
     </ion-tab-button>

@@ -8,10 +8,10 @@ const routes: Routes = [
     path: '',
     component: StockprofilPage
   },
-  {
-    path: 'detail-stocks',
-    loadChildren: () => import('../detail-stocks/detail-stocks.module').then( m => m.DetailStocksPageModule)
-  }
+  // {
+  //   path: 'detail-stocks/:id',
+  //   loadChildren: () => import('../detail-stocks/detail-stocks.module').then( m => m.DetailStocksPageModule)
+  // }
 ];
 
 @NgModule({

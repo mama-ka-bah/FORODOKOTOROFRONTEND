@@ -16,7 +16,6 @@ const routes: Routes = [
         path: 'stockprofil',
         loadChildren: () => import('../stockprofil/stockprofil.module').then( m => m.StockprofilPageModule)
       },
-
       {
         path: '',
         redirectTo: '/profil/champs',

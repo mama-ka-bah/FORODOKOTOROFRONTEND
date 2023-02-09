@@ -7,19 +7,16 @@
   </ion-toolbar>
 </ion-header> -->
 <ion-header>
-  <div class="barre-menu">
+  <div class="barre-menu" >
     <div class="element-menus">
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="home"></ion-back-button>
+        <ion-back-button (click)="retourner()"></ion-back-button>
       </ion-buttons>
       <div class="nomApp">
-        <!-- style="width: 60%;" -->
-        <!-- <img src="../../assets/images/forodokotoro.png" alt=""> -->
-        Kabateliman
+        {{detailsVarietes.nom}}
       </div>
      
-      <div class="nav-item dropdown">
-        <!-- margin-top: -20% !important; margin-left: 50% !important; -->
+      <!-- <div class="nav-item dropdown">
         <div cclass="nav-link dropdown-toggle"
           style="width:80px; height: 40px; border-radius: 25px; background-color: #FFF;"
           data-bs-toggle="dropdown">
@@ -38,7 +35,6 @@
               <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2">
                 <h6 class="fw-normal mb-0 nomUser">Sama Keita</h6>
-                <!-- <small>15 minutes ago</small> -->
               </div>
             </div>
           </a>
@@ -48,7 +44,6 @@
               <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2">
                 <h6 class="fw-normal mb-0 nomUser">Notofication <span style="">(10)</span></h6>
-                <!-- <small>15 minutes ago</small> -->
               </div>
             </div>
           </a>
@@ -58,7 +53,6 @@
               <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
               <div class="ms-2">
                 <h6 class="fw-normal mb-0 nomUser">Completer profil</h6>
-                <!-- <small>15 minutes ago</small> -->
               </div>
             </div>
           </a>
@@ -74,7 +68,7 @@
           </a>
 
         </div>
-      </div>
+      </div> -->
     </div>
 
   </div>
@@ -84,19 +78,17 @@
 
   <div class="semence">
     <div class="conteneurImage">
-      <img class="image-detail" src="../assets/images/mais.jpg">
+      <img class="image-detail" src="{{detailsVarietes.photo}}">
     </div>
 
     <div class="description">
       <h5>Description</h5>
       <div class="texte">
         <div style="text-align: justify;">
-          L'arachide, également connue sous le nom d'arachide, de goober, de
-          pindar ou de noix de singe, est une légumineuse cultivée principalement
-           pour ses graines comestibles.
+          {{detailsVarietes.description}}
         </div>
 
-          <button>Voir plus</button>
+          <!-- <button>Voir plus</button> -->
       </div>
     </div>
 
@@ -105,22 +97,22 @@
     <div class="detailChamp">
       <div class="elementDetailChamp">
         <div class="libelle">Taille finale</div>
-        <div class="detail">20cm</div>
+        <div class="detail">{{detailsVarietes.taillefinal}}</div>
       </div>
       <div class="elementDetailChamp">
         <div class="libelle">Cycle</div>
-        <div class="detail">3 mois</div>
+        <div class="detail">{{detailsVarietes.cycle}}</div>
       </div>
       <div class="elementDetailChamp">
         <div class="libelle">Resultat/kg</div>
-        <div class="detail">20 kg</div>
+        <div class="detail">{{detailsVarietes.resultatparkilo}}</div>
       </div>
     </div>
 
 
 
     <table>
-      <h6 style="color: #14AE5C; font-weight: bold;">DONNEES PREVISIONNELLES</h6>
+      <h6 style="color: #14AE5C; font-weight: bold;">SIMULATIONS</h6>
       <thead>
         <tr>
           <th>Previsions</th>
@@ -129,39 +121,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Prevision 1</td>
-          <td>10 jours</td>
-          <td>3 pluies</td>
-          <td><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td>Prevision 1</td>
-          <td>10 jours</td>
-          <td>3 pluies</td>
-          <td><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td>prevision 1</td>
-          <td>10 jours</td>
-          <td>3 pluies</td>
-          <td><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td>Prevision 1</td>
-          <td>10 jours</td>
-          <td>3 pluies</td>
-          <td><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td>
+        <tr *ngFor="let prevision of previsions">
+          <td>{{prevision.libelle}}</td>
+          <td>{{prevision.delaijour}} jours</td>
+          <td>{{prevision.nbrepluienecessaire}}</td>
+          <!-- <td><i style="color: #14AE5C;" class="fa fa-info-circle" aria-hidden="true"></i></td> -->
         </tr>
       </tbody>
-      <div class="recolte">
+      <!-- <div class="recolte">
         <div class="libelle">
           Recolte
         </div>
         <div class="valeur">
           850 tonnes
         </div>
-    </div>
+    </div> -->
     </table>
 
 

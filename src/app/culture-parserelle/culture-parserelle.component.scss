@@ -1,0 +1,267 @@
+//debut style menus
+.barre-menu{
+    background-color: #14AE5C;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+}
+.element-menus{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.libelle{
+    color: bold;
+    // color: #fff;
+}
+//fin style du menu
+
+
+
+
+.detailPar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    // width: 90%;
+    height: 100%;
+    gap: 10px;
+    // padding: 18px;
+
+    background-color: #efecee;
+    padding: 15px;
+    margin-top: 80px;
+  }
+
+
+
+
+//debut style carde des details
+.detailChamp{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: calc(100% - 30px) ;
+    height: 100%;
+    gap: 10px;
+    padding: 15px; 
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 4px rgba(20, 174, 92, 0.1);
+    border-radius: 15px;
+  }
+
+  .elementDetailChamp{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;  
+  }
+
+  .detail, .libelle{
+    display: flex;
+    justify-content: flex-start;
+  }
+ .libelle{
+   font-weight: bold;
+  }
+  //fin style card
+
+
+  .conteneur{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #efecee;
+  }
+
+
+  .voirplus{
+    background-color: #efecee;
+    border-radius: 15px;
+    color: #14AE5C;
+    height: 25px;
+    width: 60px;
+  }
+  .contVoirplus{
+    display: flex;
+    justify-content: center;
+  }
+
+  .listeCulture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #14AE5C;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  ion-content{
+    --background:#efecee;
+  }
+
+
+  .status{
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;  
+    font-size: 12px;
+    align-items: center;
+    background-color: #14AE5C;
+    padding: 5px;
+}
+
+
+
+
+.semer ion-button{
+  --background: #14AE5C;
+  --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --border-radius: 10px;
+   color: #fff;
+   height: 35px;
+}
+.semer{
+  // border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // flex-direction: column;
+  height: 100%;
+  height: 80%;
+}
+
+.iconAct{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+//le conteneur de mon input recherche et, de l'icone recherche
+.conteneurInput{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+  // margin-top: 10px; 
+}
+
+//le conteneur de la partie recherche
+.rechercche{
+  width: 85vw;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid #000000;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+//augmente la taille de l'icone recherche
+.fa-magnifying-glass::before, .fa-search::before {
+  font-size: 25px!important;
+}
+
+//le champ input
+.rechercche input{
+ border: none;
+  outline: none;
+  width: 60vw;
+  height: 43px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.12);
+  padding: 15px;
+
+}
+
+
+
+//formulaire
+
+.input{
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.input input, select{
+  width: 90vw;
+}
+
+//le champ numero de telephone
+.telephone-input{
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+//le button envoyer
+.envoyer-input{
+  --background: #14AE5C;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  width: 90%;
+}
+
+
+
+
+.obligatoire{
+  color: red;
+}
+
+.input{
+  font-weight: bold;
+}
+
+.conteneur-submit{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+//le conteneur de mon formullaire
+.formulaire{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+
+.is-invalid{
+  border-color: red;
+}
+.is-valid{
+  border-color: #14AE5C;
+}
+
+.erreur{
+  color: red;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+}
+
+
+
+  

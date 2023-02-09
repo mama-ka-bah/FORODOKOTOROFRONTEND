@@ -1,6 +1,3 @@
-// ion-content{
-//     --background: red;
-// }
 
 //La barre en haut
 ion-toolbar{
@@ -9,14 +6,19 @@ ion-toolbar{
     padding: 0;
 }
 
+
 //le titre de la barre
 ion-title{
     font-size: 15px;
 }
 
-// .containeur{
-   
-// }
+ion-title.ios{
+    padding-top: 22px!important;
+    font-weight: bold!important;
+}
+ion-toolbar.ios{
+    --height: 70px!important
+}
 
 //le logo de l'app
 .logo{
@@ -30,7 +32,8 @@ ion-title{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25vh;
+    // height: 25vh;
+    margin: 20px 0 20px 0;
 }
 
 .input{
@@ -51,7 +54,8 @@ ion-title{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 50vh;
+    // height: 50vh;
+    gap: 20px;
 }
 
 //le champ numero de telephone

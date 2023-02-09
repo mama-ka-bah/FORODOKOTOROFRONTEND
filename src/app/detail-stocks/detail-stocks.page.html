@@ -3,10 +3,10 @@
     <div class="barre-menu">
       <div class="element-menus">
         <ion-buttons slot="start" >
-          <ion-back-button defaultHref="profil"></ion-back-button>
+          <ion-back-button (click)="retourner()" defaultHref="profil"></ion-back-button>
         </ion-buttons>
         <div class="nomApp" style="flex-basis: 80%;">
-          Mais
+         {{detailsStocks.libelle}}
         </div>
       </div>
   
@@ -20,54 +20,59 @@
     <!-- Le conteneur principal du detail champs -->
     <div class="conteneurDetailStock">
       <div class="photoChamp">
-        <img class="monChamp" src="../../assets/images/maisGraine.jpg" alt="Image du champ">
+        <img class="monChamp" src="{{detailsStocks.photo}}" alt="Image du champ">
         <!-- <div class="temperature" >25 °C</div> -->
       </div>
 
       <div class="detailChamp">
         <div class="elementDetailChamp">
           <div class="libelle">Prix/kg</div>
-          <div class="detail">500 FCFA</div>
+          <div class="detail">{{detailsStocks.prixkilo}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Nombre kilos</div>
-          <div class="detail">20 kg</div>
+          <div class="detail">{{detailsStocks.nombrekilo}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Restes</div>
-          <div class="detail">20 kg</div>
+          <div class="detail">{{detailsStocks.quantiterestant}}</div>
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Disponibilité</div>
-          <div style="color: #14AE5C; font-weight: bold;" class="detail">Disponible</div>
+          <div *ngIf="detailsStocks.disponibilite" style="color: #14AE5C; font-weight: bold;" class="detail">Disponible</div>
+          <div *ngIf="!detailsStocks.disponibilite" style="color: #14AE5C; font-weight: bold;" class="detail">Disponible</div>
+
         </div>
         <div class="elementDetailChamp">
           <div class="libelle">Publication</div>
-          <div class="detail">12/03/2022</div>
+          <div class="detail">{{detailsStocks.datepublication}}</div>
         </div>
         <div class="actionsStocks">
-          <div class="iconAction">
+          <!-- <div class="iconAction">
             <i style="color: red;" class="fa fa-trash" aria-hidden="true"></i>
+          </div> -->
+          <div class="iconAction" (click)="mettreAjourSonStock($event)">
+            <i class="fas fa-edit" style="color: #0000FF;"></i>
           </div>
-          <div class="iconAction">
-            <i class="fas fa-edit"></i>
-          </div>
-          <div class="iconAction">
+          <div (click)="evolutionStock()" class="iconAction" style="color: #14AE5C;">
+            Liste mise à jour <i class="fa-solid fa-arrow-right"></i>
+           </div>
+          <!-- <div class="iconAction"  (click)="mettreAjourSonStock($event)" >
             <i style="color: #14AE5C;" class="fa fa-plus" aria-hidden="true"></i>
           </div>
-          <div class="iconAction">
+          <div class="iconAction"  (click)="mettreAjourSonStock($event)">
             <i class="fas fa-minus"></i>
-          </div>
+          </div> -->
         </div>
-        <div class="history">
+        <!-- <div class="history">
          Liste mise à jour <i class="fa-solid fa-arrow-right"></i>
-        </div>
+        </div> -->
       </div>
 
       <div class="liens">
           <ion-button class="boutton" expand="block">Contacter le Vendeur</ion-button>
           <ion-button class="boutton" expand="block">Trouver un transporteur</ion-button>
-          <button class="liensTexte" expand="block">Se renseigner sur le vendeur</button>
+          <!-- <button class="liensTexte" expand="block">Se renseigner sur le vendeur</button> -->
       </div>
         
     </div>

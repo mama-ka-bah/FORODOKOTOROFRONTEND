@@ -47,6 +47,10 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
+
+    top: 75px;
+    background-color: #fff;
+    position: fixed;
   }
   .active{
     --background: #14AE5C;
@@ -60,7 +64,7 @@
     width: 80px;
   }
 
-  .nonlu{
+  .nonActive{
     color: #000;
     --background:#fff;
   }
@@ -101,7 +105,7 @@
   .logo img{
     width: 65px;
     height: 65px;
-    border-radius: 32px;
+    // border-radius: 32px;
   }
   .titre{
     font-weight: bold;

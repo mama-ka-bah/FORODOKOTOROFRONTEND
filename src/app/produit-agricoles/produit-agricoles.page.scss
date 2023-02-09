@@ -47,7 +47,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 13vh;
+    height: 52px;
+    margin-top: 10px; 
 }
 
 //le conteneur de la partie recherche
@@ -80,12 +81,16 @@
 
 }
 
+
+
+
 //Le conteneur des elements de la page enfant direct de ion-content
 .produitagricole{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 80px;
 
 }
 
@@ -110,6 +115,7 @@ ion-col {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin: 10px;
+    margin-top: 10px;
   }
 
   .conteneurImg img{
@@ -130,4 +136,7 @@ ion-col {
 
   .contenu h5{
     font-weight: bold;
+    background-color: #14AE5C;
+    padding: 5px;
+    color: #fff;
   }

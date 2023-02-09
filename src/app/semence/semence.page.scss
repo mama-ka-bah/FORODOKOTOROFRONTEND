@@ -32,7 +32,7 @@ ion-title{
   
   .element-menus{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
   }
@@ -42,6 +42,8 @@ ion-title{
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    flex-basis: 90%;
+
   }
   //les icones du popup profil
   // .image{
