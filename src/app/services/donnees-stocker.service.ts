@@ -49,6 +49,12 @@ export class DonneesStockerService{
   public nombreDeNotificationNonLu$ = this.nombreDeNotificationNonLu.asObservable();
 
 
+  
+  //le role de l'user
+  public photoProfil = new BehaviorSubject<any>(null);
+  public photoProfil$ = this.photoProfil.asObservable();
+
+
 
 
   pageActuel = "FORODOKOTORO";
@@ -100,12 +106,13 @@ export class DonneesStockerService{
 
 
 
+    //fermerture de compte d'un utilisateur
   fermerUnCompte(currentUserId:any){
     Swal.fire({
       text: 'Etes vous sûr de fermer votre compte',
       showDenyButton: true,
       // showCancelButton: true,
-      confirmButtonText: 'Ouvrir',
+      confirmButtonText: 'Fermer',
       denyButtonText: `Annuler`, 
       heightAuto:false,
       position:'center'

@@ -58,7 +58,6 @@ onFileChangePermis(event: any) {
     });
 
   }
-
 }
 
   constructor(

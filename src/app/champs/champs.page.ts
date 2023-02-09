@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavController, ModalController, PopoverController, IonRefresher } from '@ionic/angular';
+import { Console } from 'console';
 import Swal from 'sweetalert2';
 import { ModifierProfilComponent } from '../modifier-profil/modifier-profil.component';
 import { AgriculteurService } from '../services/agriculteur.service';
@@ -35,6 +37,11 @@ export class ChampsPage implements OnInit {
   existe:boolean | undefined
   resultatFermetureCompte: any;
   form: any;
+  file:any;
+
+  nouveauPhoto:any
+  reponseUpdatePhoto:any;
+  photo: any;
 
   constructor(
     private router : Router,
@@ -46,7 +53,7 @@ export class ChampsPage implements OnInit {
     public popoverController: PopoverController,
     private champService: ChampService,
     private chargementService: ChargementService,
-    private userService: AuthentificationService 
+    private userService: AuthentificationService ,
   ) { }
 
   ngOnInit() {
@@ -56,13 +63,117 @@ export class ChampsPage implements OnInit {
   }
 
   ionViewDidEnter(){
-   // alert("je suis actualiser par did")
+    // alert("je suis actualiser par did")
+   }
+ 
+   ionViewWillEnter(){
+     //alert("je suis actualiser par will")
+     this.recuperChampDunAgriculteur();
+
+     this.donneesService.photoProfil.next(this.currentUser.photo);
+    this.donneesService.photoProfil$.subscribe(value => {
+      this.photo = value;
+    });
+   }
+
+
+   //l'objet form froup lié à mon formulaire dans le template
+   myForm = new FormGroup({ 
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required])
+});
+
+get fProfil() {
+  return this.myForm.controls;
+}
+
+
+onFileChangeProfil(event: any) {
+
+  if (event.target.files.length > 0) {
+
+    const file = event.target.files[0];
+
+    this.myForm.patchValue({
+
+      fileSource: file
+
+    });
+
+    this.submitForm();
+
   }
 
-  ionViewWillEnter(){
-    //alert("je suis actualiser par will")
-    this.recuperChampDunAgriculteur();
+}
+
+submitForm() {
+  //verifie si le formulaire est valide
+  if(this.myForm.valid) {
+    this.file = this.myForm.controls.fileSource.value;
+
+    const data1:FormData=new FormData();
+
+    console.log("mon fichier: " + this.file)
+    data1.append('file', this.file);
+    
+    Swal.fire({
+      text: 'Etes vous sûr enregistrer cette photo',
+      showDenyButton: true,
+      confirmButtonText: 'Enregistrer',
+      denyButtonText: `Annuler`,
+      heightAuto:false,
+      position:'center'
+    }).then((result) => {
+      if (result.isConfirmed) {         
+        this.userService.modifierPhotoProfil(this.currentUser.id, data1).subscribe(value =>{
+          this.reponseUpdatePhoto = value;
+          
+          ///si l'ajout du champ a marché
+          if(this.reponseUpdatePhoto.status == 1 ){
+
+            console.log("data photo: " + this.reponseUpdatePhoto.message)
+           
+            this.currentUser.photo = this.reponseUpdatePhoto.message;
+
+            this.donneesService.photoProfil.next( this.currentUser.photo);
+            this.donneesService.photoProfil$.subscribe(value => {
+              this.photo = value;
+            });
+
+            console.log(this.currentUser)
+            this.storageService.saveUser(this.currentUser);
+
+
+            Swal.fire({
+              icon: 'success',
+              text: "Modification reçu",
+              // showConfirmButton: true,
+              timer: 2000,
+              customClass: {
+                container: 'small-text'
+              },
+              heightAuto:false,
+            })
+            this.navCtrl.navigateRoot([{clearHistory: true}]);
+          }else{
+            Swal.fire({
+              icon: 'info',
+              text: "Echec",
+              showConfirmButton: true,
+              // timer: 2000,
+              heightAuto:false,
+            })
+          }
+          
+        })                
+      } 
+    })
   }
+
+}
+
+
+ 
 
   recuperChampDunAgriculteur(){
     this.champService.recupererChampParProprietaire(this.currentUser.id).subscribe( data =>{

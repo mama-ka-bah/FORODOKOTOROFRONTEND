@@ -205,3 +205,22 @@ ion-col {
     width: 95% !important;
   }
 }
+
+
+//style du bootton input
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+
+  font-size: 15px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+  position: absolute;
+  top: -15px!important;
+}

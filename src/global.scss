@@ -89,4 +89,11 @@ ion-popover ion-content {
     height: 50%!important;
   }
 
+  .btn:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: var(--bs-btn-hover-bg);
+    border-color: none!important;
+    border: none!important;
+  }
+
 

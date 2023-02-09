@@ -66,6 +66,12 @@ export class AuthentificationService {
     );
   }
 
+   //permet de mettre à jour le profil de l'utilisateur
+   modifierPhotoProfil(idUser:any, data:any): Observable<any> {
+    return this.http.patch(AUTH_API + `modifierprofil/${idUser}`, data
+    );
+  }
+
 
   modifierMotDePasse(iduser:any, password:any): Observable<any> {    
 

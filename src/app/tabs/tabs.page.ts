@@ -45,6 +45,7 @@ export class TabsPage implements OnInit{
 
   currentUrl:any
   photoExiste:any
+  photo:any
 
   conditionAfichageMenu:boolean | undefined;
 
@@ -86,12 +87,24 @@ export class TabsPage implements OnInit{
     // Navigate to page 2
   }
 
+  
+
   ionViewDidEnter(){
     this.donneesService.rolesUser.next(this.currentUser.roles);
     this.donneesService.showMenu.next(true);
     this.donneesService.showMenu$.subscribe(value => {
       this.conditionAfichageMenu = value;
     });
+
+
+    this.donneesService.photoProfil.next(this.currentUser.photo);
+    this.donneesService.photoProfil$.subscribe(value => {
+      this.photo = value;
+    });
+
+    this.donneesService.photoProfil.next(this.currentUser.photo);
+
+
     // alert(this.currentUser.nomcomplet)
     this.verifierExistancePhotoProfil();
 
@@ -159,6 +172,14 @@ verifierExistancePhotoProfil(){
     this.currentUser = this.storageService.getUser();
 
    
+    setInterval(() => {
+      this.donneesService.photoProfil$.subscribe(value => {
+        this.photo = value;
+      });
+
+      console.log("heloo")
+   
+    }, 10000);
 
 
     // if( this.rolutilisateur.includes("ROLE_AGRIGULTEUR") == true){
