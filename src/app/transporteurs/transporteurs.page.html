@@ -13,17 +13,16 @@
       <ion-grid>
 
         <ion-row>
-          <ion-col>
+          <ion-col *ngFor="let transporteur of tousLestransporteurs">
               <div class="conteneurImg">
-                <img src="../assets/images/transporteur.jpg" alt="image produit">
+                <img src="{{transporteur.photo}}" alt="image produit">
               </div>
               <div class="contenuPrincipal">
                 <div class="contenu">
-                  <h5 class="nomComplet">Mahamadou Keita</h5>
-                 <h6>Bamako / Lafiabougou</h6>
-                 <h6>Type A</h6>
+                  <h5 class="nomComplet">{{transporteur.nomcomplet}}</h5>
+                 <h6>{{transporteur.adresse}}</h6>
                 </div>
-                <button routerLink="/profil-transporteur" class="voirplus" >Voir plus</button>
+                <button class="voirplus" (click)="appelle(transporteur.username)"  >CONTACTER</button>
               </div>
           </ion-col>
         </ion-row>

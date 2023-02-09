@@ -28,6 +28,7 @@ import { AjouterStockComponent } from './ajouter-stock/ajouter-stock.component';
 import { MettreAjourStockComponent } from './mettre-ajour-stock/mettre-ajour-stock.component';
 import { EvolutionStockComponent } from './evolution-stock/evolution-stock.component';
 import { DetailNotificationComponent } from './detail-notification/detail-notification.component';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
 
@@ -47,7 +48,7 @@ import { DetailNotificationComponent } from './detail-notification/detail-notifi
       ReactiveFormsModule,
     ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy
-    }, Platform, httpInterceptorProviders],
+    }, Platform, httpInterceptorProviders, CallNumber],
     //httpInterceptorProviders
     bootstrap: [AppComponent],
   })

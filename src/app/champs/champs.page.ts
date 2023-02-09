@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavController, ModalController, PopoverController, IonRefresher } from '@ionic/angular';
-import { Console } from 'console';
 import Swal from 'sweetalert2';
 import { ModifierProfilComponent } from '../modifier-profil/modifier-profil.component';
 import { AgriculteurService } from '../services/agriculteur.service';
