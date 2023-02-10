@@ -10,7 +10,55 @@
 
     <div class="conteneurPub">
 
-      <div class="myCard">
+      <div class="myCard" *ngFor="let publication of lesPublivationsOrdonnes">
+        <div class="division1">
+
+          <div class="contImage">
+            <img src="{{publication.posteur.photo}}">
+          </div>
+
+          <div class="texte">
+            <div class="titre" style="font-size: 18px;">
+              {{publication.titre}}
+            </div>
+            <div class="soustitre" style="font-size: 15px;"> 
+              {{publication.soustitre}}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="contenu" *ngIf="publication.media == null">
+          {{publication.description}}
+        </div>
+
+        <div class="contenu" *ngIf="publication.media != null">
+          <span>{{publication.description.slice(0, 100)}}<span *ngIf="publication.description.length > 100">...</span></span>
+          
+          <video width="100%" height="200"  controls>
+            <source src="{{publication.media}}" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="division2">
+
+          <div class="coordonnee">
+            <div>{{publication.posteur.nomcomplet}}</div>
+            <div>{{publication.datepub}}</div>
+          </div>
+          <div class="bouttons">
+            <button>Voir plus</button>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+      
+      <!-- <div class="myCard">
         <div class="division1">
 
           <div class="contImage">
@@ -29,7 +77,10 @@
         </div>
 
         <div class="contenu">
-          Le maïs (Zea mays L., ou Zea mays subsp. mays (autonyme)), appelé blé d’Inde au Canada1.
+          
+          <video width="100%" height="200"  controls>
+            <source src="{{videoSrc}}" type="video/mp4">
+          </video>
         </div>
 
         <div class="division2">
@@ -43,7 +94,7 @@
           </div>
 
         </div>
-      </div>
+      </div> -->
 
       <div class="add" (click)="ajouterConseil()">
         <i style="color: #14AE5C; font-size: 30px;" class="fa-solid fa-plus"></i>

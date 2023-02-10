@@ -92,7 +92,7 @@
               </div>
               <div class="contenuPrincipal">
                 <div class="contenu">
-                  <h5>{{stock.libelle.slice(0, 10)}}..</h5>
+                  <h5>{{stock.libelle.slice(0, 10)}}<span *ngIf="stock.libelle.length > 10">...</span></h5>
                 </div>
                 <button class="voirplus" [routerLink]="['/detail-stocks', stock.id]"><i class="fa fa-eye" aria-hidden="true"></i></button>
               </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AjoutConseilComponent } from '../ajout-conseil/ajout-conseil.component';
+import { CommunauteService } from '../services/communaute.service';
 
 @Component({
   selector: 'app-communautes',
@@ -9,12 +10,25 @@ import { AjoutConseilComponent } from '../ajout-conseil/ajout-conseil.component'
 })
 export class CommunautesPage implements OnInit {
 
-  constructor(    private modalCtrl: ModalController,
+  videoSrc = "http://127.0.0.1/forodokotoro/images/publications/farmer.mp4";
+
+  lesPublivationsOrdonnes:any;
+
+  constructor(
+    private modalCtrl: ModalController,
+    private communauteService: CommunauteService
+
     ) { }
 
   ngOnInit() {
+    this.recueperLesPublications();
   }
 
+  recueperLesPublications(){
+    this.communauteService.recupererToutesLesPublicationsOrdonneesParDatePub().subscribe(data =>{
+      this.lesPublivationsOrdonnes = data;
+    })
+  }
 
    //on fait appel au composant pout ajouter une nouvelle ction
    async ajouterConseil() {

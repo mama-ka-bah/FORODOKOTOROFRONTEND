@@ -15,18 +15,18 @@
 
 
   <div class="containeur">
-    <div class="conteneur-logo">
+    <div class="conteneur-logo" style="margin: 40px 0 40px 0;">
       <img class="logo" src="../assets/images/logo.png">
     </div>
   
-    <div class="texte">
+    <div class="texte" style="margin-bottom: 15px;">
       Entrez votre e-mail et nous vous enverrons des instructions pour réinitialiser votre mot de passe.
     </div>
 
     <div>
 
       <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
-        <div class="input">
+        <div class="input" style="margin-bottom: 15px;">
           <label>E-mail</label>
           <input class="telephone-input" type="text" class="form-control" placeholder="kmahamadou858@gmail.com" formControlName="email"
           [ngClass]="{'is-invalid': myForm.get('email')!.invalid && myForm.get('email')!.touched}"

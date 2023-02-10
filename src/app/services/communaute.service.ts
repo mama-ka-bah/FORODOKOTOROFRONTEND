@@ -19,4 +19,8 @@ export class CommunauteService {
       pubReçu
     );
   }
+
+  recupererToutesLesPublicationsOrdonneesParDatePub(): Observable<any> {
+    return this.http.get(AUTH_API + 'recuperertouspublications');
+  }
 }

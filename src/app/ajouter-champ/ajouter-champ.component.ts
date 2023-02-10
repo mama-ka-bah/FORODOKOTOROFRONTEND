@@ -22,10 +22,10 @@ export class AjouterChampComponent implements OnInit {
     },
     hobbies: ['meditation', 'musique', 'voyage']
 };
-erreur:boolean | undefined
-file:any
-currentUser:any
-resultatAjoutChamp:any
+  erreur:boolean | undefined
+  file:any
+  currentUser:any
+  resultatAjoutChamp:any
 
   //l'objet form froup lié à mon formulaire dans le template
   myForm = new FormGroup({

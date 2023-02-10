@@ -65,7 +65,8 @@ ion-title{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 13vh;
+    // height: 13vh;
+    height: 65px;
 }
 
 //le conteneur de la partie recherche
@@ -104,6 +105,7 @@ ion-title{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 90px;
 
 }
 

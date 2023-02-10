@@ -28,7 +28,7 @@ export class DetailStocksPage implements OnInit {
   listeAimeStock:any[] = [{id:0, status:false}];
   statusAime:boolean = false;
   statusNonAime:boolean = false;
-  nonAime: boolean = false;
+  nonAime: boolean = true;
   
 
   constructor(
@@ -158,24 +158,31 @@ ngOnInit() {
         console.log(" element: " +this.listeAimeStock[i].id)
         
         if(elementAimeActuel.id == this.currentUser.id){
+
+          this.nonAime = false;
+
           if(elementAimeActuel.status == true){
             this.statusAime = true;
             this.statusNonAime = false;
        
-          }else{
+          }else if(elementAimeActuel.status == false){
             this.statusAime = false;
             this.statusNonAime = true;
           }
+        }else{
+          this.nonAime = true;
+          alert("je ssuis rentré 1")
         }
         
-  
+      }
+
+      if(this.nonAime == true){
+        this.statusAime = false;
+        this.statusNonAime = false;
       }
     
     }, 1000);
-   
-   
-console.log("statusAime: "+ this.statusAime)
-console.log("statusNonAime: "+ this.statusNonAime)
+
 
   }
 

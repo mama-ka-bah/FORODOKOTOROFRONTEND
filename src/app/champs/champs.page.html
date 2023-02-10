@@ -99,7 +99,7 @@
               </div>
               <div class="contenuPrincipal">
                 <div class="contenu">
-                  <h5>{{champ.nom.slice(0, 10)}}<span *ngIf="champ.length > 10">...</span></h5>
+                  <h5>{{champ.nom.slice(0, 10)}}<span *ngIf="champ.nom.length > 10">...</span></h5>
                 </div>
                 <button class="voirplus" [routerLink]="['/profil/champs/details-champs', champ.id]" ><i class="fa fa-eye" aria-hidden="true"></i></button>
               </div>

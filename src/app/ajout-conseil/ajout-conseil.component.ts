@@ -30,8 +30,42 @@ resultatAjoutPub: any;
 
     description: new FormControl('', [Validators.required, Validators.minLength(25), Validators.maxLength(255)]),
     
-    file: new FormControl(''),
-    fileSource: new FormControl('')
+    file: new FormControl('', [
+
+      (control) => {
+        const file = control.value;
+        if (!file) {
+          return null;
+        }
+    
+        // Check if the video size is within the limit
+        const MAX_SIZE = 10000000; // 10 MB
+        if (file.size > MAX_SIZE) {
+          return { maxSize: true };
+        }
+        return null;
+      }
+
+    ]),
+    fileSource: new FormControl('', 
+    // [
+
+    //   (control) => {
+    //     const file = control.value;
+    //     if (!file) {
+    //       return null;
+    //     }
+    
+    //     // Check if the video size is within the limit
+    //     const MAX_SIZE = 10000000; // 10 MB
+    //     if (file.size > MAX_SIZE) {
+    //       return { maxSize: true };
+    //     }
+    //     return null;
+    //   }
+    // ]
+    )
+
 });
  
 

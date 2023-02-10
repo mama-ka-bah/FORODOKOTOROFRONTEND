@@ -2,7 +2,7 @@
   <div class="barre-menu">
     <div class="element-menus">
       <div class="libelle">
-       Ajouter un stock
+       Ajouter un conseil
       </div>
       <div (click)="closeModal()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
     </div>
@@ -50,13 +50,28 @@
     
             </div>
 
+
+             <!-- photo du champ -->
+             <div class="input">
+  
+              <label>Media</label>
+              <input type="file" id="avatar"  class="form-control" name="avatar"  accept="video/*"
+              multiple (change)="onFileChangePermis($event)"  formControlName="file"
+              [ngClass]="{'is-invalid': myForm.get('file')!.invalid && myForm.get('file')!.touched}"
+              [ngClass]="{'is-valid': myForm.get('file')!.valid && myForm.get('file')!.touched}"
+              >
+
+              <span  *ngIf="myForm.get('file')!.hasError('maxSize') && myForm.get('file')!.touched" >La taille de la vidéo doit être inferieur à 10 MB</span>
+
+            </div>
+
   
   
-            <!-- nombre de kilo -->
+            <!-- description du pub -->
             <div class="input">
   
               <label>Description <span class="obligatoire">*</span></label>
-              <textarea class="telephone-input" type="text" class="form-control" formControlName="description"
+              <textarea style="height: 200px;" class="telephone-input" type="text" class="form-control" formControlName="description"
               [ngClass]="{'is-invalid': myForm.get('description')!.invalid && myForm.get('description')!.touched}"
               [ngClass]="{'is-valid': myForm.get('description')!.valid && myForm.get('description')!.touched}"
               >Description</textarea>
@@ -67,21 +82,6 @@
 
     
             </div>
-
-
-           
-             <!-- photo du champ -->
-             <div class="input">
-  
-              <label>Media</label>
-              <input type="file" id="avatar"  class="form-control" name="avatar"  accept="image/png, image/jpeg"
-              multiple (change)="onFileChangePermis($event)"  formControlName="file"
-              [ngClass]="{'is-invalid': myForm.get('file')!.invalid && myForm.get('file')!.touched}"
-              [ngClass]="{'is-valid': myForm.get('file')!.valid && myForm.get('file')!.touched}"
-              >
-  
-            </div>
-  
   
             <div class="input">
               <button class="envoyer-input" type="submit" expand="block" >Ajouter</button>
