@@ -1,77 +1,61 @@
-<ion-header>
-  <div class="barre-menu">
-    <div class="element-menus">
-      <div class="nomApp">
-        <!-- style="width: 60%;" -->
-        <!-- <img src="../../assets/images/forodokotoro.png" alt=""> -->
-        Communautés
-      </div>
-      <!-- <div class="rechercche">
-       
-        <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
-      </div> -->
-      <div class="nav-item dropdown">
-        <!-- margin-top: -20% !important; margin-left: 50% !important; -->
-        <div cclass="nav-link dropdown-toggle"
-          style="width:80px; height: 40px; border-radius: 25px; background-color: #FFF;"
-          data-bs-toggle="dropdown">
-          <div class="" style="display: flex;">
-            <img src="../../assets/images/agriculteur.jpg"
-              style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
-              alt="">
-            <i
-              style="background-color: red; width: 20px; height: 20px; border-radius: 100%; margin-top: 2%; font-size: 15px;">10</i>
-            <i class='bx bx-chevron-down py-3' style="font-size: 25px; font-weight: bold; color: #14AE5C;"></i>
-          </div>
-        </div>
-        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0" style="background-color: #efecee;">
-          <a routerLink="/profil/champs" class="dropdown-item">
-            <div class="d-flex align-items-center nomUser">
-              <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
-              <div class="ms-2">
-                <h6 class="fw-normal mb-0 nomUser">Sama Keita</h6>
-                <!-- <small>15 minutes ago</small> -->
-              </div>
-            </div>
-          </a>
-          <hr class="dropdown-divider">
-          <a href="#" class="dropdown-item">
-            <div class="d-flex align-items-center">
-              <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
-              <div class="ms-2">
-                <h6 class="fw-normal mb-0 nomUser">Notofication <span style="">(10)</span></h6>
-                <!-- <small>15 minutes ago</small> -->
-              </div>
-            </div>
-          </a>
-          <hr class="dropdown-divider">
-          <a href="#" class="dropdown-item">
-            <div class="d-flex align-items-center">
-              <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
-              <div class="ms-2">
-                <h6 class="fw-normal mb-0 nomUser">Completer profil</h6>
-                <!-- <small>15 minutes ago</small> -->
-              </div>
-            </div>
-          </a>
-          <hr class="dropdown-divider">
-          <a href="#" class="dropdown-item">
-            <div class="d-flex align-items-center">
-              <img class="rounded-circle" src="../../assets/icon/favicon.png" alt="" style="width: 40px; height: 40px;">
-              <div class="ms-2">
-                <div class="fw-normal mb-0" style="color: red; font-weight: bold;">Deconnexion</div><h6 style="width: 180px; height: 0;"></h6>
-              
-              </div>
-            </div>
-          </a>
+<ion-content>
+  <div class="conteneurPage">
 
-        </div>
+    <div class="conteneurInput">
+      <div class="rechercche">
+        <input type="search" placeholder="Recherche">
+        <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
       </div>
     </div>
 
-  </div>
-</ion-header>
+    <div class="conteneurPub">
 
-<ion-content>
+      <div class="myCard">
+        <div class="division1">
+
+          <div class="contImage">
+            <img src="../assets/images/agriculture.png">
+          </div>
+
+          <div class="texte">
+            <div class="titre" style="font-size: 18px;">
+              Titre de pub
+            </div>
+            <div class="soustitre" style="font-size: 15px;"> 
+              Sous titre de pub
+            </div>
+          </div>
+
+        </div>
+
+        <div class="contenu">
+          Le maïs (Zea mays L., ou Zea mays subsp. mays (autonyme)), appelé blé d’Inde au Canada1.
+        </div>
+
+        <div class="division2">
+
+          <div class="coordonnee">
+            <div>Mahamadou KEITA</div>
+            <div>Mardi le 10 2022</div>
+          </div>
+          <div class="bouttons">
+            <button>Voir plus</button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="add" (click)="ajouterConseil()">
+        <i style="color: #14AE5C; font-size: 30px;" class="fa-solid fa-plus"></i>
+      </div>
+
+      
+
+    </div>
+
+  </div>
+ 
+
+
 
 </ion-content>

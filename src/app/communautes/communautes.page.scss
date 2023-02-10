@@ -1,38 +1,150 @@
-.barre-menu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+
+  ///debut style de la partie recherche
   
-    background-color: #14AE5C;
-      color: #fff;
-      padding: 0;
-      z-index: 0;
-      display: flex;
-      justify-content: space-around;
-      height: 75px;
-  }
-  
-  .element-menus{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .nomApp{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  //les icones du popup profil
-  // .image{
-  //   width: 40px; height: 40px;
-  // }
-  .deconnexion{
-    color: red;
-  }
+//le conteneur de mon input recherche et, de l'icone recherche
+.conteneurInput{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 13vh;
+  margin-bottom: 12px;
+}
+
+//le conteneur de la partie recherche
+.rechercche{
+  width: 85vw;
+  height: 46px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid #000000;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+//augmente la taille de l'icone recherche
+.fa-magnifying-glass::before, .fa-search::before {
+  font-size: 25px!important;
+}
+
+//le champ input
+.rechercche input{
+ border: none;
+  outline: none;
+  width: 60vw;
+  height: 43px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.12);
+  padding: 15px;
+
+}
+//fait style du input
+
+
+//debut style de la page
+
+.conteneurPage{
+  margin: 90px 0 15px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  // gap: 15px;
+}
+
+//onteneur des card
+.conteneurPub{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.myCard{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  background-color: #efecee;
+}
+.division1{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.titre, .soustitre{
+  font-weight: bold;
+}
+
+.texte{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contImage{
+    width: 40px;
+    height: 38px;
+    border-radius: 20px;
+    // background: green;
+    overflow: hidden;
+}
+.contImage img{
+ 
+}
+
+.contenu{
+  padding: 10px;
+}
+
+.division2{
+  background: rgba(20, 174, 92, 0.7);
+border-radius: 0px 0px 15px 15px;
+display: flex;
+justify-content: space-around;
+width: 100%;
+align-items: center;
+}
+.coordonnee{
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.bouttons{
+  width: 114px;
+  height: 38px;
+  background: #FFFFFF;
+  border: 1px solid #14AE5C;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bouttons button{
+  background-color: #FFFFFF;
+  color: #14AE5C;
+}
+
+//boutton ajouter
+.add{
+  position: fixed;
+  width: 93px;
+  height: 93px;
+  width: 70px;
+    height: 63px;
+  border-radius: 31px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px 4px rgba(20, 174, 92, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  right: 20px;
+}
 
 

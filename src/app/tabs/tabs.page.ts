@@ -227,6 +227,9 @@ verifierExistancePhotoProfil(){
         case '/tabs/marche':
           this.headerTitle = 'MARCHE';
           break;
+        case '/tabs/communautes':
+          this.headerTitle = 'CONSEILS';
+          break;
           default: 
             this.headerTitle = '';
             this.donneesService.showMenu.next(false);

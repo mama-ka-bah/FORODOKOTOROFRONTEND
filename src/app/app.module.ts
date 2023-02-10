@@ -29,6 +29,7 @@ import { MettreAjourStockComponent } from './mettre-ajour-stock/mettre-ajour-sto
 import { EvolutionStockComponent } from './evolution-stock/evolution-stock.component';
 import { DetailNotificationComponent } from './detail-notification/detail-notification.component';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { AjoutConseilComponent } from './ajout-conseil/ajout-conseil.component';
 
 
 
@@ -36,7 +37,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
     declarations: [AppComponent,OtpComponent,InputotpComponent, ChangerMotDePasseComponent, ChoisirProfilComponent,
        DevenirTransporteurComponent, DevenirAgriculteurComponent, AjouterChampComponent, AjouterParserelleComponent,
       CultureParserelleComponent, AjouterPhaseCultiveComponent, DetailPhaseCultiveComponent,ModifierProfilComponent,
-       AjouterStockComponent, MettreAjourStockComponent, EvolutionStockComponent, DetailNotificationComponent],
+       AjouterStockComponent, MettreAjourStockComponent, EvolutionStockComponent, DetailNotificationComponent,AjoutConseilComponent],
 
     imports: [
       BrowserModule,

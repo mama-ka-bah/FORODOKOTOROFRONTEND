@@ -150,24 +150,29 @@ ngOnInit() {
     // })
     this.recupererListeAimesDunStock();
 
-    for (let i = 0; i < this.listeAimeStock.length; i++) {
+    setTimeout(() => {
+      
+      for (let i = 0; i < this.listeAimeStock.length; i++) {
     
-      const elementAimeActuel = this.listeAimeStock[i];
-      console.log(" element: " +this.listeAimeStock[i].id)
-      
-      if(elementAimeActuel.id == this.currentUser.id){
-        if(elementAimeActuel.status == true){
-          this.statusAime = true;
-          this.statusNonAime = false;
-     
-        }else{
-          this.statusAime = false;
-          this.statusNonAime = true;
+        const elementAimeActuel = this.listeAimeStock[i];
+        console.log(" element: " +this.listeAimeStock[i].id)
+        
+        if(elementAimeActuel.id == this.currentUser.id){
+          if(elementAimeActuel.status == true){
+            this.statusAime = true;
+            this.statusNonAime = false;
+       
+          }else{
+            this.statusAime = false;
+            this.statusNonAime = true;
+          }
         }
+        
+  
       }
-      
-
-    }
+    
+    }, 1000);
+   
    
 console.log("statusAime: "+ this.statusAime)
 console.log("statusNonAime: "+ this.statusNonAime)
@@ -190,11 +195,12 @@ console.log("statusNonAime: "+ this.statusNonAime)
     this.stockService.aimerUnstock(this.idStockActuel, this.currentUser.id, aimes).subscribe(data =>{
       this.detailsStocks = data;
       console.log(data)
+      this.verifierSiUserAaimerUnstock();
     })
 
     // this.recupererDetailStock();
     //this.recupererListeAimesDunStock();
-    this.verifierSiUserAaimerUnstock();
+   
 
   }
 

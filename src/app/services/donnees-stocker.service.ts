@@ -94,6 +94,9 @@ export class DonneesStockerService{
   public reccupererTitreTransporteur(){
     this.headerTitle.next("TRANSPORTS");
   }
+  public reccupererTitreCommaute(){
+    this.headerTitle.next("CONSEILS");
+  }
 
 
   
