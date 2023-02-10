@@ -14,6 +14,7 @@ export class DetailProduitAgricolesPage implements OnInit {
   
   idProduitActuel:any
   lesvarietesDuProduitActuel:any
+  // statusubvention:boolean = false;
 
   constructor(
     private donneesStockerService: DonneesStockerService,
@@ -33,7 +34,7 @@ export class DetailProduitAgricolesPage implements OnInit {
     nom:"",
     description:"",
     photo:"",
-    statusubvention:""
+    statusubvention:false
   }
 
   ngOnInit() {
@@ -42,6 +43,11 @@ export class DetailProduitAgricolesPage implements OnInit {
     // alert(this.idProduitActuel)
     this.recupererDetailsDunProduitAgricole();
     this.recupererLesVarietesDunProduit();
+
+    // if(this.detailsProduitsAgricoles.statusubvention == true){
+    //   this.statusubvention == true
+    // }
+
   }
 
   options = {

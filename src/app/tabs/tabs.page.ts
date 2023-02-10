@@ -171,15 +171,11 @@ verifierExistancePhotoProfil(){
     this.storageService.saveCurrentUrl(this.currentUrl);
     this.currentUser = this.storageService.getUser();
 
-   
-    setInterval(() => {
+    setTimeout(() => {
       this.donneesService.photoProfil$.subscribe(value => {
         this.photo = value;
       });
-
-      console.log("heloo")
-   
-    }, 10000);
+    }, 5000);
 
 
     // if( this.rolutilisateur.includes("ROLE_AGRIGULTEUR") == true){

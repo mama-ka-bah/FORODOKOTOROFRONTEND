@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, ModalController, PopoverController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { DevenirAgriculteurComponent } from '../devenir-agriculteur/devenir-agriculteur.component';
 import { EvolutionStockComponent } from '../evolution-stock/evolution-stock.component';
 import { MettreAjourStockComponent } from '../mettre-ajour-stock/mettre-ajour-stock.component';
@@ -10,6 +11,9 @@ import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { MeteoService } from '../services/meteo.service';
 import { StorageService } from '../services/stockage.service';
 import { StocksService } from '../services/stocks.service';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
+
 
 @Component({
   selector: 'app-detail-stocks',
@@ -20,6 +24,11 @@ export class DetailStocksPage implements OnInit {
 
   idStockActuel:any;
   tousLesStocksDunUserActuel:any;
+  currentUser:any;
+  listeAimeStock:any[] = [{id:0, status:false}];
+  statusAime:boolean = false;
+  statusNonAime:boolean = false;
+  nonAime: boolean = false;
   
 
   constructor(
@@ -33,8 +42,12 @@ export class DetailStocksPage implements OnInit {
     public popoverController: PopoverController,
     private champService: ChampService,
     private meteoservice: MeteoService,
-    private stockService: StocksService
-  ) { }
+    private stockService: StocksService,
+    private callNumber: CallNumber
+  ) { 
+   
+    
+  }
 
   date = new Date();
   formattedDate = this.date.toLocaleDateString();
@@ -45,12 +58,59 @@ export class DetailStocksPage implements OnInit {
       prixkilo:0,
       nombrekilo:0,
       quantiterestant:0,
+      nombreaime:0,
+      nombrenonaime:0,
       photo:"",
       disponibilite:false,
       datepublication:this.formattedDate,
       varietes:{},
-      proprietaire:{}
+      proprietaire:{
+        "id":0,
+        "username":"",
+        "email":"",
+        "nomcomplet":"",
+        "adresse":""
+      }
   }
+
+/*
+  async appelle(phoneNumber: string) {
+
+    const result = await Swal.fire({
+      text: 'Vous êtes sur le point d\'appeler cet agriculteur',
+      showDenyButton: true,
+      confirmButtonText: 'Appeler',
+      denyButtonText: `Annuler`,
+      heightAuto:false,
+      position:'center'
+    }).then((result) => {
+      if (result.isConfirmed) {    
+        // alert(phoneNumber);
+        this.callNumber.callNumber(phoneNumber, true)
+        .then(res => console.log('Launched dialer!', res))
+        .catch(err => console.log('Error launching dialer', err));            
+          }
+          
+        })                
+  }
+  */
+  async appelle(phoneNumber: string) {
+    const result = await Swal.fire({
+      text: 'Vous êtes sur le point d\'appeler cet agriculteur',
+      showDenyButton: true,
+      confirmButtonText: 'Appeler',
+      denyButtonText: `Annuler`,
+      heightAuto:false,
+      position:'center'
+    });
+    
+    if (result.isConfirmed) {    
+      this.callNumber.callNumber(phoneNumber, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));            
+    }
+  }
+
 
     //pour retourner en arriere
 retourner() {
@@ -60,7 +120,13 @@ retourner() {
 
 
 ngOnInit() {
+  this.currentUser = this.storageService.getUser();
+  this.idStockActuel = this.routes.snapshot.params['id'];
+  //this.recupererListeAimesDunStock();
+  this.verifierSiUserAaimerUnstock();
   this.recupererDetailStock();
+ 
+  
 }
 
   // recupererDetailStocks(){
@@ -72,12 +138,65 @@ ngOnInit() {
   // }
 
   recupererDetailStock(){
-    this.idStockActuel = this.routes.snapshot.params['id'];
     this.stockService.recupererStockParId(this.idStockActuel).subscribe(data =>{
       this.detailsStocks = data;
     })
   }
 
+  verifierSiUserAaimerUnstock(){
+
+    // this.stockService.recupererStockParId(this.idStockActuel).subscribe(data =>{
+    //   this.detailsStocks = data;
+    // })
+    this.recupererListeAimesDunStock();
+
+    for (let i = 0; i < this.listeAimeStock.length; i++) {
+    
+      const elementAimeActuel = this.listeAimeStock[i];
+      console.log(" element: " +this.listeAimeStock[i].id)
+      
+      if(elementAimeActuel.id == this.currentUser.id){
+        if(elementAimeActuel.status == true){
+          this.statusAime = true;
+          this.statusNonAime = false;
+     
+        }else{
+          this.statusAime = false;
+          this.statusNonAime = true;
+        }
+      }
+      
+
+    }
+   
+console.log("statusAime: "+ this.statusAime)
+console.log("statusNonAime: "+ this.statusNonAime)
+
+  }
+
+  recupererListeAimesDunStock(){
+    this.stockService.recupererListeAimesDunStock(this.idStockActuel).toPromise().then(data =>{
+      this.listeAimeStock = data;
+      console.log(data);
+    })
+  }
+
+
+  aimerUnStock(valeurAime:any){
+    const aimes = {
+      "aime":valeurAime
+    }
+
+    this.stockService.aimerUnstock(this.idStockActuel, this.currentUser.id, aimes).subscribe(data =>{
+      this.detailsStocks = data;
+      console.log(data)
+    })
+
+    // this.recupererDetailStock();
+    //this.recupererListeAimesDunStock();
+    this.verifierSiUserAaimerUnstock();
+
+  }
 
 
 

@@ -136,13 +136,31 @@
     height: 35px;
   }
 
-  .history{
+  .aimes{
     font-size: 15px;
-    color: #14AE5C;
+    // color: #14AE5C;
     cursor: pointer;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     font-weight: bold;
-    column-gap: 10px;
+    column-gap: 20px;
   }
+
+  .like{
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+  }
+  .active{
+    color: #14AE5C;
+  }
+
+//   .like{
+//     display: flex;
+//     flex-direction: column;
+// }
+// .likevaleur{
+//   font-size: 12px;
+// }

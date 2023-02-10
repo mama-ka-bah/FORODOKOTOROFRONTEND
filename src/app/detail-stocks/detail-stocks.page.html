@@ -64,22 +64,25 @@
             <i class="fas fa-minus"></i>
           </div> -->
         </div>
-        <!-- <div class="history">
-         Liste mise à jour <i class="fa-solid fa-arrow-right"></i>
-        </div> -->
+        <div class="aimes">
+          <div class="like"  (click)="aimerUnStock(true)">
+            <span><i [ngClass]="{'active': statusAime, 'nonActive': !statusAime}" style="font-size: 18px;" class="fas fa-thumbs-up"></i></span>
+            <span class="likevaleur" [ngClass]="{'active': statusAime, 'nonActive': !statusAime}">{{detailsStocks.nombreaime}}</span>
+          </div>
+          <div class="like" (click)="aimerUnStock(false)">
+            <span ><i [ngClass]="{'active': statusNonAime, 'nonActive': !statusNonAime}" style="font-size: 18px;" class="fas fa-thumbs-down"></i></span>
+            <span class="likevaleur" [ngClass]="{'active': statusNonAime, 'nonActive': !statusNonAime}">{{detailsStocks.nombrenonaime}}</span>
+          </div>
+        </div>
       </div>
 
       <div class="liens">
-          <ion-button class="boutton" expand="block">Contacter le Vendeur</ion-button>
-          <ion-button class="boutton" expand="block">Trouver un transporteur</ion-button>
+          <ion-button class="boutton" expand="block" (click)="appelle(detailsStocks.proprietaire.username)">Contacter le Vendeur</ion-button>
+          <ion-button class="boutton" expand="block" routerLink="/tabs/transporteurs">Trouver un transporteur</ion-button>
           <!-- <button class="liensTexte" expand="block">Se renseigner sur le vendeur</button> -->
       </div>
         
     </div>
 
    
-      
-
-
-
   </ion-content>

@@ -33,6 +33,12 @@ export class StocksService {
     return this.http.get(AUTH_API + `detailstock/${id}`);
   }
 
+  recupererListeAimesDunStock(idStock:any): Observable<any> {
+
+    return this.http.get(AUTH_API + `recupererlisteaimesdunstock/${idStock}`);
+  }
+
+
   //permet de recuper les évolution d'un
   recupererTousevolutionStocksDunStocks(idStock:any): Observable<any> {
     return this.http.get(AUTH_API + `recuperertousevolutionstocksdunstocks/${idStock}`);
@@ -47,6 +53,11 @@ export class StocksService {
    //permet de mettre à jour un stock
    mettreAjourStock(stockid:any, quantiteRestant:any, evolutionstock:any): Observable<any> {
     return this.http.post(AUTH_API + `mettrejourstock/${stockid}/${quantiteRestant}`, evolutionstock);
+  }
+
+  //permet d'ajouter un stock
+  aimerUnstock(idstock:any, iduser: any, aimes:any): Observable<any> {
+    return this.http.post(AUTH_API + `aimerunstock/${idstock}/${iduser}`, aimes);
   }
 
 

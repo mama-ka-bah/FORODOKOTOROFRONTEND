@@ -87,7 +87,7 @@
 
     <div class="conteneurImage">
       <img class="image-detail" src="{{detailsProduitsAgricoles.photo}}">
-      <ion-button *ngIif="detailsProduitsAgricoles.statusubvention  == true">Subventionné</ion-button>
+      <ion-button *ngIf="detailsProduitsAgricoles.statusubvention  == true">Subventionné</ion-button>
     </div>
 
     <div class="description">
@@ -96,7 +96,7 @@
         <div style="justify-content: justify;">
          {{detailsProduitsAgricoles.description}}
         </div>
-        <!-- <button>Voir plus</button> -->
+        <button>Voir plus</button>
       </div>
     </div>
 
