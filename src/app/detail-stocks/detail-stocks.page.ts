@@ -104,7 +104,7 @@ ngOnInit() {
   this.currentUser = this.storageService.getUser();
   this.idStockActuel = this.routes.snapshot.params['id'];
   //this.recupererListeAimesDunStock();
-  this.verifierSiUserAaimerUnstock();
+  //this.verifierSiUserAaimerUnstock();
   this.recupererDetailStock();
 }
 
@@ -115,7 +115,7 @@ ngOnInit() {
     })
   }
 
-
+/*
   verifierSiUserAaimerUnstock(){
     this.recupererListeAimesDunStock();
 
@@ -156,6 +156,7 @@ ngOnInit() {
 
 
   }
+  */
 
   recupererListeAimesDunStock(){
     this.stockService.recupererListeAimesDunStock(this.idStockActuel).toPromise().then(data =>{
@@ -170,16 +171,23 @@ ngOnInit() {
       "aime":valeurAime
     }
 
+    // if(valeurAime == true){
+    //   this.statusAime == !this.statusAime;
+    //   this.statusNonAime == !this.statusNonAime;
+      
+    // }else{
+    //   this.statusAime == !this.statusAime;
+    //   this.statusNonAime == !this.statusNonAime;
+    // }
+
     this.stockService.aimerUnstock(this.idStockActuel, this.currentUser.id, aimes).subscribe(data =>{
       this.detailsStocks = data;
       console.log(data)
-      this.verifierSiUserAaimerUnstock();
     })
 
     // this.recupererDetailStock();
     //this.recupererListeAimesDunStock();
    
-
   }
 
 
@@ -224,7 +232,5 @@ ngOnInit() {
      })
 
     }
-
-    
 
 }

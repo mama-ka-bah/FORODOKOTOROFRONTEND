@@ -11,6 +11,7 @@ export class EvolutionStockComponent implements OnInit {
 
   evolutionStock:any
   idStock: any;
+  affiche:boolean = true;
 
   constructor(
     private modalCtrl: ModalController,
@@ -37,8 +38,14 @@ export class EvolutionStockComponent implements OnInit {
    recuperLesEvolutionDunStock(){
     this.stockService.recupererTousevolutionStocksDunStocks(this.idStock).subscribe(data =>{
       this.evolutionStock = data;
-      console.log(this.evolutionStock)
     })
+
+    setTimeout(() => {
+      console.log(this.evolutionStock.length)
+      if(this.evolutionStock.length == 0){
+        this.affiche == false;
+      }
+    }, 1000);
   }
      
   

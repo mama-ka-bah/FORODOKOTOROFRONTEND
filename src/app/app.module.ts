@@ -31,15 +31,14 @@ import { DetailNotificationComponent } from './detail-notification/detail-notifi
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { AjoutConseilComponent } from './ajout-conseil/ajout-conseil.component';
 import { CommentairesComponent } from './commentaires/commentaires.component';
-
-
+import { ModifierPublicationComponent } from './modifier-publication/modifier-publication.component';
 
   @NgModule({
     declarations: [AppComponent,OtpComponent,InputotpComponent, ChangerMotDePasseComponent, ChoisirProfilComponent,
        DevenirTransporteurComponent, DevenirAgriculteurComponent, AjouterChampComponent, AjouterParserelleComponent,
       CultureParserelleComponent, AjouterPhaseCultiveComponent, DetailPhaseCultiveComponent,ModifierProfilComponent,
        AjouterStockComponent, MettreAjourStockComponent, EvolutionStockComponent, DetailNotificationComponent,
-       AjoutConseilComponent, CommentairesComponent],
+       AjoutConseilComponent, CommentairesComponent, ModifierPublicationComponent],
 
     imports: [
       BrowserModule,

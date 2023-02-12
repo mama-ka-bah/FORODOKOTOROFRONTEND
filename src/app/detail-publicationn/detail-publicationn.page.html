@@ -50,7 +50,7 @@
       <div class="liensExternes" *ngIf="detailPublication.lien != null"><span (click)="openLiens(detailPublication.lien)" >{{detailPublication.lien.slice(0, 60)}}</span><span *ngIf="detailPublication.lien.length > 60">...</span></div>
 
       <div class="bouttons">
-        <i style="font-size: 18px; color: #4285F4;" class="fas fa-edit"></i>
+        <div (click)="modifierPublication(detailPublication)"><i style="font-size: 18px; color: #4285F4;" class="fas fa-edit"></i></div>
         <div (click)="aimerUnePublication(true)"><i style="font-size: 18px;" class="fa fa-thumbs-up" aria-hidden="true">  {{detailPublication.nombreaime}}</i></div>
         <div (click)="aimerUnePublication(false)"><i class="fas fa-thumbs-down">  {{detailPublication.nombrenonaime}}</i></div>
 
@@ -84,16 +84,12 @@
 
       <div class="bouttons">
         <i style="font-size: 18px; color: blue;" class="fas fa-edit"></i>
-        <i style="font-size: 18px;" class="fa fa-thumbs-up" aria-hidden="true">  5</i>
-        <i class="fas fa-thumbs-down">  10</i>
+        <!-- <i style="font-size: 18px;" class="fa fa-thumbs-up" aria-hidden="true">  5</i>
+        <i class="fas fa-thumbs-down">  10</i> -->
 
       </div>
 
     </div>
-
-
-    
-
 
   </div>
 

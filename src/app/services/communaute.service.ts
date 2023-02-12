@@ -21,6 +21,15 @@ export class CommunauteService {
     );
   }
 
+  
+  //permet d'ajouter une publication
+ modifierPublication(publication:any, idUser:any): Observable<any> {
+    return this.http.patch(
+      AUTH_API + `modifierpublication/${idUser}`,
+      publication
+    );
+  }
+
 
   //recuperere Toutes Les Publications Ordonnees Par Date Pub
   recupererToutesLesPublicationsOrdonneesParDatePub(): Observable<any> {

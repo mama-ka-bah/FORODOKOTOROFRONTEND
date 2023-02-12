@@ -12,6 +12,8 @@ import { StorageService } from '../services/stockage.service';
 import { StocksService } from '../services/stocks.service';
 import { Browser } from '@capacitor/browser';
 import Swal from 'sweetalert2';
+import { ModifierProfilComponent } from '../modifier-profil/modifier-profil.component';
+import { ModifierPublicationComponent } from '../modifier-publication/modifier-publication.component';
 
 
 @Component({
@@ -63,7 +65,7 @@ export class DetailPublicationnPage implements OnInit {
 
   ngOnInit() {
     this.idconseilActuel = this.routes.snapshot.params['id'];
-    this.recupererDetailDuneCommentaire();
+    this.recupererDetailDunePublication();
     this.recupererLesCommmentaireDunePublication();
     this.currentUser = this.storageService.getUser();
   }
@@ -82,8 +84,8 @@ retourner() {
   }
 
 
-  //recupere Detail Dune Commentaire
-  recupererDetailDuneCommentaire(){
+  //recupere Detail Dune publication
+  recupererDetailDunePublication(){
     this.communauteService.recupererDetailDunePublication(this.idconseilActuel).subscribe(data =>{
       this.detailPublication = data;
       console.log(data)
@@ -106,11 +108,12 @@ retourner() {
     
         popover.onDidDismiss().then((data) => {
           console.log(data.data);
-          this.recupererDetailDuneCommentaire();
+          this.recupererDetailDunePublication();
           this.recupererLesCommmentaireDunePublication();
        })
   
       }
+
 
 
       aimerUnePublication(valeurAime:any){
@@ -151,5 +154,28 @@ retourner() {
         })
         
       }
+
+
+
+
+
+        //on fait appel au composant pout ajouter une nouvelle ction
+   async modifierPublication(publication:any) {
+    const modal = await this.modalCtrl.create({
+      //le composant contenant le modal
+      component:ModifierPublicationComponent,
+      //Ici on envoi l'id de cultive actuel au composant contenant le formulaire de creation de 
+      componentProps: {
+      data: publication
+  }
+    });
+
+    //Cette methode contient les 
+    modal.onDidDismiss().then((result) => {
+     console.log(JSON.stringify(result));
+    this.recupererDetailDunePublication();
+    });
+    await modal.present();
+  }
 
 }
