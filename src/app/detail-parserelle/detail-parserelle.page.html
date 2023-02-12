@@ -27,7 +27,7 @@
       <!-- </div> -->
 
       <!-- debut de prevision -->
-      <ion-accordion-group (ionChange)="accordionGroupChange($event)">
+      <ion-accordion-group (ionChange)="accordionGroupChange($event)" style="width: 100%;">
         <ion-accordion value="first">
           <ion-item slot="header" color="#000">
             <!-- <ion-label>First Accordion</ion-label> -->
@@ -68,22 +68,7 @@
 
               </ion-accordion-group>
             </div>
-            <!-- <div class=""
-              style="height: 20% !important; border-radius: 2px; margin-bottom: 2%; box-shadow: 0 5px 5px -5px">
-              <ion-accordion-group (ionChange)="accordionGroupChange($event)">
-                <ion-accordion value="first">
-                  <ion-item slot="header" color="#000">
-                    <div class="accesprevision" style="font-size: .8em;">Activité2</div>
-                  </ion-item>
-                  <div class="ion-padding" slot="content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo sapiente dolorem voluptas tenetur,
-                    repellendus, ipsum ea alias quisquam incidunt, rerum recusandae laudantium quo illum vero eligendi
-                    beatae harum magnam magni!
-                  </div>
-                </ion-accordion>
-
-              </ion-accordion-group>
-            </div> -->
+           
           </div>
         </ion-accordion>
 
@@ -93,6 +78,7 @@
       <!-- fin de prevision -->
 
       <ion-button class="fermer" type="submit" expand="block" id="open-modal3" [disabled]="etatFinission">METTRE FIN</ion-button>
+      <ion-button *ngIf="etatFinission" (click)="signalerUnCultiveCommeNonTerminer()" class="fermer" type="submit" expand="block" id="open-modal3">SIGNALER COMME NON TERMINER</ion-button>
 
       <div class="datedf">
         <div class="calendrier" style="font-weight: bold; justify-content: center; color: #14AE5C;">

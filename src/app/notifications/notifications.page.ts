@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { __values } from 'tslib';
 import { DetailNotificationComponent } from '../detail-notification/detail-notification.component';
+import { ChargementService } from '../services/chargement.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { NotificationService } from '../services/notification.service';
 import { StorageService } from '../services/stockage.service';
@@ -20,6 +21,7 @@ export class NotificationsPage implements OnInit {
      private storageService: StorageService,
      private donneeService: DonneesStockerService,
      public popoverController: PopoverController,
+     private chargementService: ChargementService
      ) { }
 
   lesNotificationsNonLus:any;
@@ -34,8 +36,9 @@ export class NotificationsPage implements OnInit {
   ngOnInit() {
     this.currentUser = this.storageService.getUser();
     this.luActive = true
-
-
+    this.chargementService.presentLoading();
+    this.ionViewWillEnter();
+    this.chargementService.dismissLoading();
   }
 
   ionViewWillEnter(){  

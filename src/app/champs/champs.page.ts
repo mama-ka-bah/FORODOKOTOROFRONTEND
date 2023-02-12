@@ -46,7 +46,7 @@ export class ChampsPage implements OnInit {
     private router : Router,
     private storageService : StorageService,
     private navCtrl: NavController,
-    private donneesService: DonneesStockerService,
+    public donneesService: DonneesStockerService,
     private modalCtrl: ModalController,
     private agriculteurService: AgriculteurService,
     public popoverController: PopoverController,
@@ -59,6 +59,10 @@ export class ChampsPage implements OnInit {
     this.currentUser = this.storageService.getUser();
    // alert("je suis actualiser par init")
    this.recuperChampDunAgriculteur();
+
+   this.donneesService.photoProfil$.subscribe(value => {
+    this.photo = value;
+  });
   }
 
   ionViewDidEnter(){
@@ -69,9 +73,10 @@ export class ChampsPage implements OnInit {
      //alert("je suis actualiser par will")
      this.recuperChampDunAgriculteur();
 
-     this.donneesService.photoProfil.next(this.currentUser.photo);
     this.donneesService.photoProfil$.subscribe(value => {
       this.photo = value;
+      //this.donneesService.photoProfil.next(this.currentUser.photo);
+
     });
    }
 
@@ -130,6 +135,7 @@ submitForm() {
           ///si l'ajout du champ a marché
           if(this.reponseUpdatePhoto.status == 1 ){
 
+            setTimeout(() => {
             console.log("data photo: " + this.reponseUpdatePhoto.message)
            
             this.currentUser.photo = this.reponseUpdatePhoto.message;
@@ -142,6 +148,7 @@ submitForm() {
             console.log(this.currentUser)
             this.storageService.saveUser(this.currentUser);
 
+          }, 1000);
 
             Swal.fire({
               icon: 'success',

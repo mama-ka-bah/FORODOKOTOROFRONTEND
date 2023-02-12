@@ -18,7 +18,7 @@
     
           <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
   
-            <!-- Nom -->
+            <!-- titre -->
             <div class="input">
   
               <label>Titre <span class="obligatoire">*</span></label>
@@ -34,7 +34,7 @@
   
             </div>
   
-            <!-- Longueur -->
+            <!-- Sous titre -->
             <div class="input">
   
               <label>Sous titre <span class="obligatoire">*</span></label>
@@ -46,6 +46,21 @@
               <span class="erreur" *ngIf="myForm!.get('soustitre')!.hasError('required') && myForm.get('soustitre')!.touched">Cet champ est obligatoire</span>
               <span class="erreur" *ngIf="myForm.get('soustitre')!.hasError('minlength') && myForm.get('soustitre')!.touched">Sous titre court</span>
               <span class="erreur" *ngIf="myForm.get('soustitre')!.hasError('maxlength') && myForm.get('soustitre')!.touched">Sous titre court</span>
+
+            </div>
+
+
+            <!-- Ressource -->
+            <div class="input">
+  
+              <label>Ressource</label>
+              <input class="telephone-input" type="text" class="form-control" placeholder="https://www.youtube.com/watch?v=nFALLbd-n7s" formControlName="lien"
+              [ngClass]="{'is-invalid': myForm.get('lien')!.invalid && myForm.get('lien')!.touched}"
+              [ngClass]="{'is-valid': myForm.get('lien')!.valid && myForm.get('lien')!.touched}"
+              >
+  
+              <span class="erreur" *ngIf="myForm.get('lien')!.hasError('minlength') && myForm.get('lien')!.touched">Sous titre court</span>
+              <span class="erreur" *ngIf="myForm.get('lien')!.hasError('maxlength') && myForm.get('lien')!.touched">Sous titre court</span>
 
     
             </div>
@@ -81,7 +96,7 @@
               <span class="erreur" *ngIf="myForm.get('description')!.hasError('maxlength') && myForm.get('description')!.touched">Description long</span>
 
     
-            </div>
+            </div >
   
             <div class="input">
               <button class="envoyer-input" type="submit" expand="block" >Ajouter</button>

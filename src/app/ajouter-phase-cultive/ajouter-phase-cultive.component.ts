@@ -41,7 +41,7 @@ idCultiveRecuperer:any;
   myForm = new FormGroup({
     libelle: new FormControl('',  [Validators.required, Validators.minLength(3),  Validators.maxLength(10)]),
     nbrepluies: new FormControl('',  [Validators.required]),
-    remarques: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]),
+    remarques: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]),
     datedebut: new FormControl(null, [Validators.required]),
     datefin: new FormControl(null, [Validators.required]),
 

@@ -42,6 +42,7 @@ export class DetailParserellePage implements OnInit {
   lesPrevisionsDunCultive:any;
   lesPhaseActivesDunecultive:any;
   lesDetailsDunePhases:any;
+  resultatReouvertureCultive:any
 
   //lié à input formulaire
   recolterealise: any;
@@ -90,6 +91,7 @@ submitForm1() {
         position:'center'
       }).then((result) => {
         if (result.isConfirmed) {  
+
          this.dismissLoading()
     this.champService.mettrefinAunCultive(this.detailDunCutive.id, this.myForm1.controls.dateFinCultive.value, this.myForm1.controls.recolte.value).subscribe(data => {
       this.resultatatMettreFinACultive = data;
@@ -99,7 +101,6 @@ submitForm1() {
               this.dismiss();
               
               this.myForm.reset();
-           
              
               this.mettreAjourLesDonnees();
               this.etatFinission = true;
@@ -146,6 +147,62 @@ mettreAjourLesDonnees(){
   //ici je recupere l'id du cultive
   this.idDeCultiveActuel = this.detailDunCutive.id;
   this.recolterealise = this.detailDunCutive.recolterealis
+}
+
+signalerUnCultiveCommeNonTerminer(){
+
+
+  Swal.fire({
+    text: 'Etes vous sûr d\'activer cette culture',
+    // showDenyButton: true,
+    confirmButtonText: 'Envoyer',
+    denyButtonText: `Annuler`,
+    heightAuto:false,
+    position:'center'
+  }).then((result) => {
+    if (result.isConfirmed) {  
+
+
+      this.chargementServie.presentLoading();
+      this.champService.signalercultivecommenonterminer(this.idDeCultiveActuel).subscribe(data =>{
+
+        this.resultatReouvertureCultive = data;
+
+        ///si l'ajout la mise a marché
+        if(this.resultatReouvertureCultive.status == 1){
+
+          setTimeout(() => {
+
+            this.etatFinission = false;
+
+            this.mettreAjourLesDonnees();
+          
+          this.chargementServie.dismissLoading();
+
+          }, 1000);
+                 
+          Swal.fire({
+            icon: 'success',
+            text: this.resultatReouvertureCultive.message,
+            showConfirmButton: true,
+            customClass: {
+              container: 'small-text'
+            },
+            heightAuto:false,
+          })
+          this.ngOnInit();
+        }else{
+          Swal.fire({
+            icon: 'info',
+            text: this.resultatReouvertureCultive.message,
+            showConfirmButton: true,
+            heightAuto:false,
+          })
+        }
+        
+      })
+    } 
+  })
 }
 
   ngOnInit() {

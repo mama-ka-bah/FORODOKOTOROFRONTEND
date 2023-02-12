@@ -25,8 +25,9 @@ resultatAjoutPub: any;
 
   //l'objet form froup lié à mon formulaire dans le template
   myForm = new FormGroup({
-    titre: new FormControl('',  [Validators.required, Validators.minLength(2)]),
-    soustitre: new FormControl('',  [Validators.required]),
+    titre: new FormControl('',  [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
+    soustitre: new FormControl('',  [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
+    lien: new FormControl('',  [Validators.minLength(5), Validators.maxLength(160)]),
 
     description: new FormControl('', [Validators.required, Validators.minLength(25), Validators.maxLength(255)]),
     
@@ -48,22 +49,6 @@ resultatAjoutPub: any;
 
     ]),
     fileSource: new FormControl('', 
-    // [
-
-    //   (control) => {
-    //     const file = control.value;
-    //     if (!file) {
-    //       return null;
-    //     }
-    
-    //     // Check if the video size is within the limit
-    //     const MAX_SIZE = 10000000; // 10 MB
-    //     if (file.size > MAX_SIZE) {
-    //       return { maxSize: true };
-    //     }
-    //     return null;
-    //   }
-    // ]
     )
 
 });
@@ -101,13 +86,7 @@ onFileChangePermis(event: any) {
     private produitAgricolesService: ProduitAgricolesService,
     private stocksService: StocksService,
     private communauteService: CommunauteService
-    ) {
-    // //ici je recuperere ces données dans mondata  
-    // this.mondata = this.navParams.get('data');
-    // console.log(this.mondata);
-
-    
-   }
+    ) {}
 
   
    //cette fonction permet de fermer le modal
@@ -135,6 +114,7 @@ onFileChangePermis(event: any) {
                 "titre":this.myForm.controls.titre.value,
                 "soustitre":this.myForm.controls.soustitre.value,
                 "description":this.myForm.controls.description.value,
+                "lien":this.myForm.controls.lien.value,
                 "typepub":"conseil"
                }      
         ]
@@ -204,11 +184,10 @@ onFileChangePermis(event: any) {
     }
 
 
-    async openTOS() {
+    async openLien(lien:any) {
      
-      
       Swal.fire({
-        text: 'Vous serez rediriger vers google Maps',
+        text: 'Vous serez rediriger vers une ressource externe',
         showDenyButton: true,
         // showCancelButton: true,
         confirmButtonText: 'Accepter',
@@ -218,7 +197,7 @@ onFileChangePermis(event: any) {
       }).then(async (result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {         
-          await Browser.open({ url: 'https://www.google.com/maps'});               
+          await Browser.open({ url: lien});               
         } 
       })
      

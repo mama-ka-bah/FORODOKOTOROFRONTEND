@@ -138,10 +138,13 @@ ion-title{
     justify-content: space-around;
     align-items: center; 
     --width: 100%;
+    background-color: #efecee;
   }
 
 
-
+.libelle-produitsagricoles{
+  padding-left: 5px;
+}
 
   
 
@@ -151,11 +154,7 @@ ion-title{
    
     overflow: hidden;
   }
-// .images-produit img{
-//   // max-width: 130%;
-//   // max-height: 130%;
-//   object-fit: cover;
-// }
+
 
 .swiper-slide img {
   width: 100px;

@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-header>
+    <div class="barre-menu">
+      <div class="element-menus">
+        <ion-buttons slot="start" >
+          <ion-back-button defaultHref="tabs/communautes"></ion-back-button>
+        </ion-buttons>
+        <div class="nomApp" style="flex-basis: 80%;">
+        {{detailPublication.titre}}
+        </div>
+      </div>
+  
+    </div>
+  </ion-header>
+</ion-header>
+<ion-content>
+
+  <div style="font-weight: bold; font-size: 20px; margin-top: 15px; padding: 5px;">
+    Sous titre du conseil
+  </div>
+
+  <div class="conteneurPage">
+    <div class="contButtons">
+      <span style="color: #fff;">200 commentaires</span>
+      <button (click)="ajouterCommentaire($event)">Commenter</button>
+    </div>
+
+<!-- le conseil -->
+    <div class="conseil" style="width: 100%;">
+
+      <div class="conteneurImg" style="padding-left: 5px;">
+        <div style="font-size: 18px; font-weight: bold;">{{detailPublication.posteur.nomcomplet}}</div>
+        <div class="images">
+          <img src="{{detailPublication.posteur.photo}}" alt="">
+        </div>
+      </div>
+
+      <div class="description">
+        <span style="font-weight: bold;">{{ detailPublication.datepub | date: 'dd/MM/yyyy HH:mm' }}min</span>
+        <video width="100%" height="200" preload="auto"  controls *ngIf="detailPublication.media != null">
+          <source src="{{detailPublication.media}}" type="video/mp4">
+        </video>
+
+        <span style="padding: 5px;">
+          {{detailPublication.description}}
+         </span>
+
+      </div>
+
+      <div class="liensExternes" *ngIf="detailPublication.lien != null"><span (click)="openLiens(detailPublication.lien)" >{{detailPublication.lien.slice(0, 60)}}</span><span *ngIf="detailPublication.lien.length > 60">...</span></div>
+
+      <div class="bouttons">
+        <i style="font-size: 18px; color: #4285F4;" class="fas fa-edit"></i>
+        <i style="font-size: 18px;" class="fa fa-thumbs-up" aria-hidden="true">  5</i>
+        <i class="fas fa-thumbs-down">  10</i>
+
+      </div>
+
+    </div>
+
+    <!-- les differentes commentaires liées à une publication(conseil uniquement pour le moment) -->
+
+    <div class="conseil" *ngFor="let commentaire of lescommentairesDunePublication" style="background-color: #F4F5F8;">
+
+      <div class="conteneurImg" style="padding-left: 5px; align-items: flex-end; width: 100%;">
+        <div style="font-size: 18px; font-weight: bold; width: 50%;">{{commentaire.posteur.nomcomplet}}</div>
+        <div class="images" style="width: 50%;">
+          <img src="{{commentaire.posteur.photo}}" alt="">
+        </div>
+        <div style="width: 50%;">
+          <span style="font-weight: bold;">{{ commentaire.datepub | date: 'dd/MM/yyyy HH:mm' }}min</span>
+        </div>
+      </div>
+
+      <div class="description">
+        
+        <span>
+         {{commentaire.description}}
+        </span>
+
+      </div>
+     
+      <div class="liensExternes" *ngIf="commentaire.lien != null"><span (click)=" openLiens(commentaire.lien)">{{commentaire.lien.slice(0, 60)}}<span *ngIf="commentaire.lien.length > 60">...</span></span></div>
+
+      <div class="bouttons">
+        <i style="font-size: 18px; color: blue;" class="fas fa-edit"></i>
+        <i style="font-size: 18px;" class="fa fa-thumbs-up" aria-hidden="true">  5</i>
+        <i class="fas fa-thumbs-down">  10</i>
+
+      </div>
+
+    </div>
+
+
+    
+
+
+  </div>
+
+</ion-content>

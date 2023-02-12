@@ -1,55 +1,40 @@
-.ajout-champ-modal{
-    margin-bottom: 20px;
-}
-
-
-//debut style menus
+//debut style menu
 .barre-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  
     background-color: #14AE5C;
-    height: 80px;
+      color: #fff;
+      padding: 0;
+      z-index: 0;
+      display: flex;
+      justify-content: space-around;
+      height: 75px;
+  }
+  
+  .element-menus{
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-}
-.element-menus{
+  }
+  
+  .nomApp{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-}
-.libelle{
-    color: bold;
-    color: #fff;
-    font-size: 18px;
     font-weight: bold;
-}
-//fin style du menu
+    font-size: 20px;
+
+  }
+  //fin style menu
 
 
-//debut style du contenu
-.containeur{
-    display: flex;
-    // justify-content: space-around;
-    flex-direction: column;
-    // height: 100%;
-    align-items: center;
-    // margin: auto;
-    margin-top: 100px;
-}
 
-//Le logo de l'application
-.logo{
-    height: 140px;
-    width: 134px;
-}
 
-.texte{
-    text-align: justify;
-    width: 90%;
-}
-
+  
 .input{
     width: 90%;
     display: flex;
@@ -79,11 +64,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // flex-basis: 50%;
-    // height: 50vh;
     justify-content: space-around;
-    width: 100vw;
-    gap: 20px;
+    margin: 15px;
 }
 
 

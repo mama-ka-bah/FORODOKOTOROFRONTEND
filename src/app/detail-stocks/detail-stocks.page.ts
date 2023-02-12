@@ -73,27 +73,8 @@ export class DetailStocksPage implements OnInit {
       }
   }
 
-/*
-  async appelle(phoneNumber: string) {
 
-    const result = await Swal.fire({
-      text: 'Vous êtes sur le point d\'appeler cet agriculteur',
-      showDenyButton: true,
-      confirmButtonText: 'Appeler',
-      denyButtonText: `Annuler`,
-      heightAuto:false,
-      position:'center'
-    }).then((result) => {
-      if (result.isConfirmed) {    
-        // alert(phoneNumber);
-        this.callNumber.callNumber(phoneNumber, true)
-        .then(res => console.log('Launched dialer!', res))
-        .catch(err => console.log('Error launching dialer', err));            
-          }
-          
-        })                
-  }
-  */
+
   async appelle(phoneNumber: string) {
     const result = await Swal.fire({
       text: 'Vous êtes sur le point d\'appeler cet agriculteur',
@@ -129,14 +110,6 @@ ngOnInit() {
   
 }
 
-  // recupererDetailStocks(){
-  //   this.idStockActuel = this.routes.snapshot.params['id'];
-  //   console.log("element: " +  this.idStockActuel);
-  //   this.tousLesStocksDunUserActuel = this.storageService.getStocks();
-  //   this.detailsStocks = this.tousLesStocksDunUserActuel[this.idStockActuel-1];
-  //   console.log("element: " +  this.detailsStocks);
-  // }
-
   recupererDetailStock(){
     this.stockService.recupererStockParId(this.idStockActuel).subscribe(data =>{
       this.detailsStocks = data;
@@ -145,9 +118,6 @@ ngOnInit() {
 
   verifierSiUserAaimerUnstock(){
 
-    // this.stockService.recupererStockParId(this.idStockActuel).subscribe(data =>{
-    //   this.detailsStocks = data;
-    // })
     this.recupererListeAimesDunStock();
 
     setTimeout(() => {
@@ -169,9 +139,11 @@ ngOnInit() {
             this.statusAime = false;
             this.statusNonAime = true;
           }
-        }else{
+        }else if(elementAimeActuel.id != this.currentUser.id){
           this.nonAime = true;
-          alert("je ssuis rentré 1")
+          // alert("je ssuis rentré 1")
+          this.statusAime = false;
+          this.statusNonAime = false;
         }
         
       }
@@ -253,29 +225,6 @@ ngOnInit() {
      })
 
     }
-
-
-
-      // //popup
-      // async evolutionStock(ev: any) {
-      //   const popover = await this.popoverController.create({
-      //     component: MettreAjourStockComponent,
-      //     event: ev,
-      //     translucent: true,
-      //     componentProps: {
-      //       data: this.idStockActuel,
-      //       data1:this.detailsStocks
-      //     }
-      //   });
-  
-      //   await popover.present();
-    
-      //   popover.onDidDismiss().then((data) => {
-      //     console.log(data.data);
-      //  })
-  
-      // }
-  
 
     
 

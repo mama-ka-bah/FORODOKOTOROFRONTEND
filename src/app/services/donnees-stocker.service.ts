@@ -54,9 +54,6 @@ export class DonneesStockerService{
   public photoProfil = new BehaviorSubject<any>(null);
   public photoProfil$ = this.photoProfil.asObservable();
 
-
-
-
   pageActuel = "FORODOKOTORO";
 
   currentUrl= "";
@@ -104,7 +101,10 @@ export class DonneesStockerService{
  
 
   constructor(private userService: AuthentificationService, private chargementService: ChargementService, private storageService : StorageService,private router : Router,
-    ) { }
+    ) {
+      this.photoProfil.next(this.storageService.getUser().photo);
+
+     }
 
 
 

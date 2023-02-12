@@ -36,23 +36,26 @@ export class StockprofilPage implements OnInit {
       private router : Router,
       private storageService : StorageService,
       private navCtrl: NavController,
-      private donneesService: DonneesStockerService,
+      public donneesService: DonneesStockerService,
       private modalCtrl: ModalController,
       private agriculteurService: AgriculteurService,
       public popoverController: PopoverController,
       private champService: ChampService,
-      private userService: AuthentificationService 
-
+      private userService: AuthentificationService
     ) { }
 
   ngOnInit() {
     this.currentUser = this.storageService.getUser();
     this.recuperStockDunAgriculteur();
+
+    this.donneesService.photoProfil$.subscribe(value => {
+      this.photo = value;
+    });
   }
 
   ionViewWillEnter(){
 
-    this.donneesService.photoProfil.next(this.currentUser.photo);
+    //this.donneesService.photoProfil.next(this.currentUser.photo);
    this.donneesService.photoProfil$.subscribe(value => {
      this.photo = value;
    });
@@ -112,19 +115,41 @@ export class StockprofilPage implements OnInit {
             this.reponseUpdatePhoto = value;
             
             ///si l'ajout du champ a marché
-            if(this.reponseUpdatePhoto.status == 1 ){
+            // if(this.reponseUpdatePhoto.status == 1 ){
   
-              console.log("data photo: " + this.reponseUpdatePhoto.message)
+            //   setTimeout(() => {
+            //   console.log("data photo: " + this.reponseUpdatePhoto.message)
               
-              this.currentUser.photo = this.reponseUpdatePhoto.message;
+            //   this.currentUser.photo = this.reponseUpdatePhoto.message;
 
-              this.donneesService.photoProfil.next( this.currentUser.photo);
-              this.donneesService.photoProfil$.subscribe(value => {
-                this.photo = value;
-              });
+            //   this.donneesService.photoProfil.next( this.currentUser.photo);
+            //   this.donneesService.photoProfil$.subscribe(value => {
+            //     this.photo = value;
+            //   });
 
-              console.log(this.currentUser)
-              this.storageService.saveUser(this.currentUser);
+            //   console.log(this.currentUser)
+            //   this.storageService.saveUser(this.currentUser);
+            // }, 1000);
+
+
+              ///si l'ajout du champ a marché
+          if(this.reponseUpdatePhoto.status == 1 ){
+
+            setTimeout(() => {
+            console.log("data photo: " + this.reponseUpdatePhoto.message)
+           
+            this.currentUser.photo = this.reponseUpdatePhoto.message;
+
+            this.donneesService.photoProfil.next( this.currentUser.photo);
+            this.donneesService.photoProfil$.subscribe(value => {
+              this.photo = value;
+            });
+
+            console.log(this.currentUser)
+            this.storageService.saveUser(this.currentUser);
+
+          }, 1000);
+          
   
   
               Swal.fire({

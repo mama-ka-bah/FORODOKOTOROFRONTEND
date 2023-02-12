@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Browser } from '@capacitor/browser';
 import { NavController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { ProduitAgricolesService } from '../services/produit-agricoles.service';
 
@@ -20,6 +22,7 @@ export class SemencePage implements OnInit {
     photo:"",
     resultatparkilo:0,
     description:"",
+    lien:"",
     etat:false,
     produitagricole:{},
     previsions:[]
@@ -63,6 +66,28 @@ retourner() {
       this.previsions = data;
       console.log(this.previsions);
     })
+  }
+
+
+
+
+  async openLiens(lien:any) {
+     
+    Swal.fire({
+      text: 'Vous serez rediriger vers une resource externe',
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: 'Accepter',
+      denyButtonText: `Annuler`,
+      heightAuto:false,
+      position:'center'
+    }).then(async (result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {         
+        await Browser.open({ url: lien});               
+      } 
+    })
+    
   }
 
 }

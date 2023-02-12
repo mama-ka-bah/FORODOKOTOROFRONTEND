@@ -52,6 +52,16 @@ export class ChampService {
     return this.http.get(AUTH_API2 + `detailCultive/${idCulltive}`);
 }
  
+//permet de modifier un cultive
+modifierUnCultive(idCultive:any, cultive:any){
+  return this.http.patch(AUTH_API2 + `modifier/${idCultive}`, cultive);
+}
+
+//permet de modifier un cultive
+signalercultivecommenonterminer(idCultive:any){
+  return this.http.delete(AUTH_API2 + `signalercultivecommenonterminer/${idCultive}`);
+}
+
 
 
   //permet de  recuperer Les Cultive active Dune Parsererelle ordonne par date de fin

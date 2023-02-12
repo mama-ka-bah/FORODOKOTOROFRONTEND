@@ -65,7 +65,12 @@ const routes: Routes = [
   {
     path: 'detail-stocks/:id',
     loadChildren: () => import('./detail-stocks/detail-stocks.module').then( m => m.DetailStocksPageModule)
+  },
+  {
+    path: 'detail-publication/:id',
+    loadChildren: () => import('./detail-publicationn/detail-publicationn.module').then( m => m.DetailPublicationnPageModule)
   }
+
 
 
   // ,

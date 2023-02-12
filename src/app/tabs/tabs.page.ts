@@ -88,8 +88,8 @@ export class TabsPage implements OnInit{
   }
 
   
-
-  ionViewDidEnter(){
+//cest did enter qui etetait là
+  ionViewWillEnter(){
     this.donneesService.rolesUser.next(this.currentUser.roles);
     this.donneesService.showMenu.next(true);
     this.donneesService.showMenu$.subscribe(value => {
@@ -97,12 +97,12 @@ export class TabsPage implements OnInit{
     });
 
 
-    this.donneesService.photoProfil.next(this.currentUser.photo);
+    //this.donneesService.photoProfil.next(this.currentUser.photo);
     this.donneesService.photoProfil$.subscribe(value => {
       this.photo = value;
     });
 
-    this.donneesService.photoProfil.next(this.currentUser.photo);
+   // this.donneesService.photoProfil.next(this.currentUser.photo);
 
 
     // alert(this.currentUser.nomcomplet)
@@ -171,11 +171,9 @@ verifierExistancePhotoProfil(){
     this.storageService.saveCurrentUrl(this.currentUrl);
     this.currentUser = this.storageService.getUser();
 
-    setTimeout(() => {
       this.donneesService.photoProfil$.subscribe(value => {
         this.photo = value;
       });
-    }, 5000);
 
 
     // if( this.rolutilisateur.includes("ROLE_AGRIGULTEUR") == true){
@@ -266,7 +264,7 @@ reloadPage(): void {
        console.log(value1);
       })
 
-      this.router.navigateByUrl("/bienvenue");
+      this.router.navigateByUrl("/connexion");
     }else{
       this.storageService.clean();
       this.navCtrl.navigateRoot([{clearHistory: true}]);

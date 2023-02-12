@@ -86,14 +86,22 @@
 }
 
 .contImage{
-    width: 40px;
-    height: 38px;
+    // width: 40px;
+    // height: 38px;
+    // border-radius: 20px;
+    // overflow: hidden;
+
+    // width: 46px;
+    // height: 47px;
     border-radius: 20px;
-    // background: green;
     overflow: hidden;
+    // background-color: #14AE5C;
 }
+
 .contImage img{
- 
+  width: 55px;
+  height: 49px;
+  border-radius: 50%;
 }
 
 .contenu{
@@ -130,6 +138,7 @@ align-items: center;
   color: #14AE5C;
 }
 
+
 //boutton ajouter
 .add{
   position: fixed;
@@ -146,5 +155,7 @@ align-items: center;
   bottom: 20px;
   right: 20px;
 }
+
+
 
 

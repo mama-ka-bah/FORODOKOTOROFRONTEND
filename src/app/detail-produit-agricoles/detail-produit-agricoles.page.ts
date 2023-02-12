@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Browser } from '@capacitor/browser';
 import { NavController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { ProduitAgricolesService } from '../services/produit-agricoles.service';
 
@@ -75,8 +77,6 @@ retourner() {
       this.lesvarietesDuProduitActuel = data;
     })
   }
-
-
 
 
 }
