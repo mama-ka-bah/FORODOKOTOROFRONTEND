@@ -72,12 +72,9 @@ export class DonneesStockerService{
     return this.currentUrl;
   }
 
-
   setCurrentUrl(valeur:string){
      this.currentUrl = valeur;
   }
-
-
 
   public reccupererTitreAccueil(){
     this.headerTitle.next("FORODOKOTORO");
@@ -95,19 +92,11 @@ export class DonneesStockerService{
     this.headerTitle.next("CONSEILS");
   }
 
-
-  
-  
- 
-
   constructor(private userService: AuthentificationService, private chargementService: ChargementService, private storageService : StorageService,private router : Router,
     ) {
       this.photoProfil.next(this.storageService.getUser().photo);
 
      }
-
-
-
 
     //fermerture de compte d'un utilisateur
   fermerUnCompte(currentUserId:any){

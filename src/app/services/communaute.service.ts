@@ -48,4 +48,10 @@ export class CommunauteService {
   }
 
 
+  //permet d'aimer une publication
+  aimerUnePublication(idpub:any, iduser: any, aimes:any): Observable<any> {
+    return this.http.post(AUTH_API + `aimerunpublication/${idpub}/${iduser}`, aimes);
+  }
+
+
 }

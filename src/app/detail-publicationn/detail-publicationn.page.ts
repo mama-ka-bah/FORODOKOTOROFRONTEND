@@ -23,12 +23,16 @@ export class DetailPublicationnPage implements OnInit {
 
   idconseilActuel:any;
   lescommentairesDunePublication:any; //conseil uniquement now
+  currentUser:any
+
   detailPublication:any = {
     datepub: "",
     description: "",
     etat: true,
     id: 0,
     media: "",
+    nombreaime:0,
+    nombrenonaime:0,
     posteur:{id: 0, username: '', email: '', nomcomplet: '', photo: ''},
     soustitre: "",
     titre: "",
@@ -50,13 +54,18 @@ export class DetailPublicationnPage implements OnInit {
     private stockService: StocksService,
     private communauteService:CommunauteService,
 
+
     ) {}
+
+    aime:boolean = false;
+    nonAime:boolean = false;
 
 
   ngOnInit() {
     this.idconseilActuel = this.routes.snapshot.params['id'];
     this.recupererDetailDuneCommentaire();
     this.recupererLesCommmentaireDunePublication();
+    this.currentUser = this.storageService.getUser();
   }
 
     //pour retourner en arriere
@@ -101,6 +110,23 @@ retourner() {
           this.recupererLesCommmentaireDunePublication();
        })
   
+      }
+
+
+      aimerUnePublication(valeurAime:any){
+        const aimes = {
+          "aime":valeurAime
+        }
+    
+        this.communauteService.aimerUnePublication(this.idconseilActuel, this.currentUser.id, aimes).subscribe(data =>{
+          this.detailPublication = data;
+          console.log(data)
+        })
+    
+        // this.recupererDetailStock();
+        //this.recupererListeAimesDunStock();
+       
+    
       }
 
 

@@ -106,9 +106,8 @@ ngOnInit() {
   //this.recupererListeAimesDunStock();
   this.verifierSiUserAaimerUnstock();
   this.recupererDetailStock();
- 
-  
 }
+
 
   recupererDetailStock(){
     this.stockService.recupererStockParId(this.idStockActuel).subscribe(data =>{
@@ -116,8 +115,8 @@ ngOnInit() {
     })
   }
 
-  verifierSiUserAaimerUnstock(){
 
+  verifierSiUserAaimerUnstock(){
     this.recupererListeAimesDunStock();
 
     setTimeout(() => {

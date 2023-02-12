@@ -97,13 +97,9 @@ export class TabsPage implements OnInit{
     });
 
 
-    //this.donneesService.photoProfil.next(this.currentUser.photo);
     this.donneesService.photoProfil$.subscribe(value => {
       this.photo = value;
     });
-
-   // this.donneesService.photoProfil.next(this.currentUser.photo);
-
 
     // alert(this.currentUser.nomcomplet)
     this.verifierExistancePhotoProfil();
