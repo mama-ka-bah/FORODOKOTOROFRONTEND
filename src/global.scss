@@ -97,3 +97,23 @@ ion-popover ion-content {
   }
 
 
+
+
+  .ngx-pagination {
+    padding-left: 0px !important;
+  }
+  
+  .ngx-pagination .current,
+  .btn-info {
+    background: #14AE5C !important;
+    border: transparent !important;
+    border-radius: 20px !important;
+  }
+  
+  .ngx-pagination .current:hover {
+    background: #14AE5C !important;
+    border-radius: 20px !important; 
+    border: transparent !important;
+  }
+
+

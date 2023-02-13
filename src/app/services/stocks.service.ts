@@ -61,4 +61,11 @@ export class StocksService {
   }
 
 
+  
+  //permet de recuper les stocks par type
+  recupererStocksParTypeSeStocks(typestocks:any): Observable<any> {
+    return this.http.get(AUTH_API + `recupererstockpartypestock/${typestocks}`);
+  }
+
+
 }

@@ -28,6 +28,11 @@ export class TransporteursPage implements OnInit {
       storageService.saveCurrentUrl(currentUrl);
     }
 
+      //pour la pagination et la recherche
+  p: number = 1;
+  searchTerm:any;  
+  filterTerm:any;
+
 
     async appelle(phoneNumber: string) {
 

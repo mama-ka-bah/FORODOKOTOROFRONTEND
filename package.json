@@ -37,6 +37,8 @@
     "call-number": "^1.0.1",
     "capacitor-local-notifications": "^4.1.6-alpha.0",
     "ionicons": "^6.0.3",
+    "ng2-search-filter": "^0.5.1",
+    "ngx-pagination": "^6.0.3",
     "rxjs": "^6.6.7",
     "sweetalert2": "^11.4.8",
     "tslib": "^2.3.0",

@@ -37,12 +37,18 @@
           <div class="libelle">Restes</div>
           <div class="detail">{{detailsStocks.quantiterestant}}</div>
         </div>
+
+        <div class="elementDetailChamp">
+          <div class="libelle">Type stock</div>
+          <div class="detail">{{detailsStocks.typestock}}</div>
+        </div>
+
         <div class="elementDetailChamp">
           <div class="libelle">Disponibilité</div>
           <div *ngIf="detailsStocks.disponibilite" style="color: #14AE5C; font-weight: bold;" class="detail">Disponible</div>
           <div *ngIf="!detailsStocks.disponibilite" style="color: #14AE5C; font-weight: bold;" class="detail">Disponible</div>
-
         </div>
+
         <div class="elementDetailChamp">
           <div class="libelle">Publication</div>
           <div class="detail">{{detailsStocks.datepublication}}</div>

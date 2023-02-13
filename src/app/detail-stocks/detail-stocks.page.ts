@@ -63,6 +63,7 @@ export class DetailStocksPage implements OnInit {
       photo:"",
       disponibilite:false,
       datepublication:this.formattedDate,
+      typestock:"",
       varietes:{},
       proprietaire:{
         "id":0,
@@ -99,7 +100,6 @@ retourner() {
 }
 
 
-
 ngOnInit() {
   this.currentUser = this.storageService.getUser();
   this.idStockActuel = this.routes.snapshot.params['id'];
@@ -107,7 +107,6 @@ ngOnInit() {
   //this.verifierSiUserAaimerUnstock();
   this.recupererDetailStock();
 }
-
 
   recupererDetailStock(){
     this.stockService.recupererStockParId(this.idStockActuel).subscribe(data =>{

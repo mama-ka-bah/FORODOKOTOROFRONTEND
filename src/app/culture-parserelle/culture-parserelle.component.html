@@ -63,12 +63,12 @@
   <!-- <div *ngIf="existeCultive"> -->
     <div class="conteneurInput" *ngIf="detailParserelleClique.nombrecultive > 1">
     <div class="rechercche">
-      <input type="search" placeholder="Recherche">
+      <input type="search" placeholder="Recherche" [(ngModel)]="filterTerm">
       <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
     </div>
     </div>
 
-    <div class="detailChamp" *ngFor="let cultive of lesCultivesActivesDuneParserelle ; index as i">
+    <div class="detailChamp" *ngFor="let cultive of lesCultivesActivesDuneParserelle | filter: filterTerm | paginate: { itemsPerPage: 10, currentPage: p} ; index as i">
     <div class="status">
       <span>{{cultive.status}}</span>
     </div>
@@ -93,6 +93,9 @@
     </div>
     </div> 
   <!-- </div> -->
+
+  <pagination-controls (pageChange)="p = $event" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
+
 
 </div>
 

@@ -12,7 +12,20 @@ import { StocksService } from '../services/stocks.service';
 })
 export class MarchePage implements OnInit {
 
-  lesStocks:any
+  lesStocks:any;
+  lesGraines:any;
+  lesSemences:any;
+
+  //pour la pagination et la recherche
+  p: number = 1;
+  searchTerm:any;  
+  filterTerm:any;
+
+
+  //les boolean d'activations des type de stocks
+  tout:boolean = false;
+  semence:boolean = false;
+  graine:boolean = false;
 
   constructor(
     private donneesService: DonneesStockerService,
@@ -25,17 +38,25 @@ export class MarchePage implements OnInit {
       storageService.saveCurrentUrl(currentUrl);
      }
 
-     searchTerm:any
 
      ionViewWillEnter(){
       this.donneesService.showMenu.next(true);
+      this.recupererLesStockDeTypeGraine();
+      this.recupererLesStockDeTypeSemences();
     }
 
   ngOnInit() {
     this.donneesService.showMenu.next(true);
     this.donneesService.setpageActuel("Marché");
+
+    this.tout = true;
+
     this.recupererTousStocks();
-  }
+    this.recupererLesStockDeTypeGraine();
+    this.recupererLesStockDeTypeSemences();
+  }  
+  
+
 
   recupererTousStocks(){
     this.stockService.recupererTousLesStocks().subscribe(data => {
@@ -43,5 +64,37 @@ export class MarchePage implements OnInit {
       console.log(this.lesStocks);
     })
   }
+
+  recupererLesStockDeTypeGraine(){
+    this.stockService.recupererStocksParTypeSeStocks("graine").subscribe(data =>{
+      this.lesGraines  = data;
+    })
+  }
+  
+
+  recupererLesStockDeTypeSemences(){
+    this.stockService.recupererStocksParTypeSeStocks("semence").subscribe(data =>{
+      this.lesSemences  = data;
+    })
+  }
+
+  afficheGraine(){
+    this.graine = true;
+    this.semence = false;
+    this.tout = false;
+  }
+
+  afficheSemence(){
+    this.semence = true;
+    this.graine = false;
+    this.tout = false;
+  }
+
+  afficheTout(){
+    this.tout = true;
+    this.graine = false;
+    this.semence = false;
+  }
+
 
 }

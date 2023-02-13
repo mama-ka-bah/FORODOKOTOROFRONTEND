@@ -10,9 +10,13 @@ import { CommunauteService } from '../services/communaute.service';
 })
 export class CommunautesPage implements OnInit {
 
-  videoSrc = "http://127.0.0.1/forodokotoro/images/publications/farmer.mp4";
-
   lesPublivationsOrdonnes:any;
+
+  //pour la pagination et la recherche
+  p: number = 1;
+  searchTerm:any
+  filterTerm:any;
+
 
   constructor(
     private modalCtrl: ModalController,

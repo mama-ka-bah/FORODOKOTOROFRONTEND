@@ -49,6 +49,11 @@ export class CultureParserelleComponent implements OnInit {
 
     existeCultive:boolean | undefined;
     statusParserelle:boolean | undefined;
+
+      //pour la pagination et la recherche
+  p: number = 1;
+  searchTerm:any;  
+  filterTerm:any;
   
     //l'objet form froup lié à mon formulaire dans le template
     myForm = new FormGroup({

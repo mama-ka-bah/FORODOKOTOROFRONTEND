@@ -39,6 +39,7 @@ lesSemencesPourLeProduitActive:any
 
     prixkilo: new FormControl('', [Validators.required, Validators.minLength(2)]),
     semence: new FormControl('', [Validators.required]),
+    typeStock: new FormControl('', [Validators.required]),
     produitAgricole: new FormControl('', [Validators.required]),
     
     file: new FormControl('', [Validators.required]),
@@ -80,7 +81,6 @@ onFileChangePermis(event: any) {
     //ici je recuperere ces données dans mondata  
     this.mondata = this.navParams.get('data');
     console.log(this.mondata);
-
     
     this.myForm.get('produitAgricole')!.valueChanges.subscribe(value => {
       this.recupererLesSemencesProduitAgricole(value); 
@@ -129,6 +129,7 @@ onFileChangePermis(event: any) {
                 "libelle":this.myForm.controls.nom.value,
                 "prixkilo":this.myForm.controls.prixkilo.value,
                 "nombrekilo":this.myForm.controls.nombrekilo.value,
+                "typestock":this.myForm.controls.typeStock.value
                }      
         ]
 

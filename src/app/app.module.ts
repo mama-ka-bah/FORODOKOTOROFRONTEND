@@ -33,6 +33,8 @@ import { AjoutConseilComponent } from './ajout-conseil/ajout-conseil.component';
 import { CommentairesComponent } from './commentaires/commentaires.component';
 import { ModifierPublicationComponent } from './modifier-publication/modifier-publication.component';
 import { ModifierCommentaireComponent } from './modifier-commentaire/modifier-commentaire.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
 
   @NgModule({
     declarations: [AppComponent,OtpComponent,InputotpComponent, ChangerMotDePasseComponent, ChoisirProfilComponent,
@@ -49,6 +51,8 @@ import { ModifierCommentaireComponent } from './modifier-commentaire/modifier-co
       HttpClientModule,
       FormsModule,
       ReactiveFormsModule,
+      Ng2SearchPipeModule,
+      NgxPaginationModule
     ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy
     }, Platform, httpInterceptorProviders, CallNumber],

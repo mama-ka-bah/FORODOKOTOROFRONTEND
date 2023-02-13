@@ -3,7 +3,7 @@
   <div class="produitagricole">
     <div class="conteneurInput">
       <div class="rechercche">
-        <input type="search" placeholder="Recherche">
+        <input type="search" placeholder="Recherche" [(ngModel)]="filterTerm">
         <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
       </div>
     </div>
@@ -12,7 +12,7 @@
 
       <ion-grid>
 
-        <ion-row *ngFor="let transporteur of tousLestransporteurs">
+        <ion-row *ngFor="let transporteur of tousLestransporteurs | filter: filterTerm | paginate: { itemsPerPage: 10, currentPage: p}">
           <ion-col>
               <div class="conteneurImg">
                 <img src="{{transporteur.photo}}" alt="image produit">
@@ -28,5 +28,8 @@
               </div>
           </ion-col>
         </ion-row>
+
+        <pagination-controls (pageChange)="p = $event" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
+
 
        

@@ -81,7 +81,7 @@
 
 
             <div class="input">
-              <label>Semence <span class="obligatoire">*</span></label>     
+              <label>Varietes <span class="obligatoire">*</span></label>     
               <select  class="form-control telephone-input" formControlName="semence"
               [ngClass]="{'is-invalid': myForm.get('semence')!.invalid && myForm.get('semence')!.touched}"
               >
@@ -90,6 +90,23 @@
               </select>
       
               <span class="erreur" *ngIf="myForm!.get('semence')!.hasError('required') && myForm.get('semence')!.touched">Cet champ est obligatoire</span>
+            </div>
+
+
+
+            <div class="input">
+
+              <label>Type de stock <span class="obligatoire">*</span></label>     
+              <select formControlName="typeStock" class="form-control telephone-input"
+              [ngClass]="{'is-invalid': myForm.get('typeStock')!.invalid && myForm.get('typeStock')!.touched}"
+              >
+              <option value="Choisir un type" selected disabled>Graine</option>
+                <option value="graine">Graine</option>
+                <option value="semence">Semence</option>
+              </select>
+  
+              <span class="erreur" *ngIf="myForm!.get('typeStock')!.hasError('required') && myForm.get('typeStock')!.touched">Cet champ est obligatoire</span>
+  
             </div>
   
            

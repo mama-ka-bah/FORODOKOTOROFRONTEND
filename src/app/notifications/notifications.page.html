@@ -27,8 +27,9 @@
      <div *ngIf="luActive == true" style="margin-top: 15px;">
 
       <div class="notification" style="margin-top: 10px; width: 100vw;"  *ngFor="let notif of lesNotificationsLus">
-        <div class="titre">
-         {{notif.titre}}
+        <div class="titre" style="display: flex; justify-content: space-between; ">
+         <span>{{notif.titre}}</span>
+         <span style="color: #14AE5C;">{{ notif.datenotification | date: 'dd/MM/yyyy HH:mm' }}</span>
         </div>
         <div class="contenuNot">
           <div class="logo">
@@ -58,7 +59,7 @@
       <div class="notification" style="width: 100vw; margin-top: 10px;"  (click)="marquerUneNotifiCommeLu(notif.id, notif)" *ngFor="let notif of lesNotificationsNonLus">
         <div class="titre" style="display: flex; justify-content: space-between; ">
          <span>{{notif.titre}}</span>
-         <span style="color: #14AE5C;">non lu</span>
+         <span style="color: #14AE5C;">{{ notif.datenotification | date: 'dd/MM/yyyy HH:mm' }}</span>
         </div>
         <div class="contenuNot">
           <div class="logo">

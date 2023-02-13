@@ -3,316 +3,277 @@
   <div class="conteneurMarche">
 
     <div class="buttons">
-      <ion-button class="nonlu" type="submit" expand="block">Graine</ion-button>
-      <ion-button class="tout active" type="submit" expand="block">Tout</ion-button>
-      <ion-button class="nonlu" type="submit" expand="block">Semence</ion-button>
+      <ion-button (click)="afficheGraine()"  [ngClass]="{'active': graine, 'nonActive': !graine}" class="tout active"   type="submit" expand="block">Graine</ion-button>
+      <ion-button (click)="afficheTout()" [ngClass]="{'active': tout, 'nonActive': !tout}" type="submit" expand="block">Tout</ion-button>
+      <ion-button (click)="afficheSemence()" [ngClass]="{'active': semence, 'nonActive': !semence}"  type="submit" expand="block">Semence</ion-button>
     </div>
 
 
     <div class="conteneurInput">
       <div class="rechercche">
-        <input type="search" placeholder="Recherche">
+        <input type="search" placeholder="Recherche" [(ngModel)]="filterTerm" >
         <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
       </div>
     </div>
 
     <ion-grid>
 
-      <ion-row *ngFor="let stock of lesStocks">
-        <ion-col>
-            <div class="conteneurImg">
-              <img class="imageProduit" src="{{stock.photo}}" alt="image produit">
-            </div>
-            <div class="contenuPrincipal">
-              <div class="contenu">
-                <div class="descriptions">
-                  <div class="colonne premier">
+      <div *ngIf="tout">
 
-                    <div class="element">
-                      <div class="libelle">
-                        Kilo
-                      </div>
-                      <div class="valeur">
-                        {{stock.nombrekilo}} kg
-                      </div>
-                    </div>
-
-                    <div class="element">
-                      <div class="libelle">
-                        Prix
-                      </div>
-                      <div class="valeur">
-                       {{stock.prixkilo}} F/kg
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="colonne deuxieme">
-
-                    <div class="element">
-                      <div class="libelle">
-                        Tel
-                      </div>
-                      <div class="valeur">
-                        {{stock.proprietaire.username}}
-                      </div>
-                    </div>
-
-                    <div class="element">
-                      <div class="libelle">
-                        Vendeur
-                      </div>
-                      <div class="valeur">
-                        {{stock.proprietaire.nomcomplet}}
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="mesBouttons">
-                  <!-- <div class="like">
-                    <i class="fas fa-thumbs-up"></i>
-                    <span class="likevaleur">12</span>
-                  </div>
-                  <div class="like">
-                    <i class="fas fa-thumbs-down"></i>
-                    <span class="likevaleur">02</span>
-                  </div> -->
-                  <div style="color: #14AE5C; padding-bottom: 5px; font-weight: bold;">
-                    {{stock.proprietaire.adresse}}
-                  </div>
-                  <button class="voirplus" [routerLink]="['/detail-stocks', stock.id]">Voir plus</button>
-                </div>
-
+        <ion-row *ngFor="let stock of lesStocks | filter: filterTerm | paginate: { itemsPerPage: 10, currentPage: p}" >
+          <ion-col>
+              <div class="conteneurImg">
+                <img class="imageProduit" src="{{stock.photo}}" alt="image produit">
               </div>
-            </div>
-        </ion-col>
-      </ion-row>
-
-
-
-
-      <!-- <ion-row>
-        <ion-col>
-            <div class="conteneurImg">
-              <img class="imageProduit" src="../assets/images/arachideGraine.jpg" alt="image produit">
-            </div>
-            <div class="contenuPrincipal">
-              <div class="contenu">
-                <div class="descriptions">
-                  <div class="colonne premier">
-
-                    <div class="element">
-                      <div class="libelle">
-                        Kilo
+              <div class="contenuPrincipal">
+                <div class="contenu">
+                  <div class="descriptions">
+                    <div class="colonne premier">
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Kilo
+                        </div>
+                        <div class="valeur">
+                          {{stock.nombrekilo}} kg
+                        </div>
                       </div>
-                      <div class="valeur">
-                        150 kg
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Prix
+                        </div>
+                        <div class="valeur">
+                         {{stock.prixkilo}} F/kg
+                        </div>
                       </div>
+  
                     </div>
-
-                    <div class="element">
-                      <div class="libelle">
-                        Prix
+  
+                    <div class="colonne deuxieme">
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Tel
+                        </div>
+                        <div class="valeur">
+                          {{stock.proprietaire.username}}
+                        </div>
                       </div>
-                      <div class="valeur">
-                       400 F/kg
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Vendeur
+                        </div>
+                        <div class="valeur">
+                          {{stock.proprietaire.nomcomplet}}
+                        </div>
                       </div>
+  
                     </div>
-
+  
                   </div>
-
-                  <div class="colonne deuxieme">
-
-                    <div class="element">
-                      <div class="libelle">
-                        Adresse
-                      </div>
-                      <div class="valeur">
-                        Bamako
-                      </div>
+  
+                  <div class="mesBouttons">
+                    <!-- <div class="like">
+                      <i class="fas fa-thumbs-up"></i>
+                      <span class="likevaleur">12</span>
                     </div>
-
-                    <div class="element">
-                      <div class="libelle">
-                        Vendeur
-                      </div>
-                      <div class="valeur">
-                        Adama coulibaly
-                      </div>
+                    <div class="like">
+                      <i class="fas fa-thumbs-down"></i>
+                      <span class="likevaleur">02</span>
+                    </div> -->
+                    <div style="color: #14AE5C; padding-bottom: 5px; font-weight: bold;">
+                      {{stock.proprietaire.adresse}}
                     </div>
-
+                    <button class="voirplus" [routerLink]="['/detail-stocks', stock.id]">Voir plus</button>
                   </div>
-
+  
                 </div>
-
-                <div class="mesBouttons">
-                  <div class="like">
-                    <i class="fas fa-thumbs-up"></i>
-                    <span class="likevaleur">12</span>
-                  </div>
-                  <div class="like">
-                    <i class="fas fa-thumbs-down"></i>
-                    <span class="likevaleur">02</span>
-                  </div>
-                  <button class="voirplus" routerLink="/profil/stockprofil/detail-stocks">Voir plus</button>
-                </div>
-
               </div>
-            </div>
-        </ion-col>
-      </ion-row>
+          </ion-col>
+        </ion-row>
+
+        <pagination-controls (pageChange)="p = $event" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
+
+
+        <div *ngIf="lesStocks.length === 0" class="vide">PAS DE STOCKS</div>
+      </div>
+     
 
 
 
-      <ion-row>
-        <ion-col>
-            <div class="conteneurImg">
-              <img class="imageProduit" src="../assets/images/cotonSemence.jpg" alt="image produit">
-            </div>
-            <div class="contenuPrincipal">
-              <div class="contenu">
-                <div class="descriptions">
-                  <div class="colonne premier">
 
-                    <div class="element">
-                      <div class="libelle">
-                        Kilo
-                      </div>
-                      <div class="valeur">
-                        150 kg
-                      </div>
-                    </div>
+      <!-- les semences -->
+      <div *ngIf="semence">
 
-                    <div class="element">
-                      <div class="libelle">
-                        Prix
-                      </div>
-                      <div class="valeur">
-                       400 F/kg
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="colonne deuxieme">
-
-                    <div class="element">
-                      <div class="libelle">
-                        Adresse
-                      </div>
-                      <div class="valeur">
-                        Bamako
-                      </div>
-                    </div>
-
-                    <div class="element">
-                      <div class="libelle">
-                        Vendeur
-                      </div>
-                      <div class="valeur">
-                        Adama coulibaly
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="mesBouttons">
-                  <div class="like">
-                    <i class="fas fa-thumbs-up"></i>
-                    <span class="likevaleur">12</span>
-                  </div>
-                  <div class="like">
-                    <i class="fas fa-thumbs-down"></i>
-                    <span class="likevaleur">02</span>
-                  </div>
-                  <button class="voirplus" routerLink="/profil/stockprofil/detail-stocks">Voir plus</button>
-                </div>
-
+        <ion-row *ngFor="let stock of lesSemences | filter: filterTerm | paginate: { itemsPerPage: 10, currentPage: p }" >
+          <ion-col>
+              <div class="conteneurImg">
+                <img class="imageProduit" src="{{stock.photo}}" alt="image produit">
               </div>
-            </div>
-        </ion-col>
-      </ion-row> -->
-
-
-
-
-
-      <!-- <ion-row>
-        <ion-col>
-            <div class="conteneurImg">
-              <img class="imageProduit" src="../assets/images/maisSemence.jpg" alt="image produit">
-            </div>
-            <div class="contenuPrincipal">
-              <div class="contenu">
-                <div class="descriptions">
-                  <div class="colonne premier">
-
-                    <div class="element">
-                      <div class="libelle">
-                        Kilo
+              <div class="contenuPrincipal">
+                <div class="contenu">
+                  <div class="descriptions">
+                    <div class="colonne premier">
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Kilo
+                        </div>
+                        <div class="valeur">
+                          {{stock.nombrekilo}} kg
+                        </div>
                       </div>
-                      <div class="valeur">
-                        150 kg
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Prix
+                        </div>
+                        <div class="valeur">
+                         {{stock.prixkilo}} F/kg
+                        </div>
                       </div>
+  
                     </div>
-
-                    <div class="element">
-                      <div class="libelle">
-                        Prix
+  
+                    <div class="colonne deuxieme">
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Tel
+                        </div>
+                        <div class="valeur">
+                          {{stock.proprietaire.username}}
+                        </div>
                       </div>
-                      <div class="valeur">
-                       400 F/kg
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Vendeur
+                        </div>
+                        <div class="valeur">
+                          {{stock.proprietaire.nomcomplet}}
+                        </div>
                       </div>
+  
                     </div>
-
+  
                   </div>
-
-                  <div class="colonne deuxieme">
-
-                    <div class="element">
-                      <div class="libelle">
-                        Adresse
-                      </div>
-                      <div class="valeur">
-                        Bamako
-                      </div>
+  
+                  <div class="mesBouttons">
+                    <!-- <div class="like">
+                      <i class="fas fa-thumbs-up"></i>
+                      <span class="likevaleur">12</span>
                     </div>
-
-                    <div class="element">
-                      <div class="libelle">
-                        Vendeur
-                      </div>
-                      <div class="valeur">
-                        Adama coulibaly
-                      </div>
+                    <div class="like">
+                      <i class="fas fa-thumbs-down"></i>
+                      <span class="likevaleur">02</span>
+                    </div> -->
+                    <div style="color: #14AE5C; padding-bottom: 5px; font-weight: bold;">
+                      {{stock.proprietaire.adresse}}
                     </div>
-
+                    <button class="voirplus" [routerLink]="['/detail-stocks', stock.id]">Voir plus</button>
                   </div>
-
+  
                 </div>
-
-                <div class="mesBouttons">
-                  <div class="like">
-                    <i class="fas fa-thumbs-up"></i>
-                    <span class="likevaleur">12</span>
-                  </div>
-                  <div class="like">
-                    <i class="fas fa-thumbs-down"></i>
-                    <span class="likevaleur">02</span>
-                  </div>
-                  <button class="voirplus" routerLink="/profil/stockprofil/detail-stocks">Voir plus</button>
-                </div>
-
               </div>
-            </div>
-        </ion-col>
-      </ion-row> -->
+          </ion-col>
+
+        </ion-row>
+
+        <pagination-controls (pageChange)="p = $event" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
+        
+        <div *ngIf="lesStocks.lesSemences === 0" class="vide">PAS DE GRAINES</div>
+
+      </div>
+      
+
+
+      <!-- les graines graines -->
+      <div *ngIf="graine">
+
+        <ion-row *ngFor="let stock of lesGraines | filter: filterTerm | paginate: { itemsPerPage: 10, currentPage: p}" >
+          <ion-col>
+              <div class="conteneurImg">
+                <img class="imageProduit" src="{{stock.photo}}" alt="image produit">
+              </div>
+              <div class="contenuPrincipal">
+                <div class="contenu">
+                  <div class="descriptions">
+                    <div class="colonne premier">
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Kilo
+                        </div>
+                        <div class="valeur">
+                          {{stock.nombrekilo}} kg
+                        </div>
+                      </div>
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Prix
+                        </div>
+                        <div class="valeur">
+                         {{stock.prixkilo}} F/kg
+                        </div>
+                      </div>
+  
+                    </div>
+  
+                    <div class="colonne deuxieme">
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Tel
+                        </div>
+                        <div class="valeur">
+                          {{stock.proprietaire.username}}
+                        </div>
+                      </div>
+  
+                      <div class="element">
+                        <div class="libelle">
+                          Vendeur
+                        </div>
+                        <div class="valeur">
+                          {{stock.proprietaire.nomcomplet}}
+                        </div>
+                      </div>
+  
+                    </div>
+  
+                  </div>
+  
+                  <div class="mesBouttons">
+                    <!-- <div class="like">
+                      <i class="fas fa-thumbs-up"></i>
+                      <span class="likevaleur">12</span>
+                    </div>
+                    <div class="like">
+                      <i class="fas fa-thumbs-down"></i>
+                      <span class="likevaleur">02</span>
+                    </div> -->
+                    <div style="color: #14AE5C; padding-bottom: 5px; font-weight: bold;">
+                      {{stock.proprietaire.adresse}}
+                    </div>
+                    <button class="voirplus" [routerLink]="['/detail-stocks', stock.id]">Voir plus</button>
+                  </div>
+  
+                </div>
+              </div>
+          </ion-col>
+        </ion-row>
+
+        <pagination-controls (pageChange)="p = $event" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
+
+
+        <div *ngIf="lesGraines.length === 0" class="vide">PAS DE SEMENCES</div>
+
+      </div>
+          
 
     </ion-grid>
 

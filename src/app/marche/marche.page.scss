@@ -192,6 +192,25 @@ ion-col{
     font-size: 12px;
 }
 
+.active{
+    --background: #14AE5C;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .nonActive{
+    color: #000;
+    --background:#fff;
+  }
+
+  .vide{
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    font-size: 18px;
+    color: #14AE5C;
+}
+
 
 
 

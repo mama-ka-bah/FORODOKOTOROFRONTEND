@@ -150,11 +150,16 @@ export class NotificationsPage implements OnInit {
       })
   
      // this.donneeService.nombreDeNotificationNonLu.next(0);
+     setTimeout(() => {
+
      this.recupererNotificationNonLu();
      this.recupererNombreDENotifNonLus();
-    //  alert(this.nombreDeNotificationNonLu)
+     this.recupererNotifLus();
+    }, 1000);
 
+    //  alert(this.nombreDeNotificationNonLu)
     }
+    
   }
 
    //popup
