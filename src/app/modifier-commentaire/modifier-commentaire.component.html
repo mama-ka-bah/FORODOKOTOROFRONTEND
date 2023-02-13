@@ -1,0 +1,53 @@
+<ion-content>
+  <div class="barre-menu">
+    <div class="element-menus">
+      <div class="libelle">
+       Modifier un commentaire
+      </div>
+      <div (click)="closePopover()"><i style="color: #fff; font-size: 20px; margin-right: 10px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-xmark"></i></div> 
+      <!-- <div (click)="closePopover()"><i style="color: red; font-size: 20px; margin-right: 10px;" class="fa-solid fa-xmark"></i></div>  -->
+    </div>
+  </div>
+
+  <form class="otpForm" [formGroup]="myForm" (ngSubmit)="submitForm()">
+      
+    <!-- description du pub -->
+    <div class="input">
+  
+      <label>Description <span class="obligatoire">*</span></label>
+      <textarea style="height: 200px;" class="telephone-input" type="text" class="form-control" formControlName="description"
+      [ngClass]="{'is-invalid': myForm.get('description')!.invalid && myForm.get('description')!.touched}"
+      [ngClass]="{'is-valid': myForm.get('description')!.valid && myForm.get('description')!.touched}"
+      >Commentaire</textarea>
+  
+      <span class="erreur" *ngIf="myForm!.get('description')!.hasError('required') && myForm.get('description')!.touched">Cet champ est obligatoire</span>
+      <span class="erreur" *ngIf="myForm.get('description')!.hasError('minlength') && myForm.get('description')!.touched">Description court</span>
+      <span class="erreur" *ngIf="myForm.get('description')!.hasError('maxlength') && myForm.get('description')!.touched">Description long</span>
+    </div >
+
+
+
+     <!-- Ressource -->
+     <div class="input">
+  
+      <label>Ressource </label>
+      <input class="telephone-input" type="text" class="form-control" placeholder="https://www.youtube.com/watch?v=nFALLbd-n7s" formControlName="lien"
+      [ngClass]="{'is-invalid': myForm.get('lien')!.invalid && myForm.get('lien')!.touched}"
+      [ngClass]="{'is-valid': myForm.get('lien')!.valid && myForm.get('lien')!.touched}"
+      >
+
+      <span class="erreur" *ngIf="myForm.get('lien')!.hasError('minlength') && myForm.get('lien')!.touched">Sous titre court</span>
+      <span class="erreur" *ngIf="myForm.get('lien')!.hasError('maxlength') && myForm.get('lien')!.touched">Sous titre long</span>
+
+
+    </div>
+
+
+  
+    <div class="input">
+      <button class="envoyer-input" type="submit" expand="block" >Ajouter</button>
+    </div>
+  </form>
+
+
+</ion-content>

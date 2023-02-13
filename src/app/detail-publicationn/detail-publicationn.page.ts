@@ -14,6 +14,7 @@ import { Browser } from '@capacitor/browser';
 import Swal from 'sweetalert2';
 import { ModifierProfilComponent } from '../modifier-profil/modifier-profil.component';
 import { ModifierPublicationComponent } from '../modifier-publication/modifier-publication.component';
+import { ModifierCommentaireComponent } from '../modifier-commentaire/modifier-commentaire.component';
 
 
 @Component({
@@ -112,6 +113,28 @@ retourner() {
           this.recupererLesCommmentaireDunePublication();
        })
   
+      }
+
+
+
+
+      
+      //popup permettant modifier un commentaire
+      async modifierCommentaire(ev: any, commentaire:any) {
+        const popover = await this.popoverController.create({
+          component: ModifierCommentaireComponent,
+          event: ev,
+          translucent: true,
+          componentProps: {
+            data: commentaire
+          }
+        }); 
+        await popover.present();    
+        popover.onDidDismiss().then((data) => {
+          console.log(data.data);
+          this.recupererDetailDunePublication();
+          this.recupererLesCommmentaireDunePublication();
+       })
       }
 
 

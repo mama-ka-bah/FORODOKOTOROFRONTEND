@@ -56,6 +56,15 @@ export class CommunauteService {
     );
   }
 
+  
+  //permet d'ajouter un commentaire à une publication
+  modifierCommentaire(idCommentaire:any, commentaire:any): Observable<any> {
+    return this.http.patch(
+      AUTH_API + `modifiercommentaire/${idCommentaire}`,
+      commentaire
+    );
+  }
+
 
   //permet d'aimer une publication
   aimerUnePublication(idpub:any, iduser: any, aimes:any): Observable<any> {

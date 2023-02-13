@@ -247,15 +247,10 @@ onSubmit(): void {
 
   if(this.form.valid){
 
-   this.authentification(this.username, this.password);
-
-    
+   this.authentification(this.username, this.password);    
   }
 
 }
-
-
-
 
 
 authentification(username:any, password:any){
@@ -273,6 +268,8 @@ authentification(username:any, password:any){
           this.roles = this.storageService.getUser().roles;// on recuperes les differentes roles de l'utilisateurs
 
           this.donneesService.rolesUser.next(data.roles);
+
+          this.donneesService.photoProfil.next(data.photo);
 
           this.notificationService.recupererNotificationNonLuDunUser(data.id).subscribe(data =>{
             this.nombreDeNotificationNonLu = data;
@@ -342,16 +339,13 @@ authentification(username:any, password:any){
   
               this.storageService.SaveJwts(jwts);
   
-              this.form.reset();
-
-             
+              this.form.reset(); 
 
               this.router.navigateByUrl('/tabs/tab1');
             })
           } 
         })
-          }
-          
+          }  
         },
         error: err => {
           //en cas d'erreur d'erreur
@@ -361,8 +355,6 @@ authentification(username:any, password:any){
         }
       });
 }
-
-
 
 //fonction utilisée pour recharger la page
 reloadPage(): void {

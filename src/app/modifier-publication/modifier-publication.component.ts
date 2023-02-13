@@ -40,8 +40,7 @@ publication:any;
 
        //ici je recuperere ces données (detail de la publication)
     this.publication = this.navParams.get('data');
-    console.log("donnée: " + this.publication);
-
+   
       //l'objet form froup lié à mon formulaire dans le template
   this.myForm = new FormGroup({
     titre: new FormControl(this.publication.titre,  [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
@@ -170,12 +169,6 @@ onFileChangePermis(event: any) {
                 })                
               } 
             })
-
-
-
-
-           
-
       
          //orrive là lorsque les champs nesont pas validé
         } else {
