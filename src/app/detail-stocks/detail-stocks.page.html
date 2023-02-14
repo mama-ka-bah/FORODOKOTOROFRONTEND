@@ -49,18 +49,18 @@
           <div *ngIf="!detailsStocks.disponibilite" style="color: #14AE5C; font-weight: bold;" class="detail">Disponible</div>
         </div>
 
-        <div class="elementDetailChamp">
+        <!-- <div class="elementDetailChamp">
           <div class="libelle">Publication</div>
-          <div class="detail">{{detailsStocks.datepublication}}</div>
-        </div>
+          <div class="detail">{{ detailsStocks.datepublication | date: 'dd/MM/yyyy HH:mm' }}</div>
+        </div> -->
         <div class="actionsStocks">
           <!-- <div class="iconAction">
             <i style="color: red;" class="fa fa-trash" aria-hidden="true"></i>
           </div> -->
-          <div class="iconAction" (click)="mettreAjourSonStock($event)">
+          <div *ngIf="detailsStocks.proprietaire.id == currentUser.id" class="iconAction" (click)="mettreAjourSonStock($event)">
             <i class="fas fa-edit" style="color: #4285F4;     font-size: 25px;"></i>
           </div>
-          <div (click)="evolutionStock()" class="iconAction" style="color: #14AE5C;">
+          <div *ngIf="detailsStocks.proprietaire.id == currentUser.id" (click)="evolutionStock()" class="iconAction" style="color: #14AE5C;">
             Liste mise à jour <i class="fa-solid fa-arrow-right"></i>
            </div>
           <!-- <div class="iconAction"  (click)="mettreAjourSonStock($event)" >

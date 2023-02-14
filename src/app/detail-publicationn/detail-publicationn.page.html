@@ -16,12 +16,12 @@
 <ion-content>
 
   <div style="font-weight: bold; font-size: 20px; margin-top: 15px; padding: 5px;">
-    Sous titre du conseil
+    {{detailPublication.soustitre}}
   </div>
 
   <div class="conteneurPage">
     <div class="contButtons">
-      <span style="color: #fff;">200 commentaires</span>
+      <span style="color: #fff;">{{detailPublication.nombrecommentaire}} commentaire<span *ngIf="detailPublication.nombrecommentaire > 1">s</span></span>
       <button (click)="ajouterCommentaire($event)">Commenter</button>
     </div>
 
@@ -50,7 +50,7 @@
       <div class="liensExternes" *ngIf="detailPublication.lien != null"><span (click)="openLiens(detailPublication.lien)" >{{detailPublication.lien.slice(0, 60)}}</span><span *ngIf="detailPublication.lien.length > 60">...</span></div>
 
       <div class="bouttons">
-        <div (click)="modifierPublication(detailPublication)"><i style="font-size: 18px; color: #4285F4;" class="fas fa-edit"></i></div>
+        <div *ngIf="detailPublication.posteur.id == currentUser.id" (click)="modifierPublication(detailPublication)"><i style="font-size: 18px; color: #4285F4;" class="fas fa-edit"></i></div>
         <div (click)="aimerUnePublication(true)"><i style="font-size: 18px;" class="fa fa-thumbs-up" aria-hidden="true">  {{detailPublication.nombreaime}}</i></div>
         <div (click)="aimerUnePublication(false)"><i class="fas fa-thumbs-down">  {{detailPublication.nombrenonaime}}</i></div>
 
@@ -68,7 +68,7 @@
           <img src="{{commentaire.posteur.photo}}" alt="">
         </div>
         <div style="width: 50%;">
-          <span style="font-weight: bold;">{{ commentaire.datepub | date: 'dd/MM/yyyy HH:mm' }}min</span>
+          <span style="font-weight: bold;">{{ commentaire.datepub | date: 'dd/MM/yyyy HH:mm' }}</span>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
       <div class="liensExternes" *ngIf="commentaire.lien != null"><span (click)=" openLiens(commentaire.lien)">{{commentaire.lien.slice(0, 60)}}<span *ngIf="commentaire.lien.length > 60">...</span></span></div>
 
       <div class="bouttons">
-        <div (click)="modifierCommentaire($event, commentaire)"><i style="font-size: 18px; color: blue;" class="fas fa-edit"></i></div>
+        <div *ngIf="commentaire.posteur.id == currentUser.id" (click)="modifierCommentaire($event, commentaire)"><i style="font-size: 18px; color: blue;" class="fas fa-edit"></i></div>
         <!-- <i style="font-size: 18px;" class="fa fa-thumbs-up" aria-hidden="true">  5</i>
         <i class="fas fa-thumbs-down">  10</i> -->
       </div>

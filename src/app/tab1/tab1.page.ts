@@ -49,11 +49,10 @@ export class Tab1Page implements OnInit{
     }
  
   ngOnInit(): void {
-    if(!this.tmp){
       this.presentLoading()
       this.getCurrentLocation();
       this.dismissLoading()
-    }
+
     this.recupererTousLesproduitsAgricole();
     
     this.currentUser = this.storageService.getUser();

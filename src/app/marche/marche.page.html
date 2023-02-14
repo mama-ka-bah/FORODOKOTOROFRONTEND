@@ -18,7 +18,7 @@
 
     <ion-grid>
 
-      <div *ngIf="tout">
+      <div *ngIf="tout && lesStocks">
 
         <ion-row *ngFor="let stock of lesStocks | filter: filterTerm | paginate: { itemsPerPage: 10, currentPage: p}" >
           <ion-col>
@@ -105,7 +105,7 @@
 
 
       <!-- les semences -->
-      <div *ngIf="semence">
+      <div *ngIf="semence && lesSemences">
 
         <ion-row *ngFor="let stock of lesSemences | filter: filterTerm | paginate: { itemsPerPage: 10, currentPage: p }" >
           <ion-col>
@@ -191,7 +191,7 @@
 
 
       <!-- les graines graines -->
-      <div *ngIf="graine">
+      <div *ngIf="graine && lesGraines">
 
         <ion-row *ngFor="let stock of lesGraines | filter: filterTerm | paginate: { itemsPerPage: 10, currentPage: p}" >
           <ion-col>

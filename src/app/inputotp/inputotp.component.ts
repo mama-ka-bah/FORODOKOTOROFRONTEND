@@ -37,6 +37,7 @@ myForm = new FormGroup({
   code3: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
   code4: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")])
 });
+  interval: any;
 
 
 constructor(
@@ -53,19 +54,23 @@ constructor(
 }
 
 
+
+
 //La fonction appeler lors de l'envoie de mon formulaire
 submitForm() {
 
   //verifie si le formulaire est valide
   if(this.myForm.valid) {
 
-    // Fermer le modal et retourner les données du formulaire à notre page
+    if(this.interval >= 300000){
+       // Fermer le modal et retourner les données du formulaire à notre page
+    this.modalCtrl.dismiss({data: 0});
+    }else{
+       // Fermer le modal et retourner les données du formulaire à notre page
     this.modalCtrl.dismiss({data: this.myForm.value});
+    }
 
-     console.log("Donnée envoyé avec succès " + this.myForm.controls.code1.value);
-     console.log("Donnée envoyé avec succès " + this.myForm.controls.code2.value);
-     console.log("Donnée envoyé avec succès " + this.myForm.controls.code3.value);
-     console.log("Donnée envoyé avec succès " + this.myForm.controls.code4.value);
+   
   
      //On arrive là lorsque les champs ne sont pas validés
     } else {
@@ -77,7 +82,10 @@ submitForm() {
 
 
 ngOnInit(): void {
-    
+    //const temps = ne
+    this.interval =  setTimeout(() => {
+     
+    }, 5 * 60 * 1000); // 5 minutes en milliseconds
 }
 
 }

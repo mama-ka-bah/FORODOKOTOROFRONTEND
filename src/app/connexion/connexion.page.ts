@@ -9,6 +9,7 @@ import { InputotpComponent } from '../inputotp/inputotp.component';
 import { Otp } from '../Models/Otp.model';
 import { OtpComponent } from '../otp/otp.component';
 import { AuthentificationService } from '../services/authentification.service';
+import { ChargementService } from '../services/chargement.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { NotificationService } from '../services/notification.service';
 import { StorageService } from '../services/stockage.service';
@@ -48,6 +49,7 @@ codeRetourne: any;
     public loadingController: LoadingController,
     private donneesService: DonneesStockerService,
     private notificationService: NotificationService,
+    private chargementService: ChargementService
     ) { }
 
     // Cette methode est utiliser pour creer un modal, on peut lui passer
@@ -120,6 +122,9 @@ codeRetourne: any;
 
         // this.dataRetour = JSON.stringify(retour);
         // console.log(this.dataRetour);
+        if(resultatConfirmation.data.data == 0){
+          this.objetOtpRetourner.validite = false;
+        }
         const codeSaisie = resultatConfirmation.data.data.code1.toString() + resultatConfirmation.data.data.code2.toString() +
          resultatConfirmation.data.data.code3.toString() +resultatConfirmation.data.data.code4.toString();
         const codeGenerer = this.objetOtpRetourner.code.toString;
@@ -127,7 +132,7 @@ codeRetourne: any;
         console.log("codeSaisie " + codeSaisie)
         console.log("codeGenerer " + this.objetOtpRetourner.code)
 
-        if(codeSaisie == this.objetOtpRetourner.code){
+        if(codeSaisie == this.objetOtpRetourner.code && this.objetOtpRetourner.validite == true){
           this.presentModal2();
         }else{
           Swal.fire({
@@ -165,10 +170,11 @@ codeRetourne: any;
         const objeAEnvoyer = {
           "password":resultatConfirmation.data.data.motDePasse
         }
-        this.presentLoading()
+        // alert("le pss à envoyer: " + JSON.stringify(objeAEnvoyer))
+        this.chargementService.presentLoading();
         this.authentificationService.modifierMotDePasse(this.objetOtpRetourner.iduser, objeAEnvoyer).subscribe(data =>{
           console.log(data);
-          this.dismissLoading()
+          this.chargementService.dismissLoading();
         });
 
         Swal.fire({

@@ -18,9 +18,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 //   }
 
 
-constructor(private stockageService: StorageService){
-
-}
+constructor(private stockageService: StorageService){}
 
 userToken:any
 

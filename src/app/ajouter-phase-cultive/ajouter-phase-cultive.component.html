@@ -48,6 +48,9 @@
             >
 
             <span class="erreur" *ngIf="myForm!.get('nbrepluies')!.hasError('required') && myForm.get('nbrepluies')!.touched">Cet champ est obligatoire</span>
+            <span class="erreur" *ngIf="myForm!.get('nbrepluies')!.hasError('min') && myForm.get('nbrepluies')!.touched">Trop court</span>
+            <span class="erreur" *ngIf="myForm!.get('nbrepluies')!.hasError('max') && myForm.get('nbrepluies')!.touched">Trop long</span>
+
           
           </div>
 

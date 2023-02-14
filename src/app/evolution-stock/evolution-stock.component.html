@@ -10,7 +10,7 @@
   
 
   <!-- <div class="listeCulture" style="margin-top:10px; margin-bottom: 10px;">Liste des cultures</div> -->
-<div style="margin-top: 100px;" *ngIf="affiche == true">
+<div style="margin-top: 100px;" *ngIf="affiche">
 
   <div  class="conteneur" *ngFor="let evolution of evolutionStock">
 
@@ -40,7 +40,7 @@
 
 </div>
 
-<div *ngIf="affiche == false">CE STOCK N'A PAS SUBIT D'EVOLUTION</div>
+<div *ngIf="!affiche">CE STOCK N'A PAS SUBIT D'EVOLUTION</div>
   
 
 </ion-content>

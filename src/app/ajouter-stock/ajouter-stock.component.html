@@ -32,6 +32,8 @@
   
               <span class="erreur" *ngIf="myForm!.get('nom')!.hasError('required') && myForm.get('nom')!.touched">Cet champ est obligatoire</span>
               <span class="erreur" *ngIf="myForm.get('nom')!.hasError('minlength') && myForm.get('nom')!.touched">Nom court</span>
+              <span class="erreur" *ngIf="myForm.get('nom')!.hasError('maxlength') && myForm.get('nom')!.touched">Nom court</span>
+
   
             </div>
   
@@ -45,6 +47,9 @@
               >
   
               <span class="erreur" *ngIf="myForm!.get('prixkilo')!.hasError('required') && myForm.get('prixkilo')!.touched">Cet champ est obligatoire</span>
+              <span class="erreur" *ngIf="myForm!.get('prixkilo')!.hasError('min') && myForm.get('prixkilo')!.touched">Trop court</span>
+              <span class="erreur" *ngIf="myForm!.get('prixkilo')!.hasError('max') && myForm.get('prixkilo')!.touched">Trop</span>
+
   
             </div>
 
@@ -60,6 +65,10 @@
               >
   
               <span class="erreur" *ngIf="myForm!.get('nombrekilo')!.hasError('required') && myForm.get('nombrekilo')!.touched">Cet champ est obligatoire</span>
+              <span class="erreur" *ngIf="myForm!.get('nombrekilo')!.hasError('min') && myForm.get('nombrekilo')!.touched">Trop court</span>
+              <span class="erreur" *ngIf="myForm!.get('nombrekilo')!.hasError('max') && myForm.get('nombrekilo')!.touched">Trop</span>
+
+
   
             </div>
 

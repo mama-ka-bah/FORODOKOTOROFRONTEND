@@ -50,9 +50,9 @@ lesChampDeCurrentUser:any
 
   //l'objet form froup lié à mon formulaire dans le template
   myForm = new FormGroup({
-    nom: new FormControl('',  [Validators.required, Validators.minLength(2)]),
-    longueur: new FormControl('',  [Validators.required, Validators.minLength(2)]),
-    largeur: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    nom: new FormControl('',  [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+    longueur: new FormControl('',  [Validators.required, Validators.min(10), Validators.max(100000000)]),
+    largeur: new FormControl('', [Validators.required, Validators.min(10), Validators.max(100000000)]),
     typeChamp: new FormControl('', [Validators.required]),
     champ: new FormControl('', [Validators.required])
 });

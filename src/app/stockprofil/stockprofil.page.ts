@@ -54,7 +54,7 @@ export class StockprofilPage implements OnInit {
   }
 
   ionViewWillEnter(){
-
+    this.recuperStockDunAgriculteur();
     //this.donneesService.photoProfil.next(this.currentUser.photo);
    this.donneesService.photoProfil$.subscribe(value => {
      this.photo = value;
@@ -194,8 +194,14 @@ retourner() {
   recuperStockDunAgriculteur(){
     this.stocksService.recupererStocksParProprietaire(this.currentUser.id).subscribe( (data) =>{
       this.stocksUserActuel =  data;
-      // retour = JSON.stringify(data);
-      // this.stocksUserActuel =  JSON.parse(retour);
+      
+      this.donneesService.lesStocksDeLuserActuel.next(data);
+      
+      //on souscrit à cette observable pour youjours recuperer les données à temps réelle
+      this.donneesService.lesStocksDeLuserActuel$.subscribe(value => {
+        this.stocksUserActuel = value;
+      });
+
       console.log(this.stocksUserActuel)
 
       if(this.stocksUserActuel.length === 0){
@@ -204,8 +210,6 @@ retourner() {
       }else{
         this.existe=true;
         
-        console.log("Je suis là: " + this.stocksUserActuel.length);
-
         this.storageService.saveStocks(this.stocksUserActuel);
 
       }

@@ -30,7 +30,7 @@
 
       <div class="details">
   
-        <div class="photoProfil1">
+        <div class="photoProfil1" style="background-color: #b4b7b9;">
           
           <!-- Lorsque l'image de profil est vide -->
            <img *ngIf="currentUser.photo == null" class="image-detail"  src="../../assets/images/profil.png" style="margin-top: 10px; object-fit: contain;">
@@ -107,7 +107,7 @@
         </ion-row>
 
       </ion-grid>
-      <div *ngIf="!existe" style="display: flex; justify-content: center; width: 100%; font-weight: bold;">Aucun Champ</div>
+      <div *ngIf="existe == false" style="display: flex; justify-content: center; width: 100%; font-weight: bold;">Aucun Champ</div>
 
     </div>
 

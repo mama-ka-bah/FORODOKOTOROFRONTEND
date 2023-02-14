@@ -9,6 +9,7 @@ import { AuthentificationService } from '../services/authentification.service';
 import { ChampService } from '../services/champ.service';
 import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { StorageService } from '../services/stockage.service';
+import { StocksService } from '../services/stocks.service';
 
 @Component({
   selector: 'app-profil',
@@ -16,6 +17,9 @@ import { StorageService } from '../services/stockage.service';
   styleUrls: ['./profil.page.scss'],
 })
 export class ProfilPage implements OnInit {
+
+//   public fixedHeight = true;
+// public fixedHeightValue = 1100;
 
  
   //code lié à mon modal pour gerer sa fermeture debut
@@ -65,7 +69,8 @@ currentUser:any
     public loadingController: LoadingController,
     private champService: ChampService,
     private navCtrl: NavController,
-    private donneesService: DonneesStockerService
+    private donneesService: DonneesStockerService,
+    private stockservice: StocksService
   ) { }
 
   ngOnInit() {
@@ -90,6 +95,7 @@ currentUser:any
             this.champService.recupererChampParProprietaire(this.currentUser.id).subscribe( data =>{
               this.donneesService.lesChampsDeLuserActuel.next(data);             
             });
+
         this.dismiss();
           this.navCtrl.navigateForward('/profil/champs')
           console.log(resultatAjoutChamp.data);
@@ -140,7 +146,12 @@ currentUser:any
     //Cette methode contient les 
     modal.onDidDismiss().then((result) => {
      console.log(JSON.stringify(result));
-     this.ngOnInit();
+     
+
+     this.stockservice.recupererStocksParProprietaire(this.currentUser.id).subscribe( data=>{
+      this.donneesService.lesStocksDeLuserActuel.next(data);
+    });
+
     });
     await modal.present();
   }

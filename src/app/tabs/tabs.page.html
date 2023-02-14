@@ -6,9 +6,9 @@
        {{headerTitle}}
        <!-- FORODOKOTORO -->
       </div>
-      <div class="rechercche">
+      <!-- <div class="rechercche">
         <i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
-      </div>
+      </div> -->
       <div class="nav-item dropdown">
         <div cclass="nav-link dropdown-toggle"
           style="width:80px; height: 40px; border-radius: 25px; background-color: #FFF;"
@@ -125,23 +125,25 @@
     </ion-tab-button>
 
     <ion-tab-button (click)="donneesService.reccupererTitreAgriculture()" tab="produit-agricoles">
-      <ion-icon name="person-circle" aria-hidden="true"></ion-icon>
-      <!-- <i class="fa-solid fa-farm"></i> -->
+      <i class="fa-solid fa-wheat-awn" style="font-size: 21px;"></i>
+            <!-- <i class="fa-solid fa-farm"></i> -->
       <ion-label>Agriculture</ion-label>
     </ion-tab-button>
 
     <ion-tab-button (click)="donneesService.reccupererTitreTransporteur()" tab="transporteurs">
-      <ion-icon name="map" aria-hidden="true"></ion-icon>
+      <!-- <ion-icon name="map" aria-hidden="true"></ion-icon> -->
+      <i class="fa-solid fa-car" style="font-size: 21px;"></i>
       <ion-label>transport</ion-label>
     </ion-tab-button>
 
     <ion-tab-button (click)="donneesService.reccupererTitreMarche()" tab="marche">
-      <ion-icon name="information-circle" aria-hidden="true"></ion-icon>
+      <!-- <ion-icon name="information-circle" aria-hidden="true"></ion-icon> -->
+      <i class="fa-solid fa-shop" style="font-size: 21px;"></i>
       <ion-label>Marché</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="communautes" (click)="donneesService.reccupererTitreCommaute()">
-      <ion-icon name="information-circle" aria-hidden="true"></ion-icon>
+    <ion-tab-button *ngIf="agriculteur == true" tab="communautes" (click)="donneesService.reccupererTitreCommaute()">
+      <ion-icon name="chatbubbles"></ion-icon>
       <ion-label>Conseil</ion-label>
     </ion-tab-button>
   </ion-tab-bar>

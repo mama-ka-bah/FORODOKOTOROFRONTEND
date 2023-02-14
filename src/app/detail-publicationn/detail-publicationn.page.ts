@@ -36,6 +36,7 @@ export class DetailPublicationnPage implements OnInit {
     media: "",
     nombreaime:0,
     nombrenonaime:0,
+    nombrecommentaire:0,
     posteur:{id: 0, username: '', email: '', nomcomplet: '', photo: ''},
     soustitre: "",
     titre: "",

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalController, NavParams } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { AgriculteurService } from '../services/agriculteur.service';
+import { StorageService } from '../services/stockage.service';
 
 /**
  * Les données de cette formulaire ont été gérées dans la page tabs page de bottom barre
@@ -19,8 +21,11 @@ export class DevenirTransporteurComponent implements OnInit {
   erreur:any
   etat:boolean | undefined
   photoCart:any;
+  currentUser:any;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.currentUser = this.storageService.getUser();
+  }
 
 
   
@@ -28,7 +33,8 @@ export class DevenirTransporteurComponent implements OnInit {
     //params est utiliser pour recuperer des données envoyées à ce composant
     private navParams: NavParams,
     private modalCtrl: ModalController,
-    private agriculteurService: AgriculteurService
+    private agriculteurService: AgriculteurService,
+    private storageService: StorageService
     ) {
     //ici je recuperere ces données dans mondata  
     this.mondata = this.navParams.get('data');
@@ -77,7 +83,7 @@ export class DevenirTransporteurComponent implements OnInit {
     submitForm() {
 
       //verifie si le formulaire est valide
-      if(this.myForm.valid) {
+      if(this.currentUser.photo != null) {
 
           console.log("Donnée envoyé avec succès: " + this.myForm.controls.disponibilite.value);
           // console.log("Donnée envoyé avec succès: " + this.myForm.controls..value);
@@ -109,8 +115,13 @@ export class DevenirTransporteurComponent implements OnInit {
          //orrive là lorsque les champs nesont pas validé
         } else {
           this.erreur = true;
-          // Afficher une erreur si les données sont manquantes
-          console.log("veuillez remplir tous les champs");
+          Swal.fire({
+            icon: 'info',
+            text: 'Veuiilez d\'abord ajouter une photo de profil',
+            showConfirmButton: true,
+            // timer: 2000,
+            heightAuto:false,
+          })
       }
     }
  

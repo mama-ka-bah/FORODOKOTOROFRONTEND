@@ -11,7 +11,7 @@ export class EvolutionStockComponent implements OnInit {
 
   evolutionStock:any
   idStock: any;
-  affiche:boolean = true;
+  affiche:boolean = false;
 
   constructor(
     private modalCtrl: ModalController,
@@ -20,14 +20,18 @@ export class EvolutionStockComponent implements OnInit {
 
     ) { 
       this.idStock = this.navParams.get('data');
+      this.recuperLesEvolutionDunStock();
+
     }
 
   ngOnInit() {
-   this.ionViewDidEnter();
+   this.recuperLesEvolutionDunStock();
+
   }
 
   ionViewDidEnter(){
-    this.recuperLesEvolutionDunStock();
+    
+     
   }
 
   //cette fonction permet de fermer le modal
@@ -38,14 +42,12 @@ export class EvolutionStockComponent implements OnInit {
    recuperLesEvolutionDunStock(){
     this.stockService.recupererTousevolutionStocksDunStocks(this.idStock).subscribe(data =>{
       this.evolutionStock = data;
-    })
-
-    setTimeout(() => {
-      console.log(this.evolutionStock.length)
-      if(this.evolutionStock.length == 0){
-        this.affiche == false;
+      if(this.evolutionStock.length > 0){
+        this.affiche = true
+      }else{
+        this.affiche = false;
       }
-    }, 1000);
+    })
   }
      
   

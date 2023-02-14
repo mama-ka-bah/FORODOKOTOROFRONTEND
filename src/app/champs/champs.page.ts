@@ -190,12 +190,13 @@ submitForm() {
       this.donneesService.lesChampsDeLuserActuel$.subscribe(value => {
         this.champUserActuel = value;
       });
-     
-      if(this.champUserActuel == null){
-        this.existe=false;
-      }else{
+     console.log("test test value" +this.champUserActuel)
+      if(this.champUserActuel.length > 0){
         this.existe=true;
         this.storageService.saveChamps(this.champUserActuel);
+      
+      }else{
+        this.existe=false;
       }
     })
 

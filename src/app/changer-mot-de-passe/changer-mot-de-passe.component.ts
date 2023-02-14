@@ -57,7 +57,6 @@ submitForm() {
 
   //verifie si le formulaire est valide
   if(this.myForm.valid && this.myForm.controls.motDePasse.value == this.myForm.controls.motDePasseConfirme.value) {
-    alert("je suis là")
 
     // Fermer le modal et retourner les données du formulaire à notre page
     this.modalCtrl.dismiss({data: this.myForm.value});

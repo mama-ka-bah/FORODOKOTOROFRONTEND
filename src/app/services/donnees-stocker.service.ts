@@ -27,6 +27,10 @@ export class DonneesStockerService{
   public lesChampsDeLuserActuel = new BehaviorSubject<any>(null);
   public lesChampsDeLuserActuel$ = this.lesChampsDeLuserActuel.asObservable();
 
+  //Les données de champ de l'user Actuel en fonction des differentes redirections
+  public lesStocksDeLuserActuel = new BehaviorSubject<any>(null);
+  public lesStocksDeLuserActuel$ = this.lesStocksDeLuserActuel.asObservable();
+
   //index champ actuel
   public indexChampActuel = new BehaviorSubject<any>(null);
   public indexChampActuel$ = this.indexChampActuel.asObservable();

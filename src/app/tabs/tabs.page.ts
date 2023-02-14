@@ -316,7 +316,7 @@ reloadPage(): void {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              this.presentLoading();
+              this.chargementService.presentLoading();
               this.agriculteurService.devenirTransporteur(emailSaisie.data.photo, emailSaisie.data.donneesTransporteur, this.currentUser.id).subscribe(data =>{
                 this.reponseDemandeTrans = data;
 
@@ -327,8 +327,7 @@ reloadPage(): void {
                   this.donneesService.nombreDeNotificationNonLu$.subscribe(value => {
                     this.nombreDeNotificationNonLu = value;
                   });
-
-                  this.dismissLoading();
+                  this.chargementService.dismissLoading();
                  
                 })
 
@@ -402,7 +401,7 @@ if(data.data.etat == true){
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      this.presentLoading();
+     this.chargementService.presentLoading();
       this.agriculteurService.devenirAgriculteur(this.currentUser).subscribe(data =>{
         this.reponseDemandeAgri = data;
 
@@ -414,8 +413,7 @@ if(data.data.etat == true){
           this.donneesService.nombreDeNotificationNonLu$.subscribe(value => {
             this.nombreDeNotificationNonLu = value;
           });
-
-          this.dismissLoading();
+          this.chargementService.dismissLoading();
          
         })
 

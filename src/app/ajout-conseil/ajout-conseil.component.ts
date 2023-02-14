@@ -5,6 +5,7 @@ import { Browser } from '@capacitor/browser';
 import { NavParams, ModalController, NavController } from '@ionic/angular';
 import Swal from 'sweetalert2';
 import { ChampService } from '../services/champ.service';
+import { ChargementService } from '../services/chargement.service';
 import { CommunauteService } from '../services/communaute.service';
 import { ProduitAgricolesService } from '../services/produit-agricoles.service';
 import { StorageService } from '../services/stockage.service';
@@ -25,9 +26,9 @@ resultatAjoutPub: any;
 
   //l'objet form froup lié à mon formulaire dans le template
   myForm = new FormGroup({
-    titre: new FormControl('',  [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
-    soustitre: new FormControl('',  [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
-    lien: new FormControl('',  [Validators.minLength(5), Validators.maxLength(160)]),
+    titre: new FormControl('',  [Validators.required, Validators.minLength(5), Validators.maxLength(40)]),
+    soustitre: new FormControl('',  [Validators.required, Validators.minLength(5), Validators.maxLength(40)]),
+    lien: new FormControl('',  [Validators.minLength(5), Validators.maxLength(255)]),
 
     description: new FormControl('', [Validators.required, Validators.minLength(25), Validators.maxLength(255)]),
     
@@ -85,7 +86,8 @@ onFileChangePermis(event: any) {
     public navCtrl: NavController,
     private produitAgricolesService: ProduitAgricolesService,
     private stocksService: StocksService,
-    private communauteService: CommunauteService
+    private communauteService: CommunauteService,
+    private chargementService: ChargementService
     ) {}
 
   
@@ -134,11 +136,12 @@ onFileChangePermis(event: any) {
               position:'center'
             }).then((result) => {
               /* Read more about isConfirmed, isDenied below */
-              if (result.isConfirmed) {         
+              if (result.isConfirmed) {   
+                this.chargementService.presentLoading();      
                 this.communauteService.ajouterPublication(data, this.currentUser.id).subscribe(data =>{
                   this.resultatAjoutPub = data;
                   console.log(data);
-
+                  this.chargementService.dismissLoading();
                   ///si l'ajout du champ a marché
                   if(this.resultatAjoutPub.status == 1){
                    // this.router.navigateByUrl("/profil/champs");

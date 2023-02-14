@@ -18,78 +18,11 @@
   <div class="produitagricole">
 
     <div class="conteneurProfil">
-<!-- 
-      <div class="details">
-  
-        <div class="photoProfil1">
-          <img class="image-detail" src="../assets/images/agriculteur.jpg">
-          <i  class='far fa-edit' style='font-size:35px; color: #000; position: relative; bottom: 66px; left: 33px; color: #fff;'></i>
-        </div>
-  
-  
-        <div class="infoPersonnelles">
-  
-          <div class="telephone">
-            <div class="libelle">
-              <p>Téléphone : </p>
-            </div>
-            <div class="valeur">
-              <p>82644606</p>
-            </div>
-          </div>
-  
-          <div class="adresse">
-            <div class="libelle">
-              <p>Adresse : </p>
-            </div>
-            <div class="valeur">
-              <p>Badinko / Kita</p>
-            </div>
-          </div>
-  
-          <div class="mail">
-            <div class="libelle">
-              <p>E-mail : </p>
-            </div>
-            <div class="valeur">
-              <p style="padding: 0;">mahamadou@gmail.com</p>
-            </div>
-          </div>
-
-          <div class="mail">
-            <div class="libelle">
-              <p>Vehicule: </p>
-            </div>
-            <div class="valeur">
-              <p style="padding: 0;">AB 1254 MD</p>
-            </div>
-          </div>
-
-          <div class="mail">
-            <div class="libelle">
-              <p>Disponibilité: </p>
-            </div>
-            <div class="valeur">
-              <p style="padding: 0; color: #14AE5C; font-size: 16px; font-weight: bold;">Disponible</p>
-            </div>
-          </div>
-  
-          <div class="bouttons">
-            
-            <div><i  class='far fa-edit' style='font-size:25px; color: #000;'></i></div>
-            <ion-button class="fermer" type="submit" expand="block">Fermer</ion-button>
-          <div><i class="fa fa-trash" aria-hidden="true" style="color:red; font-size:25px"></i></div>
-          </div>
-          <ion-button class="contacter" type="submit" expand="block">Contacter</ion-button>
-  
-        </div> 
-      </div> -->
-
 
       
       <div class="details">
   
-        <div class="photoProfil1">
+        <div class="photoProfil1" style="background-color: #b4b7b9;">
           
           <!-- Lorsque l'image de profil est vide -->
            <img *ngIf="currentUser.photo == null" class="image-detail"  src="../../assets/images/profil.png" style="margin-top: 10px; object-fit: contain;">
