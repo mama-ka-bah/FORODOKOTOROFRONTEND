@@ -33,9 +33,12 @@
         </div>
 
         <div class="contenu" *ngIf="publication.media != null">
-          <video width="100%" height="200"  controls preload="auto">
+          <!-- <video width="100%" height="200"  controls preload="auto">
             <source src="{{publication.media}}" type="video/mp4">
-          </video>
+          </video> -->
+
+          <video  width="100%" height="200"  controls src="{{publication.media}}" class="img2" type="video/mp4"></video>
+
           <span style="padding: 5px;">{{publication.description.slice(0, 100)}}<span *ngIf="publication.description.length > 100">...</span></span>
         </div>
 

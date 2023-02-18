@@ -252,6 +252,7 @@ onSubmit(): void {
   this.password = this.form.controls.password.value;
 
   if(this.form.valid){
+    this.router.navigateByUrl('/tabs/tab1');
 
    this.authentification(this.username, this.password);    
   }

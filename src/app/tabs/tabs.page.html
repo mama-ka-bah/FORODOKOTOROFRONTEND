@@ -1,5 +1,6 @@
 <!-- headerTitle !=' '  -->
-<ion-header *ngIf="conditionAfichageMenu == true">
+<ion-header *ngIf="conditionAfichageMenu == true" style="box-shadow: 0px 4px 4px 4px rgba(20, 174, 92, 0.06);
+border-radius: 15px;">
   <div class="barre-menu">
     <div class="element-menus">
       <div class="nomApp">
@@ -59,6 +60,34 @@
             </div>
           </a>
           <hr class="dropdown-divider">
+
+
+          <a *ngIf="agriculteur == true" routerLink="/profil/champs" class="dropdown-item">
+            <div class="d-flex align-items-center">
+              <i style="color: #000; font-size: 35px;" class="fa-solid fa-wheat-awn"></i>
+              <div class="ms-2">
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">Mes champs</h6>
+              </div>
+            </div>
+
+            <hr class="dropdown-divider">
+          </a>
+          
+
+
+          <a *ngIf="agriculteur == true" routerLink="/profil/stockprofil" class="dropdown-item">
+            <div class="d-flex align-items-center">
+              <i style="color: #000; font-size: 35px;" class="bi bi-bank2"></i>
+              <div class="ms-2">
+                <h6 class="fw-normal mb-0 nomUser" style="margin: 0; margin-left:8px;">Mes stocks</h6>
+              </div>
+            </div>
+
+            <hr class="dropdown-divider">
+          </a>
+         
+
+
           <a class="dropdown-item" id="open-modal" expand="block">
             <div class="d-flex align-items-center">
               <img class="rounded-circle" src="../../assets/images/completerProfil.png" alt="" style="width: 40px; height: 40px;">
@@ -147,6 +176,19 @@
       <ion-label>Conseil</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
+
+
+
+
+  <!-- <ion-list>
+    <ion-item>
+      <ion-select interface="action-sheet" placeholder="Select fruit">
+        <ion-select-option value="apples">Apples</ion-select-option>
+        <ion-select-option value="oranges">Oranges</ion-select-option>
+        <ion-select-option value="bananas">Bananas</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list> -->
 
   
 

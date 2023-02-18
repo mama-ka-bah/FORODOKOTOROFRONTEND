@@ -42,7 +42,7 @@
 
       <div class="input">
         <!-- routerLink="/tabs/tab1" -->
-        <ion-button class="envoyer-input" type="submit" expand="block" >Se connecter</ion-button>
+        <ion-button class="envoyer-input" type="submit" expand="block"  [disabled]="form.invalid">Se connecter</ion-button>
       </div>
 
       <div class="autres-options">

@@ -37,9 +37,12 @@
 
       <div class="description">
         <span style="font-weight: bold;">{{ detailPublication.datepub | date: 'dd/MM/yyyy HH:mm' }}</span>
-        <video width="100%" height="200" preload="auto"  controls *ngIf="detailPublication.media != null">
+        <!-- <video width="100%" height="200" preload="auto"  controls *ngIf="detailPublication.media != null">
           <source src="{{detailPublication.media}}" type="video/mp4">
-        </video>
+        </video> -->
+
+        <video *ngIf="detailPublication.media != null" width="100%" height="200" controls src="{{detailPublication.media}}" class="img2"  type="video/mp4"></video>
+
 
         <span style="padding: 5px;">
           {{detailPublication.description}}
