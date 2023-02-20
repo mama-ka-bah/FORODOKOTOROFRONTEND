@@ -23,18 +23,12 @@
 
         [ngClass]="{'is-invalid': form.get('username')!.invalid && form.get('username')!.touched}"
         [ngClass]="{'is-valid': form.get('username')!.valid && form.get('username')!.touched}"
-
         >
         <!-- [ngStyle]="{'border-color': (form.get('username')!.valid && form.get('username')!.touched) ? 'green' : 'red' }" -->
-
-       
-        
+    
         <span class="erreur" *ngIf="form!.get('username')!.hasError('required') && form.get('username')!.touched">Cet champ est obligatoire</span>
         <span class="erreur" *ngIf="form!.get('username')!.hasError('minlength') && form.get('username')!.touched">Numero court</span>
         <span class="erreur" *ngIf="form!.get('username')!.hasError('maxlength') && form.get('username')!.touched">Numero Long</span>
-
-
-
       </div>
 
       
@@ -67,6 +61,7 @@
       
         <span class="erreur" *ngIf="form.get('email')!.hasError('maxlength') && form.get('email')!.touched">Email Long</span>
         <span class="erreur" *ngIf="form.get('email')!.hasError('pattern') && form.get('email')!.touched">Email invalide</span>
+      
       </div>
 
       

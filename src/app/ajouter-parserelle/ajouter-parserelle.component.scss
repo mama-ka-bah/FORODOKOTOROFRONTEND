@@ -45,18 +45,37 @@
     width: 134px;
 }
 
-.texte{
-    text-align: justify;
-    width: 90%;
-}
+// .texte{
+//     text-align: justify;
+//     width: 90%;
+// }
+
+// .input{
+//     width: 90%;
+//     display: flex;
+//     justify-content: space-around;
+//     flex-direction: column;
+// }
+// .input label{
+//     font-weight: bold;
+// }
 
 .input{
-    width: 90%;
+    margin: auto;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    width: 95%;
+    margin: auto;
 }
-.input label{
+
+.input input{
+    width: 95%;
+    margin: auto;
+}
+label{
+    width: 95%;
+    margin: auto;
     font-weight: bold;
 }
 
@@ -81,7 +100,7 @@
     // flex-basis: 50%;
     // height: 50vh;
     justify-content: space-around;
-    width: 100vw;
+    // width: 100vw;
     gap: 20px;
 }
 

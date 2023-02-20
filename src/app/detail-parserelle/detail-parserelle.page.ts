@@ -273,7 +273,6 @@ signalerUnCultiveCommeNonTerminer(){
 
   //à rendre claire
   recupererDetailDuneParserelle(){
-  
     this.tousLesCultivesStockerDansSession = this.storageService.getCultive();
    this.champService.recupererLesCultiveDuneParsererelle(this.tousLesCultivesStockerDansSession[0].parserelle.id).subscribe(data =>{
     
@@ -283,6 +282,7 @@ signalerUnCultiveCommeNonTerminer(){
     //this.navCtrl.pop();
     this.voirListeCultiveDuneParserelle(this.tousLesCultivesStockerDansSession[0].parserelle, this.tousLesCultivesStockerDansSession[0].parserelle.id);
     //alert(this.tousLesCultivesStockerDansSession[0].parserelle.status)
+    this.mettreAjourLesDonnees();
    })
   }
 

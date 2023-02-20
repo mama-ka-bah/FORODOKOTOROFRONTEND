@@ -45,3 +45,11 @@
     color: red;
   }
 
+
+  ::slotted(ion-label) {
+    margin-top: 0px;
+   margin-bottom: 1px;
+   min-height: 11px; 
+   font-weight: unset; 
+}
+

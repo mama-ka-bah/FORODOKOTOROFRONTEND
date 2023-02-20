@@ -183,10 +183,10 @@ submitForm(){
 
   //ici je recupere l'index du cultive cliqué pour afficher ces details
   voirDetailDuneCultive(indexCultiveDansSession:any){
-    this.modalCtrl.dismiss();
-
     //ces cet index qui se trouve dans l'url dans la page detail cultive
    this.router.navigate(["/detail-parserelle", indexCultiveDansSession]);
+   this.modalCtrl.dismiss();
+
   }
 
   recupererTousLesProduitsAgricoles(){

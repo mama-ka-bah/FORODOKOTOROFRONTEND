@@ -39,9 +39,17 @@ ion-title{
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    width: 95%;
+    margin: auto;
 }
+
 .input input{
-    width: 90vw;
+    width: 95%;
+    margin: auto;
+}
+label{
+    width: 95%;
+    margin: auto;
 }
 
 //le conteneur de mon formullaire

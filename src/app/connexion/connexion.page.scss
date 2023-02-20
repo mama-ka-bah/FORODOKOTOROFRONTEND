@@ -37,17 +37,37 @@ ion-toolbar.ios{
     margin: 40px 0 40px 0;
 }
 
+// .input{
+//     width: 90vw;
+//     margin: auto;
+//     display: flex;
+//     justify-content: space-around;
+//     flex-direction: column;
+// }
+
+// .input label{
+//     font-weight: bold;
+// }
+
 .input{
-    width: 90vw;
     margin: auto;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    width: 95%;
+    margin: auto;
 }
 
-.input label{
+.input input{
+    width: 95%;
+    margin: auto;
+}
+label{
+    width: 95%;
+    margin: auto;
     font-weight: bold;
 }
+
 
 //le conteneur de mon formullaire
 .formulaire{

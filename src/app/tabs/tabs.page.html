@@ -15,9 +15,11 @@ border-radius: 15px;">
           style="width:80px; height: 40px; border-radius: 25px; background-color: #FFF;"
           data-bs-toggle="dropdown">
           <div class="" style="display: flex;">
+            
             <img *ngIf="!photoExiste" src="../../assets/images/profil.png"
               style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
               alt="">
+
               <img *ngIf="photoExiste" src="{{photo}}"
               style="width: 30px; height: 30px; margin-left: 5% !important; margin-top: 7%; border-radius: 13px;"
               alt="">
@@ -148,31 +150,33 @@ border-radius: 15px;">
 
   <ion-tab-bar class="bottom" slot="bottom">
     <ion-tab-button class="tabulation" (click)="donneesService.reccupererTitreAccueil()" tab="tab1">
-      <ion-icon name="home" aria-hidden="true"></ion-icon>
+      <ion-icon style="font-size: 20px;" name="home" aria-hidden="true"></ion-icon>
       <ion-label>Accueil</ion-label>
       <!-- <ion-badge>6</ion-badge> -->
     </ion-tab-button>
 
     <ion-tab-button (click)="donneesService.reccupererTitreAgriculture()" tab="produit-agricoles">
-      <i class="fa-solid fa-wheat-awn" style="font-size: 21px;"></i>
+      <!-- <i class="fa-solid fa-wheat-awn" style="font-size: 21px;"></i> -->
             <!-- <i class="fa-solid fa-farm"></i> -->
+            <ion-icon style="font-size: 20px;" class="fa-solid fa-wheat-awn"></ion-icon>
       <ion-label>Agriculture</ion-label>
     </ion-tab-button>
 
     <ion-tab-button (click)="donneesService.reccupererTitreTransporteur()" tab="transporteurs">
-      <!-- <ion-icon name="map" aria-hidden="true"></ion-icon> -->
-      <i class="fa-solid fa-car" style="font-size: 21px;"></i>
+      <ion-icon style="font-size: 20px;" class="fa-solid fa-car"></ion-icon>
+      <!-- <i class="fa-solid fa-car" style="font-size: 21px;"></i> -->
       <ion-label>transport</ion-label>
     </ion-tab-button>
 
     <ion-tab-button (click)="donneesService.reccupererTitreMarche()" tab="marche">
       <!-- <ion-icon name="information-circle" aria-hidden="true"></ion-icon> -->
-      <i class="fa-solid fa-shop" style="font-size: 21px;"></i>
+      <!-- <i class="fa-solid fa-shop" style="font-size: 21px;"></i> -->
+      <ion-icon style="font-size: 20px;" class="fa-solid fa-shop"></ion-icon>
       <ion-label>Marché</ion-label>
     </ion-tab-button>
 
     <ion-tab-button *ngIf="agriculteur == true" tab="communautes" (click)="donneesService.reccupererTitreCommaute()">
-      <ion-icon name="chatbubbles"></ion-icon>
+      <ion-icon style="font-size: 20px;" name="chatbubbles"></ion-icon>
       <ion-label>Conseil</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
