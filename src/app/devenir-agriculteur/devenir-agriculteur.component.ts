@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import Swal from 'sweetalert2';
+import { StorageService } from '../services/stockage.service';
 
 @Component({
   selector: 'app-devenir-agriculteur',
@@ -8,10 +10,18 @@ import { PopoverController } from '@ionic/angular';
 })
 export class DevenirAgriculteurComponent implements OnInit {
 
-  constructor(public popoverController: PopoverController,
+  currentUser:any;
+
+  constructor(
+    public popoverController: PopoverController,
+    private storageService: StorageService
     ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+    this.currentUser = this.storageService.getUser();
+   
+  }
 
   itemSelected(item: string) {
     console.log("Selected Item", item);
@@ -24,10 +34,24 @@ export class DevenirAgriculteurComponent implements OnInit {
 
   }
 
+ 
   
   envoyer() {
-    let data = { etat: true};
+
+    if(this.currentUser.photo != null){
+
+      let data = { etat: true};
     this.popoverController.dismiss(data);
+
+    }else {
+            Swal.fire({
+              icon: 'info',
+              text: 'Veuiilez d\'abord ajouter une photo de profil',
+              showConfirmButton: true,
+              // timer: 2000,
+              heightAuto:false,
+            })
+        }
   }
 
 }
