@@ -28,7 +28,7 @@ export class MettreAjourStockComponent implements OnInit {
     //ici je recuperere ces données dans mondata  
     this.idStock = this.navParams.get('data');
     this.detailStock = this.navParams.get('data1');
-    console.log("donnée: " + this.idStock);
+    // console.log("donnée: " + this.idStock);
 
     this.quantiterestant = this.detailStock.quantiterestant;
 

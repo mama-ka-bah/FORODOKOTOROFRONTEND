@@ -94,7 +94,7 @@ currentUser:any
       this.detailsChamp =  data; 
       this.detailsChamp = this.detailsChamp;
 
-      console.log("valeur data : " + data.nom);
+      // console.log("valeur data : " + data.nom);
 
       this.perimetre= (this.detailsChamp.largeur + this.detailsChamp.longueur)*2;
       this.surface = this.detailsChamp.largeur * this.detailsChamp.longueur;
@@ -102,7 +102,7 @@ currentUser:any
     });
 
     this.recupererTemperatureChamp(this.detailsChamp.latitude, this.detailsChamp.longitude);
-    console.log(this.detailsChamp);
+    // console.log(this.detailsChamp);
   }
 
   recupererTemperatureChamp(latitude:any, longitude:any){
@@ -152,7 +152,7 @@ currentUser:any
 
     modal.onDidDismiss().then((resultatAjoutChamp) => {
       //this.router.navigateByUrl('/connexion');
-      console.log(resultatAjoutChamp.data);
+      // console.log(resultatAjoutChamp.data);
     });
 
     await modal.present();

@@ -25,9 +25,9 @@ export class AjouterParserelleComponent implements OnInit {
   }
 
   doRefresh(event:any) {
-    console.log('Begin async operation');
+    // console.log('Begin async operation');
     setTimeout(() => {
-      console.log('Async operation has ended');
+      // console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }
@@ -67,7 +67,7 @@ lesChampDeCurrentUser:any
     ) {
     //ici je recuperere ces données dans mondata  
     this.mondata = this.navParams.get('data');
-    console.log(this.mondata);
+    // console.log(this.mondata);
    }
 
    //cette fonction permet de fermer le modal
@@ -84,7 +84,7 @@ lesChampDeCurrentUser:any
   recuperLesChampDeUserActuel(){
     this.champService.recupererChampParProprietaire(this.currentUser.id).subscribe( data => {
       this.lesChampDeCurrentUser = data;
-      console.log(this.lesChampDeCurrentUser);
+      // console.log(this.lesChampDeCurrentUser);
     }) 
   }
 
@@ -121,7 +121,7 @@ lesChampDeCurrentUser:any
               if (result.isConfirmed) {         
                 this.champService.ajouterParserelle(data, this.myForm.controls.champ.value).subscribe(data =>{
                   this.resultatAjoutChamp = data;
-                  console.log(data);
+                  // console.log(data);
 
                   ///si l'ajout de parserelle est ok
                   if(this.resultatAjoutChamp.status == 1){
@@ -155,7 +155,7 @@ lesChampDeCurrentUser:any
         } else {
           this.erreur = true;
           // Afficher une erreur si les données sont manquantes
-          console.log("veuillez remplir tous les champs");
+          // console.log("veuillez remplir tous les champs");
       }
     }
 

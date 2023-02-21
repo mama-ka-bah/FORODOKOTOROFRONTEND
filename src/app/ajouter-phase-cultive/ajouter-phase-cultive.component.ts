@@ -24,9 +24,9 @@ export class AjouterPhaseCultiveComponent implements OnInit {
   }
 
   doRefresh(event:any) {
-    console.log('Begin async operation');
+    // console.log('Begin async operation');
     setTimeout(() => {
-      console.log('Async operation has ended');
+      // console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }
@@ -124,7 +124,7 @@ onFileChangePhase(event: any) {
             if (result.isConfirmed) {         
               this.champService.AjouterPhaseACultive(data, this.idCultiveRecuperer).subscribe(data =>{
                 this.resultatAjoutAction = data;
-                console.log(data);
+                // console.log(data);
 
                 ///si l'ajout de parserelle a marché
                 if(this.resultatAjoutAction.status == 1){
@@ -155,7 +155,7 @@ onFileChangePhase(event: any) {
       } else {
         this.erreur = true;
         // Afficher une erreur si les données sont manquantes
-        console.log("veuillez remplir tous les champs");
+        // console.log("veuillez remplir tous les champs");
     }
   }
 

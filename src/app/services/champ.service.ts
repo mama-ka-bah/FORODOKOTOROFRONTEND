@@ -23,7 +23,7 @@ export class ChampService {
 
 //permet de recuperer tous les champ appartenant à un agriculteur
   recupererChampParProprietaire(id:any): Observable<any> {
-    return this.http.get(AUTH_API + `leschampagriculteur/${id}`, { withCredentials: true });
+    return this.http.get(AUTH_API + `leschampagriculteur/${id}`);
   }
 
   //permet de recuperer un champ par son id

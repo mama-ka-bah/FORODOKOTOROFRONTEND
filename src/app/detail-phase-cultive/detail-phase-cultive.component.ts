@@ -23,8 +23,8 @@ export class DetailPhaseCultiveComponent implements OnInit {
   ) {
      //ici je recuperere ces données dans mondata  
      this.detailsPhaseAAficher = this.navParams.get('data');
-     console.log("phases envoyer: " + this.detailsPhaseAAficher);
-     console.log("phases envoyer: " +JSON.stringify(this.detailsPhaseAAficher));
+    //  console.log("phases envoyer: " + this.detailsPhaseAAficher);
+    //  console.log("phases envoyer: " +JSON.stringify(this.detailsPhaseAAficher));
    }
 
    

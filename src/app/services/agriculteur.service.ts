@@ -22,7 +22,7 @@ export class AgriculteurService {
     data.append("file", file);
     data.append('donneesTransporteur', JSON.stringify(donneesTransporteur).slice(1,JSON.stringify(donneesTransporteur).lastIndexOf(']')));
 
-    console.log(data)
+    // console.log(data)
 
     return this.http.post( AUTH_API + `devenirtransporteur/${id}`, data);
   }
@@ -38,7 +38,7 @@ export class AgriculteurService {
     data.append('id', JSON.stringify(userId).slice(1,JSON.stringify(userId).lastIndexOf(']')));
 
 
-    console.log(data)
+    // console.log(data)
 
     return this.http.post( AUTH_API1 + 'deveniragriculteur', data);
   }

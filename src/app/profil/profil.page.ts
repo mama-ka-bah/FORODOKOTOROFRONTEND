@@ -39,9 +39,9 @@ export class ProfilPage implements OnInit {
   }
 
   doRefresh(event:any) {
-    console.log('Begin async operation');
+    // console.log('Begin async operation');
     setTimeout(() => {
-      console.log('Async operation has ended');
+      // console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }
@@ -98,7 +98,7 @@ currentUser:any
 
         this.dismiss();
           this.navCtrl.navigateForward('/profil/champs')
-          console.log(resultatAjoutChamp.data);
+          // console.log(resultatAjoutChamp.data);
         });
     
         await modal.present();
@@ -122,7 +122,7 @@ currentUser:any
             this.dismiss();
             this.router.navigate(['/profil/champs/details-champs', idChamp.data]);
              //this.router.navigate(['/profil/champs']);
-            console.log(idChamp.data);
+            // console.log(idChamp.data);
           });
       
           await modal.present();
@@ -145,7 +145,7 @@ currentUser:any
 
     //Cette methode contient les 
     modal.onDidDismiss().then((result) => {
-     console.log(JSON.stringify(result));
+    //  console.log(JSON.stringify(result));
      
 
      this.stockservice.recupererStocksParProprietaire(this.currentUser.id).subscribe( data=>{

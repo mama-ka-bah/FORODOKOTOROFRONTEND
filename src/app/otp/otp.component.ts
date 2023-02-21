@@ -28,7 +28,7 @@ export class OtpComponent implements OnInit {
     ) {
     //ici je recuperere ces données dans mondata  
     this.mondata = this.navParams.get('data');
-    console.log(this.mondata);
+    // console.log(this.mondata);
    }
 
    //cette fonction permet de fermer le modal
@@ -49,13 +49,13 @@ export class OtpComponent implements OnInit {
 
           console.log("lllm lllzz lmlmlm: " + this.myForm.value);
 
-         console.log("Donnée envoyé avec succès " + this.myForm.controls.email.value);
+        //  console.log("Donnée envoyé avec succès " + this.myForm.controls.email.value);
       
          //orrive là lorsque les champs nesont pas validé
         } else {
           this.erreur = true;
           // Afficher une erreur si les données sont manquantes
-          console.log("veuillez remplir tous les champs");
+          // console.log("veuillez remplir tous les champs");
       }
     }
  

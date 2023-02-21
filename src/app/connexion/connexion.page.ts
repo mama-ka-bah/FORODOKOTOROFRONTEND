@@ -129,8 +129,8 @@ codeRetourne: any;
          resultatConfirmation.data.data.code3.toString() +resultatConfirmation.data.data.code4.toString();
         const codeGenerer = this.objetOtpRetourner.code.toString;
 
-        console.log("codeSaisie " + codeSaisie)
-        console.log("codeGenerer " + this.objetOtpRetourner.code)
+        // console.log("codeSaisie " + codeSaisie)
+        // console.log("codeGenerer " + this.objetOtpRetourner.code)
 
         if(codeSaisie == this.objetOtpRetourner.code && this.objetOtpRetourner.validite == true){
           this.presentModal2();
@@ -143,7 +143,7 @@ codeRetourne: any;
           });
         }
 
-        console.log("Je suis le contenu de la page: " + resultatConfirmation.data.data.code1);
+        // console.log("Je suis le contenu de la page: " + resultatConfirmation.data.data.code1);
       });
   
       await modal.present();
@@ -164,8 +164,8 @@ codeRetourne: any;
         // this.dataRetour = JSON.stringify(retour);
         // console.log(this.dataRetour);
 
-        console.log("Je suis le contenu de la page: " + resultatConfirmation.data.data.motDePasse);
-        console.table(this.objetOtpRetourner.iduser);
+        // console.log("Je suis le contenu de la page: " + resultatConfirmation.data.data.motDePasse);
+        // console.table(this.objetOtpRetourner.iduser);
 
         const objeAEnvoyer = {
           "password":resultatConfirmation.data.data.motDePasse
@@ -173,7 +173,7 @@ codeRetourne: any;
         // alert("le pss à envoyer: " + JSON.stringify(objeAEnvoyer))
         this.chargementService.presentLoading();
         this.authentificationService.modifierMotDePasse(this.objetOtpRetourner.iduser, objeAEnvoyer).subscribe(data =>{
-          console.log(data);
+          // console.log(data);
           this.chargementService.dismissLoading();
         });
 
@@ -293,7 +293,7 @@ authentification(username:any, password:any){
               "sesouvenir":true
             }
             this.authentificationService.modifierProfilUtilisateur(data.id, user).subscribe(value1 =>{
-             console.log(value1);
+            //  console.log(value1);
             })
           }
   

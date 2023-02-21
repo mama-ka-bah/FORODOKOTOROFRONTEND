@@ -117,7 +117,7 @@ submitForm() {
 
     const data1:FormData=new FormData();
 
-    console.log("mon fichier: " + this.file)
+    // console.log("mon fichier: " + this.file)
     data1.append('file', this.file);
     
     Swal.fire({
@@ -136,7 +136,7 @@ submitForm() {
           if(this.reponseUpdatePhoto.status == 1 ){
 
             setTimeout(() => {
-            console.log("data photo: " + this.reponseUpdatePhoto.message)
+            // console.log("data photo: " + this.reponseUpdatePhoto.message)
            
             this.currentUser.photo = this.reponseUpdatePhoto.message;
 
@@ -145,7 +145,7 @@ submitForm() {
               this.photo = value;
             });
 
-            console.log(this.currentUser)
+            // console.log(this.currentUser)
             this.storageService.saveUser(this.currentUser);
 
           }, 1000);
@@ -190,7 +190,7 @@ submitForm() {
       this.donneesService.lesChampsDeLuserActuel$.subscribe(value => {
         this.champUserActuel = value;
       });
-     console.log("test test value" +this.champUserActuel)
+    //  console.log("test test value" +this.champUserActuel)
       if(this.champUserActuel.length > 0){
         this.existe=true;
         this.storageService.saveChamps(this.champUserActuel);
@@ -224,7 +224,7 @@ submitForm() {
 
     //Cette methode contient les 
     modal.onDidDismiss().then((result) => {
-     console.log(JSON.stringify(result));
+    //  console.log(JSON.stringify(result));
      this.ngOnInit();
     });
     await modal.present();

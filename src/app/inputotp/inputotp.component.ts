@@ -46,7 +46,7 @@ constructor(
   ) {
     //recuperation des données reçu
   this.data = this.navParams.get('data');
-  console.log(this.data);
+  // console.log(this.data);
  }
 
  async closeModal() {
@@ -76,7 +76,7 @@ submitForm() {
     } else {
       this.erreur = true;
       // Afficher une erreur si les données sont manquantes
-      console.log("veuillez remplir tous les champs");
+      // console.log("veuillez remplir tous les champs");
   }
 }
 

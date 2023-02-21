@@ -12,7 +12,7 @@ export class ChoisirProfilComponent implements OnInit {
   ngOnInit() {}
 
   itemSelected(item: string) {
-    console.log("Selected Item", item);
+    // console.log("Selected Item", item);
   }
 
 }

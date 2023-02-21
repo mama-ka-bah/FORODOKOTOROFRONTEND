@@ -140,7 +140,7 @@ onFileChangePermis(event: any) {
                 this.chargementService.presentLoading();      
                 this.communauteService.ajouterPublication(data, this.currentUser.id).subscribe(data =>{
                   this.resultatAjoutPub = data;
-                  console.log(data);
+                  // console.log(data);
                   this.chargementService.dismissLoading();
                   ///si l'ajout du champ a marché
                   if(this.resultatAjoutPub.status == 1){
@@ -182,7 +182,7 @@ onFileChangePermis(event: any) {
         } else {
           this.erreur = true;
           // Afficher une erreur si les données sont manquantes
-          console.log("veuillez remplir tous les champs");
+          // console.log("veuillez remplir tous les champs");
       }
     }
 

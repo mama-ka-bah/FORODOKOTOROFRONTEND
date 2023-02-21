@@ -47,7 +47,7 @@ export class CommunautesPage implements OnInit {
 
     //Cette methode contient les 
     modal.onDidDismiss().then((result) => {
-     console.log(JSON.stringify(result));
+    //  console.log(JSON.stringify(result));
      this.ngOnInit();
     });
     await modal.present();

@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
 import { IonModal, LoadingController, ModalController, NavController, PopoverController } from '@ionic/angular';
-import { LocalNotifications } from 'capacitor-local-notifications';
 import Swal from 'sweetalert2';
 import { ChoisirProfilComponent } from '../choisir-profil/choisir-profil.component';
 import { DevenirAgriculteurComponent } from '../devenir-agriculteur/devenir-agriculteur.component';
@@ -230,7 +228,7 @@ verifierExistancePhotoProfil(){
             break; 
     }
 
-    console.log(this.currentUser.roles)
+    // console.log(this.currentUser.roles)
 
     if(this.storageService.getCurrentUrl() == "/tabs/tab1" || this.storageService.getCurrentUrl() == "/tabs/produit-agricoles" || this.storageService.getCurrentUrl() == "/tabs/transporteurs" || this.storageService.getCurrentUrl() == "/tabs/marche"){
       this.conditionAfichageMenu = true;
@@ -257,7 +255,7 @@ reloadPage(): void {
       }
 
       this.authentificationService.modifierProfilUtilisateur(this.currentUser.id, user).subscribe(value1 =>{
-       console.log(value1);
+      //  console.log(value1);
       })
 
       this.router.navigateByUrl("/connexion");
@@ -331,7 +329,7 @@ reloadPage(): void {
                  
                 })
 
-                console.log(data.message)
+                // console.log(data.message)
                 if(data.status == 1){
                   Swal.fire({
                     icon: 'success',
@@ -386,7 +384,7 @@ reloadPage(): void {
     });
 
     popover.onDidDismiss().then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
 
 if(data.data.etat == true){
 
@@ -417,7 +415,7 @@ if(data.data.etat == true){
          
         })
 
-        console.log(data.message)
+        // console.log(data.message)
         if(data.status == 1){
           Swal.fire({
             icon: 'success',

@@ -71,7 +71,7 @@ onFileChangePermis(event: any) {
     ) {
     //ici je recuperere ces données dans mondata  
     this.mondata = this.navParams.get('data');
-    console.log(this.mondata);
+    // console.log(this.mondata);
    }
 
    //cette fonction permet de fermer le modal
@@ -104,7 +104,7 @@ onFileChangePermis(event: any) {
         ]
 
         const data:FormData=new FormData();
-        console.log("mon fichier: " + this.file)
+        // console.log("mon fichier: " + this.file)
         data.append('file', this.file);
         data.append('champReçu', JSON.stringify(champReçu).slice(1,JSON.stringify(champReçu).lastIndexOf(']')));
             // Fermer le modal et retourner les données du formulaire à notre page
@@ -122,7 +122,7 @@ onFileChangePermis(event: any) {
               if (result.isConfirmed) {         
                 this.champService.ajouterChamp(data, this.currentUser.id).subscribe(data =>{
                   this.resultatAjoutChamp = data;
-                  console.log(data);
+                  // console.log(data);
 
                   ///si l'ajout du champ a marché
                   if(this.resultatAjoutChamp.status == 1){
@@ -163,7 +163,7 @@ onFileChangePermis(event: any) {
         } else {
           this.erreur = true;
           // Afficher une erreur si les données sont manquantes
-          console.log("veuillez remplir tous les champs");
+          // console.log("veuillez remplir tous les champs");
       }
     }
 

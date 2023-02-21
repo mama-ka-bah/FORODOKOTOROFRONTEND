@@ -77,7 +77,7 @@ submitForm() {
 
     const data1:FormData=new FormData();
 
-    console.log("mon fichier: " + this.file)
+    // console.log("mon fichier: " + this.file)
     data1.append('file', this.file);
     
     Swal.fire({
@@ -95,7 +95,7 @@ submitForm() {
           ///si l'ajout du champ a marché
           if(this.reponseUpdatePhoto.status == 1 ){
 
-            console.log("data photo: " + this.reponseUpdatePhoto.message)
+            // console.log("data photo: " + this.reponseUpdatePhoto.message)
          
             
             this.currentUser.photo = this.reponseUpdatePhoto.message;
@@ -105,7 +105,7 @@ submitForm() {
               this.photo = value;
             });
 
-            console.log(this.currentUser)
+            // console.log(this.currentUser)
             this.storageService.saveUser(this.currentUser);
 
 
@@ -165,7 +165,7 @@ submitForm() {
 
     //Cette methode contient les 
     modal.onDidDismiss().then((result) => {
-     console.log(JSON.stringify(result));
+    //  console.log(JSON.stringify(result));
      this.ngOnInit();
     });
     await modal.present();

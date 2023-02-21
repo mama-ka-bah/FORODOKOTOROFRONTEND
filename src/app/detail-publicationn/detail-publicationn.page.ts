@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, ModalController, PopoverController } from '@ionic/angular';
 import { CommentairesComponent } from '../commentaires/commentaires.component';
@@ -81,7 +80,7 @@ retourner() {
   recupererLesCommmentaireDunePublication(){
     this.communauteService.recupererCommentairesDunepublication(this.idconseilActuel).subscribe(data =>{
       this.lescommentairesDunePublication = data;
-      console.log(data)
+      // console.log(data)
     })
   }
 
@@ -90,7 +89,7 @@ retourner() {
   recupererDetailDunePublication(){
     this.communauteService.recupererDetailDunePublication(this.idconseilActuel).subscribe(data =>{
       this.detailPublication = data;
-      console.log(data)
+      // console.log(data)
     })
   }
 
@@ -109,7 +108,7 @@ retourner() {
         await popover.present();
     
         popover.onDidDismiss().then((data) => {
-          console.log(data.data);
+          // console.log(data.data);
           this.recupererDetailDunePublication();
           this.recupererLesCommmentaireDunePublication();
        })
@@ -132,7 +131,7 @@ retourner() {
         }); 
         await popover.present();    
         popover.onDidDismiss().then((data) => {
-          console.log(data.data);
+          // console.log(data.data);
           this.recupererDetailDunePublication();
           this.recupererLesCommmentaireDunePublication();
        })
@@ -147,7 +146,7 @@ retourner() {
     
         this.communauteService.aimerUnePublication(this.idconseilActuel, this.currentUser.id, aimes).subscribe(data =>{
           this.detailPublication = data;
-          console.log(data)
+          // console.log(data)
         })
     
         // this.recupererDetailStock();
@@ -196,7 +195,7 @@ retourner() {
 
     //Cette methode contient les 
     modal.onDidDismiss().then((result) => {
-     console.log(JSON.stringify(result));
+    //  console.log(JSON.stringify(result));
     this.recupererDetailDunePublication();
     });
     await modal.present();

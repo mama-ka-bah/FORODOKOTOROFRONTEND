@@ -146,7 +146,7 @@ export class NotificationsPage implements OnInit {
       }
       
       this.notificationService.marquerLesNotificationDunUserCommeLus(idNotif, notis).subscribe(data =>{
-        console.log("etat changé");
+        // console.log("etat changé");
       })
   
      // this.donneeService.nombreDeNotificationNonLu.next(0);
@@ -176,7 +176,7 @@ export class NotificationsPage implements OnInit {
     await popover.present();
 
     popover.onDidDismiss().then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
    })
 
   }

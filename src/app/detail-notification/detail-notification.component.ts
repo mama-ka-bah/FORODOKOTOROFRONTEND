@@ -12,7 +12,7 @@ export class DetailNotificationComponent implements OnInit {
 
   constructor(
     public popoverController: PopoverController,
-    private stockService: StocksService,
+    // private stockService: StocksService,
     private navParams: NavParams,
   ) {
     this.notif = this.navParams.get('data');

@@ -80,9 +80,9 @@ onFileChangePermis(event: any) {
     ) {
     //ici je recuperere ces données dans mondata  
     this.mondata = this.navParams.get('data');
-    console.log(this.mondata);
+    // console.log(this.mondata);
     
-    this.myForm.get('produitAgricole')!.valueChanges.subscribe(value => {
+    this.myForm.get('produitAgricole')!.valueChanges.subscribe((value: any) => {
       this.recupererLesSemencesProduitAgricole(value); 
     });
 
@@ -91,14 +91,14 @@ onFileChangePermis(event: any) {
    recupererTousLesProduitsAgricoles(){
     this.produitAgricolesService.recupererParsererelleDunChamp().subscribe(data =>{
       this.lesProduitAgricoleRecuperer = data;
-      console.log("produit agricole " +JSON.stringify(this.lesProduitAgricoleRecuperer));
+      // console.log("produit agricole " +JSON.stringify(this.lesProduitAgricoleRecuperer));
     })
   }
 
   recupererLesSemencesProduitAgricole(idproduit:any){
     this.produitAgricolesService.recupererLesVarietesDunProduitAgricole(idproduit).subscribe(data =>{
       this.lesSemencesPourLeProduitActive = data;
-      console.log("semence " + JSON.stringify(this.lesSemencesPourLeProduitActive));
+      // console.log("semence " + JSON.stringify(this.lesSemencesPourLeProduitActive));
     })
   }
 
@@ -151,7 +151,7 @@ onFileChangePermis(event: any) {
               if (result.isConfirmed) {         
                 this.stocksService.ajouterStock( idVariete, this.currentUser.id, data).subscribe(data =>{
                   this.resultatAjoutStock = data;
-                  console.log(data);
+                  // console.log(data);
 
                   ///si l'ajout du champ a marché
                   if(this.resultatAjoutStock.status == 1){
@@ -193,7 +193,7 @@ onFileChangePermis(event: any) {
         } else {
           this.erreur = true;
           // Afficher une erreur si les données sont manquantes
-          console.log("veuillez remplir tous les champs");
+          // console.log("veuillez remplir tous les champs");
       }
     }
 

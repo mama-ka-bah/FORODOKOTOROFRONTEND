@@ -86,7 +86,7 @@ export class ModifierCommentaireComponent implements OnInit {
             if (result.isConfirmed) {         
               this.communauteService.modifierCommentaire(this.commentaireRecuperer.id, commentaireAEnvoyer).subscribe(data =>{
                 this.resultatAjoutCommentaire = data;
-                console.log(data);
+                // console.log(data);
 
                 ///si l'ajout du champ a marché
                 if(this.resultatAjoutCommentaire.status == 1){
@@ -120,7 +120,7 @@ export class ModifierCommentaireComponent implements OnInit {
       } else {
         this.erreur = true;
         // Afficher une erreur si les données sont manquantes
-        console.log("veuillez remplir tous les champs");
+        // console.log("veuillez remplir tous les champs");
     }
   }
 

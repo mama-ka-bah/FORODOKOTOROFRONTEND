@@ -38,7 +38,7 @@ export class DevenirTransporteurComponent implements OnInit {
     ) {
     //ici je recuperere ces données dans mondata  
     this.mondata = this.navParams.get('data');
-    console.log(this.mondata);
+    // console.log(this.mondata);
    }
 
    //cette fonction permet de fermer le modal
@@ -85,7 +85,7 @@ export class DevenirTransporteurComponent implements OnInit {
       //verifie si le formulaire est valide
       if(this.currentUser.photo != null) {
 
-          console.log("Donnée envoyé avec succès: " + this.myForm.controls.disponibilite.value);
+          // console.log("Donnée envoyé avec succès: " + this.myForm.controls.disponibilite.value);
           // console.log("Donnée envoyé avec succès: " + this.myForm.controls..value);
 
           if(this.myForm.controls.disponibilite.value == "Disponible"){
@@ -110,7 +110,7 @@ export class DevenirTransporteurComponent implements OnInit {
             // Fermer le modal et retourner les données du formulaire à notre page
             this.modalCtrl.dismiss({"photo":this.photoCart, "donneesTransporteur":donneesTransporteur});
 
-         console.log("Donnée envoyé avec succès " + this.myForm.controls.numeroplaque.value);
+        //  console.log("Donnée envoyé avec succès " + this.myForm.controls.numeroplaque.value);
       
          //orrive là lorsque les champs nesont pas validé
         } else {

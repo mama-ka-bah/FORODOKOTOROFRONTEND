@@ -19,7 +19,7 @@ export class InscriptionPage implements OnInit {
 form = new FormGroup({
   username: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
   nomComplet: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
-  email: new FormControl('', [Validators.minLength(3), Validators.maxLength(30),  Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
+  email: new FormControl('', [Validators.minLength(3), Validators.maxLength(100),  Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
   password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]),
   confPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]),
 });
@@ -69,14 +69,12 @@ form = new FormGroup({
         "password":this.form.controls.password.value,
       }]
 
-      console.table(donneesuser);
-
 
        //on fait appel au service de l'incription en lui envoyant les constantes declarées ci-dessus
     this.authentificationService.register(donneesuser).subscribe({
       //on rentre ici lorsque tout se passe bien
       next: data => {
-        console.log(data);
+        // console.log(data);
         //connexion reçue à true
         this.isSuccessful = true;
         //connexion echoué à false
@@ -129,7 +127,7 @@ form = new FormGroup({
     await loading.present();
   
     const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
+    // console.log('Loading dismissed!');
   }
 
 

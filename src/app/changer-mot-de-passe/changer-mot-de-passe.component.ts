@@ -44,7 +44,7 @@ constructor(
   ) {
     //recuperation des données reçu
   this.data = this.navParams.get('data');
-  console.log(this.data);
+  // console.log(this.data);
  }
 
  async closeModal() {
@@ -61,8 +61,8 @@ submitForm() {
     // Fermer le modal et retourner les données du formulaire à notre page
     this.modalCtrl.dismiss({data: this.myForm.value});
 
-     console.log("Donnée envoyé avec succès " + this.myForm.controls.motDePasse.value);
-     console.log("Donnée envoyé avec succès " + this.myForm.controls.motDePasseConfirme.value);
+    //  console.log("Donnée envoyé avec succès " + this.myForm.controls.motDePasse.value);
+    //  console.log("Donnée envoyé avec succès " + this.myForm.controls.motDePasseConfirme.value);
       
      //On arrive là lorsque les champs ne sont pas validés
     } else if (this.myForm.controls.motDePasse.value != this.myForm.controls.motDePasseConfirme.value){

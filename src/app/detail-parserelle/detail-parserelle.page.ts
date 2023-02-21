@@ -267,7 +267,7 @@ signalerUnCultiveCommeNonTerminer(){
   recupererPrevissionsDunCultive(recupererPrevissionsDunCultive:any){
     this.champService.recupererPrevisionDunCultive(this.idDeCultiveActuel).subscribe(data =>{
       this.lesPrevisionsDunCultive = data;
-      console.log(this.lesPrevisionsDunCultive);
+      // console.log(this.lesPrevisionsDunCultive);
     })
   }
 
@@ -353,7 +353,7 @@ signalerUnCultiveCommeNonTerminer(){
 
       //Cette methode contient les 
       modal.onDidDismiss().then((result) => {
-       console.log(JSON.stringify(result));
+      //  console.log(JSON.stringify(result));
        this.ngOnInit();
       });
       await modal.present();

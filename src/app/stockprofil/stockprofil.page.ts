@@ -99,7 +99,7 @@ export class StockprofilPage implements OnInit {
   
       const data1:FormData=new FormData();
   
-      console.log("mon fichier: " + this.file)
+      // console.log("mon fichier: " + this.file)
       data1.append('file', this.file);
       
       Swal.fire({
@@ -136,7 +136,7 @@ export class StockprofilPage implements OnInit {
           if(this.reponseUpdatePhoto.status == 1 ){
 
             setTimeout(() => {
-            console.log("data photo: " + this.reponseUpdatePhoto.message)
+            // console.log("data photo: " + this.reponseUpdatePhoto.message)
            
             this.currentUser.photo = this.reponseUpdatePhoto.message;
 
@@ -145,7 +145,7 @@ export class StockprofilPage implements OnInit {
               this.photo = value;
             });
 
-            console.log(this.currentUser)
+            // console.log(this.currentUser)
             this.storageService.saveUser(this.currentUser);
 
           }, 1000);
@@ -202,11 +202,11 @@ retourner() {
         this.stocksUserActuel = value;
       });
 
-      console.log(this.stocksUserActuel)
+      // console.log(this.stocksUserActuel)
 
       if(this.stocksUserActuel.length === 0){
         this.existe=false;
-        console.log("Je ne suis pas là: " + this.stocksUserActuel.length)
+        // console.log("Je ne suis pas là: " + this.stocksUserActuel.length)
       }else{
         this.existe=true;
         
@@ -237,7 +237,7 @@ retourner() {
 
     //Cette methode contient les 
     modal.onDidDismiss().then((result) => {
-     console.log(JSON.stringify(result));
+    //  console.log(JSON.stringify(result));
      this.ngOnInit();
     });
     await modal.present();

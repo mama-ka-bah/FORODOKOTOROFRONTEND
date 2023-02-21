@@ -31,7 +31,7 @@ export class CultureParserelleComponent implements OnInit {
   doRefresh(event:any) {
     console.log('Begin async operation');
     setTimeout(() => {
-      console.log('Async operation has ended');
+      // console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }
@@ -97,10 +97,10 @@ export class CultureParserelleComponent implements OnInit {
      //ici je recuperere ces données dans mondata  
      this.detailParserelleClique = this.navParams.get('data');
      this.idparserelleEnvoyer = this.navParams.get('data1');
-     console.log("Parserelle envoyer: " + this.detailParserelleClique);
-     console.log("Cultives envoyer: " +JSON.stringify(this.idparserelleEnvoyer));
+    //  console.log("Parserelle envoyer: " + this.detailParserelleClique);
+    //  console.log("Cultives envoyer: " +JSON.stringify(this.idparserelleEnvoyer));
 
-     this.myForm.get('produitAgricole')!.valueChanges.subscribe(value => {
+     this.myForm.get('produitAgricole')!.valueChanges.subscribe((value: any) => {
       this.recupererLesSemencesProduitAgricole(value);
      
     });
@@ -192,14 +192,14 @@ submitForm(){
   recupererTousLesProduitsAgricoles(){
     this.produitAgricolesService.recupererParsererelleDunChamp().subscribe(data =>{
       this.lesProduitAgricoleRecuperer = data;
-      console.log("produit agricole " +JSON.stringify(this.lesProduitAgricoleRecuperer));
+      // console.log("produit agricole " +JSON.stringify(this.lesProduitAgricoleRecuperer));
     })
   }
 
   recupererLesSemencesProduitAgricole(idproduit:any){
     this.produitAgricolesService.recupererLesVarietesDunProduitAgricole(idproduit).subscribe(data =>{
       this.lesSemencesPourLeProduitActive = data;
-      console.log("semence " + JSON.stringify(this.lesSemencesPourLeProduitActive));
+      // console.log("semence " + JSON.stringify(this.lesSemencesPourLeProduitActive));
     })
   }
 

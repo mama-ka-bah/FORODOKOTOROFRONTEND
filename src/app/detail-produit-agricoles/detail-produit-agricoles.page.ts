@@ -68,7 +68,7 @@ retourner() {
   recupererDetailsDunProduitAgricole(){
     this.produitAgricolesService.recupererLesDetailsProduitAgricole(this.idProduitActuel).subscribe(data =>{
       this.detailsProduitsAgricoles = data;
-      console.log(this.detailsProduitsAgricoles)
+      // console.log(this.detailsProduitsAgricoles)
     })
   }
 

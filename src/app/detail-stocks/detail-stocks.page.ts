@@ -160,7 +160,7 @@ ngOnInit() {
   recupererListeAimesDunStock(){
     this.stockService.recupererListeAimesDunStock(this.idStockActuel).toPromise().then(data =>{
       this.listeAimeStock = data;
-      console.log(data);
+      // console.log(data);
     })
   }
 
@@ -181,7 +181,7 @@ ngOnInit() {
 
     this.stockService.aimerUnstock(this.idStockActuel, this.currentUser.id, aimes).subscribe(data =>{
       this.detailsStocks = data;
-      console.log(data)
+      // console.log(data)
     })
 
     // this.recupererDetailStock();
@@ -227,7 +227,7 @@ ngOnInit() {
       await popover.present();
   
       popover.onDidDismiss().then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
      })
 
     }

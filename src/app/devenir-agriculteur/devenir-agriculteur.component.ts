@@ -24,7 +24,7 @@ export class DevenirAgriculteurComponent implements OnInit {
   }
 
   itemSelected(item: string) {
-    console.log("Selected Item", item);
+    // console.log("Selected Item", item);
   }
 
   closePopover() {

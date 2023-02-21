@@ -20,8 +20,8 @@ export class AuthentificationService {
 
   // fonction permettant de gerer la connexion
   login(username: string, password: string): Observable<any> {
-    console.table("username: " + username);
-    console.table("mot de passe" + password);
+    // console.table("username: " + username);
+    // console.table("mot de passe" + password);
     return this.http.post(
       AUTH_API + 'signin',
       {
@@ -39,7 +39,7 @@ export class AuthentificationService {
 
     data.append('donneesuser', JSON.stringify(donneesuser).slice(1,JSON.stringify(donneesuser).lastIndexOf(']')));
 
-    console.log(data);
+    // console.log(data);
     
     return this.http.post(
       AUTH_API + 'signup',

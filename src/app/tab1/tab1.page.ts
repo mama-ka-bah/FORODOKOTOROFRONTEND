@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { MeteoService } from '../services/meteo.service';
-import { Pipe, PipeTransform } from '@angular/core';
 import { StorageService } from '../services/stockage.service';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController, PopoverController } from '@ionic/angular';
@@ -42,16 +41,16 @@ export class Tab1Page implements OnInit{
     public donneesService: DonneesStockerService,
     public loadingController: LoadingController,
     private produitService: ProduitAgricolesService
-    ) {  }
+    ) { 
+      this.presentLoading();
+     }
 
     ionViewDidEnter(){
       this.donneesService.showMenu.next(true);
     }
  
   ngOnInit(): void {
-      this.presentLoading()
       this.getCurrentLocation();
-      this.dismissLoading()
 
     this.recupererTousLesproduitsAgricole();
     
@@ -65,7 +64,7 @@ export class Tab1Page implements OnInit{
 
   async getCurrentLocation() {
     const coordinates = await Geolocation.getCurrentPosition();
-  console.log("latitude: "+ coordinates.coords.latitude + "Longitude:"+ coordinates.coords.longitude);
+  // console.log("latitude: "+ coordinates.coords.latitude + "Longitude:"+ coordinates.coords.longitude);
   this.meteoservice.getWeather(coordinates.coords.latitude, coordinates.coords.longitude).subscribe((data) =>{
     
     this.tmp =  data;
@@ -79,13 +78,13 @@ export class Tab1Page implements OnInit{
     const index = this.ville.indexOf(' ');
     this.ville = this.ville.substring(0, index);
     this.icon = this.tmp.weather[0].icon;
-    console.log(data);
+    // console.log(data);
   })
 
   this.meteoservice.pregetWeather(coordinates.coords.latitude, coordinates.coords.longitude).subscribe(data =>{
     
     this.tmp5jours =  data;
-    console.log("temmmmmmp5jours: " + this.tmp5jours);
+    // console.log("temmmmmmp5jours: " + this.tmp5jours);
     this.tmp_temporaire1 =  Math.round(this.tmp5jours["list"][0]["main"]["temp_max"] - 273.15);
     this.tmp_temporaire2 = Math.round(this.tmp5jours["list"][1]["main"]["temp_max"] - 273.15);
     this.tmp_temporaire3 = Math.round(this.tmp5jours["list"][2]["main"]["temp_max"] - 273.15);
@@ -94,7 +93,7 @@ export class Tab1Page implements OnInit{
     this.tmp_min  = Math.min(this.tmp_temporaire1, this.tmp_temporaire2, this.tmp_temporaire3);
 
 
-    console.log("temp1: " + this.tmp_temporaire1 + "temp1: " + this.tmp_temporaire2 + "temp1: " + this.tmp_temporaire3);
+    // console.log("temp1: " + this.tmp_temporaire1 + "temp1: " + this.tmp_temporaire2 + "temp1: " + this.tmp_temporaire3);
   })
   
   };
