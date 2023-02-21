@@ -61,7 +61,7 @@ export class MarchePage implements OnInit {
   recupererTousStocks(){
     this.stockService.recupererTousLesStocks().subscribe(data => {
       this.lesStocks = data;
-      console.log(this.lesStocks);
+      // console.log(this.lesStocks);
     })
   }
 

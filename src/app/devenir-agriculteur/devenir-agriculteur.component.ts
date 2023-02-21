@@ -38,7 +38,7 @@ export class DevenirAgriculteurComponent implements OnInit {
   
   envoyer() {
 
-    if(this.currentUser.photo != null){
+    if(this.currentUser.photo != null && this.currentUser.adresse != null){
 
       let data = { etat: true};
     this.popoverController.dismiss(data);
@@ -46,7 +46,7 @@ export class DevenirAgriculteurComponent implements OnInit {
     }else {
             Swal.fire({
               icon: 'info',
-              text: 'Veuiilez d\'abord ajouter une photo de profil',
+              text: 'Veuiilez d\'abord ajouter une photo de profil et preciser votre adresse',
               showConfirmButton: true,
               // timer: 2000,
               heightAuto:false,

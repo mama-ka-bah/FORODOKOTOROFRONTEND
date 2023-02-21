@@ -68,7 +68,7 @@ export class TransporteursPage implements OnInit {
   recupererTousLesTransporteurs(){
     this.userService.recupererTousLesTransporteur().subscribe(data =>{
       this.tousLestransporteurs = data;
-      console.log(this.tousLestransporteurs)
+      // console.log(this.tousLestransporteurs)
     })
   }
 

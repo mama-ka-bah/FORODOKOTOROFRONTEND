@@ -83,7 +83,7 @@ export class DevenirTransporteurComponent implements OnInit {
     submitForm() {
 
       //verifie si le formulaire est valide
-      if(this.currentUser.photo != null) {
+      if(this.currentUser.photo != null && this.currentUser.adresse != null) {
 
           // console.log("Donnée envoyé avec succès: " + this.myForm.controls.disponibilite.value);
           // console.log("Donnée envoyé avec succès: " + this.myForm.controls..value);
@@ -117,16 +117,11 @@ export class DevenirTransporteurComponent implements OnInit {
           this.erreur = true;
           Swal.fire({
             icon: 'info',
-            text: 'Veuiilez d\'abord ajouter une photo de profil',
+            text: 'Veuiilez d\'abord ajouter une photo de profil et preciser votre adresse',
             showConfirmButton: true,
             // timer: 2000,
             heightAuto:false,
           })
       }
     }
- 
-
-
-
-
 }

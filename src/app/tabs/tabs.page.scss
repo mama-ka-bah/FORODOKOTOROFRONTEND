@@ -53,3 +53,17 @@
    font-weight: unset; 
 }
 
+:host {
+
+  --padding-end: 0;
+
+  --padding-start: 0; 
+ 
+}
+
+.button-native {
+
+  padding-inline-start: inherit!important; 
+  padding-inline-end: inherit!important; 
+}
+

@@ -66,13 +66,11 @@ export class TabsPage implements OnInit{
 
     // alert(this.currentUser.nomcomplet)
 
-    this.notificationService.recupererNotificationNonLuDunUser(this.currentUser.id).subscribe(data =>{
-      this.nombreDeNotificationNonLu = data;
-      // alert(data)
-      this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
+    // this.notificationService.recupererNotificationNonLuDunUser(this.currentUser.id).subscribe(data =>{
+    //   this.nombreDeNotificationNonLu = data;
+    //   this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
      
-    })
-
+    // })
 
    }
 
@@ -93,6 +91,13 @@ export class TabsPage implements OnInit{
     this.donneesService.showMenu$.subscribe(value => {
       this.conditionAfichageMenu = value;
     });
+
+
+    this.notificationService.recupererNotificationNonLuDunUser(this.currentUser.id).subscribe(data =>{
+      this.nombreDeNotificationNonLu = data;
+      this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
+     
+    })
 
 
     this.donneesService.photoProfil$.subscribe(value => {

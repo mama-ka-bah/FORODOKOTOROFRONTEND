@@ -11,8 +11,6 @@ export class NotificationService {
 
   constructor(private http: HttpClient) { }
 
-
-  
   //permet de recuperer le nombre de notification non lu
   recupererNotificationNonLuDunUser(idUser:any): Observable<any> {
     return this.http.get(AUTH_API + `recupererNombreDeNotificationNonLuDunUser/${idUser}`);
@@ -33,20 +31,15 @@ recupererNotificationLuUser(idUser:any): Observable<any> {
   return this.http.get(AUTH_API + `recupererLesNotificationLuDunUser/${idUser}`);
 }
 
-
 //permet de mettre à jour une notification
 marquerLesNotificationDunUserCommeLus(idnotif:any, notifications:any): Observable<any> {
   return this.http.patch(AUTH_API + `modifier/${idnotif}`, notifications);
 }
-
 
 //permet de mettre à jour le profil de l'utilisateur
 marquerUneNotificationDunUserCommeLus(idUser:any, notifications:any): Observable<any> {
   return this.http.patch(AUTH_API + `marquerlesNotificationdunusercommelus/${idUser}`, notifications
   );
 }
-
-
-
 
 }
