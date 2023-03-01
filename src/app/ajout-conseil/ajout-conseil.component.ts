@@ -78,14 +78,10 @@ onFileChangePermis(event: any) {
 
   constructor(
     //params est utiliser pour recuperer des données envoyées à ce composant
-    private navParams: NavParams,
     private modalCtrl: ModalController,
-    private champService: ChampService,
     private storageService: StorageService,
     private router : Router,
     public navCtrl: NavController,
-    private produitAgricolesService: ProduitAgricolesService,
-    private stocksService: StocksService,
     private communauteService: CommunauteService,
     private chargementService: ChargementService
     ) {}
@@ -173,9 +169,6 @@ onFileChangePermis(event: any) {
             })
 
 
-
-
-           
 
       
          //orrive là lorsque les champs nesont pas validé

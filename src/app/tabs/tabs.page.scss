@@ -4,6 +4,8 @@
     --color:#000;
     --color-selected: #14AE5C;
     padding: 5px 5px 5px 0;
+
+    display: flex;justify-content: space-around;
 }
 
 .tabulation{
@@ -61,9 +63,5 @@
  
 }
 
-.button-native {
 
-  padding-inline-start: inherit!important; 
-  padding-inline-end: inherit!important; 
-}
 

@@ -20,7 +20,6 @@ export class DetailNotificationComponent implements OnInit {
 
   ngOnInit() {}
 
-  
   closePopover() {
     this.popoverController.dismiss();
   }

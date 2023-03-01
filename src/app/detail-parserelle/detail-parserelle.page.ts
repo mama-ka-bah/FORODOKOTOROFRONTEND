@@ -1,15 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NavController, ModalController, PopoverController, IonModal, LoadingController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { ModalController, PopoverController, IonModal, LoadingController } from '@ionic/angular';
 import { AjouterPhaseCultiveComponent } from '../ajouter-phase-cultive/ajouter-phase-cultive.component';
 import { CultureParserelleComponent } from '../culture-parserelle/culture-parserelle.component';
-import { DetailsChampsPage } from '../details-champs/details-champs.page';
-import { AgriculteurService } from '../services/agriculteur.service';
 import { ChampService } from '../services/champ.service';
-import { DonneesStockerService } from '../services/donnees-stocker.service';
-import { MeteoService } from '../services/meteo.service';
 import { StorageService } from '../services/stockage.service';
-import { OverlayEventDetail } from '@ionic/core/components';
 import { DetailPhaseCultiveComponent } from '../detail-phase-cultive/detail-phase-cultive.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ChargementService } from '../services/chargement.service';
@@ -54,15 +49,10 @@ export class DetailParserellePage implements OnInit {
 
   constructor(
     private routes : ActivatedRoute,
-    private router : Router,
     private storageService : StorageService,
-    private navCtrl: NavController,
-    private donneesService: DonneesStockerService,
     private modalCtrl: ModalController,
-    private agriculteurService: AgriculteurService,
     public popoverController: PopoverController,
     private champService: ChampService,
-    private meteoservice: MeteoService,
     private chargementServie: ChargementService,
     public loadingController: LoadingController
     // private cultureParserelle: CultureParserelleComponent
@@ -83,7 +73,7 @@ submitForm1() {
 
   if(this.myForm.valid) {
       Swal.fire({
-        text: 'Etes vous sur d\'ajouter cette parserelle',
+        text: 'Etes vous sur d\'ajouter cette culture',
         // showDenyButton: true,
         confirmButtonText: 'Envoyer',
         denyButtonText: `Annuler`,
@@ -229,7 +219,7 @@ signalerUnCultiveCommeNonTerminer(){
     this.idDeCultiveActuel = this.detailDunCutive.id;
     this.recolterealise = this.detailDunCutive.recolterealise;
 
-    if(this.detailDunCutive.status == "TERMINER"){
+    if(this.detailDunCutive.status === "TERMINER"){
       this.etatFinission = true;
     }else{
       this.etatFinission == false;

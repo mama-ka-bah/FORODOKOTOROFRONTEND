@@ -27,6 +27,46 @@ export class AgriculteurService {
     return this.http.post( AUTH_API + `devenirtransporteur/${id}`, data);
   }
 
+  contacterTransporteur(transporteur:any, utilisateur:any): Observable<any>{
+    return this.http.get( AUTH_API + `contactertransporteur/${transporteur}/${utilisateur}`, {});
+  }
+
+  accepterReservation(reservationId:any): Observable<any>{
+    return this.http.post( AUTH_API + `acceptereservation/${reservationId}`, {});
+  }
+
+  rejeterReservation(reservationId:any): Observable<any>{
+    return this.http.post( AUTH_API + `rejetereservation/${reservationId}`, {});
+  }
+  mettrefinReservation(reservationId:any, transporteurId:any): Observable<any>{
+    return this.http.post( AUTH_API + `mettrefinreservation/${reservationId}/${transporteurId}`, {});
+  }
+
+
+  recupererReservationEncours(transId:any): Observable<any>{
+    return this.http.get( AUTH_API + `recupererlesreservationencoursduntransporteur/${transId}`);
+  }
+
+  
+  lesReservationEncours(transporteur:any): Observable<any>{
+    return this.http.get( AUTH_API + `reservationenreencoursansporteur/${transporteur}`);
+  }
+
+  lesReservationEnAttente(transporteur:any): Observable<any>{
+    return this.http.get( AUTH_API + `reservationenattentetransporteur/${transporteur}`);
+  }
+
+  lesReservationRejeter(transporteur:any): Observable<any>{
+    return this.http.get( AUTH_API + `reservationenrejetertransporteur/${transporteur}`);
+  }
+
+  lesReservationAccepter(transporteur:any): Observable<any>{
+    return this.http.get( AUTH_API + `reservationacceptetransporteur/${transporteur}`);
+  }
+
+  lesReservationTerminer(transporteur:any): Observable<any>{
+    return this.http.get( AUTH_API + `reservationenterminertransporteur/${transporteur}`);
+  }
 
   devenirAgriculteur(user:any): Observable<any> {
     const data:FormData=new FormData();

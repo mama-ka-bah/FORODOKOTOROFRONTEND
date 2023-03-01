@@ -12,10 +12,10 @@
     </div>
 
     <form div class="formulaire"
-    [formGroup]="form" (ngSubmit)="onSubmit()"
+    [formGroup]="form" (ngSubmit)="onSubmit()" #f="ngForm"
     >
       <div class="input">
-        <label>Numéro de télephone</label>
+        <label>Numéro de téléphone</label>
         <input class="telephone-input" type="tel" class="form-control" placeholder="82644606" formControlName="username"
         [ngClass]="{'is-invalid': form.get('username')!.invalid && form.get('username')!.touched}"
         [ngClass]="{'is-valid': form.get('username')!.valid && form.get('username')!.touched}"
@@ -35,9 +35,9 @@
         Mot de passe oublié ?
       </div>
 
-      <!-- <div *ngIf="form.valid && envoyer && isLoginFailed" class="alert alert-danger" role="alert"> -->
+      <!-- <div *ngIf="form.valid && isLoginFailed" class="alert alert-danger" role="alert"> -->
         <!-- Login failed: {{ errorMessage }} -->
-        <span class="erreur" *ngIf="form.valid && envoyer && isLoginFailed">Numero ou Mot de passe incorrect</span>
+        <span class="erreur" *ngIf="f.submitted  && !isLoggedIn">Numéro ou Mot de passe incorrect</span>
       <!-- </div> -->
 
       <div class="input">
@@ -47,13 +47,13 @@
 
       <div class="autres-options">
 
-        <div style="display: flex; flex-direction: row; gap: 10px; align-items: center; margin-bottom: 10px;">
-          <label style="margin-bottom: 0;" >Se souvenir de moi</label>
+        <div style=" margin-bottom: 10px;">
+          <label style="margin-bottom: 0; width: 150px;" >Se souvenir de moi</label>
           <input type="checkbox"  formControlName="sesouvenir" style="border-color: #14AE5C;">
         </div>
         
         <div style="font-size: 14px;">
-          Vous n’avez pas de compte ? <span class="inscription" routerLink="/inscription">Inscription</span>
+          Vous n’avez pas de compte ? <span (click)=" renitialiserFormulaire()" class="inscription" routerLink="/inscription">Inscription</span>
         </div>
       </div>
       

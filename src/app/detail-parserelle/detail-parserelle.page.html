@@ -31,7 +31,7 @@
         <ion-accordion value="first">
           <ion-item slot="header" color="#000">
             <!-- <ion-label>First Accordion</ion-label> -->
-            <div class="accesprevision">Consulter les smulations</div>
+            <div class="accesprevision">Consulter les simulations</div>
           </ion-item>
           <div class="ion-padding" slot="content">
             <div class=""
@@ -132,7 +132,7 @@
         <thead>
           <tr>
             <th>Action</th>
-            <th>Debut</th>
+            <th>Début</th>
             <th>Fin</th>
             <th>Details</th>
           </tr>
@@ -184,7 +184,7 @@
 
       <div class="input">
         <label>Recolte Réalisé<span class="obligatoire">*</span></label>
-        <input class="telephone-input" type="number" min="1" class="form-control" placeholder=" 2 en (kg)" formControlName="recolte"
+        <input class="telephone-input" type="number" min="0" class="form-control" placeholder=" 2 en (kg)" formControlName="recolte"
         
         [ngClass]="{'is-invalid': myForm1.get('recolte')!.invalid && myForm1.get('recolte')!.touched}"
         [ngClass]="{'is-valid': myForm1.get('recolte')!.valid && myForm1.get('recolte')!.touched}"

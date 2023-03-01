@@ -34,7 +34,7 @@ lesSemencesPourLeProduitActive:any
 
   //l'objet form froup lié à mon formulaire dans le template
   myForm = new FormGroup({
-    nom: new FormControl('',  [Validators.required, Validators.minLength(2), Validators.minLength(255)]),
+    nom: new FormControl('',  [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
     nombrekilo: new FormControl('',  [Validators.required, Validators.min(10), Validators.max(100000000)]),
 
     prixkilo: new FormControl('', [Validators.required, Validators.min(10), Validators.max(1000000000)]),

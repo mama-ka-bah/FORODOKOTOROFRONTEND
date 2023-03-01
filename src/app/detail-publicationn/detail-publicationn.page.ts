@@ -2,16 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, ModalController, PopoverController } from '@ionic/angular';
 import { CommentairesComponent } from '../commentaires/commentaires.component';
-import { AgriculteurService } from '../services/agriculteur.service';
-import { ChampService } from '../services/champ.service';
 import { CommunauteService } from '../services/communaute.service';
-import { DonneesStockerService } from '../services/donnees-stocker.service';
-import { MeteoService } from '../services/meteo.service';
 import { StorageService } from '../services/stockage.service';
-import { StocksService } from '../services/stocks.service';
 import { Browser } from '@capacitor/browser';
 import Swal from 'sweetalert2';
-import { ModifierProfilComponent } from '../modifier-profil/modifier-profil.component';
 import { ModifierPublicationComponent } from '../modifier-publication/modifier-publication.component';
 import { ModifierCommentaireComponent } from '../modifier-commentaire/modifier-commentaire.component';
 
@@ -48,13 +42,8 @@ export class DetailPublicationnPage implements OnInit {
     private router : Router,
     private storageService : StorageService,
     private navCtrl: NavController,
-    private donneesService: DonneesStockerService,
     private modalCtrl: ModalController,
-    private agriculteurService: AgriculteurService,
     public popoverController: PopoverController,
-    private champService: ChampService,
-    private meteoservice: MeteoService,
-    private stockService: StocksService,
     private communauteService:CommunauteService,
 
 
@@ -92,8 +81,6 @@ retourner() {
       // console.log(data)
     })
   }
-
-  
       //popup permettant d'ajouter un commentaire
       async ajouterCommentaire(ev: any) {
         const popover = await this.popoverController.create({
@@ -114,9 +101,6 @@ retourner() {
        })
   
       }
-
-
-
 
       
       //popup permettant modifier un commentaire
@@ -148,10 +132,6 @@ retourner() {
           this.detailPublication = data;
           // console.log(data)
         })
-    
-        // this.recupererDetailStock();
-        //this.recupererListeAimesDunStock();
-       
     
       }
 

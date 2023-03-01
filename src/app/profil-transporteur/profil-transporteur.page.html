@@ -66,14 +66,64 @@
             </div>
           </div>
 
-          <div *ngIf="currentUser.nombrecontact != null" class="mail">
+          <div class="mail">
             <div class="libelle">
-              <p>Nombre de contact: </p>
+              <p>Nombre de reservation: </p>
             </div>
             <div class="valeur">
-              <p style="padding: 0;">{{currentUser.nombrecontact}}</p>
+              <p style="padding: 0; color: #14AE5C;">{{reservations?.length}}</p>
             </div>
           </div>
+
+          <div class="mail">
+            <div class="libelle">
+              <p>Reservation en cours: </p>
+            </div>
+            <div class="valeur">
+              <p style="padding: 0; color: #14AE5C;">{{Rencours?.length}}</p>
+            </div>
+          </div>
+
+
+          <div class="mail">
+            <div class="libelle">
+              <p>Reservation Accepeter: </p>
+            </div>
+            <div class="valeur">
+              <p style="padding: 0; color: #14AE5C;">{{Raccepter?.length}}</p>
+            </div>
+          </div>
+
+          <div class="mail">
+            <div class="libelle">
+              <p>Reservation en attente: </p>
+            </div>
+            <div class="valeur">
+              <p style="padding: 0; color: #14AE5C;">{{RenAttente?.length}}</p>
+            </div>
+          </div>
+
+          <div class="mail">
+            <div class="libelle">
+              <p>Reservation en terminée: </p>
+            </div>
+            <div class="valeur">
+              <p style="padding: 0; color: #14AE5C;">{{Rterminer?.length}}</p>
+            </div>
+          </div>
+
+          
+          <div class="mail">
+            <div class="libelle">
+              <p>Reservation rejetée: </p>
+            </div>
+            <div class="valeur">
+              <p style="padding: 0; color: #14AE5C;">{{Rrejeter?.length}}</p>
+            </div>
+          </div>
+
+
+
   
           <!-- <div class="bouttons">
             <ion-button class="modifier" type="submit" expand="block">Modifier</ion-button>
@@ -90,6 +140,72 @@
           <!-- <ion-button class="contacter" type="submit" expand="block">Contacter</ion-button> -->
 
         </div> 
+
+
+           <!-- debut de prevision -->
+      <ion-accordion-group (ionChange)="accordionGroupChange($event)" style="width: 100%;">
+        <ion-accordion value="first">
+          <ion-item slot="header" color="#000">
+            <!-- <ion-label>First Accordion</ion-label> -->
+            <div class="accesprevision">Consulter les simulations</div>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <div class=""
+              style="height: 20% !important; border-radius: 2px; margin-bottom: 2%; box-shadow: 0 5px 5px -5px" *ngFor="let reservation of reservations">
+              <ion-accordion-group (ionChange)="accordionGroupChange($event)" >
+                <ion-accordion value="first" style="margin-bottom: 1% !important;" *ngIf="reservation.status == 'ENCOURS' || reservation.status == 'ACCEPTER'" >
+                  <ion-item slot="header" color="#000" [ngClass]="{'active': reservation.status == 'ACCEPTER'}">
+                    <!-- <ion-label>First Accordion</ion-label> -->
+                    <div class="accesprevision" style="font-size: 1em;" >{{reservation.reserveur.nomcomplet}}</div>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <div class="elementPrevision">
+                      <div class="elementPrevision">
+                        <div class="libellePre">
+                          Date
+                        </div>
+                        <div class="valeur">
+                          {{reservation.datereservation | date: 'dd/MM/yyyy HH:mm'}}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="elementPrevision">
+                      <div class="elementPrevision">
+                        <div class="libellePre">
+                          Téléphone
+                        </div>
+                        <div class="valeur">
+                          {{reservation.reserveur.username}}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="elementPrevision">
+                      <button *ngIf="reservation.status == 'ENCOURS'" class="boutton" expand="block" (click)="accepterReservation(reservation.id)">Accepter</button>
+                      <button *ngIf="reservation.status == 'ENCOURS'" class="boutton" expand="block" (click)="rejeterReservation(reservation.id)">Refuser</button>
+                      <button *ngIf="reservation.status == 'ACCEPTER'" class="boutton" expand="block" (click)="mettreFinReservation(reservation.id)">Terminer</button>
+                    </div>
+                           
+                  </div>
+                 
+                </ion-accordion>
+
+              </ion-accordion-group>
+
+            </div>
+            <div class="vide" *ngIf="vide">Aucune reservation en cours</div>
+           
+          </div>
+
+         
+        </ion-accordion>
+
+      </ion-accordion-group>
+
+
+
+
       </div>
 
 

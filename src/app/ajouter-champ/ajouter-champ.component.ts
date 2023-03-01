@@ -33,8 +33,8 @@ export class AjouterChampComponent implements OnInit {
     longueur: new FormControl('',  [Validators.required, Validators.min(10), Validators.max(10000000)]),
     largeur: new FormControl('', [Validators.required, Validators.min(10), Validators.max(10000000)]),
     adresse: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    longitude: new FormControl('', [Validators.required, Validators.min(10), Validators.max(100000000)]),
-    latitude: new FormControl('', [Validators.required,Validators.min(10), Validators.max(100000000)]),
+    longitude: new FormControl('', [Validators.required, Validators.min(-100000000), Validators.max(100000000)]),
+    latitude: new FormControl('', [Validators.required, Validators.min(-100000000), Validators.max(100000000)]),
     
     file: new FormControl('', [Validators.required]),
     fileSource: new FormControl('', [Validators.required])
@@ -56,7 +56,6 @@ onFileChangePermis(event: any) {
       fileSource: file
 
     });
-
   }
 }
 

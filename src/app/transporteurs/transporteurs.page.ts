@@ -6,6 +6,9 @@ import { DonneesStockerService } from '../services/donnees-stocker.service';
 import { StorageService } from '../services/stockage.service';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import Swal from 'sweetalert2';
+import { PhoneCall } from "capacitor-plugin-phone-call";
+import { AgriculteurService } from '../services/agriculteur.service';
+import { ChargementService } from '../services/chargement.service';
 
 @Component({
   selector: 'app-transporteurs',
@@ -13,14 +16,18 @@ import Swal from 'sweetalert2';
   styleUrls: ['./transporteurs.page.scss'],
 })
 export class TransporteursPage implements OnInit {
-  tousLestransporteurs:any
+  tousLestransporteurs:any;
+  currentUser:any;
+  reponsecontact:any;
 
   constructor(
     private donneesService: DonneesStockerService,
     private storageService : StorageService,
     private router : Router,
     private userService: AuthentificationService,
-    private callNumber: CallNumber
+    private callNumber: CallNumber,
+    private transporteurService: AgriculteurService,
+    private chargementChervice: ChargementService
     ) { 
       const currentUrl = this.router.url;
       const pageName = currentUrl.split('/')[1];
@@ -34,24 +41,63 @@ export class TransporteursPage implements OnInit {
   filterTerm:any;
 
 
-    async appelle(phoneNumber: string) {
+    async appelle(phoneNumber: string, idTrans:any) {
 
       Swal.fire({
-        text: 'Vous êtes sur le point d\'appeler ce transporteur',
+        text: 'Vous êtes sur le point de reserver ce transporteur',
         showDenyButton: true,
-        confirmButtonText: 'Appeler',
+        confirmButtonText: 'Reserver',
         denyButtonText: `Annuler`,
         heightAuto:false,
         position:'center'
       }).then((result) => {
-        if (result.isConfirmed) {                      
-              this.callNumber.callNumber(phoneNumber, true)
-          .then(res => console.log('Launched dialer!', res))
-          .catch(err => console.log('Error launching dialer', err));            
+        if (result.isConfirmed) {    
+          this.contacterTransporteur(idTrans);                  
+          //     this.callNumber.callNumber(phoneNumber, true)
+          // .then(res => console.log('Launched dialer!', res))
+          // .catch(err => console.log('Error launching dialer', err));    
+          // PhoneCall.start({ phone:  phoneNumber});  
+          if(this.reponsecontact.status == 1)      {
+            Swal.fire({
+              icon: 'success',
+              text: "Reservation éffectuée",
+              showConfirmButton: true,
+              // timer: 3000,
+              customClass: {
+                container: 'small-text'
+              },
+              heightAuto:false,
+            })
+          }
             }
             
           })                
     }
+
+
+    contacterTransporteur(idTrans:any){
+      this.chargementChervice.presentLoading();
+      this.transporteurService.contacterTransporteur(idTrans, this.currentUser.id).subscribe(data =>{
+        this.reponsecontact =  data;
+
+        this.chargementChervice.dismissLoading();
+        
+        if(this.reponsecontact.status == 1){
+          Swal.fire({
+            icon: 'success',
+            text: "Reservation éffectuée",
+            showConfirmButton: true,
+            // timer: 3000,
+            customClass: {
+              container: 'small-text'
+            },
+            heightAuto:false,
+          })
+        }
+
+      })
+    }
+
 
     ionViewDidEnter(){
       this.donneesService.showMenu.next(true);
@@ -59,6 +105,7 @@ export class TransporteursPage implements OnInit {
     }
 
   ngOnInit() {
+    this.currentUser = this.storageService.getUser();
     this.donneesService.showMenu.next(true);
     this.donneesService.setpageActuel("Transporteurs");
     this.recupererTousLesTransporteurs();

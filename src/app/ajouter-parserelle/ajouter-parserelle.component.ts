@@ -65,9 +65,9 @@ lesChampDeCurrentUser:any
     private storageService: StorageService,
     private router : Router,
     ) {
+      
     //ici je recuperere ces données dans mondata  
     this.mondata = this.navParams.get('data');
-    // console.log(this.mondata);
    }
 
    //cette fonction permet de fermer le modal
@@ -110,7 +110,7 @@ lesChampDeCurrentUser:any
 
 
             Swal.fire({
-              text: 'Etes vous sur d\'ajouter cette parserelle',
+              text: 'Etes vous sur d\'ajouter cette parcelle',
               showDenyButton: true,
               // showCancelButton: true,
               confirmButtonText: 'Envoyer',
@@ -146,16 +146,12 @@ lesChampDeCurrentUser:any
                       heightAuto:false,
                     })
                   }
-                  
                 })
               } 
             })
-      
          //orrive là lorsque les champs nesont pas validé
         } else {
           this.erreur = true;
-          // Afficher une erreur si les données sont manquantes
-          // console.log("veuillez remplir tous les champs");
       }
     }
 

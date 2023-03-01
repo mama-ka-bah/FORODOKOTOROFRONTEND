@@ -104,7 +104,6 @@ export class NotificationsPage implements OnInit {
 
   }
 
-
   //permet de recuperer le nombre de notification d'un user
   recupererNombreDENotifNonLus(){
     //on recuperer le nombre de notification

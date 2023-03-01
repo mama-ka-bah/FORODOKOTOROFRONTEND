@@ -32,7 +32,7 @@
   
               <span class="erreur" *ngIf="myForm!.get('nom')!.hasError('required') && myForm.get('nom')!.touched">Cet champ est obligatoire</span>
               <span class="erreur" *ngIf="myForm.get('nom')!.hasError('minlength') && myForm.get('nom')!.touched">Nom court</span>
-              <span class="erreur" *ngIf="myForm.get('nom')!.hasError('maxlength') && myForm.get('nom')!.touched">Nom court</span>
+              <span class="erreur" *ngIf="myForm.get('nom')!.hasError('maxlength') && myForm.get('nom')!.touched">Nom long</span>
 
   
             </div>

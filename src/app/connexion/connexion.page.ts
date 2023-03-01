@@ -195,6 +195,8 @@ codeRetourne: any;
 
 
   ngOnInit() {
+    this.isLoggedIn = false;
+    this.isLoginFailed = false;
 
     //ici on verifie si l'utilisateur existe
     if (this.storageService.isLoggedIn()) {
@@ -212,10 +214,6 @@ codeRetourne: any;
       this.password = passwordDansLocalStorage;
       this.authentification(this.username, this.password);
     }
-
-   
-
-
   }
 
 // });
@@ -235,26 +233,36 @@ codeRetourne: any;
     sesouvenir: new FormControl(false),
   });
 
+  renitialiserFormulaire(){
+    this.form.reset();
+  }
+
 //boolean utiliser pour verifier si l'utilisateur est connecter ou pas
 isLoggedIn = false;
 //boolean utiliser pour verifier si la connexion a marché ou pas
 isLoginFailed = false;
+
+bool = false;
+
 //variavble utilisée pour stocker les messages d'erreur
 errorMessage = '';
 //cette variable va stocker les données de l'utilisateur
 roles: string[] = [];
 
 onSubmit(): void {
-
+  // this.bool = true;
   this.envoyer = true;
+  this.isLoggedIn = true;
+ 
 
   this.username = this.form.controls.username.value;
   this.password = this.form.controls.password.value;
 
   if(this.form.valid){
-    this.router.navigateByUrl('/tabs/tab1');
-
    this.authentification(this.username, this.password);    
+    //  this.renitialiserFormulaire();
+   //this.router.navigateByUrl('/tabs/tab1');
+
   }
 
 }
@@ -265,13 +273,15 @@ authentification(username:any, password:any){
       this.authentificationService.login(username, password).subscribe({
         //on arrive là s'il y a pas déerreur
         next: data => {
-  
           if(data.etat == true){
+            this.renitialiserFormulaire()
             //si la connexion s'est bien passé on enregistre les données de l'utilisateur dans sessionStorage
           this.storageService.saveUser(data);
           //Et on attribut des données réelles à ces differents bollean
           this.isLoginFailed = false;// on precise que l'authentification n'a pas echouer
           this.isLoggedIn = true; //on met le boolean est connecte à true
+        
+          // alert(this.isLoggedIn)
           this.roles = this.storageService.getUser().roles;// on recuperes les differentes roles de l'utilisateurs
 
           this.donneesService.rolesUser.next(data.roles);
@@ -292,6 +302,7 @@ authentification(username:any, password:any){
             const user = {
               "sesouvenir":true
             }
+
             this.authentificationService.modifierProfilUtilisateur(data.id, user).subscribe(value1 =>{
             //  console.log(value1);
             })
@@ -345,8 +356,6 @@ authentification(username:any, password:any){
               }
   
               this.storageService.SaveJwts(jwts);
-  
-              this.form.reset(); 
 
               this.router.navigateByUrl('/tabs/tab1');
             })
@@ -359,6 +368,10 @@ authentification(username:any, password:any){
           this.errorMessage = err.error.message;
           //et on met est authentifié à false
           this.isLoginFailed = true;
+
+          this.isLoggedIn = false; //on met le boolean est connecte à true
+          this.bool = true;
+          // alert("true");
         }
       });
 }

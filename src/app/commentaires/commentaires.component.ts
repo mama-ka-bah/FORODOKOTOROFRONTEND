@@ -29,14 +29,8 @@ export class CommentairesComponent implements OnInit {
     private router : Router,
     private navParams: NavParams,
     private storageService : StorageService,
-    private navCtrl: NavController,
-    private donneesService: DonneesStockerService,
     private modalCtrl: ModalController,
-    private agriculteurService: AgriculteurService,
     public popoverController: PopoverController,
-    private champService: ChampService,
-    private meteoservice: MeteoService,
-    private stockService: StocksService,
     private communauteService: CommunauteService
   ) {
       //ici je recuperere ces données dans envoyer au modal()  
@@ -46,7 +40,7 @@ export class CommentairesComponent implements OnInit {
   
     //l'objet form froup lié à mon formulaire dans le template
     myForm = new FormGroup({
-      description: new FormControl('', [Validators.required, Validators.minLength(25), Validators.maxLength(255)]),
+      description: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       lien: new FormControl('',  [Validators.minLength(5), Validators.maxLength(160)]),
     });
 

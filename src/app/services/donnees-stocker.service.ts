@@ -11,7 +11,7 @@ import { StorageService } from './stockage.service';
 })
 export class DonneesStockerService{
 
-  public enteteAccueil="Forodokotoro";
+  public enteteAccueil="FORODÔKÔTÔRÔ";
   public enteteMarche="Marché";
   public enteteAgriculture="Agriculture";
   public enteteTransporteur="Transporteurs"
@@ -51,14 +51,12 @@ export class DonneesStockerService{
   //le role de l'user
   public nombreDeNotificationNonLu = new BehaviorSubject<any>(null);
   public nombreDeNotificationNonLu$ = this.nombreDeNotificationNonLu.asObservable();
-
-
   
   //le role de l'user
   public photoProfil = new BehaviorSubject<any>(null);
   public photoProfil$ = this.photoProfil.asObservable();
 
-  pageActuel = "FORODOKOTORO";
+  pageActuel = "FORODÔKÔTÔRÔ";
 
   currentUrl= "";
   resultatFermetureCompte: any;
@@ -81,7 +79,7 @@ export class DonneesStockerService{
   }
 
   public reccupererTitreAccueil(){
-    this.headerTitle.next("FORODOKOTORO");
+    this.headerTitle.next("FORODÔKÔTÔRÔ");
   }
   public reccupererTitreAgriculture(){
     this.headerTitle.next("AGRICULTURE");

@@ -154,3 +154,49 @@
   top: -15px!important;
 }
 //fin su style
+
+
+  //style des bouttons d'action
+.boutton{
+    --background:#fff;
+    --border-color:#14AE5C;
+    --border-radius: 20px;
+    color: #14AE5C;
+    font-weight: bold;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: #fff;
+  }
+
+  .accesprevision{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+
+
+  .elementPrevision{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 10px 0;
+    width: 100%;
+    padding-bottom: 3px;
+  }
+  .libellePre{
+    font-weight: bold;
+  }
+
+  .active{
+    background-color: #14AE5C;
+    color: #fff;
+  }
+  .vide{
+    display: flex;
+    justify-content: center;
+    color: #14AE5C;
+  }
+ 

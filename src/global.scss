@@ -121,6 +121,38 @@ ion-popover ion-content {
      margin: 0; 
 }
 
+*:hover{
+  color: none !important;
+}
+
+.button-native {
+  padding-inline-start: inherit!important; 
+  padding-inline-end: inherit!important; 
+}
+
+ion-back-button:hover{
+  color: #fff;
+}
+
+ion-back-button{
+  color: #fff;
+}
+ion-button:hover {
+  background-color: none;
+}
+
+ion-button.selected {
+  background-color: none;
+}
+
+
+ion-button:hover{
+  color: #fff;
+}
+
+ion-button{
+  color: #fff;
+}
 
 
 

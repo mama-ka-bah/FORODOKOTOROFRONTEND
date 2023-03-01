@@ -94,8 +94,7 @@
           </ion-col>
         </ion-row>
 
-        <pagination-controls (pageChange)="p = $event" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
-
+          <pagination-controls (pageChange)="p = $event" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
 
         <div *ngIf="lesStocks.length === 0" class="vide">PAS DE STOCKS</div>
       </div>

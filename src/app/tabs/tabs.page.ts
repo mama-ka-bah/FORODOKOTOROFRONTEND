@@ -213,7 +213,7 @@ verifierExistancePhotoProfil(){
 
     switch (this.currentUrl) {
       case '/tabs/tab1':
-        this.headerTitle = 'FORODOKOTORO';
+        this.headerTitle = 'FORODÔKÔTÔRÔ';
         break;
       case '/tabs/produit-agricoles':
         this.headerTitle = 'AGRICULTURE';
