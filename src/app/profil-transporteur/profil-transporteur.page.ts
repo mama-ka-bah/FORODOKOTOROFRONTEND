@@ -33,6 +33,10 @@ export class ProfilTransporteurPage implements OnInit {
   RenAttente:any;
   Rterminer:any;
   Rencours:any;
+  agriculteur:boolean | undefined;
+  rolutilisateur: string[] = [];
+
+  transporteur:boolean | undefined;
 
 
   constructor(
@@ -43,7 +47,7 @@ export class ProfilTransporteurPage implements OnInit {
     private agriculteurService: AgriculteurService,
     private chargementService: ChargementService
 
-    ) { }
+    ) {}
 
 
     ionViewWillEnter(){
@@ -374,7 +378,24 @@ submitForm() {
 
 
   ngOnInit() {
+
     this.currentUser = this.storageService.getUser();
+    this.rolutilisateur = this.currentUser.roles;
+
+    console.log(this.rolutilisateur)
+         
+    if(this.rolutilisateur.includes("ROLE_AGRIGULTEUR")){
+      this.agriculteur = true;
+    }else{
+      this.agriculteur = false;
+    }
+
+    if(this.rolutilisateur.includes("ROLE_TRANSPORTEUR")){
+      this.transporteur = true;
+    }else{
+      this.transporteur = false;
+    }
+
     this.recupererLesReservationEncoursDunTransporteur();
     this.recupererLesReservationsAccepter();
     this.recupererLesReservationsEnAttente();

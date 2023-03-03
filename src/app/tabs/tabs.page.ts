@@ -92,13 +92,11 @@ export class TabsPage implements OnInit{
       this.conditionAfichageMenu = value;
     });
 
-
     this.notificationService.recupererNotificationNonLuDunUser(this.currentUser.id).subscribe(data =>{
       this.nombreDeNotificationNonLu = data;
       this.donneesService.nombreDeNotificationNonLu.next(this.nombreDeNotificationNonLu);
      
     })
-
 
     this.donneesService.photoProfil$.subscribe(value => {
       this.photo = value;

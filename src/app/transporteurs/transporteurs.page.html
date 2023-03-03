@@ -20,12 +20,14 @@
               <div class="contenuPrincipal">
                 <div class="contenu">
                   <h5 class="nomComplet">{{transporteur.nomcomplet}}</h5>
-                  <h6>{{transporteur.email}}</h6>
-                 <h6 style="font-weight: bold; font-size: 18px;">{{transporteur.username}}</h6>
+                  <!-- <h6>{{transporteur.email}}</h6> -->
+                 <h6 style="font-weight: bold; font-size: 18px;">Plaque: {{transporteur.numeroplaque}}</h6>
                  <h6>{{transporteur.adresse}}</h6>
                 </div>
-                <button class="voirplus" (click)="contacterTransporteur(transporteur.id)"  >RESERVER</button>
-                <!-- <a class="voirplus" href="tel:{{transporteur.username}}"  >CONTACTER</a> -->
+                <button *ngIf="!recherchereservationDunUser(transporteur?.id)" class="voirplus" (click)="contacterTransporteur(transporteur.id)" >RESERVER</button>
+                <button style="color: red;" *ngIf="recherchereservationDunUser(transporteur?.id)"  class="voirplus" (click)="annulerReservation(transporteur.id)" >ANNULER</button>
+
+                <!-- <a class="voirplus" href="tel:{{transporteur.username}}">CONTACTER</a> -->
               </div>
           </ion-col>
         </ion-row>

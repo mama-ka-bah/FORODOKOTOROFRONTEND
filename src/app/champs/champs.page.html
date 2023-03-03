@@ -77,6 +77,8 @@
             <ion-button (click)="modifierProfil()" class="modifier" type="submit" expand="block">Modifier</ion-button>
             <ion-button (click)="fermerCompte()" class="fermer" type="submit" expand="block">Fermer</ion-button>
           </div>
+
+          <ion-button routerLink="/profil-transporteur" style="--background: #fff; color: #14AE5C; width: 100%;"  *ngIf="transporteur"  class="fermer" expand="block">Mes reservations</ion-button>
   
         </div> 
       </div>

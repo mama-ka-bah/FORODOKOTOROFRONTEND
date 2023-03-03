@@ -41,6 +41,7 @@ export class ChampsPage implements OnInit {
   nouveauPhoto:any
   reponseUpdatePhoto:any;
   photo: any;
+  transporteur:boolean | undefined;
 
   constructor(
     private router : Router,
@@ -57,6 +58,14 @@ export class ChampsPage implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.storageService.getUser();
+
+         
+    if( this.currentUser.roles.includes("ROLE_TRANSPORTEUR") == true){
+      this.transporteur = true;
+    }else{
+      this.transporteur = false;
+    }
+
    // alert("je suis actualiser par init")
    this.recuperChampDunAgriculteur();
 

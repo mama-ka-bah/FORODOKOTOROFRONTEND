@@ -27,9 +27,19 @@ export class AgriculteurService {
     return this.http.post( AUTH_API + `devenirtransporteur/${id}`, data);
   }
 
+  recupererLaListeDereservations(transporteur:any): Observable<any>{
+    return this.http.get( AUTH_API + `recupererlalisteDereservations/${transporteur}`, {});
+  }
+
+
   contacterTransporteur(transporteur:any, utilisateur:any): Observable<any>{
     return this.http.get( AUTH_API + `contactertransporteur/${transporteur}/${utilisateur}`, {});
   }
+
+  supprimerReservation(transporteurId:any): Observable<any>{
+    return this.http.delete( AUTH_API + `annulerReservation/${transporteurId}`);
+  }
+
 
   accepterReservation(reservationId:any): Observable<any>{
     return this.http.post( AUTH_API + `acceptereservation/${reservationId}`, {});

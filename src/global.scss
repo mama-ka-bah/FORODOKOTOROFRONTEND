@@ -142,17 +142,23 @@ ion-button:hover {
 }
 
 ion-button.selected {
-  background-color: none;
+  background-color: #14AE5C;
 }
 
 
 ion-button:hover{
-  color: #fff;
+  color: #fff!important;
+  --background:#14AE5C!important;
 }
 
-ion-button{
-  color: #fff;
+
+
+button:hover, a:hover, .dropdown-item:hover{
+  background-color: #14AE5C!important;
+  color: #fff!important;
 }
+
+
 
 
 

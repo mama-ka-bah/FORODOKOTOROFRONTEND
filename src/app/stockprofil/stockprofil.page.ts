@@ -29,6 +29,7 @@ export class StockprofilPage implements OnInit {
   nouveauPhoto:any
   reponseUpdatePhoto:any;
   photo: any;
+  transporteur:boolean | undefined;
 
 
   constructor(private stocksService: StocksService,
@@ -47,6 +48,13 @@ export class StockprofilPage implements OnInit {
   ngOnInit() {
     this.currentUser = this.storageService.getUser();
     this.recuperStockDunAgriculteur();
+
+        
+    if( this.currentUser.roles.includes("ROLE_TRANSPORTEUR") == true){
+      this.transporteur = true;
+    }else{
+      this.transporteur = false;
+    }
 
     this.donneesService.photoProfil$.subscribe(value => {
       this.photo = value;
