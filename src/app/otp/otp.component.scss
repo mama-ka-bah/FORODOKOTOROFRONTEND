@@ -92,3 +92,8 @@
 .is-valid{
     border-color: #14AE5C;
 }
+
+ion-button:hover{
+    --background:#14AE5C;
+    color: #fff;
+}
