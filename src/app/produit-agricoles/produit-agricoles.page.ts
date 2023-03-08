@@ -15,6 +15,11 @@ export class ProduitAgricolesPage implements OnInit {
   currentUrl:any;
   produitsAgricolesRecuperer:any;
 
+   //pour la pagination et la recherche
+   p: number = 1;
+   searchTerm:any;  
+   filterTerm:any;
+
   constructor(
     private donneesService: DonneesStockerService,
     private storageService : StorageService,

@@ -228,6 +228,12 @@ ngOnInit() {
   
       popover.onDidDismiss().then((data) => {
         // console.log(data.data);
+ 
+        this.stockService.recupererStockParId(this.idStockActuel).subscribe(data =>{
+          this.detailsStocks = data;
+        })
+      
+        
      })
 
     }

@@ -36,7 +36,7 @@ export class MettreAjourStockComponent implements OnInit {
    this.myForm = new FormGroup({
     nombrekiloaajouter: new FormControl(0,  [Validators.required, Validators.min(0), Validators.max(10000000)]),
     nombrekiloaenlever: new FormControl(0,  [Validators.required, Validators.min(0), Validators.max(10000000)]),
-    motif: new FormControl("",  [Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
+    motif: new FormControl("",  [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
     quantiterestant: new FormControl(this.quantiterestant,  [Validators.required, Validators.min(0), Validators.max(10000000), Validators.pattern(/^[0-9]+$/)])
 });
 
